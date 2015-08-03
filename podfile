@@ -1,0 +1,10 @@
+platform :ios, '7.0'
+pod "AFNetworking"
+pod "SDWebImage"
+pod "AsyncDisplayKit"
+pod "WebASDKImageManager"
+pod 'pop', '~> 1.0'
+pod "ReactiveCocoa"
+pod 'RadioButton'
+pod 'IQKeyboardManager'
+

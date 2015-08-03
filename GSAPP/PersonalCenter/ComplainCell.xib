@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ComplainCell" rowHeight="125" id="oDA-lT-yBc" customClass="ComplainCell">
+            <rect key="frame" x="0.0" y="0.0" width="355" height="104"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oDA-lT-yBc" id="byn-va-yKp">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="病史" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Plp-5j-ysu">
+                        <rect key="frame" x="83" y="15" width="224" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="224" id="TNo-lG-zVb"/>
+                            <constraint firstAttribute="height" constant="18" id="noH-eu-eSS"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="症状" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ze-uX-W2b">
+                        <rect key="frame" x="83" y="40" width="120" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="N8x-Np-ZgL"/>
+                            <constraint firstAttribute="height" constant="14" id="krR-Hv-KnK"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="疾病描述疾病描述疾病描述疾病描述疾病描述疾病描述疾病描述疾病描述疾病描述" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seh-Xg-n6e">
+                        <rect key="frame" x="83" y="62" width="266" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="34" id="T28-ec-20v"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会诊" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjW-D9-Ipe">
+                        <rect key="frame" x="9" y="69" width="60" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="8gf-gp-A1C"/>
+                            <constraint firstAttribute="width" constant="60" id="MKe-Pq-op4"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7X-JP-cyn">
+                        <rect key="frame" x="0.0" y="0.0" width="3" height="104"/>
+                        <color key="backgroundColor" red="0.30980392159999998" green="0.75686274509999996" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="3" id="Frz-jy-Wuf"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list_consultation.png" translatesAutoresizingMaskIntoConstraints="NO" id="y2P-rn-lwZ">
+                        <rect key="frame" x="17" y="22" width="45" height="45"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="45" id="Ufn-ny-dst"/>
+                            <constraint firstAttribute="width" constant="45" id="ua1-d7-0YK"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="gjW-D9-Ipe" firstAttribute="leading" secondItem="byn-va-yKp" secondAttribute="leadingMargin" constant="1" id="0Fl-vS-5H4"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="seh-Xg-n6e" secondAttribute="trailing" constant="-2" id="F2t-L4-AUg"/>
+                    <constraint firstItem="y7X-JP-cyn" firstAttribute="leading" secondItem="byn-va-yKp" secondAttribute="leadingMargin" constant="-8" id="FJ3-Cc-cA1"/>
+                    <constraint firstItem="y2P-rn-lwZ" firstAttribute="leading" secondItem="byn-va-yKp" secondAttribute="leadingMargin" constant="9" id="Iex-CN-wWi"/>
+                    <constraint firstItem="Plp-5j-ysu" firstAttribute="leading" secondItem="byn-va-yKp" secondAttribute="leadingMargin" constant="75" id="NnT-I4-TjK"/>
+                    <constraint firstItem="y2P-rn-lwZ" firstAttribute="top" secondItem="byn-va-yKp" secondAttribute="topMargin" constant="14" id="VCx-Dd-Ted"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="seh-Xg-n6e" secondAttribute="bottom" constant="-1" id="YIV-wi-aTZ"/>
+                    <constraint firstItem="y7X-JP-cyn" firstAttribute="top" secondItem="byn-va-yKp" secondAttribute="topMargin" constant="-8" id="dx0-nu-wo4"/>
+                    <constraint firstItem="5Ze-uX-W2b" firstAttribute="top" secondItem="byn-va-yKp" secondAttribute="topMargin" constant="32" id="ncy-8J-Mj9"/>
+                    <constraint firstItem="seh-Xg-n6e" firstAttribute="leading" secondItem="byn-va-yKp" secondAttribute="leadingMargin" constant="75" id="p9p-C3-uFw"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="y7X-JP-cyn" secondAttribute="bottom" constant="-9" id="q6y-oh-Vqm"/>
+                    <constraint firstItem="Plp-5j-ysu" firstAttribute="top" secondItem="byn-va-yKp" secondAttribute="topMargin" constant="7" id="qtL-I2-nZs"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="gjW-D9-Ipe" secondAttribute="bottom" constant="8" id="wQE-PY-UtX"/>
+                    <constraint firstItem="5Ze-uX-W2b" firstAttribute="leading" secondItem="byn-va-yKp" secondAttribute="leadingMargin" constant="75" id="x3n-C6-Jgf"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imgOfDisease" destination="y2P-rn-lwZ" id="BRP-nH-Dl3"/>
+                <outlet property="lblBingshi" destination="Plp-5j-ysu" id="fFf-RI-d4L"/>
+                <outlet property="lblDescription" destination="seh-Xg-n6e" id="z7Y-az-mCh"/>
+                <outlet property="lblZhengzhuan" destination="5Ze-uX-W2b" id="pd0-CT-5QX"/>
+                <outlet property="lbl_treat" destination="gjW-D9-Ipe" id="bhp-IZ-jvN"/>
+            </connections>
+            <point key="canvasLocation" x="330.5" y="114"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="list_consultation.png" width="44" height="44"/>
+    </resources>
+</document>

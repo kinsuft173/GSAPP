@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="194" id="KGk-i7-Jjw" customClass="RecommendDoctorCell">
+            <rect key="frame" x="0.0" y="0.0" width="355" height="165"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7H-sA-6Kv">
+                        <rect key="frame" x="10" y="39" width="335" height="126"/>
+                    </scrollView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ma2-iQ-hNE">
+                        <rect key="frame" x="10" y="28" width="335" height="1"/>
+                        <color key="backgroundColor" red="0.82352941176470584" green="0.82352941176470584" blue="0.82352941176470584" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="syG-zD-0va"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最新接单专家" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZV-hc-yCx">
+                        <rect key="frame" x="10" y="0.0" width="150" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="Qxd-bs-evD"/>
+                            <constraint firstAttribute="width" constant="150" id="ftY-Lz-IX2"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="DZV-hc-yCx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="2oj-iK-jnn"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Q7H-sA-6Kv" secondAttribute="bottom" constant="-9" id="9a9-Cf-sCU"/>
+                    <constraint firstItem="ma2-iQ-hNE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="CwE-t7-UfI"/>
+                    <constraint firstItem="Q7H-sA-6Kv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="31" id="QOS-xO-DNi"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Q7H-sA-6Kv" secondAttribute="trailing" constant="2" id="XUq-oa-lLu"/>
+                    <constraint firstItem="ma2-iQ-hNE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="20" id="XaX-UO-YEl"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="ma2-iQ-hNE" secondAttribute="trailing" constant="2" id="ZEJ-Bq-KJ3"/>
+                    <constraint firstItem="DZV-hc-yCx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="bfo-7w-umb"/>
+                    <constraint firstItem="Q7H-sA-6Kv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="nE9-Cx-i0g"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="DoctorRecommed_Scroll" destination="Q7H-sA-6Kv" id="YM8-zh-ME7"/>
+            </connections>
+            <point key="canvasLocation" x="216" y="183"/>
+        </tableViewCell>
+    </objects>
+</document>

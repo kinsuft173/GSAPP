@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="AdvertisementShowCell">
+            <rect key="frame" x="0.0" y="0.0" width="355" height="49"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg3.png" translatesAutoresizingMaskIntoConstraints="NO" id="wOV-p5-MCJ">
+                        <rect key="frame" x="0.0" y="0.0" width="355" height="49"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WiA-VP-fn6">
+                        <rect key="frame" x="335" y="5" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="MnS-O5-XAP"/>
+                            <constraint firstAttribute="width" constant="15" id="zJT-b6-2PA"/>
+                        </constraints>
+                        <state key="normal" image="ad_close.png">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="wOV-p5-MCJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="1e3-GN-UpX"/>
+                    <constraint firstItem="wOV-p5-MCJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="7L4-We-YMC"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="wOV-p5-MCJ" secondAttribute="trailing" constant="-8" id="Mjf-eY-Bog"/>
+                    <constraint firstItem="WiA-VP-fn6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-3" id="RUO-q0-7IQ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="WiA-VP-fn6" secondAttribute="trailing" constant="-3" id="aJE-FT-eQh"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="wOV-p5-MCJ" secondAttribute="bottom" constant="-9" id="hkr-wQ-pp3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btn_closeAdvertisment" destination="WiA-VP-fn6" id="vJD-ii-Kir"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ad_close.png" width="16" height="16"/>
+        <image name="bg3.png" width="1242" height="570"/>
+    </resources>
+</document>

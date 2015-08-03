@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前城市" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1G-90-fC1">
+                    <rect key="frame" x="27" y="16" width="100" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="kVI-zM-XY2"/>
+                        <constraint firstAttribute="height" constant="17" id="sNb-hU-5bg"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list_city_now.png" translatesAutoresizingMaskIntoConstraints="NO" id="fO7-BZ-cp9">
+                    <rect key="frame" x="0.0" y="8" width="26" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="26" id="Uo6-I4-dua"/>
+                        <constraint firstAttribute="height" constant="34" id="xWY-Jh-1YR"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fO7-BZ-cp9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="UzQ-7w-qLa"/>
+                <constraint firstItem="E1G-90-fC1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="27" id="Y3Z-kO-kV8"/>
+                <constraint firstItem="E1G-90-fC1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="ct6-sb-2AV"/>
+                <constraint firstItem="fO7-BZ-cp9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="iUR-37-w9I"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view contentMode="scaleToFill" id="Fmt-O7-YkN">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已开通城市" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8d1-DZ-6Ko">
+                    <rect key="frame" x="27" y="16" width="100" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="B0x-PJ-iNz"/>
+                        <constraint firstAttribute="height" constant="17" id="zM8-t1-ITR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list_city_open.png" translatesAutoresizingMaskIntoConstraints="NO" id="RMC-v1-YGe">
+                    <rect key="frame" x="0.0" y="8" width="26" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="EpV-Dj-8EQ"/>
+                        <constraint firstAttribute="width" constant="26" id="afd-gT-LNz"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="8d1-DZ-6Ko" firstAttribute="leading" secondItem="Fmt-O7-YkN" secondAttribute="leading" constant="27" id="2VQ-Iq-x0E"/>
+                <constraint firstItem="RMC-v1-YGe" firstAttribute="top" secondItem="Fmt-O7-YkN" secondAttribute="top" constant="8" id="Xs4-df-SQM"/>
+                <constraint firstItem="RMC-v1-YGe" firstAttribute="leading" secondItem="Fmt-O7-YkN" secondAttribute="leading" id="dnW-wv-ABB"/>
+                <constraint firstItem="8d1-DZ-6Ko" firstAttribute="top" secondItem="Fmt-O7-YkN" secondAttribute="top" constant="16" id="qw0-K6-b0f"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="680.5" y="230"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="list_city_now.png" width="7" height="14"/>
+        <image name="list_city_open.png" width="10" height="14"/>
+    </resources>
+</document>
