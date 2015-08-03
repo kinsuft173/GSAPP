@@ -27,8 +27,6 @@
     return instance;
 }
 
-
-
 #pragma mark - 用户相关接口
 - (void)server_createUserWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
 {
@@ -171,7 +169,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     //test
-    NSDictionary *parameters = @{@"doctor_id": @"1",@"patient_name":@"SDS",@"patient_sex": @"1",@"patient_age":@"1",@"patient_mobile": @"18672354399",@"patient_dept":@"SDS",@"symptom_id": @"1",@"patient_illness":@"SDS",@"anamnesis_id": @"1",@"timely":@"1",@"other_order":@"1",@"expert_id":@"1"};
+//    NSDictionary *parameters = @{@"doctor_id": @"1",@"patient_name":@"SDS",@"patient_sex": @"1",@"patient_age":@"1",@"patient_mobile": @"18672354399",@"patient_dept":@"SDS",@"symptom_id": @"1",@"patient_illness":@"SDS",@"anamnesis_id": @"1",@"timely":@"1",@"other_order":@"1",@"expert_id":@"1"};
     
     NSLog(@"dic_server_createConsultWithDic = %@",dic);
     
@@ -184,7 +182,7 @@
         
         NSLog(@"server_createConsultWithDic===>: %@", responseObject);
         
-        [self server_jpushUserGenerate];
+//     [self server_jpushUserGenerate];
         
         completeHandle(responseObject);
         
@@ -923,17 +921,16 @@
 
 - (void)setTags:(NSString *)tag
 {
-//    [APService setAlias:tag callbackSelector:@selector(tagsAliasCallback:tags:alias:) target:self];
     
-    if ([tag isEqualToString:@"1"]) {
-        
-        tag = @"9";
-    }else{
-    
-        tag = @"10";
-    }
+//    if ([tag isEqualToString:@"1"]) {
+//        
+//        tag = @"9";
+//    }else{
+//    
+//        tag = @"10";
+//    }
 
-    [APService setTags:[NSSet setWithObject:tag] alias:nil callbackSelector:@selector(tagsAliasCallback:tags:alias:) target:self];
+    [APService setTags:nil alias:tag callbackSelector:@selector(tagsAliasCallback:tags:alias:) target:self];
 }
 
 -(void)tagsAliasCallback:(int)iResCode

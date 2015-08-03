@@ -49,19 +49,42 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
-//    [defaultCenter addObserver:self selector:@selector(networkDidSetup:)            name:kJPFNetworkDidSetupNotification     object:nil];
-//    [defaultCenter addObserver:self selector:@selector(networkDidClose:)            name:kAPNetworkDidCloseNotification     object:nil];
-//    [defaultCenter addObserver:self selector:@selector(networkDidRegister:)         name:kAPNetworkDidRegisterNotification  object:nil];
-//    [defaultCenter addObserver:self selector:@selector(networkDidLogin:)            name:kAPNetworkDidLoginNotification     object:nil];
+    [defaultCenter addObserver:self selector:@selector(networkDidSetup:)            name:kJPFNetworkDidSetupNotification     object:nil];
+    [defaultCenter addObserver:self selector:@selector(networkDidClose:)            name:kJPFNetworkDidCloseNotification     object:nil];
+    [defaultCenter addObserver:self selector:@selector(networkDidRegister:)         name:kJPFNetworkDidRegisterNotification  object:nil];
+    [defaultCenter addObserver:self selector:@selector(networkDidLogin:)            name:kJPFNetworkDidLoginNotification     object:nil];
     [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:)   name:kJPFNetworkDidReceiveMessageNotification object:nil];
+        [defaultCenter addObserver:self selector:@selector(networkDidError:)   name:kJPFServiceErrorNotification object:nil];
     
+//    [APService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+//                                                   UIRemoteNotificationTypeSound |
+//                                                   UIRemoteNotificationTypeAlert)
+//                                       categories:nil];
+    
+
+    // Required
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_1
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+        //可以添加自定义categories
+        [APService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
+                                                       UIUserNotificationTypeSound |
+                                                       UIUserNotificationTypeAlert)
+                                           categories:nil];
+    } else {
+        //categories 必须为nil
+        [APService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+                                                       UIRemoteNotificationTypeSound |
+                                                       UIRemoteNotificationTypeAlert)
+                                           categories:nil];
+    }
+#else
+    //categories 必须为nil
     [APService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
                                                    UIRemoteNotificationTypeSound |
                                                    UIRemoteNotificationTypeAlert)
                                        categories:nil];
-    
-
-    
+#endif
+    // Required
     
     [APService setupWithOption:launchOptions];
 //    [[NetworkManager shareMgr] server_BaseGet:nil url:nil];
@@ -230,7 +253,7 @@ forRemoteNotification:(NSDictionary *)userInfo
 - (void)application:(UIApplication *)application
 didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [APService handleRemoteNotification:userInfo];
-//    NSLog(@"收到通知:%@", [self logDic:userInfo]);
+    NSLog(@"收到通知:%@", [self logDic:userInfo]);
     
 //    [[NSNotificationCenter defaultCenter] postNotificationName:@"notify" object:nil];
 
@@ -279,6 +302,46 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
     NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias);
 }
 
+
+//KJP
+- (void)networkDidSetup:(NSNotification *)notification
+{
+
+    NSDictionary * userInfo = [notification userInfo];
+    
+    NSLog(@"networkDidSetup%@", userInfo);
+}
+
+
+- (void)networkDidClose:(NSNotification *)notification
+{
+    NSDictionary * userInfo = [notification userInfo];
+    
+    NSLog(@"networkDidClose为%@", userInfo);
+    
+}
+- (void)networkDidRegister:(NSNotification *)notification
+{
+    NSDictionary * userInfo = [notification userInfo];
+    
+    NSLog(@"networkDidRegister%@", userInfo);
+    
+}
+- (void)networkDidLogin:(NSNotification *)notification
+{
+    NSDictionary * userInfo = [notification userInfo];
+    
+    NSLog(@"networkDidLogin为%@", userInfo);
+    
+}
+
+- (void)networkDidError:(NSNotification *)notification
+{
+    NSDictionary * userInfo = [notification userInfo];
+    
+    NSLog(@"networkDidError%@", userInfo);
+    
+}
 
 -(void)messegeReceived:(NSDictionary*)userInfo
 {

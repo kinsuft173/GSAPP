@@ -221,10 +221,14 @@
     [dicTemp setObject:self.textFiledPassword.text forKey:@"passWord"];
     [dicTemp setObject:@"user" forKey:@"userType"];
     
+    [UserDataManager shareManager].userId = @"9";
+    
+    [[NetworkManager shareMgr] setTags:[UserDataManager shareManager].userId];
+    
     
     [[NSUserDefaults standardUserDefaults] setObject:dicTemp forKey:@"userAutoLoginInfo"];
     
-    [UserDataManager shareManager].userId = @"1";
+    [UserDataManager shareManager].userId = @"9";
     
     
     UIStoryboard* stroyboardUser = [UIStoryboard storyboardWithName:@"User" bundle:nil];
@@ -236,7 +240,7 @@
     
     //[UserDataManager shareManager].userId
     
-    [[NetworkManager shareMgr] setTags:[UserDataManager shareManager].userId];
+
     
     [hud setHidden:YES];
     
@@ -283,7 +287,7 @@
     
     UIViewController* vc = [stroyboardUser instantiateInitialViewController];
     
-    [[NetworkManager shareMgr] setTags:[UserDataManager shareManager].userId];
+//    [[NetworkManager shareMgr] setTags:[UserDataManager shareManager].userId];
     
 //    [APService setTags:[NSSet setWithObject:[UserDataManager shareManager].userId] alias:@"doctor1412222sds" callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:nil];
     
