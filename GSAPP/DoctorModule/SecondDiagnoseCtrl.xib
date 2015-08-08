@@ -68,7 +68,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主任医师" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m83-N8-gY9">
-                                            <rect key="frame" x="157" y="20" width="100" height="21"/>
+                                            <rect key="frame" x="157" y="20" width="185" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="Hhh-Ih-Jcq"/>
                                                 <constraint firstAttribute="height" constant="21" id="qMt-1y-HH5"/>
@@ -76,6 +76,11 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Hhh-Ih-Jcq"/>
+                                                </mask>
+                                            </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="耳鼻喉科" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDY-Sx-URq">
                                             <rect key="frame" x="93" y="68" width="100" height="12"/>
@@ -127,6 +132,7 @@
                                         <constraint firstItem="5js-o4-UMR" firstAttribute="top" secondItem="rW9-KW-LOG" secondAttribute="top" constant="47" id="gtC-pn-nqS"/>
                                         <constraint firstItem="5js-o4-UMR" firstAttribute="leading" secondItem="rW9-KW-LOG" secondAttribute="leading" constant="94" id="kgZ-gK-bDS"/>
                                         <constraint firstItem="IWh-3q-21x" firstAttribute="top" secondItem="rW9-KW-LOG" secondAttribute="top" constant="12" id="m2h-EW-vV2"/>
+                                        <constraint firstAttribute="trailing" secondItem="m83-N8-gY9" secondAttribute="trailing" constant="13" id="oXF-V5-LVY"/>
                                         <constraint firstItem="IWh-3q-21x" firstAttribute="leading" secondItem="rW9-KW-LOG" secondAttribute="leading" constant="10" id="rCU-6g-FDY"/>
                                     </constraints>
                                 </view>

@@ -11,6 +11,8 @@
 #import "MBProgressHUD.h"
 #import "MJExtension.h"
 
+#define NET_SUCCESS 200
+
 @interface NetworkManager : NSObject
 
 + (NetworkManager*)shareMgr;
@@ -28,7 +30,8 @@
 - (void)server_fetchDoctorsWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 
 //咨询问诊
-- (void)server_createConsultWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+//- (void)server_createConsultWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+- (void)server_createConsultWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle failHandle:(FailHandle)failHandle;
 - (void)server_fetchConsultWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 - (void)server_updateConsultWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 //订单

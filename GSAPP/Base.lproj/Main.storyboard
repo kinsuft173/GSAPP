@@ -63,14 +63,14 @@
                                     </mask>
                                 </variation>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_nom.png" translatesAutoresizingMaskIntoConstraints="NO" id="yhA-cF-D7r">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_pre.png" translatesAutoresizingMaskIntoConstraints="NO" id="yhA-cF-D7r">
                                 <rect key="frame" x="136" y="348" width="14" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="Ohb-CK-h13"/>
                                     <constraint firstAttribute="width" constant="14" id="peD-af-XM9"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_pre.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jm5-Ij-Yqs">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_nom.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jm5-Ij-Yqs">
                                 <rect key="frame" x="214" y="348" width="14" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="GWq-rU-8sa"/>
@@ -78,29 +78,17 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyk-Jy-SuP">
-                                <rect key="frame" x="136" y="341" width="64" height="28"/>
+                                <rect key="frame" x="149" y="341" width="64" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="1IZ-Jc-V3o"/>
-                                    <constraint firstAttribute="height" constant="28" id="8GO-0J-pyX"/>
+                                    <constraint firstAttribute="height" constant="29" id="8GO-0J-pyX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="医生">
+                                <state key="normal" title="我是医生">
                                     <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qie-39-cC4">
-                                <rect key="frame" x="214" y="341" width="64" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="1Zm-zn-ChU"/>
-                                    <constraint firstAttribute="width" constant="64" id="wzA-Ip-zld"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="专家">
-                                    <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg0.png" translatesAutoresizingMaskIntoConstraints="NO" id="IfE-7O-I4O">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="512-512.png" translatesAutoresizingMaskIntoConstraints="NO" id="IfE-7O-I4O">
                                 <rect key="frame" x="123" y="62" width="129" height="129"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="IfE-7O-I4O" secondAttribute="height" multiplier="1:1" id="K4b-df-NSL"/>
@@ -173,6 +161,18 @@
                                     <action selector="goForgetPassword:" destination="GNt-6s-r8L" eventType="touchUpInside" id="sjp-ge-ZhY"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qie-39-cC4">
+                                <rect key="frame" x="229" y="340" width="64" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1Zm-zn-ChU"/>
+                                    <constraint firstAttribute="width" constant="64" id="wzA-Ip-zld"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="我是专家">
+                                    <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -187,7 +187,7 @@
                             <constraint firstItem="dFY-MV-ojR" firstAttribute="leading" secondItem="dHb-RA-KOW" secondAttribute="leading" id="93S-M1-v6g"/>
                             <constraint firstItem="ozd-kK-OBu" firstAttribute="top" secondItem="IfE-7O-I4O" secondAttribute="bottom" constant="43" id="AV8-Qy-2z3"/>
                             <constraint firstAttribute="centerX" secondItem="qie-39-cC4" secondAttribute="centerX" constant="-58.5" id="EJA-2i-mmN"/>
-                            <constraint firstItem="qie-39-cC4" firstAttribute="leading" secondItem="lyk-Jy-SuP" secondAttribute="trailing" constant="14" id="Ei5-c0-nDt"/>
+                            <constraint firstItem="qie-39-cC4" firstAttribute="leading" secondItem="lyk-Jy-SuP" secondAttribute="trailing" constant="16" id="Ei5-c0-nDt"/>
                             <constraint firstItem="Rkh-5N-T5K" firstAttribute="leading" secondItem="w6b-H2-88x" secondAttribute="trailing" constant="10" id="Fjf-Vc-gcg"/>
                             <constraint firstItem="dFY-MV-ojR" firstAttribute="leading" secondItem="732-ee-a8h" secondAttribute="leadingMargin" constant="28" id="Fy5-ta-Fi4"/>
                             <constraint firstItem="Rkh-5N-T5K" firstAttribute="top" secondItem="IfE-7O-I4O" secondAttribute="bottom" constant="91" id="GNy-Iw-9D2"/>
@@ -201,21 +201,21 @@
                             <constraint firstItem="kxY-cb-Lpo" firstAttribute="top" secondItem="dFY-MV-ojR" secondAttribute="bottom" constant="84" id="XCR-c2-yUM"/>
                             <constraint firstItem="kxY-cb-Lpo" firstAttribute="top" secondItem="lyk-Jy-SuP" secondAttribute="top" constant="73" id="YTQ-W7-xEa"/>
                             <constraint firstItem="EB3-3y-tv0" firstAttribute="top" secondItem="kxY-cb-Lpo" secondAttribute="bottom" constant="18" id="Z4Q-SC-CgG"/>
-                            <constraint firstItem="qie-39-cC4" firstAttribute="leading" secondItem="Jm5-Ij-Yqs" secondAttribute="leading" id="acH-9k-0cn"/>
+                            <constraint firstItem="qie-39-cC4" firstAttribute="leading" secondItem="Jm5-Ij-Yqs" secondAttribute="leading" constant="15" id="acH-9k-0cn"/>
                             <constraint firstItem="dFY-MV-ojR" firstAttribute="leading" secondItem="dHb-RA-KOW" secondAttribute="trailing" constant="-68" id="aoX-e6-fBj"/>
                             <constraint firstAttribute="centerX" secondItem="Rkh-5N-T5K" secondAttribute="centerX" constant="-22" id="bfP-JX-znH"/>
                             <constraint firstItem="EB3-3y-tv0" firstAttribute="trailing" secondItem="kxY-cb-Lpo" secondAttribute="trailing" constant="-13" id="byJ-8a-poV"/>
                             <constraint firstItem="yhA-cF-D7r" firstAttribute="top" secondItem="dFY-MV-ojR" secondAttribute="bottom" constant="18" id="cdL-FK-6Ri"/>
-                            <constraint firstItem="yhA-cF-D7r" firstAttribute="leading" secondItem="lyk-Jy-SuP" secondAttribute="leading" id="dHT-bY-mEr"/>
+                            <constraint firstItem="yhA-cF-D7r" firstAttribute="leading" secondItem="lyk-Jy-SuP" secondAttribute="leading" constant="-13" id="dHT-bY-mEr"/>
                             <constraint firstItem="0T2-Li-AMS" firstAttribute="top" secondItem="kxY-cb-Lpo" secondAttribute="bottom" constant="18" id="evJ-b6-zBW"/>
                             <constraint firstItem="dFY-MV-ojR" firstAttribute="top" secondItem="IfE-7O-I4O" secondAttribute="bottom" constant="43" id="hAe-qj-SHS"/>
-                            <constraint firstItem="lyk-Jy-SuP" firstAttribute="trailing" secondItem="dHb-RA-KOW" secondAttribute="trailing" constant="88" id="hDt-MR-Mb6"/>
+                            <constraint firstItem="lyk-Jy-SuP" firstAttribute="trailing" secondItem="dHb-RA-KOW" secondAttribute="trailing" constant="101" id="hDt-MR-Mb6"/>
                             <constraint firstItem="kxY-cb-Lpo" firstAttribute="leading" secondItem="732-ee-a8h" secondAttribute="leadingMargin" constant="28" id="hog-kb-q9Z"/>
                             <constraint firstItem="dFY-MV-ojR" firstAttribute="trailing" secondItem="ozd-kK-OBu" secondAttribute="trailing" id="o5o-dE-zu4"/>
                             <constraint firstAttribute="width" secondItem="IfE-7O-I4O" secondAttribute="height" multiplier="125:43" id="sMC-Tk-b9g"/>
                             <constraint firstAttribute="centerX" secondItem="kxY-cb-Lpo" secondAttribute="centerX" constant="0.5" id="vek-GL-6Fr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dFY-MV-ojR" secondAttribute="trailing" constant="28" id="wSh-o9-qjd"/>
-                            <constraint firstItem="qie-39-cC4" firstAttribute="top" secondItem="dFY-MV-ojR" secondAttribute="bottom" constant="11" id="zpQ-L9-CpH"/>
+                            <constraint firstItem="qie-39-cC4" firstAttribute="top" secondItem="dFY-MV-ojR" secondAttribute="bottom" constant="10" id="zpQ-L9-CpH"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -239,6 +239,8 @@
                         <outlet property="btnExpertSelected" destination="qie-39-cC4" id="sK1-cl-1CQ"/>
                         <outlet property="btnLogin" destination="kxY-cb-Lpo" id="g5l-Qj-YRL"/>
                         <outlet property="btnUserSelected" destination="lyk-Jy-SuP" id="vgx-jX-tSo"/>
+                        <outlet property="imgExpert" destination="Jm5-Ij-Yqs" id="Twh-va-TEh"/>
+                        <outlet property="imgUser" destination="yhA-cF-D7r" id="xWq-FD-fUg"/>
                         <outlet property="textFiledPassword" destination="Rkh-5N-T5K" id="FJn-Sn-fJu"/>
                         <outlet property="textFiledUserName" destination="ozd-kK-OBu" id="o5X-zK-EkP"/>
                         <segue destination="7nu-Vu-N7W" kind="show" identifier="goRegister" id="UeF-jm-da3"/>
@@ -446,7 +448,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg0.png" width="1080" height="496"/>
+        <image name="512-512.png" width="512" height="512"/>
         <image name="btn_nom.png" width="28" height="28"/>
         <image name="btn_pre.png" width="28" height="28"/>
         <image name="icon_password.png" width="34" height="44"/>

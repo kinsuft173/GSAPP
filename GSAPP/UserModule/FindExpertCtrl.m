@@ -58,8 +58,8 @@
     
     [HKCommen setExtraCellLineHidden:self.tableView];
     
-    [HKCommen addBoardToView:self.viewMask1 WithSuperView:self.view withWidth:SCREEN_WIDTH -20  withInset:64];
-    [HKCommen addBoardToView:self.tableView WithSuperView:self.view withWidth:SCREEN_WIDTH -20  withInset:64];
+  //  [HKCommen addBoardToView:self.viewMask1 WithSuperView:self.view withWidth:SCREEN_WIDTH -20  withInset:64];
+   // [HKCommen addBoardToView:self.tableView WithSuperView:self.view withWidth:SCREEN_WIDTH -20  withInset:64];
     
     if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
         [self.tableView setLayoutMargins: UIEdgeInsetsZero];

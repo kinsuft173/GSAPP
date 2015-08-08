@@ -23,6 +23,9 @@
 @property (nonatomic, strong) IBOutlet UIButton*    btnExpertSelected;
 @property (nonatomic, strong) IBOutlet UIButton*    btnUserSelected;
 
+@property (nonatomic, strong) IBOutlet UIImageView*    imgExpert;
+@property (nonatomic, strong) IBOutlet UIImageView*    imgUser;
+
 @end
 
 @implementation LaunchCtrl
@@ -32,36 +35,37 @@
     // Do any additional setup after loading the view.
     
     //init UI
-    [self.btnUserSelected setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+//    [self.btnUserSelected setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     
     NSMutableDictionary* userAutoLoginInfo = [[NSUserDefaults standardUserDefaults] objectForKey:@"userAutoLoginInfo"];
     
-    self.textFiledPassword.text = userAutoLoginInfo[@"passWord"];
-    self.textFiledUserName.text = userAutoLoginInfo[@"userName"];
-    
-    
-//    UIImageView*  imgViewUser = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 40, 40)];
-//    imgViewUser.image = [UIImage imageNamed:@"bg1.png"];
-//    
-//    self. textFiledUserName.leftViewMode = UITextFieldViewModeAlways;
-//    
-//    self.textFiledUserName.leftView = imgViewUser;
-//
-//    self.textFiledUserName.leftViewMode = UITextFieldViewModeAlways;
-//    self.textFiledUserName.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-//    
-//    UIImageView*  imgViewPsd = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 40, 40)];
-//    imgViewPsd.image = [UIImage imageNamed:@"bg2.png"];
-//    self.textFiledPassword.leftView = imgViewPsd;
-//    self.textFiledPassword.leftViewMode = UITextFieldViewModeAlways;
-//    self.textFiledPassword.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    
-    if([userAutoLoginInfo[@"userType"] isEqualToString:@"doctor"]){
+    if (userAutoLoginInfo) {
         
-//      w  [self.btnExpertSelected  sendActionsForControlEvents:UIControlEventTouchDragInside];
-        [self.btnExpertSelected setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [self.btnUserSelected setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        self.textFiledPassword.text = userAutoLoginInfo[@"passWord"];
+        self.textFiledUserName.text = userAutoLoginInfo[@"userName"];
+        
+        
+        if([userAutoLoginInfo[@"userType"] isEqualToString:@"doctor"]){
+            
+            self.imgExpert.image = [UIImage imageNamed:@"btn_pre.png"];
+            self.imgUser.image = [UIImage imageNamed:@"btn_nom.png"];
+            
+            self.imgExpert.tag = 1;
+            self.imgUser.tag = 0;
+            
+        }else{
+        
+            
+            self.imgExpert.image = [UIImage imageNamed:@"btn_nom.png"];
+            self.imgUser.image = [UIImage imageNamed:@"btn_pre.png"];
+            
+            self.imgExpert.tag = 0;
+            self.imgUser.tag = 1;
+        }
+
     }
+    
+
     
     
     
@@ -115,14 +119,26 @@
      ***********************************/
      [[self.btnUserSelected rac_signalForControlEvents:UIControlEventTouchUpInside]  subscribeNext:^(id x) {
          
-         [self.btnExpertSelected setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-         [self.btnUserSelected setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+//         [self.btnExpertSelected setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//         [self.btnUserSelected setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+//         [self. setImage:[UIImage imageNamed:@"btn_pre.png"] forState:UIControlStateNormal];
+         self.imgExpert.image = [UIImage imageNamed:@"btn_nom.png"];
+         self.imgUser.image = [UIImage imageNamed:@"btn_pre.png"];
+         
+         self.imgExpert.tag = 0;
+         self.imgUser.tag = 1;
      }];
     
     [[self.btnExpertSelected rac_signalForControlEvents:UIControlEventTouchUpInside]  subscribeNext:^(id x) {
         
-        [self.btnExpertSelected setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [self.btnUserSelected setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//        [self.btnExpertSelected setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+//        [self.btnUserSelected setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        self.imgExpert.image = [UIImage imageNamed:@"btn_pre.png"];
+        self.imgUser.image = [UIImage imageNamed:@"btn_nom.png"];
+        
+        self.imgExpert.tag = 1;
+        self.imgUser.tag = 0;
+        
     }];
     
     
@@ -136,13 +152,14 @@
         
         }]  subscribeNext:^(NSNumber* x) {
             
-            if (x.boolValue == NO && (self.btnExpertSelected.titleLabel.textColor.CGColor == [UIColor redColor].CGColor) ) {
+            
+            if (x.boolValue == NO && self.imgExpert.tag == 1 ) {
                 
             
                      [self goDoctorInterface:nil];
                     
 
-            }else if(x.boolValue == NO){
+            }else if(x.boolValue == NO && self.imgUser.tag == 1){
             
                     [self goUserInterface:nil];
                 
@@ -228,18 +245,10 @@
     
     [[NSUserDefaults standardUserDefaults] setObject:dicTemp forKey:@"userAutoLoginInfo"];
     
-    [UserDataManager shareManager].userId = @"9";
-    
     
     UIStoryboard* stroyboardUser = [UIStoryboard storyboardWithName:@"User" bundle:nil];
     
     UIViewController* vc = [stroyboardUser instantiateInitialViewController];
-    
-//    [APService setAlias:[UserDataManager shareManager].userId callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:nil];
-//    [APService setTags:[NSSet setWithObject:[UserDataManager shareManager].userId] alias:@"doctor1212234" callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:nil];
-    
-    //[UserDataManager shareManager].userId
-    
 
     
     [hud setHidden:YES];
@@ -287,9 +296,8 @@
     
     UIViewController* vc = [stroyboardUser instantiateInitialViewController];
     
-//    [[NetworkManager shareMgr] setTags:[UserDataManager shareManager].userId];
+    [[NetworkManager shareMgr] setTags:[UserDataManager shareManager].userId];
     
-//    [APService setTags:[NSSet setWithObject:[UserDataManager shareManager].userId] alias:@"doctor1412222sds" callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:nil];
     
     [hud setHidden:YES];
     

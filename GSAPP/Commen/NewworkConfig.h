@@ -15,7 +15,7 @@
 
 #pragma mark - 网络接口回调类型
 typedef void (^CompleteHandle)(NSDictionary*);
-
+typedef void (^FailHandle)();
 
 #pragma mark - 网络相关url
 

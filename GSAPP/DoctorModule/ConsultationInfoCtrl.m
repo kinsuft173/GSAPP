@@ -16,7 +16,6 @@
 @property (nonatomic, strong) IBOutlet UIScrollView* scrollView;
 @property (nonatomic,strong) NSArray *images;
 
-
 @property (nonatomic, strong) IBOutlet UILabel* lblDoctorDept;
 @property (nonatomic, strong) IBOutlet UILabel* lblDoctorHospital;
 @property (nonatomic, strong) IBOutlet UILabel* lblDoctorCity;

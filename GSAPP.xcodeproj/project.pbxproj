@@ -485,6 +485,9 @@
 		DEFB2A0E1B4AE87100CCA73D /* login_btn_pre@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEFB29F71B4AE87100CCA73D /* login_btn_pre@3x.png */; };
 		DEFB2A0F1B4AE87100CCA73D /* login_btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEFB29F81B4AE87100CCA73D /* login_btn@3x.png */; };
 		DEFB2B7E1B44407200C74FC0 /* HKTextFiled.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFB2B7D1B44407200C74FC0 /* HKTextFiled.m */; };
+		DEFBA57F1B759A88000C1AD6 /* 512-512.png in Resources */ = {isa = PBXBuildFile; fileRef = DEFBA57E1B759A88000C1AD6 /* 512-512.png */; };
+		DEFBA5851B75CB4A000C1AD6 /* LoginOutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFBA5831B75CB4A000C1AD6 /* LoginOutCell.m */; };
+		DEFBA5861B75CB4A000C1AD6 /* LoginOutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEFBA5841B75CB4A000C1AD6 /* LoginOutCell.xib */; };
 		DEFDF56F1B5964E300298366 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFDF5571B5964E300298366 /* CategoryCell.m */; };
 		DEFDF5701B5964E300298366 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEFDF5581B5964E300298366 /* CategoryCell.xib */; };
 		DEFDF5711B5964E300298366 /* SelectCategoryCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFDF55A1B5964E300298366 /* SelectCategoryCtrl.m */; };
@@ -798,9 +801,9 @@
 		B9D5FD7A1B5F3F9E00D48A07 /* list_icon_service@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list_icon_service@3x.png"; sourceTree = "<group>"; };
 		B9D5FD7B1B5F3F9E00D48A07 /* list_next-@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list_next-@2x.png"; sourceTree = "<group>"; };
 		B9D5FD7C1B5F3F9E00D48A07 /* list_next-@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list_next-@3x.png"; sourceTree = "<group>"; };
-		B9DDDF011B536AC7001E0B43 /* AdvertisementCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertisementCell.h; sourceTree = "<group>"; };
-		B9DDDF021B536AC7001E0B43 /* AdvertisementCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvertisementCell.m; sourceTree = "<group>"; };
-		B9DDDF031B536AC7001E0B43 /* AdvertisementCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdvertisementCell.xib; sourceTree = "<group>"; };
+		B9DDDF011B536AC7001E0B43 /* AdvertisementCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdvertisementCell.h; path = ../UserModule/AdvertisementCell.h; sourceTree = "<group>"; };
+		B9DDDF021B536AC7001E0B43 /* AdvertisementCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AdvertisementCell.m; path = ../UserModule/AdvertisementCell.m; sourceTree = "<group>"; };
+		B9DDDF031B536AC7001E0B43 /* AdvertisementCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AdvertisementCell.xib; path = ../UserModule/AdvertisementCell.xib; sourceTree = "<group>"; };
 		B9DDDF041B536AC7001E0B43 /* ChoiceOfDoctorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoiceOfDoctorCell.h; sourceTree = "<group>"; };
 		B9DDDF051B536AC7001E0B43 /* ChoiceOfDoctorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoiceOfDoctorCell.m; sourceTree = "<group>"; };
 		B9DDDF061B536AC7001E0B43 /* ChoiceOfDoctorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChoiceOfDoctorCell.xib; sourceTree = "<group>"; };
@@ -1255,6 +1258,10 @@
 		DEFB29F81B4AE87100CCA73D /* login_btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login_btn@3x.png"; path = "Image3x/login_btn@3x.png"; sourceTree = "<group>"; };
 		DEFB2B7C1B44407200C74FC0 /* HKTextFiled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKTextFiled.h; path = HKCustomView/HKTextFiled.h; sourceTree = "<group>"; };
 		DEFB2B7D1B44407200C74FC0 /* HKTextFiled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKTextFiled.m; path = HKCustomView/HKTextFiled.m; sourceTree = "<group>"; };
+		DEFBA57E1B759A88000C1AD6 /* 512-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "512-512.png"; sourceTree = "<group>"; };
+		DEFBA5821B75CB4A000C1AD6 /* LoginOutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginOutCell.h; sourceTree = "<group>"; };
+		DEFBA5831B75CB4A000C1AD6 /* LoginOutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginOutCell.m; sourceTree = "<group>"; };
+		DEFBA5841B75CB4A000C1AD6 /* LoginOutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginOutCell.xib; sourceTree = "<group>"; };
 		DEFDF5561B5964E300298366 /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
 		DEFDF5571B5964E300298366 /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
 		DEFDF5581B5964E300298366 /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
@@ -1548,6 +1555,7 @@
 		B9CBCFC61B28224E0081AADA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DEFBA57E1B759A88000C1AD6 /* 512-512.png */,
 				DE06382A1B6BB14E00EFB576 /* list_city_now@2x.png */,
 				DE06382B1B6BB14E00EFB576 /* list_city_now@3x.png */,
 				DE06382C1B6BB14E00EFB576 /* list_city_open@2x.png */,
@@ -1653,6 +1661,9 @@
 		B9CBF3431B6B1D7D00621E00 /* 用户选单页面 */ = {
 			isa = PBXGroup;
 			children = (
+				B9DDE0081B536B55001E0B43 /* AdvertisementShowCell.h */,
+				B9DDE0091B536B55001E0B43 /* AdvertisementShowCell.m */,
+				B9DDE00A1B536B55001E0B43 /* AdvertisementShowCell.xib */,
 				B9DDE00E1B536B55001E0B43 /* GreatDoctorCell.h */,
 				B9DDE00F1B536B55001E0B43 /* GreatDoctorCell.m */,
 				B9DDE0101B536B55001E0B43 /* GreatDoctorCell.xib */,
@@ -2148,9 +2159,6 @@
 				DEEC3DEC1B5C7028005CE84E /* UserRegisterCtrl.h */,
 				DEEC3DED1B5C7028005CE84E /* UserRegisterCtrl.m */,
 				DEEC3DEE1B5C7028005CE84E /* UserRegisterCtrl.xib */,
-				B9DDDF011B536AC7001E0B43 /* AdvertisementCell.h */,
-				B9DDDF021B536AC7001E0B43 /* AdvertisementCell.m */,
-				B9DDDF031B536AC7001E0B43 /* AdvertisementCell.xib */,
 				B9DDDF041B536AC7001E0B43 /* ChoiceOfDoctorCell.h */,
 				B9DDDF051B536AC7001E0B43 /* ChoiceOfDoctorCell.m */,
 				B9DDDF061B536AC7001E0B43 /* ChoiceOfDoctorCell.xib */,
@@ -2195,9 +2203,6 @@
 				B9CC87DF1B54B9060007FB83 /* PickerViewCell.h */,
 				B9CC87E01B54B9060007FB83 /* PickerViewCell.m */,
 				B9CC87E11B54B9060007FB83 /* PickerViewCell.xib */,
-				B9DDE0081B536B55001E0B43 /* AdvertisementShowCell.h */,
-				B9DDE0091B536B55001E0B43 /* AdvertisementShowCell.m */,
-				B9DDE00A1B536B55001E0B43 /* AdvertisementShowCell.xib */,
 				B9DDE00D1B536B55001E0B43 /* DiagnoseInfoCtrl.xib */,
 				B9DDE0131B536B55001E0B43 /* GreatDoctorCtrl.xib */,
 				B9D481971B1FF9D800637709 /* Doctor.storyboard */,
@@ -2393,6 +2398,9 @@
 		B9DDE01D1B536BDA001E0B43 /* MainPersonal */ = {
 			isa = PBXGroup;
 			children = (
+				DEFBA5821B75CB4A000C1AD6 /* LoginOutCell.h */,
+				DEFBA5831B75CB4A000C1AD6 /* LoginOutCell.m */,
+				DEFBA5841B75CB4A000C1AD6 /* LoginOutCell.xib */,
 				DEEDAC731B66781600247916 /* ChangePassWordCtrl.h */,
 				DEEDAC741B66781600247916 /* ChangePassWordCtrl.m */,
 				DEEDAC751B66781600247916 /* ChangePassWordCtrl.xib */,
@@ -2578,6 +2586,9 @@
 		DE0638291B6BA2A400EFB576 /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
+				B9DDDF011B536AC7001E0B43 /* AdvertisementCell.h */,
+				B9DDDF021B536AC7001E0B43 /* AdvertisementCell.m */,
+				B9DDDF031B536AC7001E0B43 /* AdvertisementCell.xib */,
 				B9DDDF0D1B536AC7001E0B43 /* MainDoctorPageCtrl.h */,
 				B9DDDF0E1B536AC7001E0B43 /* MainDoctorPageCtrl.m */,
 			);
@@ -3056,6 +3067,7 @@
 				DEE337701B4C479100357253 /* home_btn_specialists@3x.png in Resources */,
 				DEFB29FA1B4AE87100CCA73D /* btn_certification@3x.png in Resources */,
 				B9DDDFB11B536AF9001E0B43 /* list_btn_cancel@2x.png in Resources */,
+				DEFBA5861B75CB4A000C1AD6 /* LoginOutCell.xib in Resources */,
 				DEFB2A0E1B4AE87100CCA73D /* login_btn_pre@3x.png in Resources */,
 				B94567AE1B661A1B00458386 /* AMap.bundle in Resources */,
 				B94567FB1B661A8200458386 /* location_yes@2x.png in Resources */,
@@ -3211,6 +3223,7 @@
 				DEFDF5861B5964FB00298366 /* CaseDetailCtrl.xib in Resources */,
 				DEFB2A071B4AE87100CCA73D /* home_btn_-score-@3x.png in Resources */,
 				B945677A1B65CFB000458386 /* MessageAlertCell.xib in Resources */,
+				DEFBA57F1B759A88000C1AD6 /* 512-512.png in Resources */,
 				B9DDE0391B536BDA001E0B43 /* AboutUsCtrl.xib in Resources */,
 				B9DDDFA71B536AF9001E0B43 /* btn_nom.png in Resources */,
 				DEFB29DA1B4AE86800CCA73D /* home_btn_city@2x.png in Resources */,
@@ -3376,6 +3389,7 @@
 				DEEC3E001B5C7066005CE84E /* CaseDetailNotFinishCtrl.m in Sources */,
 				DECA176F1B61784D00FD3418 /* GSAnamnesy.m in Sources */,
 				DECA176C1B61779000FD3418 /* GSOrder.m in Sources */,
+				DEFBA5851B75CB4A000C1AD6 /* LoginOutCell.m in Sources */,
 				DE0638261B6AF23300EFB576 /* openssl_wrapper.m in Sources */,
 				DEFDF5711B5964E300298366 /* SelectCategoryCtrl.m in Sources */,
 				B9DDDF201B536AC7001E0B43 /* starView.m in Sources */,
@@ -3610,6 +3624,7 @@
 			baseConfigurationReference = 768FF7B5969FADE68894EA1D /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3648,6 +3663,7 @@
 			baseConfigurationReference = 804920F89A8A9C1D95A35141 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

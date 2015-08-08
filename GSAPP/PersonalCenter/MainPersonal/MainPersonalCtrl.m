@@ -19,8 +19,10 @@
 #import "MyCaseCtrl.h"
 #import "MyExpertCtrl.h"
 #import "ComplainCtrl.h"
+#import "LoginOutCell.h"
+#import "SIAlertView.h"
 
-@interface MainPersonalCtrl ()
+@interface MainPersonalCtrl ()<logOut>
 @property (nonatomic,strong) NSArray *arrayOfList_first;
 @property (nonatomic,strong) NSArray *arrayOfImage_first;
 
@@ -37,7 +39,7 @@
     
     self.arrayOfImage_first=[NSArray arrayWithObjects:@"list_icon_case",@"list_icon_experts",@"list_icon_complaints", nil];
     
-    self.arrayOfList_second=[NSArray arrayWithObjects:@"法律保障",@"服务项目",@"关于", nil];
+    self.arrayOfList_second=[NSArray arrayWithObjects:@"法律保障",@"服务项目",@"关于我们", nil];
     
     self.arrayOfImage_second=[NSArray arrayWithObjects:@"list_icon_law",@"list_icon_service",@"list_icon_about", nil];
     
@@ -54,7 +56,7 @@
 #pragma tableble datasource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 5;
     
 }
 
@@ -73,6 +75,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 4) {
+        
+        return  49;
+        
+    }
+    
     if (indexPath.section==0) {
         return 90;
     }
@@ -84,6 +92,7 @@
     
     static NSString* BasicCellId = @"BasicInfoCell";
     static NSString* ListCellId=@"ListCell";
+    static NSString* LoginOut=@"loginOut";
     
     if (indexPath.section==0) {
         BasicInfoCell* cell = [tableView dequeueReusableCellWithIdentifier:BasicCellId];
@@ -104,7 +113,22 @@
         }
         
         return cell;
+        
+    }   else if (indexPath.section==4)
+    {
+        LoginOutCell* cell = [tableView dequeueReusableCellWithIdentifier:LoginOut];
+        if (!cell) {
+            
+            NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"LoginOutCell" owner:self options:nil];
+            cell = [topLevelObjects objectAtIndex:0];
+            
+            cell.delegate = self;
+        }
+        return cell;
+        
+        
     }
+
     else
     {
         ListCell* cell = [tableView dequeueReusableCellWithIdentifier:ListCellId];
@@ -229,6 +253,54 @@ viewForHeaderInSection:(NSInteger)section
         }
     }
 }
+
+
+
+- (void)logOut
+{
+
+    
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:nil andMessage:@"是否确认退出"];
+    [alertView addButtonWithTitle:@"确认"
+                             type:SIAlertViewButtonTypeCancel
+                          handler:^(SIAlertView *alertView) {
+                              [self goOut];
+                          }];
+    [alertView addButtonWithTitle:@"取消"
+                             type:SIAlertViewButtonTypeDefault
+                          handler:^(SIAlertView *alertView) {
+                              
+                          }];
+    alertView.transitionStyle = SIAlertViewTransitionStyleDropDown;
+    alertView.backgroundStyle = SIAlertViewBackgroundStyleSolid;
+    
+    alertView.willShowHandler = ^(SIAlertView *alertView) {
+        NSLog(@"%@, willShowHandler3", alertView);
+    };
+    alertView.didShowHandler = ^(SIAlertView *alertView) {
+        NSLog(@"%@, didShowHandler3", alertView);
+    };
+    alertView.willDismissHandler = ^(SIAlertView *alertView) {
+        NSLog(@"%@, willDismissHandler3", alertView);
+    };
+    alertView.didDismissHandler = ^(SIAlertView *alertView) {
+        NSLog(@"%@, didDismissHandler3", alertView);
+    };
+    
+    [alertView show];
+    
+}
+
+- (void)goOut
+{
+    
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        ;
+    }];
+    
+}
+    
+
 
 
 @end
