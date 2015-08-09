@@ -27,14 +27,17 @@
 
 - (void)signInWithUsername:(NSString *)username
                   password:(NSString *)password
+                  type:(NSInteger )type
                   complete:(HKSignInResponse)completeBlock
 {
+    
+    NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:password,@"password",username,@"username",[NSNumber numberWithInteger:type], @"type",nil];
     
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     
-    [manager POST:@"http://115.28.85.76/apiFirstStep/fetchVideo/queryVideo.php" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"http://115.28.85.76/gaoshou/api/web/?r=site/login" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
     
         NSLog(@"JSON: %@", responseObject);
     

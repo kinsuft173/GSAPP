@@ -1184,12 +1184,12 @@
 		DEEC3DE61B5C7028005CE84E /* ForgetPasswordCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordCtrl.h; sourceTree = "<group>"; };
 		DEEC3DE71B5C7028005CE84E /* ForgetPasswordCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordCtrl.m; sourceTree = "<group>"; };
 		DEEC3DE81B5C7028005CE84E /* ForgetPasswordCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPasswordCtrl.xib; sourceTree = "<group>"; };
-		DEEC3DE91B5C7028005CE84E /* goRegisterCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = goRegisterCtrl.h; sourceTree = "<group>"; };
-		DEEC3DEA1B5C7028005CE84E /* goRegisterCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = goRegisterCtrl.m; sourceTree = "<group>"; };
-		DEEC3DEB1B5C7028005CE84E /* goRegisterCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = goRegisterCtrl.xib; sourceTree = "<group>"; };
-		DEEC3DEC1B5C7028005CE84E /* UserRegisterCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRegisterCtrl.h; sourceTree = "<group>"; };
-		DEEC3DED1B5C7028005CE84E /* UserRegisterCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRegisterCtrl.m; sourceTree = "<group>"; };
-		DEEC3DEE1B5C7028005CE84E /* UserRegisterCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserRegisterCtrl.xib; sourceTree = "<group>"; };
+		DEEC3DE91B5C7028005CE84E /* goRegisterCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = goRegisterCtrl.h; path = ../UserModule/goRegisterCtrl.h; sourceTree = "<group>"; };
+		DEEC3DEA1B5C7028005CE84E /* goRegisterCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = goRegisterCtrl.m; path = ../UserModule/goRegisterCtrl.m; sourceTree = "<group>"; };
+		DEEC3DEB1B5C7028005CE84E /* goRegisterCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = goRegisterCtrl.xib; path = ../UserModule/goRegisterCtrl.xib; sourceTree = "<group>"; };
+		DEEC3DEC1B5C7028005CE84E /* UserRegisterCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserRegisterCtrl.h; path = ../UserModule/UserRegisterCtrl.h; sourceTree = "<group>"; };
+		DEEC3DED1B5C7028005CE84E /* UserRegisterCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserRegisterCtrl.m; path = ../UserModule/UserRegisterCtrl.m; sourceTree = "<group>"; };
+		DEEC3DEE1B5C7028005CE84E /* UserRegisterCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserRegisterCtrl.xib; path = ../UserModule/UserRegisterCtrl.xib; sourceTree = "<group>"; };
 		DEEC3DF71B5C7066005CE84E /* CaseDetailNotFinishCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaseDetailNotFinishCtrl.h; path = ../DoctorModule/CaseDetailNotFinishCtrl.h; sourceTree = "<group>"; };
 		DEEC3DF81B5C7066005CE84E /* CaseDetailNotFinishCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CaseDetailNotFinishCtrl.m; path = ../DoctorModule/CaseDetailNotFinishCtrl.m; sourceTree = "<group>"; };
 		DEEC3DF91B5C7066005CE84E /* CaseDetailNotFinishCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CaseDetailNotFinishCtrl.xib; path = ../DoctorModule/CaseDetailNotFinishCtrl.xib; sourceTree = "<group>"; };
@@ -2133,6 +2133,7 @@
 		B9D4818F1B1FF7D200637709 /* LaunchProgress */ = {
 			isa = PBXGroup;
 			children = (
+				DEFBA5871B76ED3F000C1AD6 /* 注册 */,
 				B9D481901B1FF80600637709 /* LaunchCtrl.h */,
 				B9D481911B1FF80600637709 /* LaunchCtrl.m */,
 				DE00B2F61B2367300060EDA9 /* SignUpCtrl.h */,
@@ -2153,12 +2154,6 @@
 				DEEC3DE61B5C7028005CE84E /* ForgetPasswordCtrl.h */,
 				DEEC3DE71B5C7028005CE84E /* ForgetPasswordCtrl.m */,
 				DEEC3DE81B5C7028005CE84E /* ForgetPasswordCtrl.xib */,
-				DEEC3DE91B5C7028005CE84E /* goRegisterCtrl.h */,
-				DEEC3DEA1B5C7028005CE84E /* goRegisterCtrl.m */,
-				DEEC3DEB1B5C7028005CE84E /* goRegisterCtrl.xib */,
-				DEEC3DEC1B5C7028005CE84E /* UserRegisterCtrl.h */,
-				DEEC3DED1B5C7028005CE84E /* UserRegisterCtrl.m */,
-				DEEC3DEE1B5C7028005CE84E /* UserRegisterCtrl.xib */,
 				B9DDDF041B536AC7001E0B43 /* ChoiceOfDoctorCell.h */,
 				B9DDDF051B536AC7001E0B43 /* ChoiceOfDoctorCell.m */,
 				B9DDDF061B536AC7001E0B43 /* ChoiceOfDoctorCell.xib */,
@@ -2783,6 +2778,19 @@
 				DEFB2B7D1B44407200C74FC0 /* HKTextFiled.m */,
 			);
 			name = HKCustomView;
+			sourceTree = "<group>";
+		};
+		DEFBA5871B76ED3F000C1AD6 /* 注册 */ = {
+			isa = PBXGroup;
+			children = (
+				DEEC3DE91B5C7028005CE84E /* goRegisterCtrl.h */,
+				DEEC3DEA1B5C7028005CE84E /* goRegisterCtrl.m */,
+				DEEC3DEB1B5C7028005CE84E /* goRegisterCtrl.xib */,
+				DEEC3DEC1B5C7028005CE84E /* UserRegisterCtrl.h */,
+				DEEC3DED1B5C7028005CE84E /* UserRegisterCtrl.m */,
+				DEEC3DEE1B5C7028005CE84E /* UserRegisterCtrl.xib */,
+			);
+			name = "注册";
 			sourceTree = "<group>";
 		};
 		DEFDF5541B5964E300298366 /* CommenPages */ = {

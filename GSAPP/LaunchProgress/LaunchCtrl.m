@@ -153,16 +153,20 @@
         }]  subscribeNext:^(NSNumber* x) {
             
             
-            if (x.boolValue == NO && self.imgExpert.tag == 1 ) {
+            if (x.boolValue == YES && self.imgExpert.tag == 1 ) {
                 
             
                      [self goDoctorInterface:nil];
                     
 
-            }else if(x.boolValue == NO && self.imgUser.tag == 1){
+            }else if(x.boolValue == YES && self.imgUser.tag == 1){
             
                     [self goUserInterface:nil];
                 
+            }else{
+            
+                [HKCommen addAlertViewWithTitel:@"账号密码不正确"];
+            
             }
             
             NSLog(@"Sign in result: %@", x);
@@ -200,12 +204,14 @@
 - (RACSignal *)signInSignal {
     return [RACSignal createSignal:^RACDisposable *(id subscriber){
         
-        [[UtilityManager shareMgr] signInWithUsername:self.textFiledUserName.text
+        
+        [[NetworkManager shareMgr] signInWithUsername:self.textFiledUserName.text
                                              password:self.textFiledPassword.text
+                                                    type:self.imgExpert.tag
                                              complete:^(BOOL success) {
         
-        [subscriber sendNext:@(success)];
-        [subscriber sendCompleted];
+                                                 [subscriber sendNext:@(success)];
+                                                 [subscriber sendCompleted];
                                                  
         }];
         
@@ -238,7 +244,7 @@
     [dicTemp setObject:self.textFiledPassword.text forKey:@"passWord"];
     [dicTemp setObject:@"user" forKey:@"userType"];
     
-    [UserDataManager shareManager].userId = @"9";
+//    [UserDataManager shareManager].userId = @"9";
     
     [[NetworkManager shareMgr] setTags:[UserDataManager shareManager].userId];
     
@@ -273,7 +279,7 @@
     //用户数据保存
     [UserDataManager shareManager].userType = ExpertType;
     
-    [UserDataManager shareManager].userId   = @"10";
+//    [UserDataManager shareManager].userId   = @"10";
 
     //下次登录时的填充数据处理
     NSDictionary* userAutoLoginInfo = [[NSUserDefaults standardUserDefaults] objectForKey:@"userAutoLoginInfo"];//[NSDictionary dictionaryWithObjectsAndKeys:@"",@"",@"",@"", nil];

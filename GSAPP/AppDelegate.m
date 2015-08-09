@@ -358,27 +358,47 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
     
     NSLog(@"获得的用户数据为%@", userInfo);
     
-    if ([[userInfo objectForKey:@"content"] isEqualToString:@"user"]) {
+//    if ([[userInfo objectForKey:@"content"] isEqualToString:@"user"]) {
+//        
+//        if ([[UserDataManager shareManager].userId isEqualToString:@"1"]) {
+//            
+//            [self performSelector:@selector(goPushNotify) withObject:nil afterDelay:5];
+//            
+////            [[NSNotificationCenter defaultCenter] postNotificationName:@"notify" object:nil];
+// 
+//            
+//        }
+//        
+//    }else{
+//    
+//        if ([[UserDataManager shareManager].userId isEqualToString:@"2"]) {
+//            
+//            [self performSelector:@selector(goPushNotify) withObject:nil afterDelay:5];
+//            
+////            [[NSNotificationCenter defaultCenter] postNotificationName:@"notify" object:nil];
+//            
+//            
+//        }
+//    
+//    }
+    
+    if ([[[userInfo objectForKey:@"extras"] objectForKey:@"action"] isEqualToString:@"consultation"]) {
         
-        if ([[UserDataManager shareManager].userId isEqualToString:@"1"]) {
-            
-            [self performSelector:@selector(goPushNotify) withObject:nil afterDelay:5];
-            
-//            [[NSNotificationCenter defaultCenter] postNotificationName:@"notify" object:nil];
- 
-            
-        }
+        [self performSelector:@selector(goPushNotify) withObject:nil afterDelay:5];
+        
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"notify" object:nil];
+        
+        
+    }else if([[[userInfo objectForKey:@"extras"] objectForKey:@"action"] isEqualToString:@"order"]){
+        
+        [self performSelector:@selector(goPushNotify) withObject:nil afterDelay:5];
+        
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"notify" object:nil];
         
     }else{
     
-        if ([[UserDataManager shareManager].userId isEqualToString:@"2"]) {
-            
-            [self performSelector:@selector(goPushNotify) withObject:nil afterDelay:5];
-            
-//            [[NSNotificationCenter defaultCenter] postNotificationName:@"notify" object:nil];
-            
-            
-        }
+        //更新咨询状态的时候
+        [self performSelector:@selector(goPushNotify) withObject:nil afterDelay:5];
     
     }
 

@@ -12,6 +12,7 @@
 
 #define SERVER    @"http://115.28.85.76/gaoshou/api/web/?r="
 #define SERVER_JPUSH    @"http://115.28.85.76/JPush/examples/"
+#define SERVER_VERIFY @"http://115.28.85.76/gaoshou/api/web/?r=site/verify-code"
 
 #pragma mark - 网络接口回调类型
 typedef void (^CompleteHandle)(NSDictionary*);
@@ -20,8 +21,11 @@ typedef void (^FailHandle)();
 #pragma mark - 网络相关url
 
 //用户部分
-#define USER_REGESTER_URL @"user/create"
-#define USER_FETCH_URL @"user/view"   
+#define USER_REGESTER_URL @"site/signup"
+
+//用户部分
+//#define USER_REGESTER_URL @"user/create"
+#define USER_FETCH_URL @"user/view"
 #define USER_UPDATE_URL @"user/update"  
 
 //广告部分
@@ -29,7 +33,8 @@ typedef void (^FailHandle)();
 
 //医生
 #define DOCTOR_FETCH_URL  @"expert/index"
-
+#define DOCTOR_CREATE_URL  @"doctor/create"
+#define EXPERT__CREATE_URL  @"expert/create"
 //咨询问诊
 #define CONSULATION_CREATE_URL @"consultation/create"
 #define CONSULATION_FETCH_URL @"consultation/index"
