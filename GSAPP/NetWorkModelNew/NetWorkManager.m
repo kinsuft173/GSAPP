@@ -394,7 +394,7 @@
 //
     NSMutableDictionary* dicNew = [[NSMutableDictionary alloc] initWithDictionary:dic];
 //
-//    [dicNew removeObjectForKey:@"id"];
+    [dicNew removeObjectForKey:@"id"];
 //    [dicNew setObject:@"184" forKey:@"id"];
 //
     
@@ -402,7 +402,7 @@
     //test
 //    NSDictionary *parameters = @{@"status":@2};
     
-    [manager PUT:[NSString stringWithFormat:@"%@%@",SERVER,ORDER_UPDATE_URL] parameters:dicNew success:^(AFHTTPRequestOperation *operation, id responseObject){
+    [manager PUT:[NSString stringWithFormat:@"%@%@&id=%@",SERVER,ORDER_UPDATE_URL,strId] parameters:dicNew success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         NSLog(@"JSON: %@", responseObject);
         
