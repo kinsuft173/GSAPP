@@ -3639,7 +3639,7 @@
 					"$(PROJECT_DIR)/GSAPP/ThirdLib/AliPay",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fc71d6d1-980f-4bb9-979c-1e5c6d83b9c4";
+				PROVISIONING_PROFILE = "cbba29a8-22cb-4a93-9f4a-3013e9f345ab";
 			};
 			name = Debug;
 		};
@@ -3677,7 +3677,7 @@
 					"$(PROJECT_DIR)/GSAPP/ThirdLib/AliPay",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fc71d6d1-980f-4bb9-979c-1e5c6d83b9c4";
+				PROVISIONING_PROFILE = "cbba29a8-22cb-4a93-9f4a-3013e9f345ab";
 			};
 			name = Release;
 		};

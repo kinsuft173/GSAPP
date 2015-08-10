@@ -122,7 +122,11 @@
     
 
     [[UINavigationBar appearance] setBarTintColor:[HKCommen getColor:@"4fc1e9"]];
-    [[UINavigationBar appearance] setTranslucent:NO];
+    if (IOS8) {
+//        [[UINavigationBar appearance] setTranslucent:NO];
+    }
+    
+//    [[UINavigationBar appearance] setTranslucent:NO];
     [UINavigationBar appearance].tintColor = [UIColor whiteColor];
     [UINavigationBar appearance].titleTextAttributes =  [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     
