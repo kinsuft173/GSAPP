@@ -21,6 +21,7 @@
 #import "ComplainCtrl.h"
 #import "LoginOutCell.h"
 #import "SIAlertView.h"
+#import "UserDataManager.h"
 
 @interface MainPersonalCtrl ()<logOut>
 @property (nonatomic,strong) NSArray *arrayOfList_first;
@@ -108,6 +109,8 @@
             {
             cell = [topObjects objectAtIndex:1];
             }
+            
+            cell.lblName.text = [UserDataManager shareManager].user.doctor.name;
             
             
         }

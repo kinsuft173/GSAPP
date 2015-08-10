@@ -329,6 +329,7 @@
 		B9DDE0461B536BDA001E0B43 /* MainPersonalCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DDE0341B536BDA001E0B43 /* MainPersonalCtrl.m */; };
 		B9DDE0471B536BDA001E0B43 /* ServiceProjectCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DDE0361B536BDA001E0B43 /* ServiceProjectCtrl.m */; };
 		B9DDE0481B536BDA001E0B43 /* ServiceProjectCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9DDE0371B536BDA001E0B43 /* ServiceProjectCtrl.xib */; };
+		B9F774EA1B785CBB00F3160F /* 123.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B9F774E91B785CBB00F3160F /* 123.jpg */; };
 		DE00B2F11B22D5E00060EDA9 /* HKCommen.m in Sources */ = {isa = PBXBuildFile; fileRef = DE00B2F01B22D5E00060EDA9 /* HKCommen.m */; };
 		DE00B2F51B2326CA0060EDA9 /* UtilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DE00B2F41B2326CA0060EDA9 /* UtilityManager.m */; };
 		DE00B2F81B2367300060EDA9 /* SignUpCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = DE00B2F71B2367300060EDA9 /* SignUpCtrl.m */; };
@@ -969,6 +970,7 @@
 		B9DDE0351B536BDA001E0B43 /* ServiceProjectCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceProjectCtrl.h; sourceTree = "<group>"; };
 		B9DDE0361B536BDA001E0B43 /* ServiceProjectCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceProjectCtrl.m; sourceTree = "<group>"; };
 		B9DDE0371B536BDA001E0B43 /* ServiceProjectCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceProjectCtrl.xib; sourceTree = "<group>"; };
+		B9F774E91B785CBB00F3160F /* 123.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 123.jpg; sourceTree = "<group>"; };
 		DE00B2EF1B22D5E00060EDA9 /* HKCommen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKCommen.h; path = Commen/HKCommen.h; sourceTree = "<group>"; };
 		DE00B2F01B22D5E00060EDA9 /* HKCommen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKCommen.m; path = Commen/HKCommen.m; sourceTree = "<group>"; };
 		DE00B2F31B2326CA0060EDA9 /* UtilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UtilityManager.h; path = Commen/UtilityManager.h; sourceTree = "<group>"; };
@@ -2082,6 +2084,7 @@
 		B9D481651B1FF0AC00637709 /* GSAPP */ = {
 			isa = PBXGroup;
 			children = (
+				B9F774E91B785CBB00F3160F /* 123.jpg */,
 				DEEDAC531B6650D300247916 /* NetWorkModelNew */,
 				DE9D11E41B4FF3E600046407 /* NewworkConfig.h */,
 				B94568011B661BB200458386 /* Configuration */,
@@ -3216,6 +3219,7 @@
 				DEEC3DF21B5C7028005CE84E /* ForgetPasswordCtrl.xib in Resources */,
 				B9DDE0021B536AF9001E0B43 /* tab_home_pre@2x.png in Resources */,
 				B9DDDFEB1B536AF9001E0B43 /* home_btn_map@3x.png in Resources */,
+				B9F774EA1B785CBB00F3160F /* 123.jpg in Resources */,
 				B9CAD97E1B564EE9000DB375 /* ComplainCtrl.xib in Resources */,
 				DE0638351B6BB14E00EFB576 /* list_city_now@2x.png in Resources */,
 				B94567FA1B661A8200458386 /* location_no@2x.png in Resources */,
@@ -3632,7 +3636,6 @@
 			baseConfigurationReference = 768FF7B5969FADE68894EA1D /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3671,7 +3674,6 @@
 			baseConfigurationReference = 804920F89A8A9C1D95A35141 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

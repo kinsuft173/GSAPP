@@ -139,13 +139,13 @@
     
     [[NetworkManager shareMgr] server_updateOrderWithDic:dic completeHandle:^(NSDictionary *dic) {
         
-        ;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"orderUpdate" object:nil];
+        [self.navigationController popViewControllerAnimated:YES];
         
     }];
     
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"orderUpdate" object:nil];
-      [self.navigationController popViewControllerAnimated:YES];
+
 }
 
 
@@ -157,14 +157,14 @@
     
     [[NetworkManager shareMgr] server_updateOrderWithDic:dic completeHandle:^(NSDictionary *dic) {
         
-        ;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"orderUpdate" object:nil];
+        
+        [self.navigationController popViewControllerAnimated:YES];
         
     }];
     
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"orderUpdate" object:nil];
-    
-    [self.navigationController popViewControllerAnimated:YES];
+
     
 }
 

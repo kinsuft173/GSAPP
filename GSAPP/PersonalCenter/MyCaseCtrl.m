@@ -69,14 +69,14 @@
 
 - (void)getModel
 {
-    if ([[UserDataManager shareManager].userType isEqualToString:UserType]) {
+    if ([[UserDataManager shareManager].userType isEqualToString:ExpertType]) {
         
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
         hud.mode = MBProgressHUDModeIndeterminate;
         hud.labelText = @"正在加载...";
         
-        NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:[UserDataManager shareManager].user.doctor.id],@"OrderSearch[doctor_id]",@"consultation,orderDoctor",@"expand",nil];
+        NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:[UserDataManager shareManager].user.doctor.id],@"OrderSearch[order_doctor_id]",@"consultation,orderDoctor",@"expand",nil];
         
         [[NetworkManager shareMgr] server_fetchOrderWithDic:dic completeHandle:^(NSDictionary *response) {
             
@@ -92,7 +92,12 @@
                     
                     NSDictionary* dicItem = [resultArray objectAtIndex:i];
                     
+    
+                    
                     if ([[dicItem objectForKey:@"status"] integerValue] == 3) {
+                        
+                        
+//                                        NSLog(@"是否找到数据%@",dicItem);
                         
                         [self.arrayExpertUnFinished addObject:dicItem];
                         
@@ -121,14 +126,14 @@
         
         
         
-    }else if([[UserDataManager shareManager].userType isEqualToString:ExpertType]){
+    }else if([[UserDataManager shareManager].userType isEqualToString:UserType]){
         
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
         hud.mode = MBProgressHUDModeIndeterminate;
         hud.labelText = @"正在加载...";
         
-        NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userId,@"order_doctor_id", @"consultation,orderDoctor",@"expand",nil];
+        NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userId,@"OrderSearch[doctor_id]", @"consultation,orderDoctor",@"expand",nil];
         
         [[NetworkManager shareMgr] server_fetchOrderWithDic:dic completeHandle:^(NSDictionary *response) {
             
@@ -196,10 +201,14 @@
     
     if (self.isFinished == NO) {
         
+        NSLog(@"UserType = %@",UserType);
         
-        if ([[UserDataManager shareManager].userId isEqualToString:@"1"]) {
+        
+        if ([[UserDataManager shareManager].userType isEqualToString:UserType]) {
             
             if (section == 0) {
+                
+                        NSLog(@"arrayDotorUnFinished = %d",self.arrayDotorUnFinished.count);
                 
                 return self.arrayDotorUnFinished.count;
             }
@@ -218,7 +227,7 @@
         
         
         
-        if ([[UserDataManager shareManager].userId isEqualToString:@"1"]) {
+        if ([[UserDataManager shareManager].userType isEqualToString:UserType]) {
             
             if (section == 0) {
                 
@@ -274,11 +283,11 @@
         
         if (self.isFinished == NO) {
             
-            if ([[UserDataManager shareManager].userId isEqualToString:@"1"]) {
+            if ([[UserDataManager shareManager].userType isEqualToString:UserType]) {
                 
                 order = [GSOrder objectWithKeyValues:[self.arrayDotorUnFinished objectAtIndex:indexPath.row]];
                 
-            }else if ([[UserDataManager shareManager].userId isEqualToString:@"2"]){
+            }else if ([[UserDataManager shareManager].userType isEqualToString:ExpertType]){
                 
                 order = [GSOrder objectWithKeyValues:[self.arrayExpertUnFinished objectAtIndex:indexPath.row]];
                 
@@ -287,11 +296,11 @@
             
             
             
-            if ([[UserDataManager shareManager].userId isEqualToString:@"1"]) {
+            if ([[UserDataManager shareManager].userType isEqualToString:UserType]) {
                 
                 order = [GSOrder objectWithKeyValues:[self.arrayDotorFinished objectAtIndex:indexPath.row]];
                 
-            }else if ([[UserDataManager shareManager].userId isEqualToString:@"2"]){
+            }else if ([[UserDataManager shareManager].userType isEqualToString:ExpertType]){
                 
                 order = [GSOrder objectWithKeyValues:[self.arrayExpertFinished objectAtIndex:indexPath.row]];
                 
@@ -336,13 +345,13 @@
     
     if (self.isFinished == NO) {
         
-        if ([[UserDataManager shareManager].userId isEqualToString:@"1"]) {
+        if ([[UserDataManager shareManager].userType isEqualToString:UserType]) {
             
             order = [GSOrder objectWithKeyValues:[self.arrayDotorUnFinished objectAtIndex:indexPath.row]];
             caseDetail.type = @"1";
             
             
-        }else if ([[UserDataManager shareManager].userId isEqualToString:@"2"]){
+        }else if ([[UserDataManager shareManager].userType isEqualToString:ExpertType]){
             
             order = [GSOrder objectWithKeyValues:[self.arrayExpertUnFinished objectAtIndex:indexPath.row]];
                       caseDetail.type = @"3";
@@ -354,13 +363,13 @@
         
         
         
-        if ([[UserDataManager shareManager].userId isEqualToString:@"1"]) {
+        if ([[UserDataManager shareManager].userType isEqualToString:UserType]) {
             
             order = [GSOrder objectWithKeyValues:[self.arrayDotorFinished objectAtIndex:indexPath.row]];
             
                       caseDetail.type = @"2";
             
-        }else if ([[UserDataManager shareManager].userId isEqualToString:@"2"]){
+        }else if ([[UserDataManager shareManager].userType isEqualToString:ExpertType]){
             
             order = [GSOrder objectWithKeyValues:[self.arrayExpertFinished objectAtIndex:indexPath.row]];
                         caseDetail.type = @"4";

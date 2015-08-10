@@ -41,9 +41,22 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getModel) name:@"updateConsulation" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getModel) name:@"orderUpdate" object:nil];
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+//    if (self.arrayCancelOrder.count == 0 && self.arrayConsulation.count ==0 && self.arrayConsulationNoTimely.count == 0 && self.arrayOrder.count == 0) {
+    
+        [self getModel];
+        
+//    }
+
+
+}
 - (void)getModel
 {
-    if ([[UserDataManager shareManager].userId isEqualToString:@"2"]) {
+    if ([[UserDataManager shareManager].userType isEqualToString:ExpertType]) {
         
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
@@ -51,7 +64,7 @@
         hud.labelText = @"正在加载...";
         
         //私人的咨询
-        NSDictionary* dicPrivate = [NSDictionary dictionaryWithObjectsAndKeys:@"10",@"ConsultationSearch[expert_id]",@"1",@"ConsultationSearch[status]",@"doctor",@"expand",@"1",@"ConsultationSearch[timely]",nil];
+        NSDictionary* dicPrivate = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userId,@"ConsultationSearch[expert_id]",@"1",@"ConsultationSearch[status]",@"doctor",@"expand",@"1",@"ConsultationSearch[timely]",nil];
         
         
         [[NetworkManager shareMgr] server_fetchConsultWithDic:dicPrivate completeHandle:^(NSDictionary *response) {
@@ -66,7 +79,7 @@
                 
             }
             
-            NSDictionary* dicPrivate1 = [NSDictionary dictionaryWithObjectsAndKeys:@"10",@"ConsultationSearch[expert_id]",@"1",@"ConsultationSearch[status]",@"doctor",@"expand",@"0",@"ConsultationSearch[timely]",nil];
+            NSDictionary* dicPrivate1 = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userId,@"ConsultationSearch[expert_id]",@"1",@"ConsultationSearch[status]",@"doctor",@"expand",@"0",@"ConsultationSearch[timely]",nil];
             
             
             [[NetworkManager shareMgr] server_fetchConsultWithDic:dicPrivate1 completeHandle:^(NSDictionary *response1) {
@@ -101,7 +114,7 @@
         
         
         
-    }else if([[UserDataManager shareManager].userId isEqualToString:@"1"]){
+    }else if([[UserDataManager shareManager].userType isEqualToString:UserType]){
         
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         

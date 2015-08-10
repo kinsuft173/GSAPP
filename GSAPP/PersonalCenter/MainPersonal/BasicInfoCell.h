@@ -10,4 +10,6 @@
 
 @interface BasicInfoCell : UITableViewCell
 
+@property (nonatomic, strong) IBOutlet UILabel *lblName;
+
 @end
