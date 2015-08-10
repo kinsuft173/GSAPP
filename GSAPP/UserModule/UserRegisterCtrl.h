@@ -12,5 +12,10 @@
 @interface UserRegisterCtrl : UIViewController
 @property (weak, nonatomic) IBOutlet UIScrollView *myScroll;
 @property (weak, nonatomic) IBOutlet UITextField *txt_Name;
+@property (weak, nonatomic) IBOutlet UITextView *txt_Intro;
+
+@property (nonatomic, strong) NSString* strPhone;
+@property (nonatomic, strong) NSString* strPassword;
+
 
 @end

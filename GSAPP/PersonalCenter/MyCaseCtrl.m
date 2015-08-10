@@ -69,14 +69,14 @@
 
 - (void)getModel
 {
-    if ([[UserDataManager shareManager].userId isEqualToString:@"2"]) {
+    if ([[UserDataManager shareManager].userType isEqualToString:UserType]) {
         
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
         hud.mode = MBProgressHUDModeIndeterminate;
         hud.labelText = @"正在加载...";
         
-        NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:@"consultation,orderDoctor",@"expand",nil];
+        NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:[UserDataManager shareManager].user.doctor.id],@"OrderSearch[doctor_id]",@"consultation,orderDoctor",@"expand",nil];
         
         [[NetworkManager shareMgr] server_fetchOrderWithDic:dic completeHandle:^(NSDictionary *response) {
             
@@ -121,14 +121,14 @@
         
         
         
-    }else if([[UserDataManager shareManager].userId isEqualToString:@"1"]){
+    }else if([[UserDataManager shareManager].userType isEqualToString:ExpertType]){
         
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
         hud.mode = MBProgressHUDModeIndeterminate;
         hud.labelText = @"正在加载...";
         
-        NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys: @"consultation,orderDoctor",@"expand",nil];
+        NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userId,@"order_doctor_id", @"consultation,orderDoctor",@"expand",nil];
         
         [[NetworkManager shareMgr] server_fetchOrderWithDic:dic completeHandle:^(NSDictionary *response) {
             

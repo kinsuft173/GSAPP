@@ -252,7 +252,7 @@
                 
                 
                 
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"orderUpdate" object:nil];
+//                [[NSNotificationCenter defaultCenter] postNotificationName:@"orderUpdate" object:nil];
                 
                 self.judgePayOrNot=YES;
                 [self.myTable reloadData];

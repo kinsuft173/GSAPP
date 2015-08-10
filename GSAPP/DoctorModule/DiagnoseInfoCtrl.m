@@ -381,6 +381,7 @@
 - (IBAction)commitMyInfo:(UIButton *)sender {
     
     NSMutableDictionary* dic = [[NSMutableDictionary alloc] init];
+
     
     for (int i = 0; i < self.arrayTextFiled.count ; i ++ ) {
         
@@ -390,9 +391,18 @@
         
         if ([textFiled.text isEqualToString:strTitel] || [textFiled.text isEqualToString:@""]) {
             
-            [HKCommen addAlertViewWithTitel:strTitel];
+            if (textFiled == self.textFiledPatientMark) {
+                
+                textFiled.text = @"暂无备注";
+                
+            }else{
             
-            return;
+                [HKCommen addAlertViewWithTitel:strTitel];
+                
+                return;
+            
+            }
+            
             
         }
         
@@ -403,6 +413,8 @@
             return;
             
         }
+        
+        
         
         [dic setObject:textFiled.text forKey:[self.arrayKey objectAtIndex:i]];
         
@@ -419,8 +431,30 @@
         }
         
         if (textFiled == self.textFiledPatientAge) {
+            
+            if ([self.textFiledPatientAge.text integerValue] > 200 || [self.textFiledPatientAge.text integerValue] < 1) {
+            
+                [HKCommen addAlertViewWithTitel:@"请填写正确的年龄"];
+                
+                return;
+                
+            }
            
             [dic setObject:[NSNumber numberWithInt:[self.textFiledPatientAge.text integerValue]] forKey:[self.arrayKey objectAtIndex:i]];
+        }
+        
+        if (textFiled == self.textFiledPatientTel) {
+            
+            if (![HKCommen validateMobileWithPhoneNumber:self.textFiledPatientTel.text]) {
+                
+                [HKCommen addAlertViewWithTitel:@"请填写正确的手机号"];
+                
+                return;
+                
+            }
+            
+            
+            
         }
         
         
@@ -428,9 +462,9 @@
     
     NSLog(@"[UserDataManager shareManager].userId = %@",[UserDataManager shareManager].userId);
     
-    [dic setObject:@9 forKey:@"doctor_id"];
+    [dic setObject:[NSNumber numberWithInteger:[[UserDataManager shareManager].userId integerValue]] forKey:@"doctor_id"];
     
-    [dic setObject:@10 forKey:@"expert_id"];
+    [dic setObject:[NSNumber numberWithInteger:self.expert.id] forKey:@"expert_id"];
     
     if (self.sexSelected == YES) {
         
@@ -514,8 +548,6 @@
                 
             }else{
             
-            
-//                [HKCommen ]
                 
                 SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:nil andMessage:@"提交咨询成功,是否返回主页?"];
                 [alertView addButtonWithTitle:@"确认"
@@ -556,7 +588,13 @@
         
         }
     
-    }];
+    } failHandle:^{
+        
+        hud.hidden = YES;
+        
+        [HKCommen addAlertViewWithTitel:@"创建咨询失败"]; 
+        
+    } ];
 
 }
 
@@ -595,16 +633,7 @@
         self.btn_agreeOtherSpecilist.hidden=NO;
         self.btn_checkAgree.hidden=NO;
         self.lbl_agreeOtherExpert.hidden=NO;
-        
-        /*
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDuration:0.3f];
-        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-        
-        
-        [self.btn_updateData setFrame:CGRectMake([UIScreen mainScreen].bounds.size.width*0.5-287*0.5, 1150, 287, 47)];
-        [UIView commitAnimations];
-         */
+
         
         
     }else{
@@ -621,16 +650,6 @@
         self.btn_checkAgree.hidden=YES;
         self.lbl_agreeOtherExpert.hidden=YES;
         
-        
-        /*
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDuration:0.3f];
-        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-        
-        
-        [self.btn_updateData setFrame:CGRectMake([UIScreen mainScreen].bounds.size.width*0.5-287*0.5, 1203, 287, 47)];
-        [UIView commitAnimations];
-         */
     }
     
     

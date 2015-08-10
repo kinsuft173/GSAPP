@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "User.h"
 
 @interface UserDataManager : NSObject
 
 @property (nonatomic, strong) NSMutableDictionary* dicModel;
 @property (nonatomic, strong) NSString* userId;
 @property (nonatomic, strong) NSString* userType;
+@property (nonatomic, strong) User* user;
 
 + (UserDataManager*)shareManager;
 

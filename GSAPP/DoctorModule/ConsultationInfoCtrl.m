@@ -10,12 +10,12 @@
 #import "HKCommen.h"
 #import "NetworkManager.h"
 #import "PhotoBroswerVC.h"
+#import "UserDataManager.h"
 
 @interface ConsultationInfoCtrl ()
 
 @property (nonatomic, strong) IBOutlet UIScrollView* scrollView;
 @property (nonatomic,strong) NSArray *images;
-
 
 @property (nonatomic, strong) IBOutlet UILabel* lblDoctorDept;
 @property (nonatomic, strong) IBOutlet UILabel* lblDoctorHospital;
@@ -193,7 +193,7 @@
 
 - (IBAction)confirm:(id)sender
 {
-    NSDictionary *parameters = @{@"doctor_id":[NSString stringWithFormat:@"%ld",(long)self.consulation.doctor_id],@"order_doctor_id":@"10",@"consultation_id":[NSString stringWithFormat:@"%ld",(long)self.consulation.id]};
+    NSDictionary *parameters = @{@"doctor_id":[NSString stringWithFormat:@"%ld",(long)self.consulation.doctor_id],@"order_doctor_id":[UserDataManager shareManager].userId,@"consultation_id":[NSString stringWithFormat:@"%ld",(long)self.consulation.id]};
     
     [[NetworkManager shareMgr] server_createOrderWithDic:parameters completeHandle:^(NSDictionary * dic) {
         
@@ -226,13 +226,10 @@
     NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:self.consulation.id],@"id",@2,@"status", nil];
     
     [[NetworkManager shareMgr] server_updateConsultWithDic:dic completeHandle:^(NSDictionary * dic) {
-        
-//            hud.hidden = YES;
-        
-//        [self.navigationController popViewControllerAnimated:YES];
-        
-    }];
     
+
+    }];
+
     [[NSNotificationCenter defaultCenter] postNotificationName:@"updateConsulation" object:nil];
 
 }

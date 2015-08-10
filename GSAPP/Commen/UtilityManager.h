@@ -16,6 +16,7 @@ typedef void (^HKSignInResponse)(BOOL);
 
 - (void)signInWithUsername:(NSString *)username
                   password:(NSString *)password
+                      type:(NSInteger )type
                   complete:(HKSignInResponse)completeBlock;
 
 

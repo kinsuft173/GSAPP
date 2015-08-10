@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="loginOut" rowHeight="153" id="FN4-Em-OhW" customClass="LoginOutCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FN4-Em-OhW" id="kf6-HL-z7N">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="129"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nri-Gw-reR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceg-gb-pgL">
+                                <rect key="frame" x="15" y="11" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="RQA-58-jEw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="退出此账号">
+                                    <color key="titleColor" red="1" green="0.16395864130000001" blue="0.19821911880000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="49" id="DG8-Vb-6jv"/>
+                            <constraint firstAttribute="trailing" secondItem="ceg-gb-pgL" secondAttribute="trailing" constant="205" id="Ohs-35-wmO"/>
+                            <constraint firstItem="ceg-gb-pgL" firstAttribute="leading" secondItem="Nri-Gw-reR" secondAttribute="leading" constant="15" id="QOZ-GV-YgU"/>
+                            <constraint firstItem="ceg-gb-pgL" firstAttribute="top" secondItem="Nri-Gw-reR" secondAttribute="top" constant="11" id="xT5-Hn-rGd"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I1p-YL-Cgk">
+                        <rect key="frame" x="10" y="-1" width="300" height="49"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="49" id="jpf-Wb-BM1"/>
+                        </constraints>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="logOut:" destination="FN4-Em-OhW" eventType="touchUpInside" id="kVp-TA-cc4"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="I1p-YL-Cgk" secondAttribute="trailing" constant="2" id="LN4-hK-fzm"/>
+                    <constraint firstItem="Nri-Gw-reR" firstAttribute="leading" secondItem="kf6-HL-z7N" secondAttribute="leadingMargin" constant="-8" id="RxX-mV-ixR"/>
+                    <constraint firstItem="Nri-Gw-reR" firstAttribute="top" secondItem="kf6-HL-z7N" secondAttribute="topMargin" constant="-8" id="cnD-bz-VYf"/>
+                    <constraint firstItem="I1p-YL-Cgk" firstAttribute="top" secondItem="kf6-HL-z7N" secondAttribute="topMargin" constant="-9" id="kJl-CF-4SY"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Nri-Gw-reR" secondAttribute="trailing" constant="-8" id="osP-XF-Sl7"/>
+                    <constraint firstItem="I1p-YL-Cgk" firstAttribute="leading" secondItem="kf6-HL-z7N" secondAttribute="leadingMargin" constant="2" id="ou2-MS-TuJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="btnLoginOut" destination="I1p-YL-Cgk" id="EfA-Wd-rCI"/>
+                <outlet property="maskView3" destination="Nri-Gw-reR" id="9V5-XO-rdh"/>
+            </connections>
+            <point key="canvasLocation" x="311" y="235"/>
+        </tableViewCell>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

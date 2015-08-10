@@ -7,11 +7,15 @@
 //
 
 #import "goRegisterCtrl.h"
+#import "NetWorkManager.h"
+#import "HKCommen.h"
 
 @interface goRegisterCtrl ()
 @property (weak, nonatomic) IBOutlet UITextField *txt_mobile;
 @property (weak, nonatomic) IBOutlet UITextField *txt_code;
 @property (weak, nonatomic) IBOutlet UITextField *txt_password;
+
+@property NSInteger verifyCode;
 
 @end
 
@@ -93,9 +97,66 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)goToGenerateCode:(UIButton *)sender {
+    
+    if (![HKCommen validateMobileWithPhoneNumber:self.txt_mobile.text]) {
+        
+        [HKCommen addAlertViewWithTitel:@"请输入正确的手机号"];
+        
+        return;
+        
+    }
+    
+    [[NetworkManager shareMgr] server_fetchVerifyCodeWithDic:[NSDictionary dictionaryWithObject:self.txt_mobile.text forKey:@"mobile"] completeHandle:^(NSDictionary *dic) {
+        
+        if ([[dic objectForKey:@"success"] boolValue] == YES) {
+            
+            
+            self.verifyCode = [[[dic objectForKey:@"data"] objectForKey:@"verifyCode"] integerValue];
+            
+        }
+        
+        
+    }];
+     
+     
+     
+}
 
 - (IBAction)goNext:(UIButton *)sender {
+    
+    if (![HKCommen validateMobileWithPhoneNumber:self.txt_mobile.text]) {
+        
+        [HKCommen addAlertViewWithTitel:@"请输入正确的手机号"];
+        
+        return;
+        
+    }
+    
+    if ([self.txt_code.text integerValue] != self.verifyCode) {
+        
+        [HKCommen addAlertViewWithTitel:@"验证码不正确"];
+        
+        return;
+        
+    }
+    
+    if (![HKCommen validatePassword:self.txt_password.text]) {
+        
+        [HKCommen addAlertViewWithTitel:@"请输入正确的6位以上的密码"];
+        
+        return;
+        
+    }
+    
+    
+    
+    
     UserRegisterCtrl *vc=[[UserRegisterCtrl alloc] initWithNibName:@"UserRegisterCtrl" bundle:nil];
+    
+    vc.strPassword = self.txt_password.text;
+    vc.strPhone    = self.txt_mobile.text;
+    
     [self.navigationController pushViewController:vc animated:YES];
 }
 

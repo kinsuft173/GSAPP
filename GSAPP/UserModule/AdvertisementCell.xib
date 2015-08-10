@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -43,11 +43,13 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="7Om-QZ-yTG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="1eH-Cm-WMq"/>
                     <constraint firstAttribute="centerX" secondItem="F4e-07-lJZ" secondAttribute="centerX" id="2Qr-t2-O4I"/>
                     <constraint firstItem="7Om-QZ-yTG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="8tZ-BF-XNc"/>
                     <constraint firstItem="ANg-Ls-HU3" firstAttribute="leading" secondItem="F4e-07-lJZ" secondAttribute="leading" constant="67" id="9Ni-Rh-tdT"/>
                     <constraint firstAttribute="bottomMargin" secondItem="ANg-Ls-HU3" secondAttribute="bottom" constant="4" id="CHL-qE-KWq"/>
                     <constraint firstAttribute="trailingMargin" secondItem="7Om-QZ-yTG" secondAttribute="trailing" constant="-8" id="F5h-ae-gK9"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="7Om-QZ-yTG" secondAttribute="trailing" constant="-8" id="N6Z-gF-Nok"/>
                     <constraint firstItem="7Om-QZ-yTG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-16" id="PDv-hY-Xtz"/>
                     <constraint firstItem="F4e-07-lJZ" firstAttribute="trailing" secondItem="4kV-La-eOW" secondAttribute="trailing" constant="68" id="WZP-6r-DGc"/>
                     <constraint firstAttribute="bottomMargin" secondItem="7Om-QZ-yTG" secondAttribute="bottom" constant="15" id="bTf-RA-X5Y"/>
@@ -60,7 +62,9 @@
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
+                        <exclude reference="F5h-ae-gK9"/>
                         <exclude reference="PDv-hY-Xtz"/>
+                        <exclude reference="nV0-AT-yT7"/>
                         <exclude reference="wEC-gl-cjg"/>
                     </mask>
                 </variation>

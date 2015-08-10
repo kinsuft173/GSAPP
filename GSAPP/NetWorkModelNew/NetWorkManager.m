@@ -12,6 +12,7 @@
 #import "SBJson.h"
 #import "APService.h"
 
+
 @implementation NetworkManager
 
 + (NetworkManager*)shareMgr
@@ -50,6 +51,53 @@
         
     }];
     
+}
+
+- (void)signInWithUsername:(NSString *)username
+                  password:(NSString *)password
+                      type:(NSInteger )type
+                  complete:(HKSignInResponse)completeBlock
+{
+
+    
+    NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:password,@"password",username,@"username",[NSNumber numberWithInteger:type], @"type",nil];
+    
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    [manager POST:@"http://115.28.85.76/gaoshou/api/web/?r=site/login" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"signInWithUsername: %@", responseObject);
+        
+        if ([[responseObject objectForKey:@"success"] boolValue] == YES) {
+            
+            [UserDataManager shareManager].user = [User objectWithKeyValues:[responseObject objectForKey:@"data"]];
+            [UserDataManager shareManager].userId = [NSString stringWithFormat:@"%ld",(long)[UserDataManager shareManager].user.doctor.id];
+     
+            
+            completeBlock(YES);
+            
+        }else{
+        
+            completeBlock(NO);
+        
+        }
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+        completeBlock(NO);
+        
+    }];
+    
+//    NSMutableDictionary* dicNew = [[NSMutableDictionary alloc] initWithDictionary:dic];
+    
+//    [self server_BasePost:dicNew url:@"http://115.28.85.76/gaoshou/api/web/?r=site/login"];
+
+
 }
 
 
@@ -161,9 +209,56 @@
     
 }
 
+
+- (void)server_createDoctorsWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//
+//    NSLog(@"server_createDoctorsWithDic = %@",dic);
+//
+//    
+    NSMutableDictionary* dicNew = [[NSMutableDictionary alloc] initWithDictionary:dic];
+//
+//    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,DOCTOR_CREATE_URL] parameters:dicNew success:^(AFHTTPRequestOperation *operation, id responseObject){
+//        
+//        
+//        NSLog(@"server_createDoctorsWithDic===>: %@", responseObject);
+//        
+//
+//        
+//        completeHandle(responseObject);
+//        
+//        
+//        
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        
+//        
+//        NSLog(@"Error: %@", error);
+//                completeHandle(nil);
+//        
+//    }];
+//
+    if([[dicNew objectForKey:@"type"] integerValue] == 0){
+    
+        NSDictionary* dicR =  [self server_BasePost:dicNew url:[NSString stringWithFormat:@"%@%@",SERVER,DOCTOR_CREATE_URL]];
+        
+        completeHandle(dicR);
+    
+    }else{
+        
+        NSDictionary* dicR =  [self server_BasePost:dicNew url:[NSString stringWithFormat:@"%@%@",SERVER,EXPERT__CREATE_URL]];
+        
+        completeHandle(dicR);
+    }
+
+    
+}
+
+
 #pragma mark - 咨询问诊
 
-- (void)server_createConsultWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+- (void)server_createConsultWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle failHandle:(FailHandle)failHandle
 {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -184,12 +279,24 @@
         
 //     [self server_jpushUserGenerate];
         
-        completeHandle(responseObject);
+//        if ([[responseObject objectForKey:@"statusCode"] integerValue] == NET_SUCCESS) {
+        
+            completeHandle(responseObject);
+            
+//        }else{
+        
+//            failHandle();
+        
+//        }
+        
         
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
+        
         NSLog(@"Error: %@", error);
+        
+        failHandle();
         
     }];
     
@@ -237,7 +344,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     //test
-    NSDictionary *parameters = @{@"doctor_id":@"1",@"order_doctor_id":@"2",@"consultation_id":@"1"};
+//    NSDictionary *parameters = @{@"doctor_id":@"1",@"order_doctor_id":@"2",@"consultation_id":@"1"};
     
     [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,ORDER_CREATE_URL] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject){
         
@@ -283,11 +390,11 @@
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-//    NSString* strId = [NSString stringWithFormat:@"%d",[[dic objectForKey:@"id"] integerValue]];
-//    
+    NSString* strId = [NSString stringWithFormat:@"%d",[[dic objectForKey:@"id"] integerValue]];
+//
     NSMutableDictionary* dicNew = [[NSMutableDictionary alloc] initWithDictionary:dic];
 //
-//    [dicNew removeObjectForKey:@"id"];
+    [dicNew removeObjectForKey:@"id"];
 //    [dicNew setObject:@"184" forKey:@"id"];
 //
     
@@ -295,10 +402,10 @@
     //test
 //    NSDictionary *parameters = @{@"status":@2};
     
-//    [manager PUT:[NSString stringWithFormat:@"%@%@&%@=%@",SERVER,ORDER_UPDATE_URL,@"id",strId] parameters:dicNew success:^(AFHTTPRequestOperation *operation, id responseObject){
-//        
-//        NSLog(@"JSON: %@", responseObject);
-//        
+    [manager PUT:[NSString stringWithFormat:@"%@%@&id=%@",SERVER,ORDER_UPDATE_URL,strId] parameters:dicNew success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        NSLog(@"JSON: %@", responseObject);
+        
 //        if ([[UserDataManager shareManager].userId isEqualToString:@"1"]) {
 //            
 //            [self server_jpushUserGenerate];
@@ -308,29 +415,29 @@
 //            [self server_jpushDoctorGenerate];
 //        
 //        }
-//        
-//        completeHandle(responseObject);
-//        
-//        
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        
-//        NSLog(@"Error: %@", error);
-//        
-//    }];
+        
+        completeHandle(responseObject);
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+    }];
     
 //    [self server_BasePost:dic url:[NSString stringWithFormat:@"%@%@",SERVER,ORDER_UPDATE_URL]];
     //自己的服务
-    [self server_BasePost:dic url:[NSString stringWithFormat:@"http://115.28.85.76/study/insert.php"]];
+//    [self server_BasePost:dic url:[NSString stringWithFormat:@"http://115.28.85.76/study/insert.php"]];
     
-    if ([[dic objectForKey:@"status"] integerValue] == 3) {
-        
-     [[NetworkManager shareMgr] server_jpushUserGenerate];
-        
-    }else{
-    
-     [[NetworkManager shareMgr] server_jpushDoctorGenerate];
-        
-    }
+//    if ([[dic objectForKey:@"status"] integerValue] == 3) {
+//        
+//     [[NetworkManager shareMgr] server_jpushUserGenerate];
+//        
+//    }else{
+//    
+//     [[NetworkManager shareMgr] server_jpushDoctorGenerate];
+//        
+//    }
     
 }
 
@@ -565,6 +672,63 @@
     }];
     
 }
+
+//获取验证码
+
+- (void)server_fetchVerifyCodeWithDic:(NSDictionary*)dic  completeHandle:(CompleteHandle)completeHandle
+{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    //test
+    //    NSDictionary *parameters = @{@"doctor_id":@"1"};
+    
+    [manager GET:[NSString stringWithFormat:@"%@",SERVER_VERIFY] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        NSLog(@"server_fetchVerifyCodecompleteHandle: %@", responseObject);
+        
+        completeHandle(responseObject);
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+    }];
+
+
+
+}
+
+
+//用户注册
+
+- (void)server_registerWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,USER_REGESTER_URL] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        NSLog(@"JSON: %@", responseObject);
+        
+        completeHandle(responseObject);
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        completeHandle(nil);
+        NSLog(@"Error: %@", error);
+        
+    }];
+//    NSMutableDictionary* dicNew = [NSMutableDictionary dictionaryWithDictionary:dic];
+//    
+//    [self server_BasePost:dicNew url:[NSString stringWithFormat:@"%@%@",SERVER,USER_REGESTER_URL]];
+    
+    
+}
+
 
 
 //#pragma mark- 独立的操作几个接口
@@ -891,11 +1055,11 @@
         NSDictionary *object = [parser objectWithString:myString];
         
         // check result
-        NSNumber* status = [object objectForKey:@"status"];
+        NSNumber* status = [object objectForKey:@"success"];
         
         
         
-        if([status intValue] == 200)
+        if([status boolValue] == YES)
         {
             return object;
         }
@@ -921,14 +1085,6 @@
 
 - (void)setTags:(NSString *)tag
 {
-    
-//    if ([tag isEqualToString:@"1"]) {
-//        
-//        tag = @"9";
-//    }else{
-//    
-//        tag = @"10";
-//    }
 
     [APService setTags:nil alias:tag callbackSelector:@selector(tagsAliasCallback:tags:alias:) target:self];
 }
@@ -939,6 +1095,10 @@
 {
     NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias);
 }
+
+
+
+
 
 
 

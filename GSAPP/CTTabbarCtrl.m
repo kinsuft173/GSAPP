@@ -105,11 +105,11 @@
         [item setImageInsets:insets];
         
         [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                      [UIFont fontWithName:@"Helvetica" size:11.0], UITextAttributeFont,[HKCommen getColor:@"666666"],UITextAttributeTextColor, nil]
+                                      [UIFont fontWithName:@"Helvetica" size:13.0], UITextAttributeFont,[HKCommen getColor:@"666666"],UITextAttributeTextColor, nil]
                             forState:UIControlStateNormal];
         
         [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                      [UIFont fontWithName:@"Helvetica" size:11.0], UITextAttributeFont,[HKCommen getColor:@"4fc1e9"],UITextAttributeTextColor, nil]
+                                      [UIFont fontWithName:@"Helvetica" size:13.0], UITextAttributeFont,[HKCommen getColor:@"4fc1e9"],UITextAttributeTextColor, nil]
                             forState:UIControlStateSelected];
     }
     

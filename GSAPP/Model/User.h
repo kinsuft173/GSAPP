@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "GSExpert.h"
+
 @interface User : NSObject
 
 
@@ -15,15 +17,18 @@
 
 @property (nonatomic, assign) NSInteger status;
 
+@property (nonatomic, strong) GSExpert *doctor;
+
 @property (nonatomic, assign) NSInteger id;
 
 @property (nonatomic, copy) NSString *created_at;
 
-@property (nonatomic, copy) NSString *email;
-
 @property (nonatomic, copy) NSString *username;
+
+@property (nonatomic, copy) NSString *email;
 
 @property (nonatomic, copy) NSString *updated_at;
 
 
 @end
+

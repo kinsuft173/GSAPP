@@ -107,7 +107,7 @@
 - (void)bannerRunloop
 {
 
-    NSInteger pageIndex = self.myScroll.contentOffset.x/self.contentView.frame.size.width;
+    NSInteger pageIndex = self.myScroll.contentOffset.x/SCREEN_WIDTH;
     
     pageIndex ++;
     
@@ -119,7 +119,7 @@
     
     if (pageIndex == 0) {
         
-        [self.myScroll scrollRectToVisible:CGRectMake( pageIndex*self.contentView.frame.size.width,0, self.contentView.frame.size.width, self.contentView.frame.size.height) animated:NO];
+        [self.myScroll scrollRectToVisible:CGRectMake( pageIndex*SCREEN_WIDTH,0, SCREEN_WIDTH, self.contentView.frame.size.height) animated:NO];
         
         [self bannerRunloop];
         
@@ -128,7 +128,7 @@
 
     }else{
     
-        [self.myScroll scrollRectToVisible:CGRectMake(pageIndex*self.contentView.frame.size.width,0, self.contentView.frame.size.width, self.contentView.frame.size.height) animated:isAnimated];
+        [self.myScroll scrollRectToVisible:CGRectMake(pageIndex*SCREEN_WIDTH,0, SCREEN_WIDTH, self.contentView.frame.size.height) animated:isAnimated];
         
     }
 
@@ -143,11 +143,11 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    self.pageControl.currentPage = (scrollView.contentOffset.x/self.contentView.frame.size.width);
+    self.pageControl.currentPage = (scrollView.contentOffset.x/SCREEN_WIDTH);
     
-    if (scrollView.contentOffset.x == (self.scrollCount -1 )*self.contentView.frame.size.width) {
+    if (scrollView.contentOffset.x == (self.scrollCount -1 )*SCREEN_WIDTH) {
         
-        [scrollView scrollRectToVisible:CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height ) animated:NO];
+        [scrollView scrollRectToVisible:CGRectMake(0, 0, SCREEN_WIDTH, self.contentView.frame.size.height ) animated:NO];
         
         self.pageControl.currentPage = 0;
     }
@@ -169,13 +169,13 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (scrollView.contentOffset.x/self.contentView.frame.size.width == self.scrollCount - 1) {
+    if (scrollView.contentOffset.x/SCREEN_WIDTH == self.scrollCount - 1) {
         
         self.pageControl.currentPage = 0;
         
     }else{
     
-        self.pageControl.currentPage = (scrollView.contentOffset.x/self.contentView.frame.size.width);
+        self.pageControl.currentPage = (scrollView.contentOffset.x/SCREEN_WIDTH);
     
     }
     

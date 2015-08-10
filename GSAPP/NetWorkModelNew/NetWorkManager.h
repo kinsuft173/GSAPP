@@ -11,6 +11,9 @@
 #import "MBProgressHUD.h"
 #import "MJExtension.h"
 
+#define NET_SUCCESS 200
+typedef void (^HKSignInResponse)(BOOL);
+
 @interface NetworkManager : NSObject
 
 + (NetworkManager*)shareMgr;
@@ -26,9 +29,10 @@
 
 //医生部分
 - (void)server_fetchDoctorsWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
-
+- (void)server_createDoctorsWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 //咨询问诊
-- (void)server_createConsultWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+//- (void)server_createConsultWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+- (void)server_createConsultWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle failHandle:(FailHandle)failHandle;
 - (void)server_fetchConsultWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 - (void)server_updateConsultWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 //订单
@@ -62,6 +66,18 @@
 //症状
 - (void)server_fetchSymptomWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 
+//验证码
+- (void)server_fetchVerifyCodeWithDic:(NSDictionary*)dic  completeHandle:(CompleteHandle)completeHandle;
+
+//用户注册
+- (void)server_registerWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+//- (void)server_upDateUserWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+
+//用户登录
+- (void)signInWithUsername:(NSString *)username
+                  password:(NSString *)password
+                      type:(NSInteger )type
+                  complete:(HKSignInResponse)completeBlock;
 
 //临时的jpush接口
 //- (void)server_jpushUserGenerate;

@@ -12,6 +12,7 @@
 #import "ConsultationInfoCtrl.h"
 #import "NetworkManager.h"
 #import "GSConsulation.h"
+#import "UserDataManager.h"
 
 @interface ExpertSelectOrderCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -57,7 +58,7 @@
     hud.labelText = @"正在加载...";
     
     //私人的咨询
-    NSDictionary* dicPrivate = [NSDictionary dictionaryWithObjectsAndKeys:@"10",@"ConsultationSearch[expert_id]", @"1",@"ConsultationSearch[status]",nil];
+    NSDictionary* dicPrivate = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userId,@"ConsultationSearch[expert_id]", @"1",@"ConsultationSearch[status]",nil];
     
     
     [[NetworkManager shareMgr] server_fetchConsultWithDic:dicPrivate completeHandle:^(NSDictionary *response) {

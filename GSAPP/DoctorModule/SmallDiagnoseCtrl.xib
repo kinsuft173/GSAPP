@@ -258,7 +258,7 @@
                                     <rect key="frame" x="10" y="8" width="300" height="93"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主任医师" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLA-HY-VCh">
-                                            <rect key="frame" x="145" y="20" width="100" height="21"/>
+                                            <rect key="frame" x="145" y="20" width="147" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="3bd-yr-Tkj"/>
                                                 <constraint firstAttribute="height" constant="21" id="S1C-3Z-y5K"/>
@@ -266,6 +266,11 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="3bd-yr-Tkj"/>
+                                                </mask>
+                                            </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="耳鼻喉科" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g51-Ny-VqK">
                                             <rect key="frame" x="82" y="68" width="100" height="12"/>
@@ -321,6 +326,7 @@
                                         <constraint firstAttribute="bottom" secondItem="4ao-69-YqO" secondAttribute="bottom" constant="13" id="8ME-wR-hYN"/>
                                         <constraint firstItem="VLA-HY-VCh" firstAttribute="top" secondItem="DJt-dl-0Iv" secondAttribute="top" constant="20" id="8RK-lV-Sw6"/>
                                         <constraint firstItem="dOT-Ct-azF" firstAttribute="leading" secondItem="DJt-dl-0Iv" secondAttribute="leading" constant="84" id="IaL-sR-cGe"/>
+                                        <constraint firstAttribute="trailing" secondItem="VLA-HY-VCh" secondAttribute="trailing" constant="8" id="J7J-Bk-Uib"/>
                                         <constraint firstItem="g51-Ny-VqK" firstAttribute="top" secondItem="DJt-dl-0Iv" secondAttribute="top" constant="68" id="MYp-eZ-pCN"/>
                                         <constraint firstItem="Nj3-1Y-9kx" firstAttribute="top" secondItem="DJt-dl-0Iv" secondAttribute="top" constant="12" id="Z2l-4W-MJc"/>
                                         <constraint firstItem="VLA-HY-VCh" firstAttribute="leading" secondItem="DJt-dl-0Iv" secondAttribute="leading" constant="145" id="d0I-pz-svY"/>
