@@ -157,12 +157,18 @@
     cell.lblIntro.text = expert.intro; //@"赶紧快点搞完吧快点搞完吧快点搞完吧少年们赶紧快点搞完吧快点搞完吧快点搞完吧少年们赶紧快点搞完吧快点搞完吧快点搞完吧少年们";//item[@"intro"];
     cell.lblPro.text = expert.position;//item[@"position"];
     
-    if (expert.doctorFiles.count != 0) {
+    for (int i = 0; i < expert.doctorFiles.count; i ++) {
         
-        Doctorfiles* files = [expert.doctorFiles objectAtIndex:0];
+        Doctorfiles* file = [expert.doctorFiles objectAtIndex:i];
         
-        [cell.imgHeadPhoto sd_setImageWithURL:files.path
-                     placeholderImage:[UIImage imageNamed:@"loading-ios"] options:SDWebImageContinueInBackground];
+        if (file.type == 1) {
+            
+            
+            [cell.imgHeadPhoto sd_setImageWithURL:[NSURL URLWithString:file.path] placeholderImage:[UIImage imageNamed:HEADPHOTO_PLACEHOUDER]];;
+            
+            
+        }
+        
     }
    
     

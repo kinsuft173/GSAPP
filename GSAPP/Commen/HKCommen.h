@@ -16,6 +16,8 @@
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 
+#define HEADPHOTO_PLACEHOUDER @"loading-ios"
+
 
 //各种便利宏
 #define IOS7 [[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0

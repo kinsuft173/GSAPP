@@ -11,5 +11,8 @@
 @interface BasicInfoCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet UILabel *lblName;
+@property (nonatomic, strong) IBOutlet UILabel *lblProffeision;
+@property (nonatomic, strong) IBOutlet UILabel *lblHospital;
+@property (nonatomic, strong) IBOutlet UIImageView *imgHeadPhoto;
 
 @end

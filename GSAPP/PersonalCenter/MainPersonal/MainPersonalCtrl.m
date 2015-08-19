@@ -111,7 +111,22 @@
             }
             
             cell.lblName.text = [UserDataManager shareManager].user.doctor.name;
+            cell.lblProffeision.text = [UserDataManager shareManager].user.doctor.position;
+            cell.lblHospital.text = [UserDataManager shareManager].user.doctor.hospital;
             
+            for (int i = 0; i < [UserDataManager shareManager].user.doctor.doctorFiles.count; i ++) {
+                
+                Doctorfiles* file = [[UserDataManager shareManager].user.doctor.doctorFiles objectAtIndex:i];
+                
+                if (file.type == 1) {
+                    
+                    
+                    [cell.imgHeadPhoto sd_setImageWithURL:[NSURL URLWithString:file.path] placeholderImage:[UIImage imageNamed:HEADPHOTO_PLACEHOUDER]];;
+                    
+                    
+                }
+                
+            }
             
         }
         
