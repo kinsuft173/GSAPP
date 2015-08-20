@@ -887,7 +887,7 @@ enum {
         AMapInputTipsSearchRequest *tipsRequest= [[AMapInputTipsSearchRequest alloc] init];
         tipsRequest.searchType = AMapSearchType_InputTips;
         tipsRequest.keywords = searchText;
-        tipsRequest.city = @[@"广州"];
+//        tipsRequest.city = @[@"广州"];
         
         //发起输入提示搜索
         [_search AMapInputTipsSearch: tipsRequest];
@@ -1050,7 +1050,7 @@ enum {
     NSString *result = [NSString stringWithFormat:@"%@ \n %@", strCount, strtips];
     
     [self.tableViewForTint reloadData];
-//    NSLog(@"InputTips: %@", result);
+    NSLog(@"arrayTint: %@", response.tips);
 }
 
 #pragma tableble datasource
