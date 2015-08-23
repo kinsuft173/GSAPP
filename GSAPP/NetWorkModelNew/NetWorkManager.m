@@ -312,10 +312,16 @@
     //test
 //    NSDictionary *parameters = @{@"id": @"1",@"patient_name":@"SDS",@"patient_sex": @"1",@"patient_age":@"1",@"patient_mobile": @"18672354399",@"patient_dept":@"SDS",@"symptom_id": @"1",@"patient_illness":@"SDS",@"anamnesis_id": @"1",@"timely":@"1",@"other_order":@"1"};
     
-    [manager GET:[NSString stringWithFormat:@"%@%@",SERVER,CONSULATION_FETCH_URL] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject){
+    NSMutableDictionary* dicParmas = [NSMutableDictionary dictionaryWithDictionary:dic];
+    
+    [dicParmas setObject:@"all" forKey:@"allOrPage"];
+    
+    [dicParmas setObject:@"-created_at" forKey:@"sort"];
+    
+    [manager GET:[NSString stringWithFormat:@"%@%@",SERVER,CONSULATION_FETCH_URL] parameters:dicParmas success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         //tst
-        NSLog(@"server_fetchConsultWithDic == >JSON: %@", responseObject);
+//        NSLog(@"server_fetchConsultWithDic == >JSON: %@", responseObject);
         
         completeHandle(responseObject);
         
@@ -371,9 +377,13 @@
     //test
     //NSDictionary *parameters = @{@"doctor_id":@"1",@"order_doctor_id":@"2",@"consultation_id":@"1"};
     
-    [manager GET:[NSString stringWithFormat:@"%@%@",SERVER,ORDER_FETCH_URL] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject){
+    NSMutableDictionary* dicTemp = [NSMutableDictionary dictionaryWithDictionary:dic];
+    
+    [dicTemp setObject:@"all" forKey:@"allOrPage"];
+    
+    [manager GET:[NSString stringWithFormat:@"%@%@",SERVER,ORDER_FETCH_URL] parameters:dicTemp success:^(AFHTTPRequestOperation *operation, id responseObject){
         
-        NSLog(@"server_fetchOrderWithDic = >>JSON: %@", responseObject);
+//        NSLog(@"server_fetchOrderWithDic = >>JSON: %@", responseObject);
         
         completeHandle(responseObject);
         
@@ -518,9 +528,9 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     //test
-    NSDictionary *parameters = @{@"doctor_id":@"1",@"evaluated_doctor_id":@"2",@"order_id":@"1",@"score":@"4",@"content":@"显峰号恶心啊"};
+//    NSDictionary *parameters = @{@"doctor_id":@"1",@"evaluated_doctor_id":@"2",@"order_id":@"1",@"score":@"4",@"content":@"显峰号恶心啊"};
     
-    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,EVALUATE_CREATE_URL] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,EVALUATE_CREATE_URL] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         NSLog(@"JSON: %@", responseObject);
         
@@ -541,9 +551,9 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     //test
-        NSDictionary *parameters = @{@"order_id":@"1"};
+//        NSDictionary *parameters = @{@"order_id":@"1"};
     
-    [manager GET:[NSString stringWithFormat:@"%@%@",SERVER,EVALUATE_FETCH_URL] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
+    [manager GET:[NSString stringWithFormat:@"%@%@",SERVER,EVALUATE_FETCH_URL] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         NSLog(@"JSON: %@", responseObject);
         
@@ -629,14 +639,37 @@
 }
 
 //投诉
+
+- (void)server_createRepineWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    //test
+    //    NSDictionary *parameters = @{@"doctor_id":@"1",@"evaluated_doctor_id":@"2",@"order_id":@"1",@"score":@"4",@"content":@"显峰号恶心啊"};
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,REPINE_CREATE_URL] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        NSLog(@"JSON: %@", responseObject);
+        
+        completeHandle(responseObject);
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+    }];
+    
+}
+
 - (void)server_fetchRepineWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     //test
-    NSDictionary *parameters = @{@"doctor_id":@"1",@"repined_doctor_id":@"1",@"order_id":@"1",@"content":@"11111"};
+//    NSDictionary *parameters = @{@"doctor_id":@"1",@"repined_doctor_id":@"1",@"order_id":@"1",@"content":@"11111"};
     
-    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,REPINE_CREATE_URL] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
+    [manager GET:[NSString stringWithFormat:@"%@%@",SERVER,REPINE_FETCH_URL] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         NSLog(@"JSON: %@", responseObject);
         
@@ -658,7 +691,7 @@
     //test
 //    NSDictionary *parameters = @{@"doctor_id":@"1"};
     
-    [manager GET:[NSString stringWithFormat:@"%@%@",SERVER,REPINE_FETCH_URL] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
+    [manager GET:[NSString stringWithFormat:@"%@%@",SERVER,SYMPOM_FETCH_URL] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         NSLog(@"JSON: %@", responseObject);
         

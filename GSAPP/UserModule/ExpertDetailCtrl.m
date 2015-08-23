@@ -13,12 +13,15 @@
 #import "UserDataManager.h"
 #import "DoctorCommentCell.h"
 #import "CommentTitleCell.h"
+#import "GSEvaluate.h"
 
 @interface ExpertDetailCtrl ()
 @property (assign)BOOL isIntroExpand;
 @property (nonatomic,strong) NSString *content;
 @property (nonatomic,strong) starView *star;
 @property (nonatomic,strong) NSArray *contentArray;
+@property (nonatomic,strong) NSArray *arrayComment;
+
 @end
 
 @implementation ExpertDetailCtrl
@@ -48,6 +51,34 @@
     self.navigationItem.leftBarButtonItem=leftItem;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goReloadTable)  name:@"ReloadTable"  object:nil];
+    
+    [self getComments];
+    
+    
+}
+
+- (void)getComments
+{
+    
+    NSDictionary* dic = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInteger:self.expert.id
+                                                                      ],@"EvaluateSearch[evaluated_doctor_id]",@"doctor",@"expand",@"1",@"status",nil];
+    
+    [[NetworkManager shareMgr] server_fetchEvaluateWithDic:dic completeHandle:^(NSDictionary *dic) {
+        
+        NSLog(@"获取的专家评论数据====>%@",dic);
+        
+        if ([[dic objectForKey:@"success"] integerValue] == 1) {
+            
+            self.arrayComment  = [[dic objectForKey:@"data"] objectForKey:@"items"];
+            
+            [self goReloadTable];
+
+            
+        }
+        
+    }];
+    
+    
 }
 
 -(void)goReloadTable
@@ -120,10 +151,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
+    if (section != 2) {
         return 1;
     }
-    return 0;
+    return self.arrayComment.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -143,7 +174,9 @@
         
         
        // CGFloat lblHeight = [HKCommen compulateTheHightOfAttributeLabelWithWidth:[UIScreen mainScreen].bounds.size.width-20 WithContent:[self.contentArray objectAtIndex:indexPath.row] WithFontSize:13];
-        CGFloat lblHeight=[self heightForConetentCellWithWidth:[UIScreen mainScreen].bounds.size.width-20 WithContent:[self.contentArray objectAtIndex:indexPath.row]];
+        GSEvaluate* evaluate = [GSEvaluate objectWithKeyValues:[self.arrayComment objectAtIndex:indexPath.row]];
+        
+        CGFloat lblHeight=[self heightForConetentCellWithWidth:[UIScreen mainScreen].bounds.size.width-20 WithContent:evaluate.content];
         
         return lblHeight;
     }
@@ -176,7 +209,7 @@
     
         
         [cell.btn_Diagnose addTarget:self action:@selector(goToDiagnoseInfo) forControlEvents:UIControlEventTouchUpInside];
-        [cell.btn_Diagnose_opertation addTarget:self action:@selector(goToDiagnoseInfo) forControlEvents:UIControlEventTouchUpInside];
+        [cell.btn_Diagnose_opertation addTarget:self action:@selector(goToDiagnoseInfo2) forControlEvents:UIControlEventTouchUpInside];
         
         if (self.expert.doctorFiles.count != 0) {
             
@@ -222,10 +255,26 @@
             cell = [topObjects objectAtIndex:0];
             
         }
-        cell.txt_comment.text=[self.contentArray objectAtIndex:indexPath.row];
+        
+        GSEvaluate* evaluate = [GSEvaluate objectWithKeyValues:[self.arrayComment objectAtIndex:indexPath.row]];
+        
+        
+        cell.txt_comment.text= evaluate.content;
         
         cell.txt_comment.font=[UIFont systemFontOfSize:12.0];
         [cell.txt_comment setTextColor:[UIColor colorWithRed:141.0/255.0 green:141.0/255.0 blue:141.0/255.0 alpha:1.0]];
+
+        
+        if (evaluate.created_at.length >= 10) {
+            
+            NSString* strTemp = [evaluate.created_at substringToIndex:10];
+            
+            cell.lbl_data.text = strTemp;
+            
+        }
+        
+        cell.lbl_name.text = evaluate.doctor.name;
+
 
         
         return cell;
@@ -242,12 +291,34 @@
     if ([UIScreen mainScreen].bounds.size.width>=375) {
         DiagnoseInfoCtrl *vc=[[DiagnoseInfoCtrl alloc]initWithNibName:@"SecondDiagnoseCtrl" bundle:nil];
         vc.expert = self.expert;
+        vc.type = 0;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else
     {
         DiagnoseInfoCtrl *vc=[[DiagnoseInfoCtrl alloc]initWithNibName:@"SmallDiagnoseCtrl" bundle:nil];
         vc.expert = self.expert;
+        vc.type = 0;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
+}
+
+-(void)goToDiagnoseInfo2
+{
+    
+    
+    if ([UIScreen mainScreen].bounds.size.width>=375) {
+        DiagnoseInfoCtrl *vc=[[DiagnoseInfoCtrl alloc]initWithNibName:@"SecondDiagnoseCtrl" bundle:nil];
+        vc.expert = self.expert;
+        vc.type = 1;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else
+    {
+        DiagnoseInfoCtrl *vc=[[DiagnoseInfoCtrl alloc]initWithNibName:@"SmallDiagnoseCtrl" bundle:nil];
+        vc.expert = self.expert;
+        vc.type = 1;
         [self.navigationController pushViewController:vc animated:YES];
     }
     
@@ -301,6 +372,8 @@ heightForHeaderInSection:(NSInteger)section
     [self performSegueWithIdentifier:@"goCousultation" sender:nil];
 
 }
+
+
 
 - (void)collect
 {

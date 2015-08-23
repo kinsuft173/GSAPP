@@ -9,8 +9,10 @@
 #import "CaseDetailCtrl.h"
 #import "HKCommen.h"
 #import "NetWorkManager.h"
+#import "GSEvaluate.h"
+#import "GSRepine.h"
 
-@interface CaseDetailCtrl ()
+@interface CaseDetailCtrl ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *lbl_OrderNum;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_Position;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_hospital;
@@ -37,6 +39,10 @@
 @property (weak, nonatomic) IBOutlet UITextView *lbl_AdditionOfExpert;
 @property (weak, nonatomic) IBOutlet UITextView *lbl_MyComment;
 @property (weak, nonatomic) IBOutlet UITextView *lbl_MyComplaint;
+
+
+@property  BOOL isComment;
+@property  BOOL isComplaint;
 
 @end
 
@@ -83,14 +89,14 @@
     
     if ([self.type isEqualToString:@"1"]) {
         
-        self.view_DoctorCaseNotFinished.hidden = NO;
+        self.view_DoctorCaseNotFinished.hidden = YES;
         self.view_ExpertCaseFinished.hidden = YES;
         self.view_ExpertCaseNotFinished.hidden = YES;
         
     }else    if ([self.type isEqualToString:@"2"]) {
         
 //        self.vview.hidden = NO;
-        
+
         
     }else    if ([self.type isEqualToString:@"3"]) {
         
@@ -108,6 +114,79 @@
         
     }
     
+    [self getComment];
+    [self getComplaint];
+}
+
+- (void)getComplaint
+{
+    NSDictionary* dic = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInteger:self.orderGS
+                                                                      .id],@"RepineSearch[order_id]",@"1",@"status",nil];
+    
+    [[NetworkManager shareMgr] server_fetchRepineWithDic:dic completeHandle:^(NSDictionary *dic) {
+        
+        NSLog(@"获取的投诉数据====>%@",dic);
+        
+        if ([[dic objectForKey:@"success"] integerValue] == 1) {
+            
+            NSArray* arrayComment = [[dic objectForKey:@"data"] objectForKey:@"items"];
+            
+            if (arrayComment.count != 0) {
+                
+                GSRepine* repine  = [GSRepine objectWithKeyValues:[arrayComment objectAtIndex:0]];
+                
+                self.lbl_MyComplaint.text = repine.content;
+                
+                self.isComplaint = YES;
+                
+                self.lbl_MyComplaint.userInteractionEnabled = NO;
+                
+                
+                
+            }
+            
+            
+            
+        }
+        
+    }];
+}
+
+- (void)getComment
+{
+    
+    NSDictionary* dic = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInteger:self.orderGS
+                                                                      .id],@"EvaluateSearch[order_id]",@"1",@"status",nil];
+    
+    [[NetworkManager shareMgr] server_fetchEvaluateWithDic:dic completeHandle:^(NSDictionary *dic) {
+        
+        NSLog(@"获取的评论数据====>%@",dic);
+        
+        if ([[dic objectForKey:@"success"] integerValue] == 1) {
+            
+            NSArray* arrayComment = [[dic objectForKey:@"data"] objectForKey:@"items"];
+            
+            if (arrayComment.count != 0) {
+                
+                GSEvaluate* evaluate = [GSEvaluate objectWithKeyValues:[arrayComment objectAtIndex:0]];
+                
+                self.lbl_MyComment.text = evaluate.content;
+                
+                self.isComment = YES;
+                
+                self.lbl_MyComment.userInteractionEnabled = NO;
+                
+                
+                
+            }
+            
+            
+            
+        }
+        
+    }];
+
+
 }
 
 -(void)back
@@ -167,6 +246,109 @@
 
     
 }
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    if (textView == self.lbl_MyComment) {
+        
+        self.lbl_MyComment.text = @"";
+        
+    }
+    
+    
+    if (textView == self.lbl_MyComplaint) {
+        
+        self.lbl_MyComplaint.text = @"";
+        
+    }
+
+
+}
+
+- (IBAction)goAddComment:(id)sender
+{
+    if (self.isComment == YES) {
+        
+        [HKCommen addAlertViewWithTitel:@"您已经对此案例发表过评价了"];
+        
+        return;
+        
+    }
+    
+    
+    if ([self.lbl_MyComment.text isEqualToString:@""]) {
+        
+        [HKCommen addAlertViewWithTitel:@"请输入评价内容"];
+        
+        return;
+    }
+    
+    NSDictionary *parameters = @{@"doctor_id":[NSNumber numberWithInteger:self.orderGS.doctor_id],@"evaluated_doctor_id":[NSNumber numberWithInteger:self.orderGS.order_doctor_id],@"order_id":[NSNumber numberWithInteger:self.orderGS.id],@"score":@"4",@"content":self.lbl_MyComment.text};
+
+    [[NetworkManager shareMgr] server_createEvaluateWithDic:parameters completeHandle:^(NSDictionary *dic) {
+        
+        if ([[dic objectForKey:@"success"] integerValue] == 1) {
+            
+            [HKCommen addAlertViewWithTitel:@"评价成功"];
+            
+            self.isComment = YES;
+            
+            self.lbl_MyComment.userInteractionEnabled = NO;
+            
+            return ;
+            
+            
+        }
+        
+        
+    }];
+
+}
+
+
+
+- (IBAction)goAddRepine:(id)sender
+{
+    if (self.isComplaint == YES) {
+        
+        [HKCommen addAlertViewWithTitel:@"您已经投诉过此案例了"];
+        
+        return;
+        
+    }
+    
+    
+    if ([self.lbl_MyComplaint.text isEqualToString:@""]) {
+        
+        [HKCommen addAlertViewWithTitel:@"请输入投诉内容"];
+        
+        return;
+    }
+    
+    NSDictionary *parameters = @{@"doctor_id":[NSNumber numberWithInteger:self.orderGS.doctor_id],@"repined_doctor_id":[NSNumber numberWithInteger:self.orderGS.order_doctor_id],@"order_id":[NSNumber numberWithInteger:self.orderGS.id],@"score":@"4",@"content":self.lbl_MyComplaint.text};
+    
+    [[NetworkManager shareMgr] server_createRepineWithDic:parameters completeHandle:^(NSDictionary *dic) {
+        
+        if ([[dic objectForKey:@"success"] integerValue] == 1) {
+            
+            [HKCommen addAlertViewWithTitel:@"已经收到您的投诉"];
+            
+            self.isComplaint = YES;
+            
+            self.lbl_MyComplaint.userInteractionEnabled = NO;
+            
+            return ;
+            
+            
+        }
+        
+        
+    }];
+    
+}
+
+
+
 
 
 

@@ -28,6 +28,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lbl_ReserveDate;
 
+@property NSInteger type;
+
 @property (nonatomic, strong) GSExpert* expert;
 
 @end

@@ -8,6 +8,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CaseDetailCtrl">
             <connections>
+                <outlet property="btn_Comment" destination="KpH-pa-eoy" id="H3U-xH-PnM"/>
+                <outlet property="btn_Complain" destination="2G1-Sd-4Er" id="XGm-OM-Rj0"/>
                 <outlet property="lbl_Addition" destination="I6X-hA-VDS" id="Ah2-6C-Gfn"/>
                 <outlet property="lbl_AdditionOfExpert" destination="NIp-vD-BWa" id="X30-en-uo9"/>
                 <outlet property="lbl_Adress" destination="sXU-t4-aH4" id="aFY-MC-Rit"/>
@@ -322,7 +324,7 @@
                                         <constraint firstAttribute="height" constant="13" id="yAP-uq-MWV"/>
                                     </constraints>
                                 </view>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="该案例患者恢复情况该案例患者恢复情况该案例患者恢复情况该案例患者恢复情况" translatesAutoresizingMaskIntoConstraints="NO" id="NIp-vD-BWa">
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="该案例患者恢复情况该案例患者恢复情况该案例患者恢复情况该案例患者恢复情况" translatesAutoresizingMaskIntoConstraints="NO" id="NIp-vD-BWa">
                                     <rect key="frame" x="66" y="51" width="269" height="79"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <color key="textColor" red="0.58431372549019611" green="0.58431372549019611" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
@@ -382,6 +384,9 @@
                                     <color key="textColor" red="0.41568627450000001" green="0.41568627450000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="0aC-Im-9mz"/>
+                                    </connections>
                                 </textView>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="该专家在此案例中表现的很不专业" translatesAutoresizingMaskIntoConstraints="NO" id="eGE-9w-KYc">
                                     <rect key="frame" x="44" y="325" width="217" height="75"/>
@@ -393,6 +398,9 @@
                                     <color key="textColor" red="0.41568627450000001" green="0.41568627450000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="GvO-uh-ejK"/>
+                                    </connections>
                                 </textView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KpH-pa-eoy">
                                     <rect key="frame" x="270" y="201" width="62" height="75"/>
@@ -405,6 +413,9 @@
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="goAddComment:" destination="-1" eventType="touchUpInside" id="ZNf-Sr-hM2"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2G1-Sd-4Er">
                                     <rect key="frame" x="270" y="325" width="62" height="75"/>
@@ -417,6 +428,9 @@
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="goAddRepine:" destination="-1" eventType="touchUpInside" id="NDL-dC-CGY"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>

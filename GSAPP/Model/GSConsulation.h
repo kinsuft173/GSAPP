@@ -54,7 +54,7 @@
 
 @property (nonatomic, assign) NSInteger patient_age;
 
-//@property (nonatomic, assign) NSInteger expert_id;
+@property (nonatomic, assign) NSInteger expert_id;
 
 @property (nonatomic, strong) GSExpert* doctor;
 

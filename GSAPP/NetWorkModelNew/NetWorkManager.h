@@ -62,7 +62,7 @@ typedef void (^HKSignInResponse)(BOOL);
 
 //投诉
 - (void)server_fetchRepineWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
-
+- (void)server_createRepineWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 //症状
 - (void)server_fetchSymptomWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 

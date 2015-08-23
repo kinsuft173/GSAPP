@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="症状" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ze-uX-W2b">
-                        <rect key="frame" x="83" y="40" width="120" height="14"/>
+                        <rect key="frame" x="83" y="40" width="250" height="14"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="120" id="N8x-Np-ZgL"/>
                             <constraint firstAttribute="height" constant="14" id="krR-Hv-KnK"/>
@@ -34,6 +34,11 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="N8x-Np-ZgL"/>
+                            </mask>
+                        </variation>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="疾病描述疾病描述疾病描述疾病描述疾病描述疾病描述疾病描述疾病描述疾病描述" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seh-Xg-n6e">
                         <rect key="frame" x="83" y="62" width="266" height="34"/>
@@ -76,6 +81,7 @@
                     <constraint firstItem="y2P-rn-lwZ" firstAttribute="leading" secondItem="byn-va-yKp" secondAttribute="leadingMargin" constant="9" id="Iex-CN-wWi"/>
                     <constraint firstItem="Plp-5j-ysu" firstAttribute="leading" secondItem="byn-va-yKp" secondAttribute="leadingMargin" constant="75" id="NnT-I4-TjK"/>
                     <constraint firstItem="y2P-rn-lwZ" firstAttribute="top" secondItem="byn-va-yKp" secondAttribute="topMargin" constant="14" id="VCx-Dd-Ted"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="5Ze-uX-W2b" secondAttribute="trailing" constant="14" id="VPp-47-UIE"/>
                     <constraint firstAttribute="bottomMargin" secondItem="seh-Xg-n6e" secondAttribute="bottom" constant="-1" id="YIV-wi-aTZ"/>
                     <constraint firstItem="y7X-JP-cyn" firstAttribute="top" secondItem="byn-va-yKp" secondAttribute="topMargin" constant="-8" id="dx0-nu-wo4"/>
                     <constraint firstItem="5Ze-uX-W2b" firstAttribute="top" secondItem="byn-va-yKp" secondAttribute="topMargin" constant="32" id="ncy-8J-Mj9"/>

@@ -495,6 +495,8 @@
     
     }
     
+    
+    
     if ([self.txtPurpose.text isEqualToString:@""] || self.txtPurpose.text == nil) {
         
         [dic setObject:self.txtPurpose.text forKey:@"purpose"];
@@ -521,7 +523,7 @@
     
     //统一先设置为手术
     
-//    [dic setObject:@"0" forKey:@"type"];
+    [dic setObject:[NSNumber numberWithInteger:self.type] forKey:@"type"];
 
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];

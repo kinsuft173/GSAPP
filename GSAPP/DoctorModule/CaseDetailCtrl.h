@@ -20,4 +20,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_cancel;
 @property (weak, nonatomic) IBOutlet UIButton *btn_finish;
+
+@property (weak, nonatomic) IBOutlet UIButton *btn_Comment;
+@property (weak, nonatomic) IBOutlet UIButton *btn_Complain;
+
 @end

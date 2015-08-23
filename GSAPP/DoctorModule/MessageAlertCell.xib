@@ -26,7 +26,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="预约提示" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCg-SO-gIW">
-                                <rect key="frame" x="90" y="12" width="140" height="15"/>
+                                <rect key="frame" x="90" y="12" width="248" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="QWl-Gg-y9E"/>
                                     <constraint firstAttribute="height" constant="15" id="kKg-GS-V5R"/>
@@ -34,6 +34,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.28627450980392155" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="QWl-Gg-y9E"/>
+                                    </mask>
+                                </variation>
                             </label>
                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="XX医生预约了XX案例，请确认" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4nM-9g-0be">
                                 <rect key="frame" x="85" y="42" width="235" height="54"/>
@@ -69,6 +74,7 @@
                             <constraint firstItem="cCg-SO-gIW" firstAttribute="leading" secondItem="h9P-Cz-ztE" secondAttribute="leading" constant="90" id="RCl-sa-y7D"/>
                             <constraint firstItem="4nM-9g-0be" firstAttribute="trailing" secondItem="oMo-oG-XJz" secondAttribute="trailing" constant="-27" id="S6Q-w6-eZh"/>
                             <constraint firstItem="4nM-9g-0be" firstAttribute="top" secondItem="h9P-Cz-ztE" secondAttribute="top" constant="42" id="gWd-9B-ich"/>
+                            <constraint firstAttribute="trailing" secondItem="cCg-SO-gIW" secondAttribute="trailing" constant="17" id="ipD-xN-a8M"/>
                             <constraint firstItem="4nM-9g-0be" firstAttribute="leading" secondItem="h9P-Cz-ztE" secondAttribute="leading" constant="85" id="lDK-pG-GPW"/>
                             <constraint firstAttribute="trailing" secondItem="oMo-oG-XJz" secondAttribute="trailing" constant="8" id="mhb-Zh-yFc"/>
                             <constraint firstAttribute="bottom" secondItem="4nM-9g-0be" secondAttribute="bottom" constant="2" id="pYC-sX-3Jz"/>

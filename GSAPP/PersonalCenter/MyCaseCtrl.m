@@ -96,9 +96,6 @@
                     
                     if ([[dicItem objectForKey:@"status"] integerValue] == 3) {
                         
-                        
-//                                        NSLog(@"是否找到数据%@",dicItem);
-                        
                         [self.arrayExpertUnFinished addObject:dicItem];
                         
                     }else if ([[dicItem objectForKey:@"status"] integerValue] == 9){

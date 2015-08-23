@@ -65,8 +65,9 @@ typedef void (^FailHandle)();
 #define FAVORITES_CREATE_URL @"favorite/create"
 //投死
 #define REPINE_CREATE_URL @"repine/create"
+#define REPINE_FETCH_URL @"repine/index"
 
 //症状
-#define REPINE_FETCH_URL @"symptom/index"
+#define SYMPOM_FETCH_URL @"symptom/index"
 
 #endif

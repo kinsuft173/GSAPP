@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="AOk-vX-H5t">
-                    <rect key="frame" x="10" y="8" width="355" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="c0T-MH-BMo"/>
@@ -27,10 +27,10 @@
             </subviews>
             <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="AOk-vX-H5t" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="aU4-8w-umj"/>
-                <constraint firstAttribute="bottom" secondItem="AOk-vX-H5t" secondAttribute="bottom" constant="-8" id="eWv-by-g3p"/>
-                <constraint firstItem="AOk-vX-H5t" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="meY-3z-4Di"/>
-                <constraint firstAttribute="trailing" secondItem="AOk-vX-H5t" secondAttribute="trailing" constant="10" id="nlE-l9-CNJ"/>
+                <constraint firstItem="AOk-vX-H5t" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="aU4-8w-umj"/>
+                <constraint firstAttribute="bottom" secondItem="AOk-vX-H5t" secondAttribute="bottom" id="eWv-by-g3p"/>
+                <constraint firstItem="AOk-vX-H5t" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="meY-3z-4Di"/>
+                <constraint firstAttribute="trailing" secondItem="AOk-vX-H5t" secondAttribute="trailing" id="nlE-l9-CNJ"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
         </view>
