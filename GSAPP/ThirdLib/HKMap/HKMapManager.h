@@ -17,6 +17,9 @@
 @property (nonatomic, strong) NSString* userCurrentLongitude;
 @property (nonatomic, strong) NSString* userCurrentLatitude;
 
+@property CGFloat floatUserCurrentLongitude;
+@property CGFloat floatUserCurrentLatitude;
+
 + (HKMapManager*)shareMgr;
 
 - (BOOL)openAMAPWihStartCoordinate:(CLLocationCoordinate2D)startCoordinate AndEndCoordinate:(CLLocationCoordinate2D)endCoordinate;

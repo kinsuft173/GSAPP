@@ -68,6 +68,14 @@
 @property (nonatomic, strong) IBOutlet UILabel* lblDept;
 @property (nonatomic, strong) IBOutlet UILabel* lblDeptAndSurgery;
 
+
+
+
+
+@property BOOL isLeft;
+@property BOOL isMiddle;
+@property BOOL isRight;
+
 @property (nonatomic, strong) IBOutlet UIImageView* imgHeadPhoto;
 
 
@@ -90,12 +98,12 @@
     
     self.arrayTextFiled = [NSArray arrayWithObjects:self.textFiledDoctorDept,self.textFiledDoctorHospital,self.textFiledDoctorCity,self.textFiledDoctorAdress,self.textFiledPatientName,self.textFiledPatientAge,self.textFiledPatientTel,self.textFiledPatientDisease,self.textFiledPatientMedicalHistory,self.textFiledPatientSymptom,self.textFiledPatientMark, nil];
     
-    self.arrayKey = [NSArray arrayWithObjects:@"patient_dept",@"patient_hospital",@"patient_city",@"patient_address",@"patient_name",@"patient_age",@"patient_mobile",@"patient_illness",@"anamnesis_id",@"symptom_id",@"remark",nil];
+    self.arrayKey = [NSArray arrayWithObjects:@"patient_dept",@"patient_hospital",@"patient_city",@"patient_address",@"patient_name",@"patient_age",@"patient_mobile",@"patient_illness",@"anamnesis",@"symptom",@"remark",nil];
     
     
     [self initUI];
     
-    self.textFiledPatientSymptom.enabled = NO;
+    self.textFiledPatientSymptom.enabled = YES;
     self.textFiledPatientMedicalHistory.enabled = NO;
     self.timelySelected = YES;
     self.sexSelected = NO;
@@ -112,8 +120,6 @@
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden=YES;
 
-    
-    
     
 }
 
@@ -205,14 +211,17 @@
 {
     if (count==0) {
        [self.img_left setImage:image];
+        self.isLeft = YES;
     }
     else if (count==1)
     {
     [self.img_middle setImage:image];
+        self.isMiddle = YES;
     }
     else
     {
     [self.img_right setImage:image];
+        self.isRight = YES;
     }
     
     
@@ -418,17 +427,20 @@
         
         [dic setObject:textFiled.text forKey:[self.arrayKey objectAtIndex:i]];
         
-        if (textFiled == self.textFiledPatientSymptom) {
-            
-            
-        [dic setObject:self.strSymptom forKey:[self.arrayKey objectAtIndex:i]];
-        }
+//        if (textFiled == self.textFiledPatientSymptom) {
         
-        if (textFiled == self.textFiledPatientMedicalHistory) {
             
+//        [dic setObject:self.strSymptom forKey:[self.arrayKey objectAtIndex:i]];
+//            
+//            
+//        }
+//        
+//        if (textFiled == self.textFiledPatientMedicalHistory) {
+//            
+//            
+//            [dic setObject:self.strSnamnesis forKey:[self.arrayKey objectAtIndex:i]];
+//        }
             
-            [dic setObject:self.strSnamnesis forKey:[self.arrayKey objectAtIndex:i]];
-        }
         
         if (textFiled == self.textFiledPatientAge) {
             
@@ -536,6 +548,92 @@
         [hud hide:YES];
         
         if ([[response objectForKey:@"success"] integerValue] == 1) {
+            
+            NSLog(@"consulatasion sucess = %@",response);
+            
+            if (self.isLeft || self.isRight || self.isMiddle) {
+                
+                
+                NSMutableDictionary* dicNew = [[NSMutableDictionary alloc] init];
+                
+                [dicNew setObject:[[response objectForKey:@"data"] objectForKey:@"id"] forKey:@"consultation_id"];
+                
+                [dicNew setObject:@"path" forKey:@"filesField"];
+                
+                NSInteger num = self.isMiddle + self.isRight + self.isLeft;
+                
+                NSMutableArray* array = [[NSMutableArray alloc] init];
+                
+                if (self.isLeft) {
+                    
+                    [array addObject:UIImagePNGRepresentation(self.img_left.image)];
+                    
+                }
+                
+                if (self.isMiddle) {
+                         
+                    [array addObject:UIImagePNGRepresentation(self.img_middle.image)];
+                          
+                }
+                          
+                if (self.isRight) {
+                         
+                    [array addObject:UIImagePNGRepresentation(self.img_right.image)];
+                          
+                }
+               
+                     
+                     
+                if (num == 1) {
+                    
+                    if (self.isRight) {
+                        [dicNew setObject:@"3" forKey:@"type"];
+                    }
+                    
+                    if (self.isLeft) {
+                        [dicNew setObject:@"1" forKey:@"type"];
+                    }
+                    
+                    if (self.isMiddle) {
+                        [dicNew setObject:@"2" forKey:@"type"];
+                    }
+                    
+                    
+                    
+                    
+                }else if (num == 2){
+                    
+                    if (self.isRight == NO) {
+                        [dicNew setObject:@"1,2" forKey:@"multiFields[type]"];
+                    }
+                    
+                    if (self.isLeft == NO) {
+                        [dicNew setObject:@"2,3" forKey:@"multiFields[type]"];
+                    }
+                    
+                    if (self.isMiddle == NO) {
+                        [dicNew setObject:@"1,3" forKey:@"multiFields[type]"];
+                    }
+                    
+                
+                }else{
+                    
+                    [dicNew setObject:@"1,2,3" forKey:@"multiFields[type]"];
+                    
+                
+                }
+                
+                [dicNew setObject:array forKey:@"files[]"];
+
+                
+                [[NetworkManager shareMgr] server_createConsulationImageWithDic:dicNew completeHandle:^(NSDictionary *response1) {
+                    
+                    
+                    
+                }];
+            }
+            
+
             
             if (self.timelySelected == YES) {
                 
@@ -668,7 +766,7 @@
     vc.delegate=self;
     [self.navigationController pushViewController:vc animated:YES];
 }
-
+;
 -(void)dateChanged:(id)sender{
     　UIDatePicker* control = (UIDatePicker*)sender;
     NSDate* dateChange = control.date;
@@ -679,22 +777,23 @@
     
 }
 
-- (void)handleDieaseSelectedWithDic:(NSDictionary*)dic
+- (void)handleDieaseSelectedWithDic:(NSString*)str
 {
-    NSLog(@"dic  handleDieaseSelectedWithDic= %@",dic);
+   // NSLog(@"dic  handleDieaseSelectedWithDic= %@",dic);
     
-    self.textFiledPatientSymptom.text = [dic objectForKey:@"name"];
-    self.textFiledPatientSymptom.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"name"]];
-    self.strSymptom  = [NSNumber numberWithInteger:[[dic objectForKey:@"id"] integerValue]];
+    //self.textFiledPatientSymptom.text = [dic objectForKey:@"name"];
+    self.textFiledPatientSymptom.text = str;
+   // self.strSymptom  = [NSNumber numberWithInteger:[[dic objectForKey:@"id"] integerValue]];
 }
 
-- (void)handleHistoryOfDieaseSelectedWithDic:(NSDictionary *)dic
+- (void)handleHistoryOfDieaseSelectedWithDic:(NSString *)str
 {
-    NSLog(@"dic  handleHistoryOfDieaseSelectedWithDic= %@",dic);
-    self.textFiledPatientMedicalHistory.text = [dic objectForKey:@"name"];
     
-    self.textFiledPatientMedicalHistory.text =  [NSString stringWithFormat:@"%@",[dic objectForKey:@"name"]];
-    self.strSnamnesis  = [NSNumber numberWithInteger:[[dic objectForKey:@"id"] integerValue]];
+//    NSLog(@"dic  handleHistoryOfDieaseSelectedWithDic= %@",dic);
+//    self.textFiledPatientMedicalHistory.text = [dic objectForKey:@"name"];
+    
+    self.textFiledPatientMedicalHistory.text = str;// [NSString stringWithFormat:@"%@",[dic objectForKey:@"name"]];
+//    self.strSnamnesis  = [NSNumber numberWithInteger:[[dic objectForKey:@"id"] integerValue]];
 
 }
 

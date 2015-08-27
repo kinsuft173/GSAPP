@@ -73,18 +73,18 @@
             
         }
         
-//        [self.myTable reloadData];
+     
+//        NSDictionary* dicPublic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:[UserDataManager shareManager].user.doctor.expertise_id],@"ConsultationSearch[expertise_id]",@"1",@"ConsultationSearch[status]",@1,@"where[status][]" ,nil];
+    
         
-        //公共的咨询
         
-        //
-//        join[]=expert&join[]=expert.expertise0&where[expertise.id]=9&expand=expert&allOrPage=all
-//        
-//        NSDictionary* dicPublic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:[UserDataManager shareManager].user.doctor.expertise_id],@"ConsultationSearch[expertise_id]",@"1",@"ConsultationSearch[status]", nil];@1,@"where[status][]"
-        
-        NSDictionary* dicPublic = [NSDictionary dictionaryWithObjectsAndKeys:@"expert.expertise0",@"join[]=expert&join[]=",[NSNumber numberWithInteger: [UserDataManager shareManager].user.doctor.expertise_id],@"where[expert.expertise_id][]=",@1,@"where[consultation.status][]",nil];
-        
+        NSDictionary* dicPublic = [NSDictionary dictionaryWithObjectsAndKeys:@[@"expert.expertise0",@"expert"], @"join",[NSNumber numberWithInteger: [UserDataManager shareManager].user.doctor.expertise_id],@"where[expertise.id][]",@1,@"where[consultation.status][]",nil];
+//
         [[NetworkManager shareMgr] server_fetchConsultWithDic:dicPublic completeHandle:^(NSDictionary *response) {
+            
+         
+            
+            NSLog(@"咨询私人= %@",response);
             
             self.arrayPublicConsulation = [[NSMutableArray alloc] init];
             

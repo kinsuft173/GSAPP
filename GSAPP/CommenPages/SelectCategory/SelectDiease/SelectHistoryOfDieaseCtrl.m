@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) IBOutlet UITableView* tableView;
 @property (nonatomic, strong) IBOutlet NSArray* arrayModel;
+@property (nonatomic, strong) NSMutableArray* arrayIndex;
 
 @end
 
@@ -42,7 +43,14 @@
         [self.tableView setLayoutMargins: UIEdgeInsetsZero];
     }
     
+    UIButton *rightButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    rightButton.titleLabel.font=[UIFont systemFontOfSize:15.0];
+    [rightButton setFrame:CGRectMake(0, 0, 30, 50)];
+    [rightButton setTitle:@"保存" forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rithtItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton ];
     [HKCommen addHeadTitle:@"选择病史" whichNavigation:self.navigationItem];
+       self.navigationItem.rightBarButtonItem=rithtItem;
     
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 30, 50)];
@@ -50,6 +58,42 @@
     [leftButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton ];
     self.navigationItem.leftBarButtonItem=leftItem;
+}
+
+- (void)save
+{
+    NSString* str = @"";
+    
+    for (int i = 0; i < self.arrayIndex.count; i ++) {
+        
+        if ([[self.arrayIndex objectAtIndex:i] integerValue] == 1) {
+            
+            if ([str isEqualToString:@""] || str == nil) {
+                
+                str = [[self.arrayModel objectAtIndex:i] objectForKey:@"name"];
+                
+            }else{
+            
+                str = [str stringByAppendingString:[NSString stringWithFormat:@",%@",[[self.arrayModel objectAtIndex:i] objectForKey:@"name"]]];
+            
+            }
+            
+        }
+    }
+    
+    if (str == nil || [str isEqualToString:@""]) {
+        
+        [HKCommen addAlertViewWithTitel:@"请选择一项病史"];
+        return;
+    }
+    
+    
+     [self.navigationController popViewControllerAnimated:YES];
+    
+
+     [self.delegate handleHistoryOfDieaseSelectedWithDic:str];
+
+    
 }
 
 -(void)back
@@ -68,6 +112,13 @@
         if (resultArray.count != 0) {
             
             self.arrayModel = resultArray;
+            
+            self.arrayIndex = [[NSMutableArray alloc] init];
+            
+            for (int i = 0 ; i < self.arrayModel.count; i ++) {
+                
+                [self.arrayIndex addObject:@0];
+            }
             
         }
         
@@ -125,6 +176,17 @@
     
     cell.lblCategory.text =[[self.arrayModel objectAtIndex:indexPath.row] objectForKey:@"name"];
     
+    NSNumber* num = [self.arrayIndex objectAtIndex:indexPath.row];
+    
+    if (num.integerValue == 1) {
+        
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        
+    }else{
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    
+    }
+    
     return cell;
     
 }
@@ -133,9 +195,25 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.navigationController popViewControllerAnimated:YES];
     
-    [self.delegate handleHistoryOfDieaseSelectedWithDic:[self.arrayModel objectAtIndex:indexPath.row]];
+    NSNumber* number = [self.arrayIndex objectAtIndex:indexPath.row];
+    
+    if (number.integerValue == 0) {
+        
+        [self.arrayIndex replaceObjectAtIndex:indexPath.row withObject:@1];
+        
+        
+    }else{
+    
+        [self.arrayIndex replaceObjectAtIndex:indexPath.row withObject:@0];
+        
+    }
+    
+    [self.tableView reloadData];
+    
+  //  [self.navigationController popViewControllerAnimated:YES];
+    
+   // [self.delegate handleHistoryOfDieaseSelectedWithDic:[self.arrayModel objectAtIndex:indexPath.row]];
 }
 
 

@@ -91,6 +91,7 @@ enum {
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = @"长按地图即可选定相应位置";
     
+    
     UIButton *rightButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [rightButton setFrame:CGRectMake(0, 0, 30, 50)];
     rightButton.titleLabel.font=[UIFont systemFontOfSize:14.0];
@@ -248,7 +249,34 @@ enum {
     [self.view addSubview:self.mapView];
     
     self.mapView.showsUserLocation = YES;
-    self.mapView.userTrackingMode = MAUserTrackingModeFollow;
+    
+            CLLocationCoordinate2D co;
+    
+    co.latitude = [HKMapManager shareMgr].floatUserCurrentLatitude;
+    co.longitude = [HKMapManager shareMgr].floatUserCurrentLongitude;
+    
+    NSLog(@"co = %f%f",co.latitude,co.longitude);
+    
+    if ([HKMapManager shareMgr].floatUserCurrentLatitude > 1) {
+        
+        NSLog(@"指定位置");
+        
+        CLLocationCoordinate2D co;
+        
+        co.latitude = [HKMapManager shareMgr].floatUserCurrentLatitude;
+        co.longitude = [HKMapManager shareMgr].floatUserCurrentLongitude;
+        
+        NSLog(@"co = %f%f",co.latitude,co.longitude);
+        
+//        self.mapView.centerCoordinate = co;
+        [self.mapView setCenterCoordinate:co animated:YES];
+        
+    }else{
+    
+        self.mapView.userTrackingMode = MAUserTrackingModeFollow;
+    
+    }
+    
     
     [self.mapView setZoomLevel:16.1 animated:YES];
     
@@ -977,6 +1005,8 @@ enum {
         [_annotations removeAllObjects];
         
         // 为点击的poi点添加标注
+        
+        BOOL hehe = NO;
             for (AMapPOI *poi in response.pois) {
                 
                 
@@ -988,9 +1018,30 @@ enum {
                 [_mapView addAnnotation:annotation];
                 
                 [_annotations addObject:annotation];
+                
+                if (hehe == NO) {
+                    
+                    hehe = YES;
+                    
+                    [HKMapManager shareMgr].floatUserCurrentLatitude  = poi.location.latitude;
+                    
+                    [HKMapManager shareMgr].floatUserCurrentLongitude = poi.location.longitude;
+                }
+                
+
             }
         
 
+        
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
+        
+
+    }else{
+    
+        [HKCommen addAlertViewWithTitel:@"没有搜索到相关地点"];
+    
     }
     
     //通过AMapPlaceSearchResponse对象处理搜索结果

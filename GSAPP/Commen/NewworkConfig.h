@@ -38,11 +38,15 @@ typedef void (^FailHandle)();
 //咨询问诊
 #define CONSULATION_CREATE_URL @"consultation/create"
 #define CONSULATION_FETCH_URL @"consultation/index"
-
+#define CONSULATION_UPDATA_URL @"consultation/update"
+#define CONSULATION_FETCH_FILE_CREATE_URL @"consultation-file/create"
+#define Doctor_FETCH_FILE_CREATE_URL @"doctor-file/create"
 //订单创建
 #define ORDER_CREATE_URL @"order/create"
 #define ORDER_FETCH_URL @"order/index"
 #define ORDER_UPDATE_URL @"order/update"
+
+
 
 //病史
 #define ANAMNESIS_FETCH_URL @"anamnesis/index"

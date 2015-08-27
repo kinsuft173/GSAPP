@@ -69,7 +69,7 @@
 
 - (void)getModel
 {
-    if ([[UserDataManager shareManager].userType isEqualToString:ExpertType]) {
+    {
         
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
@@ -79,6 +79,8 @@
         NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:[UserDataManager shareManager].user.doctor.id],@"OrderSearch[order_doctor_id]",@"consultation,orderDoctor",@"expand",nil];
         
         [[NetworkManager shareMgr] server_fetchOrderWithDic:dic completeHandle:^(NSDictionary *response) {
+            
+            
             
             
             self.arrayExpertUnFinished = [[NSMutableArray alloc] init];
@@ -94,7 +96,7 @@
                     
     
                     
-                    if ([[dicItem objectForKey:@"status"] integerValue] == 3) {
+                    if ([[dicItem objectForKey:@"status"] integerValue] == 3 || [[dicItem objectForKey:@"status"] integerValue] == 2 ) {
                         
                         [self.arrayExpertUnFinished addObject:dicItem];
                         
@@ -123,7 +125,9 @@
         
         
         
-    }else if([[UserDataManager shareManager].userType isEqualToString:UserType]){
+    }
+    
+    {
         
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
@@ -146,7 +150,7 @@
                     
                     NSDictionary* dicItem = [resultArray objectAtIndex:i];
                     
-                    if ([[dicItem objectForKey:@"status"] integerValue] == 3) {
+                    if ([[dicItem objectForKey:@"status"] integerValue] == 3 || [[dicItem objectForKey:@"status"] integerValue] == 2) {
                         
                         [self.arrayDotorUnFinished addObject:dicItem];
                         
@@ -188,7 +192,7 @@
 #pragma tableble datasource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
     
 }
 
@@ -198,48 +202,68 @@
     
     if (self.isFinished == NO) {
         
-        NSLog(@"UserType = %@",UserType);
-        
-        
-        if ([[UserDataManager shareManager].userType isEqualToString:UserType]) {
+        if (section == 0) {
             
-            if (section == 0) {
-                
-                        NSLog(@"arrayDotorUnFinished = %d",self.arrayDotorUnFinished.count);
-                
-                return self.arrayDotorUnFinished.count;
-            }
-            
+            return self.arrayDotorUnFinished.count;
             
         }else{
-            
-            if (section == 0) {
-                
+        
                 return self.arrayExpertUnFinished.count;
-            }
-            
+        
+        
         }
+        
+        
+//        if ([[UserDataManager shareManager].userType isEqualToString:UserType]) {
+//            
+//            if (section == 0) {
+//                
+//                        NSLog(@"arrayDotorUnFinished = %d",self.arrayDotorUnFinished.count);
+//                
+//                return self.arrayDotorUnFinished.count;
+//            }
+//            
+//            
+//        }else{
+//            
+//            if (section == 0) {
+//                
+//                return self.arrayExpertUnFinished.count;
+//            }
+//            
+//        }
         
     }else{
         
-        
-        
-        if ([[UserDataManager shareManager].userType isEqualToString:UserType]) {
+        if (section == 0) {
             
-            if (section == 0) {
-                
                 return self.arrayDotorFinished.count;
-            }
-            
             
         }else{
             
-            if (section == 0) {
-                
                 return self.arrayExpertFinished.count;
-            }
+            
             
         }
+        
+        
+        
+//        if ([[UserDataManager shareManager].userType isEqualToString:UserType]) {
+//            
+//            if (section == 0) {
+//                
+//                return self.arrayDotorFinished.count;
+//            }
+//            
+//            
+//        }else{
+//            
+//            if (section == 0) {
+//                
+//                return self.arrayExpertFinished.count;
+//            }
+//            
+//        }
     }
     
     
@@ -260,7 +284,7 @@
     static NSString* CellId = @"MyCaseCell";
 
     
-    if (indexPath.section==0) {
+//    if (indexPath.section == 0) {
         MyCaseCell* cell = [tableView dequeueReusableCellWithIdentifier:CellId];
         
         if (!cell) {
@@ -272,8 +296,6 @@
         }
         
         
-        [cell.imgOfDisease setImage:[UIImage imageNamed:@"list_consultation"]];
-        cell.lbl_treat.text=@"会诊";
         
         GSOrder* order;
         
@@ -308,29 +330,38 @@
         cell.lbl_jibingmiaoshu.text = order.consultation.patient_illness;
         cell.lbl_zhuangzhuang.text = [NSString stringWithFormat:@"%d",order.consultation.symptom_id];
         
-        
-        
-        return cell;
-    }
-    else if (indexPath.section==1)
-    {
-        MyCaseCell* cell = [tableView dequeueReusableCellWithIdentifier:CellId];
-        
-        if (!cell) {
+        if (order.type == 0) {
             
-            NSArray* topObjects = [[NSBundle mainBundle] loadNibNamed:CellId owner:self options:nil];
+            [cell.imgOfDisease setImage:[UIImage imageNamed:@"list_consultation"]];
+            cell.lbl_treat.text=@"会诊";
             
-            cell = [topObjects objectAtIndex:0];
-            
+        }else{
+        
+                    [cell.imgOfDisease setImage:[UIImage imageNamed:@"list_surgery"]];
+                    cell.lbl_treat.text=@"会诊手术";
         }
         
-        
-        [cell.imgOfDisease setImage:[UIImage imageNamed:@"list_surgery"]];
-        cell.lbl_treat.text=@"会诊手术";
-        
         return cell;
-    }
-    return nil;
+//    }
+//    else if (indexPath.section==1)
+//    {
+//        MyCaseCell* cell = [tableView dequeueReusableCellWithIdentifier:CellId];
+//        
+//        if (!cell) {
+//            
+//            NSArray* topObjects = [[NSBundle mainBundle] loadNibNamed:CellId owner:self options:nil];
+//            
+//            cell = [topObjects objectAtIndex:0];
+//            
+//        }
+//        
+//        
+//        [cell.imgOfDisease setImage:[UIImage imageNamed:@"list_surgery"]];
+//        cell.lbl_treat.text=@"会诊手术";
+//        
+//        return cell;
+//    }
+//    return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -342,13 +373,13 @@
     
     if (self.isFinished == NO) {
         
-        if ([[UserDataManager shareManager].userType isEqualToString:UserType]) {
+        if (indexPath.section == 0) {
             
             order = [GSOrder objectWithKeyValues:[self.arrayDotorUnFinished objectAtIndex:indexPath.row]];
             caseDetail.type = @"1";
             
             
-        }else if ([[UserDataManager shareManager].userType isEqualToString:ExpertType]){
+        }else if (indexPath.section == 1){
             
             order = [GSOrder objectWithKeyValues:[self.arrayExpertUnFinished objectAtIndex:indexPath.row]];
                       caseDetail.type = @"3";
@@ -360,13 +391,13 @@
         
         
         
-        if ([[UserDataManager shareManager].userType isEqualToString:UserType]) {
+        if (indexPath.section == 0) {
             
             order = [GSOrder objectWithKeyValues:[self.arrayDotorFinished objectAtIndex:indexPath.row]];
             
                       caseDetail.type = @"2";
             
-        }else if ([[UserDataManager shareManager].userType isEqualToString:ExpertType]){
+        }else if (indexPath.section == 1){
             
             order = [GSOrder objectWithKeyValues:[self.arrayExpertFinished objectAtIndex:indexPath.row]];
                         caseDetail.type = @"4";

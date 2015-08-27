@@ -7,6 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserRegisterCtrl">
             <connections>
+                <outlet property="btnImageHead" destination="vME-sT-9yw" id="RBN-6p-1iD"/>
+                <outlet property="btnImageId" destination="B0s-q2-pMv" id="Umm-W7-dL7"/>
+                <outlet property="btnImageZigezheng" destination="BwE-ie-aYq" id="8fJ-0T-ycu"/>
                 <outlet property="imgSexMan" destination="JMj-2b-rfj" id="M8I-6F-5ZS"/>
                 <outlet property="imgSexWoMan" destination="e06-UT-It1" id="dni-sP-aUk"/>
                 <outlet property="imgTypeDoctor" destination="qJt-8S-6NM" id="aSB-eF-uVn"/>
@@ -208,9 +211,12 @@
                                 <constraint firstAttribute="height" constant="87" id="RHe-Us-8Sq"/>
                                 <constraint firstAttribute="width" constant="87" id="hXg-MK-8gg"/>
                             </constraints>
-                            <state key="normal" image="bg0.png">
+                            <state key="normal" image="photo.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="setImageOfFeedBack:" destination="-1" eventType="touchUpInside" id="0ag-Kr-CZc"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0s-q2-pMv">
                             <rect key="frame" x="227" y="950" width="87" height="87"/>
@@ -218,17 +224,33 @@
                                 <constraint firstAttribute="height" constant="87" id="3vP-NN-dUs"/>
                                 <constraint firstAttribute="width" constant="87" id="BBy-Ac-9cQ"/>
                             </constraints>
-                            <state key="normal" image="bg0.png">
+                            <state key="normal" image="photo.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="setImageOfFeedBack:" destination="-1" eventType="touchUpInside" id="qjc-fy-cpH"/>
+                            </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg2.png" translatesAutoresizingMaskIntoConstraints="NO" id="Foe-5q-ITj">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Foe-5q-ITj">
                             <rect key="frame" x="44" y="18" width="68" height="68"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="68" id="GnG-xX-ydR"/>
                                 <constraint firstAttribute="height" constant="68" id="Pue-Zi-vWf"/>
                             </constraints>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vME-sT-9yw">
+                            <rect key="frame" x="44" y="18" width="68" height="68"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="68" id="lv9-NS-BYV"/>
+                                <constraint firstAttribute="width" constant="68" id="uq1-z4-9Ul"/>
+                            </constraints>
+                            <state key="normal" image="photo.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="setImageOfFeedBack:" destination="-1" eventType="touchUpInside" id="nds-Vq-0tC"/>
+                            </connections>
+                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账号类型" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zC7-W9-vCd">
                             <rect key="frame" x="128" y="31" width="100" height="16"/>
                             <constraints>
@@ -448,10 +470,10 @@
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ZM-ib-y3g">
-                            <rect key="frame" x="128" y="53" width="59" height="30"/>
+                            <rect key="frame" x="120" y="33" width="70" height="50"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="59" id="1Kl-Q8-cdN"/>
-                                <constraint firstAttribute="height" constant="30" id="O7H-ug-OgE"/>
+                                <constraint firstAttribute="width" constant="70" id="1Kl-Q8-cdN"/>
+                                <constraint firstAttribute="height" constant="50" id="O7H-ug-OgE"/>
                             </constraints>
                             <state key="normal">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -461,16 +483,16 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pmz-1E-glz">
-                            <rect key="frame" x="217" y="53" width="64" height="30"/>
+                            <rect key="frame" x="217" y="39" width="100" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="7h3-8J-iEm"/>
-                                <constraint firstAttribute="width" constant="64" id="hca-Dn-sct"/>
+                                <constraint firstAttribute="height" constant="44" id="7h3-8J-iEm"/>
+                                <constraint firstAttribute="width" constant="100" id="hca-Dn-sct"/>
                             </constraints>
                             <state key="normal">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="selectExpert:" destination="-1" eventType="touchDragInside" id="PlZ-TF-rgu"/>
+                                <action selector="selectExpert:" destination="-1" eventType="touchUpInside" id="13R-iT-8OQ"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nj8-3Q-JP2">
@@ -519,6 +541,7 @@
                         <constraint firstItem="gq4-6f-msl" firstAttribute="top" secondItem="vfZ-Ze-3B1" secondAttribute="top" constant="117" id="7sC-BK-akK"/>
                         <constraint firstItem="Rmt-rg-3J3" firstAttribute="top" secondItem="vfZ-Ze-3B1" secondAttribute="top" constant="443" id="8fE-tY-1g4"/>
                         <constraint firstItem="VqQ-ri-9Os" firstAttribute="top" secondItem="vfZ-Ze-3B1" secondAttribute="top" constant="433" id="9NJ-H7-0NQ"/>
+                        <constraint firstItem="Foe-5q-ITj" firstAttribute="top" secondItem="vME-sT-9yw" secondAttribute="bottom" constant="-68" id="9Ow-CV-fOj"/>
                         <constraint firstAttribute="centerX" secondItem="x9G-Qz-YEo" secondAttribute="centerX" constant="-72.5" id="A4p-JN-szl"/>
                         <constraint firstAttribute="centerX" secondItem="2mu-kB-wF6" secondAttribute="centerX" constant="-33.5" id="A72-Aj-2vx"/>
                         <constraint firstItem="92c-Qs-0Nl" firstAttribute="top" secondItem="vfZ-Ze-3B1" secondAttribute="top" constant="107" id="B58-kl-hZh"/>
@@ -572,6 +595,7 @@
                         <constraint firstItem="GAe-Cj-JU8" firstAttribute="top" secondItem="vfZ-Ze-3B1" secondAttribute="top" constant="715" id="iXw-Z2-8LC"/>
                         <constraint firstItem="JPD-gI-rO0" firstAttribute="top" secondItem="vfZ-Ze-3B1" secondAttribute="top" constant="555" id="ikN-Wk-tOQ"/>
                         <constraint firstItem="Fid-kr-hyb" firstAttribute="top" secondItem="vfZ-Ze-3B1" secondAttribute="top" constant="725" id="itS-mo-1R5"/>
+                        <constraint firstItem="Foe-5q-ITj" firstAttribute="leading" secondItem="vME-sT-9yw" secondAttribute="trailing" constant="-68" id="lUf-N4-qiy"/>
                         <constraint firstItem="B0s-q2-pMv" firstAttribute="top" secondItem="vfZ-Ze-3B1" secondAttribute="top" constant="950" id="m4G-pS-Ci4"/>
                         <constraint firstAttribute="centerX" secondItem="B0s-q2-pMv" secondAttribute="centerX" constant="-83" id="mZA-sN-n2C"/>
                         <constraint firstAttribute="centerX" secondItem="6XH-da-xeD" secondAttribute="centerX" constant="-33.5" id="nEu-h0-mIA"/>
@@ -579,7 +603,7 @@
                         <constraint firstAttribute="centerX" secondItem="Mne-Ls-Ozy" secondAttribute="centerX" constant="-72.5" id="oM4-f1-Ipb"/>
                         <constraint firstItem="sej-wg-J9V" firstAttribute="top" secondItem="vfZ-Ze-3B1" secondAttribute="top" constant="918" id="pGN-5W-3fK"/>
                         <constraint firstItem="pmz-1E-glz" firstAttribute="leading" secondItem="p4i-TG-dfa" secondAttribute="trailing" constant="-15" id="pHO-Kl-OEo"/>
-                        <constraint firstItem="9ZM-ib-y3g" firstAttribute="leading" secondItem="qJt-8S-6NM" secondAttribute="trailing" constant="-15" id="pO7-fc-Mmo"/>
+                        <constraint firstItem="9ZM-ib-y3g" firstAttribute="leading" secondItem="qJt-8S-6NM" secondAttribute="trailing" constant="-23" id="pO7-fc-Mmo"/>
                         <constraint firstItem="Foe-5q-ITj" firstAttribute="top" secondItem="vfZ-Ze-3B1" secondAttribute="top" constant="18" id="qtE-Xa-rfs"/>
                         <constraint firstItem="nj8-3Q-JP2" firstAttribute="leading" secondItem="JMj-2b-rfj" secondAttribute="trailing" constant="-15" id="rik-Vd-3Fs"/>
                         <constraint firstItem="BXZ-Uz-6yL" firstAttribute="top" secondItem="vfZ-Ze-3B1" secondAttribute="top" constant="61" id="sO1-ET-8Ge"/>
@@ -608,9 +632,8 @@
         </view>
     </objects>
     <resources>
-        <image name="bg0.png" width="1080" height="496"/>
-        <image name="bg2.png" width="1080" height="496"/>
         <image name="btn_nom.png" width="28" height="28"/>
         <image name="btn_pre.png" width="28" height="28"/>
+        <image name="photo.png" width="87" height="87"/>
     </resources>
 </document>

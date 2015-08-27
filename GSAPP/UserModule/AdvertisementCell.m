@@ -64,8 +64,10 @@
         
         NSString* strUrl = [[array objectAtIndex:i%(array.count)] objectForKey:@"uri"];
         
-        [imageView sd_setImageWithURL:[NSURL URLWithString:strUrl]
-                    placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
+        if (![[strUrl class] isSubclassOfClass:[NSNull class]]) {
+            [imageView sd_setImageWithURL:[NSURL URLWithString:strUrl]
+                         placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
+        }
         
     }
     

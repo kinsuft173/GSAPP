@@ -79,6 +79,10 @@ typedef void (^HKSignInResponse)(BOOL);
                       type:(NSInteger )type
                   complete:(HKSignInResponse)completeBlock;
 
+//上传文件
+- (void)server_createConsulationImageWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+- (void)server_createDoctorImageWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+
 //临时的jpush接口
 //- (void)server_jpushUserGenerate;
 //

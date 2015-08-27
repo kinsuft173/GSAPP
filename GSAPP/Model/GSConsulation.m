@@ -11,7 +11,13 @@
 @implementation GSConsulation
 
 
++ (NSDictionary *)objectClassInArray{
+    return @{@"consultationFiles" : [Consultationfiles class]};
+}
 
 
+@end
+
+@implementation Consultationfiles
 
 @end

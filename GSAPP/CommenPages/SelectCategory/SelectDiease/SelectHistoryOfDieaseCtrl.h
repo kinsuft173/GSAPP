@@ -10,7 +10,7 @@
 
 @protocol SelectHistoryOfDieaseDelegate <NSObject>
 
-- (void)handleHistoryOfDieaseSelectedWithDic:(NSDictionary*)dic;
+- (void)handleHistoryOfDieaseSelectedWithDic:(NSString*)dic;
 
 @end
 

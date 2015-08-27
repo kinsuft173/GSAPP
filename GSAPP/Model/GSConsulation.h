@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "GSExpert.h"
 
+@class Consultationfiles;
 @interface GSConsulation : NSObject
 
 
@@ -38,6 +39,10 @@
 
 @property (nonatomic, assign) NSInteger anamnesis_id;
 
+@property (nonatomic, copy) NSString *anamnesis;
+
+@property (nonatomic, copy) NSString *symptom;
+
 @property (nonatomic, copy) NSString *patient_hospital;
 
 @property (nonatomic, assign) NSInteger timely;
@@ -59,4 +64,31 @@
 @property (nonatomic, strong) GSExpert* doctor;
 
 
+
+///////
+
+
+
+
+@property (nonatomic, strong) NSArray *consultationFiles;
+
+
+
+
 @end
+@interface Consultationfiles : NSObject
+
+@property (nonatomic, copy) NSString *path;
+
+@property (nonatomic, assign) NSInteger id;
+
+@property (nonatomic, assign) NSInteger status;
+
+@property (nonatomic, assign) NSInteger consultation_id;
+
+@property (nonatomic, assign) NSInteger type;
+
+@property (nonatomic, copy) NSString *created_at;
+
+@end
+

@@ -18,7 +18,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h9P-Cz-ztE">
                         <rect key="frame" x="0.0" y="0.0" width="355" height="98"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list_more.png" translatesAutoresizingMaskIntoConstraints="NO" id="oMo-oG-XJz">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list_more_pre.png" translatesAutoresizingMaskIntoConstraints="NO" id="oMo-oG-XJz">
                                 <rect key="frame" x="315" y="0.0" width="32" height="98"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="98" id="Amo-Mf-uyl"/>
@@ -102,6 +102,6 @@
     </objects>
     <resources>
         <image name="bg1.png" width="1080" height="496"/>
-        <image name="list_more.png" width="20" height="20"/>
+        <image name="list_more_pre.png" width="20" height="20"/>
     </resources>
 </document>

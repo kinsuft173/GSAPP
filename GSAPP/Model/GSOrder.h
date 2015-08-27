@@ -30,7 +30,6 @@
 
 @property (nonatomic, strong) GSConsulation*  consultation;
 @property (nonatomic, strong) GSExpert*        orderDoctor;
-
-
+@property (nonatomic, strong) GSExpert*        doctor;
 
 @end

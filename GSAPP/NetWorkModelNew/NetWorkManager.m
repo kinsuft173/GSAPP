@@ -263,8 +263,7 @@
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    //test
-//    NSDictionary *parameters = @{@"doctor_id": @"1",@"patient_name":@"SDS",@"patient_sex": @"1",@"patient_age":@"1",@"patient_mobile": @"18672354399",@"patient_dept":@"SDS",@"symptom_id": @"1",@"patient_illness":@"SDS",@"anamnesis_id": @"1",@"timely":@"1",@"other_order":@"1",@"expert_id":@"1"};
+
     
     NSLog(@"dic_server_createConsultWithDic = %@",dic);
     
@@ -276,18 +275,11 @@
         
         
         NSLog(@"server_createConsultWithDic===>: %@", responseObject);
-        
-//     [self server_jpushUserGenerate];
-        
-//        if ([[responseObject objectForKey:@"statusCode"] integerValue] == NET_SUCCESS) {
+
         
             completeHandle(responseObject);
             
-//        }else{
-        
-//            failHandle();
-        
-//        }
+
         
         
         
@@ -300,17 +292,13 @@
         
     }];
     
-//     [self server_BasePost:dic url:[NSString stringWithFormat:@"%@%@",SERVER,ORDER_CREATE_URL]];
+   //  [self server_BasePost:dic url:[NSString stringWithFormat:@"%@%@",SERVER,CONSULATION_CREATE_URL]];
     
 }
 
 
 - (void)server_fetchConsultWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
-    //test
-//    NSDictionary *parameters = @{@"id": @"1",@"patient_name":@"SDS",@"patient_sex": @"1",@"patient_age":@"1",@"patient_mobile": @"18672354399",@"patient_dept":@"SDS",@"symptom_id": @"1",@"patient_illness":@"SDS",@"anamnesis_id": @"1",@"timely":@"1",@"other_order":@"1"};
     
     NSMutableDictionary* dicParmas = [NSMutableDictionary dictionaryWithDictionary:dic];
     
@@ -318,10 +306,46 @@
     
     [dicParmas setObject:@"-created_at" forKey:@"sort"];
     
+    if (dic[@"expand"] == nil) {
+        
+        [dicParmas setValue:@"consultationFiles" forKey:@"expand"];
+    }
+    
+    NSLog(@"参数=%@,URl=%@",dicParmas,[NSString stringWithFormat:@"%@%@",SERVER,CONSULATION_FETCH_URL]);
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];    
     [manager GET:[NSString stringWithFormat:@"%@%@",SERVER,CONSULATION_FETCH_URL] parameters:dicParmas success:^(AFHTTPRequestOperation *operation, id responseObject){
         
-        //tst
-//        NSLog(@"server_fetchConsultWithDic == >JSON: %@", responseObject);
+        completeHandle(responseObject);
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+    }];
+//    [self server_BaseGet:dicParmas url:[NSString stringWithFormat:[NSString stringWithFormat:@"%@%@",SERVER,CONSULATION_FETCH_URL]]];
+}
+
+- (void)server_updateConsultWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+
+//    [self server_BasePost:dic url:[NSString stringWithFormat:@"http://115.28.85.76/study/insert2.php"]];
+//    [[NetworkManager shareMgr] server_jpushUserGenerate];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    //test
+    //    NSDictionary *parameters = @{@"doctor_id":@"1",@"order_doctor_id":@"2",@"consultation_id":@"1"};
+    
+    NSMutableDictionary* dicTemp = [NSMutableDictionary dictionaryWithDictionary:dic];
+    
+    [dicTemp removeObjectForKey:@"id"];
+    
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@&id=%@",SERVER,CONSULATION_UPDATA_URL,[dic objectForKey:@"id"]] parameters:dicTemp success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        NSLog(@"server_updateConsultWithDic: %@", responseObject);
+        
         
         completeHandle(responseObject);
         
@@ -332,14 +356,33 @@
         
     }];
     
+
 }
 
-- (void)server_updateConsultWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+- (void)server_createConsulationImageWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
 {
 
-    [self server_BasePost:dic url:[NSString stringWithFormat:@"http://115.28.85.76/study/insert2.php"]];
-    [[NetworkManager shareMgr] server_jpushUserGenerate];
+    
 
+    NSMutableDictionary* dicP = [NSMutableDictionary dictionaryWithDictionary:dic];
+    
+    [self server_BasePost:dicP url:[NSString stringWithFormat:@"%@%@",SERVER,CONSULATION_FETCH_FILE_CREATE_URL]];
+    
+    
+
+}
+
+- (void)server_createDoctorImageWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    
+    
+    
+    NSMutableDictionary* dicP = [NSMutableDictionary dictionaryWithDictionary:dic];
+    
+    [self server_BasePost:dicP url:[NSString stringWithFormat:@"%@%@",SERVER,Doctor_FETCH_FILE_CREATE_URL]];
+    
+    
+    
 }
 
 
@@ -356,7 +399,6 @@
         
         NSLog(@"server_createOrderWithDic: %@", responseObject);
         
-        [self server_jpushDoctorGenerate];
         
         completeHandle(responseObject);
         
@@ -364,7 +406,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"Error: %@", error);
-        
+        completeHandle(nil);
     }];
 
     
@@ -964,7 +1006,7 @@
 
 - (NSDictionary*)server_BaseGet:(NSDictionary*)dic url:(NSString*)ctUrl
 {
-    NSString* strUrl = [NSString stringWithFormat:@"%@%@",SERVER_JPUSH,@"PushUser.php"];
+    NSString* strUrl =  ctUrl;//[NSString stringWithFormat:@"%@%@",SERVER_JPUSH,@"PushUser.php"];
     
     strUrl = [strUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
@@ -1035,7 +1077,8 @@
         
         id value = dic[key];
         if (([value isKindOfClass:[NSString class]] && ((NSString*)value).length == 0) ||
-            value == [NSNull null] )
+            value == [NSNull null]||
+            [key isEqualToString:@"files[]" ] )
         {
             continue;
         }
@@ -1045,6 +1088,22 @@
         [body appendData:[[NSString stringWithFormat:@"%@\r\n", value] dataUsingEncoding:NSUTF8StringEncoding]];
     }
     
+    
+    NSArray* imgArray = dic[@"files[]"];
+    
+    if (imgArray) {
+        
+        for (int i = 0; i < imgArray.count; i++) {
+            
+            NSData* imgData = [imgArray objectAtIndex:i];
+            
+            [body appendData:[[NSString stringWithFormat:@"--%@\r\n", BoundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"image.jpg\"\r\n", @"files[]"] dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:imgData];
+            [body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        }
+    }
     
     [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", BoundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
     
@@ -1105,7 +1164,7 @@
     else
     {
         
-
+        
         
         
         
@@ -1136,4 +1195,7 @@
 
 
 
+
 @end
+
+

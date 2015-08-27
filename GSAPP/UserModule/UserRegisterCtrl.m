@@ -9,8 +9,9 @@
 #import "UserRegisterCtrl.h"
 #import "NetWorkManager.h"
 #import "MBProgressHUD.h"
+#import "CameraCtrl.h"
 
-@interface UserRegisterCtrl ()
+@interface UserRegisterCtrl ()<UIActionSheetDelegate>
 
 
 @property (nonatomic, strong) IBOutlet UITextField* textFiledCity;
@@ -32,9 +33,24 @@
 @property (nonatomic, strong) IBOutlet UIImageView* imgTypeExpert;
 @property (nonatomic, strong) IBOutlet UIImageView* imgSexMan;
 @property (nonatomic, strong) IBOutlet UIImageView* imgSexWoMan;
+@property (nonatomic, strong) IBOutlet UIImageView* imgId;
+@property (nonatomic, strong) IBOutlet UIImageView* imgZigezheng;
+@property (nonatomic, strong) IBOutlet UIImageView* imgHead;
+@property (nonatomic, strong) IBOutlet UIButton* btnImageZigezheng;
+@property (nonatomic, strong) IBOutlet UIButton* btnImageId;
+@property (nonatomic, strong) IBOutlet UIButton* btnImageHead;
+
+@property NSInteger numOfSelect;
+@property BOOL isHanZigezheng;
+@property BOOL isHanId;
+@property BOOL isHanHead;
 
 @property NSInteger strType;
 @property NSInteger strSex;
+
+@property (nonatomic, strong)  UIImage* imgZigezhenghahhah;
+@property (nonatomic, strong)  UIImage* imgIdhehe;
+@property (nonatomic, strong)  UIImage* imgHeadHehe;
 
 @property (nonatomic, strong) NSArray* arrayText;
 
@@ -417,6 +433,93 @@
             [[NetworkManager shareMgr] server_createDoctorsWithDic:dicDoctor completeHandle:^(NSDictionary *responseDoctor) {
                 
                 
+                if (self.isHanId || self.isHanZigezheng||self.isHanHead) {
+                    
+                    
+                    NSMutableDictionary* dicNew = [[NSMutableDictionary alloc] init];
+                    
+                    [dicNew setObject:[[response objectForKey:@"data"] objectForKey:@"id"] forKey:@"doctor_id"];
+                    
+                    [dicNew setObject:@"path" forKey:@"filesField"];
+                    
+                    NSInteger num = self.isHanId + self.isHanZigezheng + self.isHanHead;
+                    
+                    NSMutableArray* array = [[NSMutableArray alloc] init];
+                
+                    
+                    if (self.isHanHead) {
+                        
+                        [array addObject:UIImagePNGRepresentation(self.imgHeadHehe)];
+                        
+                    }
+                    
+                    if (self.isHanZigezheng) {
+                        
+                        [array addObject:UIImagePNGRepresentation(self.imgZigezhenghahhah)];
+                        
+                    }
+                    
+                    if (self.isHanId) {
+                        
+                        [array addObject:UIImagePNGRepresentation(self.imgIdhehe)];
+                        
+                    }
+                    
+                    
+                    if (num == 1) {
+                        
+                        if (self.isHanId) {
+                            [dicNew setObject:@"3" forKey:@"type"];
+                        }
+                        
+                        if (self.isHanHead) {
+                            [dicNew setObject:@"1" forKey:@"type"];
+                        }
+                        
+                        if (self.isHanZigezheng) {
+                            [dicNew setObject:@"2" forKey:@"type"];
+                        }
+                        
+                        
+                        
+                    }else if (num == 2){
+                        
+                        if (self.isHanId == NO) {
+                            [dicNew setObject:@"1,2" forKey:@"multiFields[type]"];
+                        }
+                        
+                        if (self.isHanHead == NO) {
+                            [dicNew setObject:@"2,3" forKey:@"multiFields[type]"];
+                        }
+                        
+                        if (self.isHanZigezheng == NO) {
+                            [dicNew setObject:@"1,3" forKey:@"multiFields[type]"];
+                        }
+                        
+                        
+                    }else{
+                        
+                        [dicNew setObject:@"1,2,3" forKey:@"multiFields[type]"];
+                        
+                        
+                    }
+                    
+                    [dicNew setObject:array forKey:@"files[]"];
+                    
+                    
+                    [[NetworkManager shareMgr] server_createDoctorImageWithDic:dicNew completeHandle:^(NSDictionary *response1) {
+                        
+                        
+                        
+                    }];
+
+                    
+                    
+                    
+                    
+                }
+                
+                
                 hud.hidden = YES;
                
                 if ([[response objectForKey:@"success"] boolValue] == YES) {
@@ -447,20 +550,11 @@
         
 
             hud.hidden = YES;
-        
-        
+
         }
         
-        
-        
-        
     }];
-    
-    
-    
 
-    
-    
 }
 
 -(void)back
@@ -525,6 +619,107 @@
     
     self.imgSexMan.image = [UIImage imageNamed:@"btn_nom.png"];
     self.imgSexWoMan.image = [UIImage imageNamed:@"btn_pre.png"];
+    
+    
+}
+
+-(IBAction)setImageOfFeedBack:(UIButton*)sender
+{
+    
+    if (sender == self.btnImageId) {
+        
+        self.numOfSelect = 1;
+        
+    }else if(sender == self.btnImageHead ){
+    
+        self.numOfSelect = 2;
+    
+    }else{
+    
+        self.numOfSelect = 0;
+    
+    }
+   
+    
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        UIActionSheet* sheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                           delegate:self
+                                                  cancelButtonTitle:@"取消"
+                                             destructiveButtonTitle:nil
+                                                  otherButtonTitles:@"拍照", @"相簿", nil];
+        
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+            [sheet showInView:self.view];
+        else
+            [sheet showFromRect:CGRectMake(600, 0, 100, 80) inView:self.view animated:YES];
+        
+    }
+    else
+    {
+        [self goLibrary];
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex)
+    {
+        case 0: // camera
+            [self goCamera];
+            break;
+            
+        case 1: // album
+            [self goLibrary];
+            break;
+            
+        case 2: // cancel
+            break;
+    }
+}
+
+- (void)goCamera
+{
+    CameraCtrl *camera=[[CameraCtrl alloc] init];
+    camera.cameraDelegate=self;
+    
+    camera.count= self.numOfSelect;
+    camera.sourceType=UIImagePickerControllerSourceTypeCamera;
+    [self presentViewController:camera animated:YES completion:nil];
+}
+
+- (void)goLibrary
+{
+    CameraCtrl *camera=[[CameraCtrl alloc] init];
+    camera.cameraDelegate= self;
+    camera.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
+    camera.count=self.numOfSelect;
+    [self presentViewController:camera animated:YES completion:nil];
+}
+
+-(void)getImage:(UIImage *)image whichNum:(NSUInteger)count
+{
+    if (count==1) {
+        
+        self.isHanId = YES;
+        self.imgIdhehe = image;
+        [self.btnImageId setImage:image forState:UIControlStateNormal];
+        
+    }
+    else if(count == 0)
+    {
+        self.isHanZigezheng = YES;
+        self.imgZigezhenghahhah = image;
+        [self.btnImageZigezheng setImage:image forState:UIControlStateNormal];
+        
+    }else{
+    
+        self.isHanHead= YES;
+        self.imgHeadHehe = image;
+        [self.btnImageHead setImage:image forState:UIControlStateNormal];
+    
+    }
+
     
     
 }

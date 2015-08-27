@@ -251,6 +251,16 @@
                 }];
                 
                 
+                NSDictionary* dicConsult = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInteger:self.orderGS
+                                                                                  .consultation_id],@"id",@3,@"status",nil];
+                
+                [[NetworkManager shareMgr] server_updateConsultWithDic:dicConsult completeHandle:^(NSDictionary *dic) {
+                    
+                    ;
+                    
+                }];
+                
+                
                 
 //                [[NSNotificationCenter defaultCenter] postNotificationName:@"orderUpdate" object:nil];
                 
@@ -265,6 +275,15 @@
                 if (mStr != nil && ![mStr isEqualToString:@""]) {
                     //                    [CTCommon addAlertWithTitle:[resultDic objectForKey:@"memo"]];
                 }
+                
+                NSDictionary* dic = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInteger:self.orderGS
+                                                                                  .id],@"id",@2,@"status",nil];
+                
+                [[NetworkManager shareMgr] server_updateOrderWithDic:dic completeHandle:^(NSDictionary *dic) {
+                    
+                    ;
+                    
+                }];
                 
             }
             

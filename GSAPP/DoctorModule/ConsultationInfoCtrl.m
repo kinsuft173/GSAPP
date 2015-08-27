@@ -11,6 +11,7 @@
 #import "NetworkManager.h"
 #import "PhotoBroswerVC.h"
 #import "UserDataManager.h"
+#import <UIImageView+WebCache.h>
 
 @interface ConsultationInfoCtrl ()
 
@@ -100,8 +101,8 @@
     self.lblPatientAge.text =  [NSString stringWithFormat:@"%ld",self.consulation.patient_age];
     self.lblPatientTel.text = self.consulation.patient_mobile;
     self.lblPatientDisease.text = self.consulation.patient_illness;
-    self.lblPatientMedicalHistory.text =  [NSString stringWithFormat:@"%ld",self.consulation.anamnesis_id];
-    self.lblPatientSymptom.text =  [NSString stringWithFormat:@"%ld",self.consulation.symptom_id];
+    self.lblPatientMedicalHistory.text =  self.consulation.anamnesis;//[NSString stringWithFormat:@"%ld",self.consulation.anamnesis_id];
+    self.lblPatientSymptom.text =  self.consulation.symptom;//[NSString stringWithFormat:@"%ld",self.consulation.symptom_id];
     self.lblPatientMark.text = self.consulation.remark;
 //    self.lblTime.text = self.consulation.
     
@@ -113,6 +114,57 @@
     
     self.txtPatientMark.textColor = [HKCommen getColor:@"6A6A6A"];
     self.txtPurpose.textColor     = [HKCommen getColor:@"6A6A6A"];
+    
+    
+    
+    if (self.consulation.consultationFiles.count != 0) {
+        
+        for (int i = 0; i < self.self.consulation.consultationFiles.count ; i ++) {
+            
+            
+            Consultationfiles* file =[self.consulation.consultationFiles objectAtIndex:i];
+            
+            if (file.type == 1 ) {
+                
+                
+                if (![[file.path class] isSubclassOfClass:[NSNull class]]) {
+                    
+                    [self.img_left sd_setImageWithURL:[NSURL URLWithString:file.path]
+                                 placeholderImage:[UIImage imageNamed:@"photo"] options:SDWebImageContinueInBackground];
+                }
+                
+                
+            }
+            
+            if (file.type == 2 ) {
+                
+                
+                if (![[file.path class] isSubclassOfClass:[NSNull class]]) {
+                    
+                    [self.img_middle sd_setImageWithURL:[NSURL URLWithString:file.path]
+                                     placeholderImage:[UIImage imageNamed:@"photo"] options:SDWebImageContinueInBackground];
+                }
+                
+                
+            }
+            
+            if (file.type == 3 ) {
+                
+                
+                if (![[file.path class] isSubclassOfClass:[NSNull class]]) {
+                    
+                    [self.img_right sd_setImageWithURL:[NSURL URLWithString:file.path]
+                                     placeholderImage:[UIImage imageNamed:@"photo"] options:SDWebImageContinueInBackground];
+                }
+                
+                
+            }
+        
+        
+        }
+        
+        
+    }
 
 
 }
@@ -197,7 +249,16 @@
     
     [[NetworkManager shareMgr] server_createOrderWithDic:parameters completeHandle:^(NSDictionary * dic) {
         
-        [self.navigationController popViewControllerAnimated:YES];
+        if (dic) {
+            
+            [HKCommen addAlertViewWithTitel:@"接单成功"];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            
+            
+        }
+        
+        
         
     }];
 }
@@ -205,13 +266,33 @@
 - (IBAction)confuse:(id)sender
 {
     
-    
-//    [[NetworkManager shareMgr] server_updateOrderWithDic:nil completeHandle:^(NSDictionary * dic) {
-    
-        [self.navigationController popViewControllerAnimated:YES];
-        
-//    }];
 
+    
+    if (self.consulation.other_order == 0 && self.consulation.expert_id == [UserDataManager shareManager].userId.integerValue ) {
+        
+        
+            NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:self.consulation.id],@"id",@4,@"status", nil];
+        
+                [[NetworkManager shareMgr] server_updateConsultWithDic:dic completeHandle:^(NSDictionary * dic) {
+        
+                [self.navigationController popViewControllerAnimated:YES];
+        
+                    if (dic) {
+        
+                        [HKCommen addAlertViewWithTitel:@"已拒绝处理该咨询"];
+        
+                        [self.navigationController popViewControllerAnimated:YES];
+                        
+                    }
+                    
+            }];
+        
+        
+        
+    }
+    
+
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -223,14 +304,7 @@
 //    hud.mode = MBProgressHUDModeIndeterminate;
 //    hud.labelText = @"正在提交会诊处理结果...";
     
-    NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:self.consulation.id],@"id",@2,@"status", nil];
-    
-    [[NetworkManager shareMgr] server_updateConsultWithDic:dic completeHandle:^(NSDictionary * dic) {
-    
 
-    }];
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateConsulation" object:nil];
 
 }
 

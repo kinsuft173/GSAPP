@@ -636,7 +636,7 @@
                                         <action selector="Choose_SexGirl:" destination="-1" eventType="touchUpInside" id="vpH-md-WiW"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYa-su-gPF">
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYa-su-gPF">
                                     <rect key="frame" x="92" y="680" width="223" height="38"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="38" id="GGN-hd-UlQ"/>
