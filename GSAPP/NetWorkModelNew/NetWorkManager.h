@@ -24,6 +24,9 @@ typedef void (^HKSignInResponse)(BOOL);
 - (void)server_fetchUserWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 - (void)server_updateUserWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 
+//普医生
+- (void)server_fetchNomalDoctorsWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+
 //广告部分
 - (void)server_fetchAdvertisementWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 

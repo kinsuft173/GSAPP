@@ -209,6 +209,38 @@
     
 }
 
+//普医生
+- (void)server_fetchNomalDoctorsWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    //test
+    //    NSDictionary *parameters = @{@"recommended": @"0"};
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:dic];
+    
+    if (![parameters objectForKey:@"expand"]) {
+        
+        
+        [parameters setValue:@"doctorFiles" forKey:@"expand"];
+    }
+    
+    [manager GET:[NSString stringWithFormat:@"%@%@",SERVER,NOMAL_DOCTOR_FETCH_URL] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        
+        NSLog(@"JSON: %@", responseObject);
+        
+        completeHandle(responseObject);
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+    }];
+    
+}
+
 
 - (void)server_createDoctorsWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
 {
@@ -375,7 +407,7 @@
 - (void)server_createDoctorImageWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
 {
     
-    
+    NSLog(@"server_createDoctorImageWithDic===>Params.Dic = %@",dic);
     
     NSMutableDictionary* dicP = [NSMutableDictionary dictionaryWithDictionary:dic];
     
