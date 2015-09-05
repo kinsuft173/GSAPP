@@ -8,6 +8,8 @@
 
 #import "RecommendDoctorCell.h"
 #import <UIImageView+WebCache.h>
+#import "GSExpert.h"
+#import "MJExtension.h"
 
 @implementation RecommendDoctorCell
 
@@ -58,9 +60,24 @@
             if (array.count != 0) {
                 
                 NSLog(@"URL = %@",[[[item objectForKey:@"doctorFiles"] objectAtIndex:0] objectForKey:@"path"]);
+                
+                NSArray* files = [item objectForKey:@"doctorFiles"];
+                
+                for (int i = 0; i < files.count; i ++) {
+                    
+                    Doctorfiles* file = [Doctorfiles  objectWithKeyValues:[files objectAtIndex:i]];
+                    
+                    if (file.type == 1) {
+                        
+                        
+                        [imageView sd_setImageWithURL:file.path
+                                             placeholderImage:[UIImage imageNamed:@"loading-ios"] options:SDWebImageContinueInBackground];
+                    }
+                    
+                }
 //                 [[[item objectForKey:@"doctorFiles"] objectAtIndex:0] objectForKey:@"path"]
-                [imageView sd_setImageWithURL: [[[item objectForKey:@"doctorFiles"] objectAtIndex:0] objectForKey:@"path"]
-                             placeholderImage:[UIImage imageNamed:@"loading-ios"] options:SDWebImageContinueInBackground];
+//                [imageView sd_setImageWithURL: [[[item objectForKey:@"doctorFiles"] objectAtIndex:0] objectForKey:@"path"]
+//                             placeholderImage:[UIImage imageNamed:@"loading-ios"] options:SDWebImageContinueInBackground];
             }
             
 

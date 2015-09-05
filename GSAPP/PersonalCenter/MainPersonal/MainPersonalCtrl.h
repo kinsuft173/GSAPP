@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CameraCtrl.h"
 @interface MainPersonalCtrl : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *myTable;
 

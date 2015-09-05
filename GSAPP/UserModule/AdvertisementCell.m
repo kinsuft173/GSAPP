@@ -62,7 +62,7 @@
         
         self.myScroll.pagingEnabled = YES;
         
-        NSString* strUrl = [[array objectAtIndex:i%(array.count)] objectForKey:@"uri"];
+        NSString* strUrl = [[array objectAtIndex:i%(array.count)] objectForKey:@"path"];
         
         if (![[strUrl class] isSubclassOfClass:[NSNull class]]) {
             [imageView sd_setImageWithURL:[NSURL URLWithString:strUrl]

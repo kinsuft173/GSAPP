@@ -215,10 +215,19 @@
         
         if (self.expert.doctorFiles.count != 0) {
             
-            Doctorfiles* files = [self.expert.doctorFiles objectAtIndex:0];
+            for (int i = 0; i < self.expert.doctorFiles.count; i ++) {
+                
+                Doctorfiles* file = [self.expert.doctorFiles objectAtIndex:i];
+                
+                if (file.type == 1) {
+                    
+                    
+                    [cell.imgHeadPhoto sd_setImageWithURL:file.path
+                                         placeholderImage:[UIImage imageNamed:@"loading-ios"] options:SDWebImageContinueInBackground];
+                }
+                
+            }
             
-            [cell.imgHeadPhoto sd_setImageWithURL:files.path
-                              placeholderImage:[UIImage imageNamed:@"loading-ios"] options:SDWebImageContinueInBackground];
         }
         
         if ([HKCommen compulateTheHightOfAttributeLabelWithWidth:self.view.frame.size.width - 20 WithContent:self.content WithFontSize:13] < 48) {
@@ -392,7 +401,7 @@ heightForHeaderInSection:(NSInteger)section
     hud.labelText = @"正在加载...";
     
     
-    NSDictionary* dic = @{@"doctor_id":[UserDataManager shareManager].userId,@"favorites_doctor_id":[NSString stringWithFormat:@"%d",self.expert.id]};
+    NSDictionary* dic = @{@"doctor_id":[NSNumber numberWithInteger:[UserDataManager shareManager].user.doctor.id],@"favorite_doctor_id":[NSNumber numberWithInteger:self.expert.id]};
     
     [[NetworkManager shareMgr]server_createFavoritesWithDic:dic completeHandle:^(NSDictionary *dic) {
        

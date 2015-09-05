@@ -438,7 +438,10 @@
                     
                     NSMutableDictionary* dicNew = [[NSMutableDictionary alloc] init];
                     
-                    [dicNew setObject:[[response objectForKey:@"data"] objectForKey:@"id"] forKey:@"doctor_id"];
+                    
+                    NSLog(@"server_createDoctorsWithDic ==>Inner.Dic = %@",[responseDoctor objectForKey:@"data"]);
+                    
+                    [dicNew setObject:[[responseDoctor objectForKey:@"data"] objectForKey:@"id"] forKey:@"doctor_id"];
                     
                     [dicNew setObject:@"path" forKey:@"field"];
                     
@@ -523,7 +526,6 @@
                 hud.hidden = YES;
                
                 if ([[response objectForKey:@"success"] boolValue] == YES) {
-                    
                     
                     
                     [self.navigationController popToRootViewControllerAnimated:YES];

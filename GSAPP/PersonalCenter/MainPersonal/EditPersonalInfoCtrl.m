@@ -10,6 +10,8 @@
 #import "HKCommen.h"
 #import "UserDataManager.h"
 #import "NetWorkManager.h"
+#import "MBProgressHUD.h"
+#import "CameraCtrl.h"
 
 @interface EditPersonalInfoCtrl ()<UIActionSheetDelegate>
 
@@ -33,9 +35,7 @@
 @property (nonatomic, strong) IBOutlet UIImageView* imgZigezheng;
 @property (nonatomic, strong) IBOutlet UIImageView* imgHead;
 
-@property (nonatomic, strong) IBOutlet UIButton* btnImageZigezheng;
-@property (nonatomic, strong) IBOutlet UIButton* btnImageId;
-@property (nonatomic, strong) IBOutlet UIButton* btnImageHead;
+
 
 @property NSInteger numOfSelect;
 @property BOOL isHanZigezheng;
@@ -44,9 +44,6 @@
 
 @property NSInteger strType;
 
-@property (nonatomic, strong)  UIImage* imgZigezhenghahhah;
-@property (nonatomic, strong)  UIImage* imgIdhehe;
-@property (nonatomic, strong)  UIImage* imgHeadHehe;
 
 @property (nonatomic, strong) NSArray* arrayText;
 
@@ -107,6 +104,37 @@
         }
     }
 
+    GSExpert* user = [UserDataManager shareManager].user.doctor;
+    
+    self.textFiledAdress.text = user.address;
+    self.textFiledDept.text = user.dept;
+    self.textFiledEmail.text = user.email;
+    self.textFiledExpertise.text = user.expertise;
+    self.textFiledHospital.text = user.hospital;
+    self.txt_Intro.text = user.intro;
+    self.textFiledQQ.text = user.qq;
+    self.textFiledPhone.text = user.mobile;
+    self.textFiledPositon.text = user.position;
+    self.textFiledWeixin.text = user.weixin;
+    self.textFiledIdCard.text = user.identity;
+
+//    self.textFiledProfeciton.text = user.
+    
+    [self.imgHead sd_setImageWithURL:[NSURL URLWithString:self.strHeadUrl]
+                         placeholderImage:[UIImage imageNamed:@"photo"] options:SDWebImageContinueInBackground];
+    
+    [self.imgZigezheng sd_setImageWithURL:[NSURL URLWithString:self.strZigezhengUrl]
+                         placeholderImage:[UIImage imageNamed:@"photo"] options:SDWebImageContinueInBackground];
+    
+    [self.imgId sd_setImageWithURL:[NSURL URLWithString:self.strIdUrl]
+                         placeholderImage:[UIImage imageNamed:@"photo"] options:SDWebImageContinueInBackground];
+    
+    
+    self.txt_Name.text = user.name;
+    self.txt_phone.text = user.mobile;
+    self.txt_Sex.text = (user.sex == 1)?@"男":@"女";
+    
+
 }
 
 -(void)back
@@ -117,9 +145,13 @@
 -(void)commitEdit
 {
     NSMutableDictionary* dicDoctor = [[NSMutableDictionary alloc] init];
+    
+    [dicDoctor setObject:[NSString stringWithFormat:@"%d",[UserDataManager shareManager].user.doctor.id] forKey:@"id"];
 //    NSMutableDictionary* dicDoctor;
     
-    [dicDoctor setObject:[UserDataManager shareManager].user.mobile forKey:@"username"];
+  //  NSLog(@"[UserDataManager shareManager].user.mobile = %@",[UserDataManager shareManager].user.username);
+    
+    [dicDoctor setObject:[UserDataManager shareManager].user.username forKey:@"username"];
 
     if (!self.textFiledHospital.text || [self.textFiledHospital.text isEqualToString:@""]) {
         
@@ -157,17 +189,17 @@
         
     }
     
-    if (!self.textFiledProfeciton.text || [self.textFiledProfeciton.text isEqualToString:@""]) {
-        
-        [HKCommen addAlertViewWithTitel:@"请填写职称"];
-        
-        return;
-        
-    }else{
-        
-        [dicDoctor setObject:self.textFiledProfeciton.text forKey:@"title"];
-        
-    }
+//    if (!self.textFiledProfeciton.text || [self.textFiledProfeciton.text isEqualToString:@""]) {
+//        
+//        [HKCommen addAlertViewWithTitel:@"请填写职称"];
+//        
+//        return;
+//        
+//    }else{
+//        
+//        [dicDoctor setObject:self.textFiledProfeciton.text forKey:@"title"];
+//        
+//    }
     
     if (!self.textFiledExpertise.text || [self.textFiledExpertise.text isEqualToString:@""]) {
         
@@ -233,7 +265,7 @@
     //
     //        }else{
     
-    [dicDoctor setObject:[UserDataManager shareManager].user.mobile forKey:@"mobile"];
+    [dicDoctor setObject:[UserDataManager shareManager].user.username forKey:@"mobile"];
     
     //        }
     
@@ -249,7 +281,13 @@
     }
     
     
-    [[NetworkManager shareMgr] server_createDoctorsWithDic:dicDoctor completeHandle:^(NSDictionary *responseDoctor) {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"正在加载...";
+    
+    
+    [[NetworkManager shareMgr] server_updateExpertWithDic:dicDoctor completeHandle:^(NSDictionary *responseDoctor) {
         
         
         if (self.isHanId || self.isHanZigezheng||self.isHanHead) {
@@ -257,7 +295,7 @@
             
             NSMutableDictionary* dicNew = [[NSMutableDictionary alloc] init];
             
-      //      [dicNew setObject:[[response objectForKey:@"data"] objectForKey:@"id"] forKey:@"doctor_id"];
+           [dicNew setObject:[NSString stringWithFormat:@"%d",[UserDataManager shareManager].user.doctor.id] forKey:@"doctor_id"];
             
             [dicNew setObject:@"path" forKey:@"field"];
             
@@ -328,6 +366,17 @@
             
             [[NetworkManager shareMgr] server_createDoctorImageWithDic:dicNew completeHandle:^(NSDictionary *response1) {
                 
+                if ([[response1 objectForKey:@"success"] boolValue] == YES) {
+                    
+                    //[UserDataManager shareManager].user.doctor.doctorFiles = [GSExpert objectWithKeyValues:[responseDoctor objectForKey:@"data"]];
+                    
+                    
+                    
+                    [self.navigationController popToRootViewControllerAnimated:YES];
+                    
+                    
+                }
+                
                 
                 
             }];
@@ -341,9 +390,9 @@
         
         hud.hidden = YES;
         
-        if ([[response objectForKey:@"success"] boolValue] == YES) {
+        if ([[responseDoctor objectForKey:@"success"] boolValue] == YES) {
             
-            
+            [UserDataManager shareManager].user.doctor = [GSExpert objectWithKeyValues:[responseDoctor objectForKey:@"data"]];
             
             [self.navigationController popToRootViewControllerAnimated:YES];
             
@@ -365,12 +414,7 @@
     
     
     
-}else{
-    
-    
-    hud.hidden = YES;
-    
-}
+
 
 
 
@@ -395,5 +439,106 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+
+-(IBAction)setImageOfFeedBack:(UIButton*)sender
+{
+    
+    if (sender == self.btnImageId) {
+        
+        self.numOfSelect = 1;
+        
+    }else if(sender == self.btnImageHead ){
+        
+        self.numOfSelect = 2;
+        
+    }else{
+        
+        self.numOfSelect = 0;
+        
+    }
+    
+    
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        UIActionSheet* sheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                           delegate:self
+                                                  cancelButtonTitle:@"取消"
+                                             destructiveButtonTitle:nil
+                                                  otherButtonTitles:@"拍照", @"相簿", nil];
+        
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+            [sheet showInView:self.view];
+        else
+            [sheet showFromRect:CGRectMake(600, 0, 100, 80) inView:self.view animated:YES];
+        
+    }
+    else
+    {
+        [self goLibrary];
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex)
+    {
+        case 0: // camera
+            [self goCamera];
+            break;
+            
+        case 1: // album
+            [self goLibrary];
+            break;
+            
+        case 2: // cancel
+            break;
+    }
+}
+
+- (void)goCamera
+{
+    CameraCtrl *camera=[[CameraCtrl alloc] init];
+    camera.cameraDelegate=self;
+    
+    camera.count= self.numOfSelect;
+    camera.sourceType=UIImagePickerControllerSourceTypeCamera;
+    [self presentViewController:camera animated:YES completion:nil];
+}
+
+- (void)goLibrary
+{
+    CameraCtrl *camera=[[CameraCtrl alloc] init];
+    camera.cameraDelegate= self;
+    camera.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
+    camera.count=self.numOfSelect;
+    [self presentViewController:camera animated:YES completion:nil];
+}
+
+-(void)getImage:(UIImage *)image whichNum:(NSUInteger)count
+{
+    if (count==1) {
+        
+        self.isHanId = YES;
+        self.imgIdhehe = image;
+        [self.btnImageId setImage:image forState:UIControlStateNormal];
+        
+    }
+    else if(count == 0)
+    {
+        self.isHanZigezheng = YES;
+        self.imgZigezhenghahhah = image;
+        [self.btnImageZigezheng setImage:image forState:UIControlStateNormal];
+        
+    }else{
+        
+        self.isHanHead= YES;
+        self.imgHeadHehe = image;
+        [self.btnImageHead setImage:image forState:UIControlStateNormal];
+        
+    }
+    
+    
+    
+}
 
 @end

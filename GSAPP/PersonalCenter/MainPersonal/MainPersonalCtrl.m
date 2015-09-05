@@ -22,6 +22,7 @@
 #import "LoginOutCell.h"
 #import "SIAlertView.h"
 #import "UserDataManager.h"
+#import "NetWorkManager.h"
 
 @interface MainPersonalCtrl ()<logOut>
 @property (nonatomic,strong) NSArray *arrayOfList_first;
@@ -29,6 +30,11 @@
 
 @property (nonatomic,strong) NSArray *arrayOfList_second;
 @property (nonatomic,strong) NSArray *arrayOfImage_second;
+
+@property (nonatomic, strong) NSString* strHeadUrl;
+@property (nonatomic, strong) NSString* strIdUrl;
+@property (nonatomic, strong) NSString* strZigezhengUrl;
+
 @end
 
 @implementation MainPersonalCtrl
@@ -47,6 +53,164 @@
     [HKCommen setExtraCellLineHidden:self.myTable];
     
     [HKCommen addHeadTitle:@"个人中心" whichNavigation:self.navigationItem];
+    
+    
+    if ([[UserDataManager shareManager].userType isEqualToString:ExpertType]) {
+    
+        NSMutableDictionary* dic = [[NSMutableDictionary  alloc] init];
+        
+        [dic setObject:[NSNumber  numberWithInteger:[UserDataManager shareManager].user.doctor.id] forKey:@"and[id]"];
+        [dic setObject:@"doctorFiles" forKey:@"expand"];
+        
+        [[NetworkManager shareMgr] server_fetchDoctorsWithDic:dic completeHandle:^(NSDictionary *response) {
+            
+            NSLog(@"server_fetchNomalDoctorsWithDic ===> dic = %@",response);
+            
+            NSArray* arrayItems = [[response objectForKey:@"data"] objectForKey:@"items"];
+            
+            if (arrayItems.count != 0) {
+                
+                NSArray* arrayHeadUrl = [[arrayItems objectAtIndex:0]  objectForKey:@"doctorFiles"];
+                
+                NSString* strHeadUrl;
+                
+                NSString* strIdUrl;
+                NSString* strZigezhengUrl;
+                
+                if (arrayHeadUrl.count != 0) {
+                    
+                    for (int i = 0; i < arrayHeadUrl.count; i ++) {
+                        
+                        NSDictionary* dic = [arrayHeadUrl objectAtIndex:i];
+                        
+                        if ([[dic objectForKey:@"type"] integerValue] == 1) {
+                            
+                            strHeadUrl = dic[@"path"];
+                            
+                        }
+                        
+                        if ([[dic objectForKey:@"type"] integerValue] == 2) {
+                            
+                            strZigezhengUrl = dic[@"path"];
+                            
+                        }
+                        
+                        if ([[dic objectForKey:@"type"] integerValue] == 3) {
+                            
+                            strIdUrl = dic[@"path"];
+                            
+                        }
+                        
+                    }
+                    
+                        
+                }
+                    
+                    self.strHeadUrl = strHeadUrl;
+                    self.strIdUrl = strIdUrl;
+                    
+                    self.strZigezhengUrl = strZigezhengUrl;
+                    
+                    
+                    
+                    
+
+                
+                
+                [self.myTable reloadData];
+                
+                
+                
+            }
+            
+            
+            
+        }];
+
+        
+        
+    }else{
+    
+        NSMutableDictionary* dic = [[NSMutableDictionary  alloc] init];
+        
+        [dic setObject:[NSNumber  numberWithInteger:[UserDataManager shareManager].user.doctor.id] forKey:@"and[id]"];
+        [dic setObject:@"doctorFiles" forKey:@"expand"];
+        
+        [[NetworkManager shareMgr] server_fetchNomalDoctorsWithDic:dic completeHandle:^(NSDictionary *response) {
+            
+            NSLog(@"server_fetchNomalDoctorsWithDic ===> dic = %@",response);
+            
+            NSArray* arrayItems = [[response objectForKey:@"data"] objectForKey:@"items"];
+            
+            if (arrayItems.count != 0) {
+                
+                NSArray* arrayHeadUrl = [[arrayItems objectAtIndex:0]  objectForKey:@"doctorFiles"];
+                
+                NSString* strHeadUrl;
+                NSString* strIdUrl;
+                NSString* strZigezhengUrl;
+                
+                NSLog(@"这里 %@",arrayHeadUrl);
+                
+                if (arrayHeadUrl.count != 0) {
+                    
+                    for (int i = 0; i < arrayHeadUrl.count; i ++) {
+                        
+                        NSDictionary* dic = [arrayHeadUrl objectAtIndex:i];
+                        
+                        if ([[dic objectForKey:@"type"] integerValue] == 1) {
+                            
+                            strHeadUrl = dic[@"path"];
+                            
+                        }
+                        
+                        if ([[dic objectForKey:@"type"] integerValue] == 2) {
+                            
+                            strZigezhengUrl = dic[@"path"];
+                            
+                        }
+                        
+                        if ([[dic objectForKey:@"type"] integerValue] == 3) {
+                            
+                            strIdUrl = dic[@"path"];
+                            
+                        }
+                        
+                        
+                    }
+                    
+
+                    
+                    
+                }
+                
+                    
+             
+                
+                self.strIdUrl = strIdUrl;
+                
+                self.strZigezhengUrl = strZigezhengUrl;
+                
+                    self.strHeadUrl = strHeadUrl;
+                    
+                
+                    
+                    [self.myTable reloadData];
+                
+                }
+                
+                
+                
+                
+                
+            
+            
+            
+            
+        }];
+    
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -114,19 +278,32 @@
             cell.lblProffeision.text = [UserDataManager shareManager].user.doctor.position;
             cell.lblHospital.text = [UserDataManager shareManager].user.doctor.hospital;
             
-            for (int i = 0; i < [UserDataManager shareManager].user.doctor.doctorFiles.count; i ++) {
-                
-                Doctorfiles* file = [[UserDataManager shareManager].user.doctor.doctorFiles objectAtIndex:i];
-                
-                if (file.type == 1) {
-                    
-                    
-                    [cell.imgHeadPhoto sd_setImageWithURL:[NSURL URLWithString:file.path] placeholderImage:[UIImage imageNamed:HEADPHOTO_PLACEHOUDER]];;
-                    
-                    
-                }
-                
-            }
+//            for (int i = 0; i < [UserDataManager shareManager].user.doctor.doctorFiles.count; i ++) {
+//                
+//                Doctorfiles* file = [[UserDataManager shareManager].user.doctor.doctorFiles objectAtIndex:i];
+//                
+//                if (file.type == 1) {
+//                    
+//                    
+//                    [cell.imgHeadPhoto sd_setImageWithURL:[NSURL URLWithString:file.path] placeholderImage:[UIImage imageNamed:HEADPHOTO_PLACEHOUDER]];;
+//                    
+//                    
+//                }
+//                
+//            }
+        
+            
+        }
+        
+        
+        cell.lblName.text = [UserDataManager shareManager].user.doctor.name;
+        cell.lblProffeision.text = [UserDataManager shareManager].user.doctor.position;
+        cell.lblHospital.text = [UserDataManager shareManager].user.doctor.hospital;
+        
+        if (![[self.strHeadUrl class] isSubclassOfClass:[NSNull class]]) {
+            
+            [cell.imgHeadPhoto sd_setImageWithURL:[NSURL URLWithString:self.strHeadUrl]
+                                 placeholderImage:[UIImage imageNamed:@"photo"] options:SDWebImageContinueInBackground];
             
         }
         
@@ -206,15 +383,21 @@ viewForHeaderInSection:(NSInteger)section
     if (indexPath.section==0) {
         EditPersonalInfoCtrl *vc=[[EditPersonalInfoCtrl alloc]initWithNibName:@"EditPersonalInfoCtrl" bundle:nil];
         
+        vc.strHeadUrl = self.strHeadUrl;
+        vc.strIdUrl = self. strIdUrl;
+        vc.strZigezhengUrl = self.strZigezhengUrl;
+        
         vc.hidesBottomBarWhenPushed=YES;
+    
+        
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if (indexPath.section==1)
     {
         if (indexPath.row==0) {
             
-            [HKCommen addAlertViewWithTitel:@"尚在测试之中"];
-            return;
+//            [HKCommen addAlertViewWithTitel:@"尚在测试之中"];
+//            return;
 
             ChangePassWordCtrl *vc=[[ChangePassWordCtrl alloc]initWithNibName:@"ChangePassWordCtrl" bundle:nil];
   
@@ -318,7 +501,5 @@ viewForHeaderInSection:(NSInteger)section
     
 }
     
-
-
 
 @end

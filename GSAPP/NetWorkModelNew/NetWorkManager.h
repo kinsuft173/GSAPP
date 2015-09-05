@@ -24,6 +24,9 @@ typedef void (^HKSignInResponse)(BOOL);
 - (void)server_fetchUserWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 - (void)server_updateUserWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 
+//普医生
+- (void)server_fetchNomalDoctorsWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+
 //广告部分
 - (void)server_fetchAdvertisementWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 
@@ -78,6 +81,11 @@ typedef void (^HKSignInResponse)(BOOL);
                   password:(NSString *)password
                       type:(NSInteger )type
                   complete:(HKSignInResponse)completeBlock;
+
+//用户修改资料
+- (void)server_updateDoctorWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+- (void)server_updateExpertWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+//- (void)server_updateUserWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 
 //上传文件
 - (void)server_createConsulationImageWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;

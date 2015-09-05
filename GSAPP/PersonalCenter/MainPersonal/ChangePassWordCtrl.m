@@ -8,6 +8,8 @@
 
 #import "ChangePassWordCtrl.h"
 #import "HKCommen.h"
+#import "NetWorkManager.h"
+#import "UserDataManager.h"
 
 @interface ChangePassWordCtrl ()
 
@@ -64,7 +66,56 @@
 }
 
 -(void)commitChangePassword
-{}
+{
+    
+    if (![self.txt_NewPassword.text isEqualToString:self.txt_CommitPassword.text]) {
+        
+        [HKCommen addAlertViewWithTitel:@"两次输入的密码不一致"];
+        
+        return;
+        
+        
+    }else{
+        
+        if (![HKCommen validatePassword:self.txt_CommitPassword.text]) {
+            
+            [HKCommen addAlertViewWithTitel:@"密码为6到20的的中英字符"];
+            
+            return;
+            
+        }
+        
+        NSMutableDictionary* dicNew = [[NSMutableDictionary alloc] init];
+        
+        [dicNew setObject:[NSString stringWithFormat:@"%d",[UserDataManager shareManager].user.id] forKey:@"id"];
+        
+        [dicNew setObject:self.txt_CommitPassword.text forKey:@"password"];
+//        [dicNew setObject:@"" forKey:@""];
+    
+        [[NetworkManager shareMgr] server_updateUserWithDic:dicNew completeHandle:^(NSDictionary *response1) {
+            
+            if ([[response1 objectForKey:@"success"] boolValue] == YES) {
+                
+                //[UserDataManager shareManager].user.doctor.doctorFiles = [GSExpert objectWithKeyValues:[responseDoctor objectForKey:@"data"]];
+                
+                [HKCommen addAlertViewWithTitel:@"修改密码成功"];
+                
+                [self.navigationController popToRootViewControllerAnimated:YES];
+                
+                
+            }
+            
+            
+            
+        }];
+    
+    
+    }
+
+
+
+
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

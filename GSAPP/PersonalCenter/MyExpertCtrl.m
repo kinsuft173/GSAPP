@@ -46,7 +46,7 @@
 - (void)getModel
 {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:@"expert",@"expand",[UserDataManager shareManager].userId,@"doctor_id", nil];
+    NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:@"favoriteDoctor",@"expand",[UserDataManager shareManager].userId,@"and[doctor_id]", nil];
     
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = @"正在加载...";
@@ -108,6 +108,34 @@
             cell = [topObjects objectAtIndex:0];
             
         }
+    
+    NSDictionary* item = [[self.arrayModel objectAtIndex:indexPath.row] objectForKey:@"favoriteDoctor"];
+    
+    GSExpert* expert = [GSExpert objectWithKeyValues:item];
+    
+    cell.lblName.text = expert.name;//item[@"name"];
+    cell.lblDept.text = expert.dept;//item[@"dept"];
+    cell.lblDeptAndSurgery.text = expert.dept;//item[@"dept"];
+    cell.lblIntro.text = expert.intro; //@"赶紧快点搞完吧快点搞完吧快点搞完吧少年们赶紧快点搞完吧快点搞完吧快点搞完吧少年们赶紧快点搞完吧快点搞完吧快点搞完吧少年们";//item[@"intro"];
+    cell.lblPro.text = expert.position;//item[@"position"];
+    
+    for (int i = 0; i < expert.doctorFiles.count; i ++) {
+        
+        Doctorfiles* file = [expert.doctorFiles objectAtIndex:i];
+        
+        if (file.type == 1) {
+            
+            
+            [cell.imgHeadPhoto sd_setImageWithURL:[NSURL URLWithString:file.path] placeholderImage:[UIImage imageNamed:HEADPHOTO_PLACEHOUDER]];;
+            
+            
+        }
+        
+    }
+    
+    
+    [cell.star  setStarForValue:expert.avg_score.floatValue];
+    
 
         
         return cell;
@@ -118,6 +146,8 @@
 {
     UIStoryboard *story=[UIStoryboard storyboardWithName:@"User" bundle:nil];
     ExpertDetailCtrl *vc=[story instantiateViewControllerWithIdentifier:@"ExpertDetailCtrl"];
+    
+    vc.expert = [GSExpert objectWithKeyValues:[[self.arrayModel objectAtIndex:indexPath.row] objectForKey:@"favoriteDoctor"]];
     
     vc.hidesBottomBarWhenPushed = YES;
     

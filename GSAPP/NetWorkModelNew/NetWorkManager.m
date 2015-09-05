@@ -125,29 +125,29 @@
     
 }
 
-- (void)server_updateUserWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
-{
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
-    //test
-    NSDictionary *parameters = @{@"email": @"xianfengshizhazha@caidigou.net"};
-    
-    [manager PUT:[NSString stringWithFormat:@"%@%@&%@=%@",SERVER,USER_UPDATE_URL,@"id",@"1"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        
-        NSLog(@"JSON: %@", responseObject);
-        
-        completeHandle(responseObject);
-        
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        NSLog(@"Error: %@", error);
-        
-        
-    }];
-    
-}
+//- (void)server_updateUserWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+//{
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    
+//    //test
+//    NSDictionary *parameters = @{@"email": @"xianfengshizhazha@caidigou.net"};
+//    
+//    [manager PUT:[NSString stringWithFormat:@"%@%@&%@=%@",SERVER,USER_UPDATE_URL,@"id",@"1"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        
+//        
+//        NSLog(@"JSON: %@", responseObject);
+//        
+//        completeHandle(responseObject);
+//        
+//        
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        
+//        NSLog(@"Error: %@", error);
+//        
+//        
+//    }];
+//    
+//}
 
 
 #pragma mark - 广告页面
@@ -193,7 +193,41 @@
         [parameters setValue:@"doctorFiles" forKey:@"expand"];
     }
     
+    [parameters setObject:@"1" forKey:@"and[type]"];
+    
     [manager GET:[NSString stringWithFormat:@"%@%@",SERVER,DOCTOR_FETCH_URL] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        
+        NSLog(@"JSON: %@", responseObject);
+        
+        completeHandle(responseObject);
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+    }];
+    
+}
+
+//普医生
+- (void)server_fetchNomalDoctorsWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    //test
+    //    NSDictionary *parameters = @{@"recommended": @"0"};
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:dic];
+    
+    if (![parameters objectForKey:@"expand"]) {
+        
+        
+        [parameters setValue:@"doctorFiles" forKey:@"expand"];
+    }
+    
+    [manager GET:[NSString stringWithFormat:@"%@%@",SERVER,NOMAL_DOCTOR_FETCH_URL] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         
         NSLog(@"JSON: %@", responseObject);
@@ -256,6 +290,99 @@
 }
 
 
+- (void)server_updateDoctorWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    //test
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:dic];//@{@"email": @"xianfengshizhazha@caidigou.net"};
+    
+    [parameters removeObjectForKey:@"id"];
+    
+    [manager PUT:[NSString stringWithFormat:@"%@%@&%@=%@",SERVER,DOCTOR_UPDATA_URL,@"id",dic[@"id"]] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        
+        NSLog(@"JSON: %@", responseObject);
+        
+        completeHandle(responseObject);
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        completeHandle(nil);
+        
+    }];
+    
+}
+
+
+- (void)server_updateUserWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    //test
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:dic];//@{@"email": @"xianfengshizhazha@caidigou.net"};
+    
+    [parameters removeObjectForKey:@"id"];
+    
+    [manager PUT:[NSString stringWithFormat:@"%@%@&%@=%@",SERVER,USER_UPDATE_URL,@"id",dic[@"id"]] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        
+        NSLog(@"JSON: %@", responseObject);
+        
+        completeHandle(responseObject);
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        completeHandle(nil);
+        
+    }];
+
+
+}
+
+
+- (void)server_updateExpertWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    NSString* strUrl;
+    
+    if ([[UserDataManager shareManager].userType isEqualToString:UserType]) {
+        
+        strUrl = DOCTOR_UPDATA_URL;
+        
+    }else{
+    
+        strUrl = EXPERT_UPDATA_URL;
+    
+    }
+    
+    //test
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:dic];//@{@"email": @"xianfengshizhazha@caidigou.net"};
+    
+    [parameters removeObjectForKey:@"id"];
+    
+    [manager PUT:[NSString stringWithFormat:@"%@%@&%@=%@",SERVER,strUrl,@"id",dic[@"id"]] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        
+        NSLog(@"JSON: %@", responseObject);
+        
+        completeHandle(responseObject);
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        completeHandle(nil);
+        
+    }];
+    
+}
 
 
 
@@ -379,11 +506,26 @@
 - (void)server_createDoctorImageWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
 {
     
-    
+    NSLog(@"server_createDoctorImageWithDic===>Params.Dic = %@",dic);
     
     NSMutableDictionary* dicP = [NSMutableDictionary dictionaryWithDictionary:dic];
     
     [self server_BasePost:dicP url:[NSString stringWithFormat:@"%@%@",SERVER,Doctor_FETCH_FILE_CREATE_URL]];
+    
+}
+
+- (void)server_updateDoctorImageWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    
+    NSMutableDictionary* dicParams = [[NSMutableDictionary alloc] initWithDictionary:dic];
+    
+    [dicParams removeObjectForKey:@"id"];
+    
+    //NSLog(@"server_createDoctorImageWithDic===>Params.Dic = %@",dic);
+    
+//    NSMutableDictionary* dicP = [NSMutableDictionary dictionaryWithDictionary:dic];
+    
+    [self server_BasePost:dicParams url:[NSString stringWithFormat:@"%@%@&id=%d",SERVER,Doctor_FETCH_FILE_CREATE_URL,dic[@"id"]]];
     
     
     
@@ -644,9 +786,9 @@
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     //test
-  NSDictionary *parameters = @{@"doctor_id":@"1",@"favorite_doctor_id":@"2"};
+ // NSDictionary *parameters = @{@"doctor_id":@"1",@"favorite_doctor_id":@"2"};
     
-    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,FAVORITES_CREATE_URL] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,FAVORITES_CREATE_URL] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         NSLog(@"JSON: %@", responseObject);
         
@@ -657,6 +799,7 @@
         
         NSLog(@"Error: %@", error);
         
+        completeHandle(nil);
     }];
     
 }

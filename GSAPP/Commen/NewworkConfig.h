@@ -33,8 +33,12 @@ typedef void (^FailHandle)();
 
 //医生
 #define DOCTOR_FETCH_URL  @"expert/index"
+#define NOMAL_DOCTOR_FETCH_URL  @"doctor/index"
+
 #define DOCTOR_CREATE_URL  @"doctor/create"
+#define DOCTOR_UPDATA_URL  @"doctor/update"
 #define EXPERT__CREATE_URL  @"expert/create"
+#define EXPERT_UPDATA_URL  @"expert/update"
 //咨询问诊
 #define CONSULATION_CREATE_URL @"consultation/create"
 #define CONSULATION_FETCH_URL @"consultation/index"
