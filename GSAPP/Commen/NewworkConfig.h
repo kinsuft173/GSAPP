@@ -10,7 +10,7 @@
 #define GSAPP_NewworkConfig_h
 
 
-#define SERVER    @"http://115.28.85.76/gaoshou/api/web/?r="
+#define SERVER    @"http://115.28.85.76/gszx/api/web/?r="
 #define SERVER_JPUSH    @"http://115.28.85.76/JPush/examples/"
 #define SERVER_VERIFY @"http://115.28.85.76/gaoshou/api/web/?r=site/verify-code"
 
@@ -21,7 +21,7 @@ typedef void (^FailHandle)();
 #pragma mark - 网络相关url
 
 //用户部分
-#define USER_REGESTER_URL @"site/signup"
+#define USER_REGESTER_URL @"user/signup"
 
 //用户部分
 //#define USER_REGESTER_URL @"user/create"

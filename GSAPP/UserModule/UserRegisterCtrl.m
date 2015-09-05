@@ -440,7 +440,7 @@
                     
                     [dicNew setObject:[[response objectForKey:@"data"] objectForKey:@"id"] forKey:@"doctor_id"];
                     
-                    [dicNew setObject:@"path" forKey:@"filesField"];
+                    [dicNew setObject:@"path" forKey:@"field"];
                     
                     NSInteger num = self.isHanId + self.isHanZigezheng + self.isHanHead;
                     
@@ -485,26 +485,26 @@
                     }else if (num == 2){
                         
                         if (self.isHanId == NO) {
-                            [dicNew setObject:@"1,2" forKey:@"multiFields[type]"];
+                            [dicNew setObject:@"1,2" forKey:@"fieldVal[type]"];
                         }
                         
                         if (self.isHanHead == NO) {
-                            [dicNew setObject:@"2,3" forKey:@"multiFields[type]"];
+                            [dicNew setObject:@"2,3" forKey:@"fieldVal[type]"];
                         }
                         
                         if (self.isHanZigezheng == NO) {
-                            [dicNew setObject:@"1,3" forKey:@"multiFields[type]"];
+                            [dicNew setObject:@"1,3" forKey:@"fieldVal[type]"];
                         }
                         
                         
                     }else{
                         
-                        [dicNew setObject:@"1,2,3" forKey:@"multiFields[type]"];
+                        [dicNew setObject:@"1,2,3" forKey:@"fieldVal[type]"];
                         
                         
                     }
                     
-                    [dicNew setObject:array forKey:@"files[]"];
+                    [dicNew setObject:array forKey:@"file[]"];
                     
                     
                     [[NetworkManager shareMgr] server_createDoctorImageWithDic:dicNew completeHandle:^(NSDictionary *response1) {

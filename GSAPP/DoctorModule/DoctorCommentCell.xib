@@ -116,6 +116,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="img_Head" destination="OeZ-vE-ns0" id="DDt-Te-Co8"/>
                 <outlet property="lbl_data" destination="hkQ-mZ-vl1" id="vBI-Iw-kXU"/>
                 <outlet property="lbl_name" destination="NDr-IK-VTc" id="Iwb-0e-kep"/>
                 <outlet property="txt_comment" destination="AJh-v4-uIc" id="KqT-Xu-hgk"/>

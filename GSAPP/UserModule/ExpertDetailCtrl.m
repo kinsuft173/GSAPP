@@ -61,7 +61,7 @@
 {
     
     NSDictionary* dic = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInteger:self.expert.id
-                                                                      ],@"EvaluateSearch[evaluated_doctor_id]",@"doctor",@"expand",@"1",@"status",nil];
+                                                                      ],@"and[evaluated_doctor_id]",@"doctor,doctors.doctorFiles",@"expand",@"1",@"status",nil];
     
     [[NetworkManager shareMgr] server_fetchEvaluateWithDic:dic completeHandle:^(NSDictionary *dic) {
         
@@ -179,6 +179,8 @@
         CGFloat lblHeight=[self heightForConetentCellWithWidth:[UIScreen mainScreen].bounds.size.width-20 WithContent:evaluate.content];
         
         return lblHeight;
+        
+        
     }
     
     return 0;
@@ -274,7 +276,14 @@
         }
         
         cell.lbl_name.text = evaluate.doctor.name;
-
+        
+        if (self.expert.doctorFiles.count != 0) {
+            
+            Doctorfiles* files = [self.expert.doctorFiles objectAtIndex:0];
+            
+            [cell.img_Head sd_setImageWithURL:files.path
+                                 placeholderImage:[UIImage imageNamed:@"loading-ios"] options:SDWebImageContinueInBackground];
+        }
 
         
         return cell;
@@ -399,7 +408,7 @@ heightForHeaderInSection:(NSInteger)section
 
 - (void)goRenzheng
 {
-    [HKCommen addAlertViewWithTitel:@"测试模式尚无认证信息"];
+    //[HKCommen addAlertViewWithTitel:@"测试模式尚无认证信息"];
 
 }
 

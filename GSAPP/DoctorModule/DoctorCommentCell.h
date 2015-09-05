@@ -20,4 +20,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl_name;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_data;
 
+@property (weak, nonatomic) IBOutlet UIImageView *img_Head;
+
 @end

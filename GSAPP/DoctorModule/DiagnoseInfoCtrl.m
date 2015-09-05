@@ -558,7 +558,7 @@
                 
                 [dicNew setObject:[[response objectForKey:@"data"] objectForKey:@"id"] forKey:@"consultation_id"];
                 
-                [dicNew setObject:@"path" forKey:@"filesField"];
+                [dicNew setObject:@"path" forKey:@"field"];
                 
                 NSInteger num = self.isMiddle + self.isRight + self.isLeft;
                 
@@ -623,7 +623,7 @@
                 
                 }
                 
-                [dicNew setObject:array forKey:@"files[]"];
+                [dicNew setObject:array forKey:@"file[]"];
 
                 
                 [[NetworkManager shareMgr] server_createConsulationImageWithDic:dicNew completeHandle:^(NSDictionary *response1) {

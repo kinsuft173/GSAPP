@@ -11,10 +11,10 @@
 
 @interface EditPersonalInfoCtrl : UIViewController
 @property (weak, nonatomic) IBOutlet UIScrollView *myScroll;
-@property (weak, nonatomic) IBOutlet UIButton *btn_goSeeDoctor;
-@property (weak, nonatomic) IBOutlet UIButton *btn_goSeeIdentifierPhoto;
+//@property (weak, nonatomic) IBOutlet UIButton *btn_goSeeDoctor;
+//@property (weak, nonatomic) IBOutlet UIButton *btn_goSeeIdentifierPhoto;
 @property (weak, nonatomic) IBOutlet UITextField *txt_Name;
 @property (weak, nonatomic) IBOutlet UITextField *txt_Sex;
-
+@property (weak, nonatomic) IBOutlet UILabel *txt_phone;
 
 @end

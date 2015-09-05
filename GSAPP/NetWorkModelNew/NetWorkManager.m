@@ -256,6 +256,10 @@
 }
 
 
+
+
+
+
 #pragma mark - 咨询问诊
 
 - (void)server_createConsultWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle failHandle:(FailHandle)failHandle
@@ -302,7 +306,7 @@
     
     NSMutableDictionary* dicParmas = [NSMutableDictionary dictionaryWithDictionary:dic];
     
-    [dicParmas setObject:@"all" forKey:@"allOrPage"];
+    [dicParmas setObject:@1 forKey:@"all"];
     
     [dicParmas setObject:@"-created_at" forKey:@"sort"];
     
@@ -421,7 +425,7 @@
     
     NSMutableDictionary* dicTemp = [NSMutableDictionary dictionaryWithDictionary:dic];
     
-    [dicTemp setObject:@"all" forKey:@"allOrPage"];
+    [dicTemp setObject:@1 forKey:@"all"];
     
     [manager GET:[NSString stringWithFormat:@"%@%@",SERVER,ORDER_FETCH_URL] parameters:dicTemp success:^(AFHTTPRequestOperation *operation, id responseObject){
         
@@ -1078,7 +1082,7 @@
         id value = dic[key];
         if (([value isKindOfClass:[NSString class]] && ((NSString*)value).length == 0) ||
             value == [NSNull null]||
-            [key isEqualToString:@"files[]" ] )
+            [key isEqualToString:@"file[]" ] )
         {
             continue;
         }
@@ -1089,7 +1093,7 @@
     }
     
     
-    NSArray* imgArray = dic[@"files[]"];
+    NSArray* imgArray = dic[@"file[]"];
     
     if (imgArray) {
         
@@ -1098,7 +1102,7 @@
             NSData* imgData = [imgArray objectAtIndex:i];
             
             [body appendData:[[NSString stringWithFormat:@"--%@\r\n", BoundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
-            [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"image.jpg\"\r\n", @"files[]"] dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"image.jpg\"\r\n", @"file[]"] dataUsingEncoding:NSUTF8StringEncoding]];
             [body appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
             [body appendData:imgData];
             [body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
