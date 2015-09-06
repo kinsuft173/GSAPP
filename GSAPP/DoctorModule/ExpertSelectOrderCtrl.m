@@ -58,7 +58,7 @@
     hud.labelText = @"正在加载...";
     
     //私人的咨询
-    NSDictionary* dicPrivate = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userId,@"ConsultationSearch[expert_id]", @"1",@"ConsultationSearch[status]",nil];
+    NSDictionary* dicPrivate = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userId,@"and[expert_id]", @"1",@"and[status]",nil];
     
     
     [[NetworkManager shareMgr] server_fetchConsultWithDic:dicPrivate completeHandle:^(NSDictionary *response) {
@@ -78,7 +78,7 @@
     
         
         
-        NSDictionary* dicPublic = [NSDictionary dictionaryWithObjectsAndKeys:@[@"expert.expertise0",@"expert"], @"join",[NSNumber numberWithInteger: [UserDataManager shareManager].user.doctor.expertise_id],@"where[expertise.id][]",@1,@"where[consultation.status][]",nil];
+        NSDictionary* dicPublic = [NSDictionary dictionaryWithObjectsAndKeys:@[@"expert.expertise0",@"expert"], @"join",[NSNumber numberWithInteger: [UserDataManager shareManager].user.doctor.expertise_id],@"and[expertise.id]",@1,@"and[consultation.status]",nil];
 //
         [[NetworkManager shareMgr] server_fetchConsultWithDic:dicPublic completeHandle:^(NSDictionary *response) {
             

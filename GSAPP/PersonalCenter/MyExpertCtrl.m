@@ -46,7 +46,7 @@
 - (void)getModel
 {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:@"favoriteDoctor",@"expand",[UserDataManager shareManager].userId,@"and[doctor_id]", nil];
+    NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:@"favoriteDoctor,favoriteDoctor.doctorFiles",@"expand",[UserDataManager shareManager].userId,@"and[doctor_id]", nil];
     
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = @"正在加载...";

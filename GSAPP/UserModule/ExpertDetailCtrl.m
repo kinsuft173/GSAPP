@@ -14,6 +14,7 @@
 #import "DoctorCommentCell.h"
 #import "CommentTitleCell.h"
 #import "GSEvaluate.h"
+#import "ExpertCertificationViewController.h"
 
 @interface ExpertDetailCtrl ()
 @property (assign)BOOL isIntroExpand;
@@ -61,7 +62,7 @@
 {
     
     NSDictionary* dic = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInteger:self.expert.id
-                                                                      ],@"and[evaluated_doctor_id]",@"doctor,doctors.doctorFiles",@"expand",@"1",@"status",nil];
+                                                                      ],@"and[evaluated_doctor_id]",@"doctor,doctor.doctorFiles",@"expand",@"1",@"status",nil];
     
     [[NetworkManager shareMgr] server_fetchEvaluateWithDic:dic completeHandle:^(NSDictionary *dic) {
         
@@ -286,12 +287,17 @@
         
         cell.lbl_name.text = evaluate.doctor.name;
         
-        if (self.expert.doctorFiles.count != 0) {
+        for (int i = 0; i < evaluate.doctor.doctorFiles.count; i ++) {
             
-            Doctorfiles* files = [self.expert.doctorFiles objectAtIndex:0];
+            Doctorfiles* file = [self.expert.doctorFiles objectAtIndex:i];
             
-            [cell.img_Head sd_setImageWithURL:files.path
-                                 placeholderImage:[UIImage imageNamed:@"loading-ios"] options:SDWebImageContinueInBackground];
+            if (file.type == 1) {
+                
+                
+                [cell.img_Head sd_setImageWithURL:file.path
+                                     placeholderImage:[UIImage imageNamed:@"loading-ios"] options:SDWebImageContinueInBackground];
+            }
+            
         }
 
         
@@ -417,8 +423,31 @@ heightForHeaderInSection:(NSInteger)section
 
 - (void)goRenzheng
 {
+    NSString* strUrl;
+    
+    if (self.expert.doctorFiles.count != 0) {
+        
+        for (int i = 0; i < self.expert.doctorFiles.count; i ++) {
+            
+            Doctorfiles* file = [self.expert.doctorFiles objectAtIndex:i];
+            
+            if (file.type == 2) {
+                
+                
+                strUrl = file.path;
+            }
+            
+        }
+        
+    }
+    
     //[HKCommen addAlertViewWithTitel:@"测试模式尚无认证信息"];
-
+    ExpertCertificationViewController* vc = [[ExpertCertificationViewController alloc] initWithNibName:@"ExpertCertificationViewController" bundle:nil];
+    
+    vc.strUrl = strUrl;
+    
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

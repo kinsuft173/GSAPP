@@ -107,6 +107,9 @@
     self.textFiledPatientMedicalHistory.enabled = NO;
     self.timelySelected = YES;
     self.sexSelected = NO;
+    
+    
+
 }
 
 - (IBAction)SendPhoto:(UIButton *)sender {
@@ -310,13 +313,28 @@
     self.lblIntro.text = self.expert.intro; //@"赶紧快点搞完吧快点搞完吧快点搞完吧少年们赶紧快点搞完吧快点搞完吧快点搞完吧少年们赶紧快点搞完吧快点搞完吧快点搞完吧少年们";//item[@"intro"];
     self.lblPro.text = self.expert.position;//item[@"position"];
     
-    if (self.expert.doctorFiles.count != 0) {
+//    if (self.expert.doctorFiles.count != 0) {
+//        
+//        Doctorfiles* files = [self.expert.doctorFiles objectAtIndex:0];
+//        
+//        [self.imgHeadPhoto sd_setImageWithURL:files.path
+//                             placeholderImage:[UIImage imageNamed:@"photo"] options:SDWebImageContinueInBackground];
+//    }
+    
+    
+    for (int i = 0; i < self.expert.doctorFiles.count; i ++) {
         
-        Doctorfiles* files = [self.expert.doctorFiles objectAtIndex:0];
+        Doctorfiles* file = [self.expert.doctorFiles objectAtIndex:i];
         
-        [self.imgHeadPhoto sd_setImageWithURL:files.path
+        if (file.type == 1) {
+            
+            
+            [self.imgHeadPhoto sd_setImageWithURL:file.path
                              placeholderImage:[UIImage imageNamed:@"photo"] options:SDWebImageContinueInBackground];
+        }
+        
     }
+    
     
     [self.star  setStarForValue:self.expert.avg_score.floatValue];
     
@@ -604,21 +622,21 @@
                 }else if (num == 2){
                     
                     if (self.isRight == NO) {
-                        [dicNew setObject:@"1,2" forKey:@"multiFields[type]"];
+                        [dicNew setObject:@"1,2" forKey:@"fieldVal[type]"];
                     }
                     
                     if (self.isLeft == NO) {
-                        [dicNew setObject:@"2,3" forKey:@"multiFields[type]"];
+                        [dicNew setObject:@"2,3" forKey:@"fieldVal[type]"];
                     }
                     
                     if (self.isMiddle == NO) {
-                        [dicNew setObject:@"1,3" forKey:@"multiFields[type]"];
+                        [dicNew setObject:@"1,3" forKey:@"fieldVal[type]"];
                     }
                     
                 
                 }else{
                     
-                    [dicNew setObject:@"1,2,3" forKey:@"multiFields[type]"];
+                    [dicNew setObject:@"1,2,3" forKey:@"fieldVal[type]"];
                     
                 
                 }

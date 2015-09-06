@@ -116,6 +116,7 @@
     self.txtPurpose.textColor     = [HKCommen getColor:@"6A6A6A"];
     
     
+    NSLog(@"self.consulation.consultationFiles.count = %d",self.consulation.consultationFiles.count);
     
     if (self.consulation.consultationFiles.count != 0) {
         

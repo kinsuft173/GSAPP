@@ -46,7 +46,7 @@
 
 - (void)getModel
 {
-    NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",self.consulation.id],@"OrderSearch[consultation_id]", @"consultation,orderDoctor",@"expand",nil];
+    NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",self.consulation.id],@"and[order.consultation_id]", @"consultation,orderDoctor",@"expand",nil];
     
     [[NetworkManager shareMgr] server_fetchOrderWithDic:dic completeHandle:^(NSDictionary *response) {
         

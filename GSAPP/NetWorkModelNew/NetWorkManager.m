@@ -193,7 +193,7 @@
         [parameters setValue:@"doctorFiles" forKey:@"expand"];
     }
     
-    [parameters setObject:@"1" forKey:@"and[type]"];
+   // [parameters setObject:@"1" forKey:@"and[type]"];
     
     [manager GET:[NSString stringWithFormat:@"%@%@",SERVER,DOCTOR_FETCH_URL] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
         
@@ -446,6 +446,8 @@
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];    
     [manager GET:[NSString stringWithFormat:@"%@%@",SERVER,CONSULATION_FETCH_URL] parameters:dicParmas success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        NSLog(@"咨询列表 ===>%@",responseObject);
         
         completeHandle(responseObject);
         

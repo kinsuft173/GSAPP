@@ -119,5 +119,9 @@
 
 @property (nonatomic, copy) NSString *latitude;
 
+@property (nonatomic, strong) NSArray *doctorFiles;
+
+
+
 @end
 

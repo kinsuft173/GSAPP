@@ -13,6 +13,10 @@
 @end
 @implementation Doctor
 
++ (NSDictionary *)objectClassInArray{
+    return @{@"doctorFiles":[Doctorfiles class]};
+}
+
 @end
 
 

@@ -257,21 +257,21 @@
 
 - (void)handleCitySelectedWithDic:(NSDictionary *)dic
 {
-    self.dicParams = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",[dic[@"id"] integerValue]],@"DoctorSearch[city_id]",@"doctorFiles",@"expand",nil];
+    self.dicParams = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",[dic[@"id"] integerValue]],@"and[city_id]",@"doctorFiles",@"expand",nil];
 
     [self getModel];
 }
 
 - (void)handleSpecialSelectedWithDic:(NSDictionary *)dic
 {
-    self.dicParams = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",[dic[@"id"] integerValue]],@"DoctorSearch[expertise_id]",@"doctorFiles",@"expand",nil];
+    self.dicParams = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",[dic[@"id"] integerValue]],@"and[expertise_id]",@"doctorFiles",@"expand",nil];
     
     [self getModel];
 }
 
 - (void)handleCategorySelectedWithDic:(NSDictionary *)dic
 {
-    self.dicParams = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",[dic[@"id"] integerValue]],@"DoctorSearch[category_id]",@"doctorFiles",@"expand",nil];
+    self.dicParams = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",[dic[@"id"] integerValue]],@"and[category_id]",@"doctorFiles",@"expand",nil];
     
     [self getModel];
 }

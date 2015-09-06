@@ -390,6 +390,8 @@
 		DECA177E1B617B2500FD3418 /* GSRepine.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA177D1B617B2500FD3418 /* GSRepine.m */; };
 		DECA17811B617BE100FD3418 /* GSSymptom.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA17801B617BE100FD3418 /* GSSymptom.m */; };
 		DED23A5B1B34FDF1006596C8 /* CustomBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DED23A5A1B34FDF1006596C8 /* CustomBorderView.m */; };
+		DEDE4ABD1B9BE03B00727307 /* ExpertCertificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDE4ABB1B9BE03B00727307 /* ExpertCertificationViewController.m */; };
+		DEDE4ABE1B9BE03B00727307 /* ExpertCertificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEDE4ABC1B9BE03B00727307 /* ExpertCertificationViewController.xib */; };
 		DEE337551B4C46A300357253 /* CTTabbarCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE337541B4C46A300357253 /* CTTabbarCtrl.m */; };
 		DEE3376D1B4C479100357253 /* home_btn_order@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE337571B4C479100357253 /* home_btn_order@2x.png */; };
 		DEE3376E1B4C479100357253 /* home_btn_order@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE337581B4C479100357253 /* home_btn_order@3x.png */; };
@@ -1149,6 +1151,9 @@
 		DECA17801B617BE100FD3418 /* GSSymptom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSSymptom.m; sourceTree = "<group>"; };
 		DED23A591B34FDF1006596C8 /* CustomBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBorderView.h; sourceTree = "<group>"; };
 		DED23A5A1B34FDF1006596C8 /* CustomBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBorderView.m; sourceTree = "<group>"; };
+		DEDE4ABA1B9BE03B00727307 /* ExpertCertificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpertCertificationViewController.h; sourceTree = "<group>"; };
+		DEDE4ABB1B9BE03B00727307 /* ExpertCertificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpertCertificationViewController.m; sourceTree = "<group>"; };
+		DEDE4ABC1B9BE03B00727307 /* ExpertCertificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpertCertificationViewController.xib; sourceTree = "<group>"; };
 		DEE337531B4C46A300357253 /* CTTabbarCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTabbarCtrl.h; sourceTree = "<group>"; };
 		DEE337541B4C46A300357253 /* CTTabbarCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTabbarCtrl.m; sourceTree = "<group>"; };
 		DEE337571B4C479100357253 /* home_btn_order@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_btn_order@2x.png"; sourceTree = "<group>"; };
@@ -1648,6 +1653,9 @@
 				B9DDDF091B536AC7001E0B43 /* DoctorDetailCell.xib */,
 				DEE917091B353D3B000EC492 /* ExpertDetailCtrl.h */,
 				DEE9170A1B353D3B000EC492 /* ExpertDetailCtrl.m */,
+				DEDE4ABA1B9BE03B00727307 /* ExpertCertificationViewController.h */,
+				DEDE4ABB1B9BE03B00727307 /* ExpertCertificationViewController.m */,
+				DEDE4ABC1B9BE03B00727307 /* ExpertCertificationViewController.xib */,
 			);
 			name = "专家详情页面";
 			sourceTree = "<group>";
@@ -3203,6 +3211,7 @@
 				B9D5FD891B5F3F9E00D48A07 /* list_icon_locked@2x.png in Resources */,
 				B9DDE0071B536AF9001E0B43 /* tab_message_pre@3x.png in Resources */,
 				DE0638441B6BB98E00EFB576 /* SIAlertView.bundle in Resources */,
+				DEDE4ABE1B9BE03B00727307 /* ExpertCertificationViewController.xib in Resources */,
 				B9DDE0411B536BDA001E0B43 /* FullImageCtrl.xib in Resources */,
 				B9D5FD8A1B5F3F9E00D48A07 /* list_icon_locked@3x.png in Resources */,
 				DEFDF5751B5964E300298366 /* CityHeadView.xib in Resources */,
@@ -3460,6 +3469,7 @@
 				B9D33D771B65C3180020AB1E /* PhotoModel.m in Sources */,
 				DECA17661B61738800FD3418 /* GSExpert.m in Sources */,
 				DE0638231B6AF23300EFB576 /* DataVerifier.m in Sources */,
+				DEDE4ABD1B9BE03B00727307 /* ExpertCertificationViewController.m in Sources */,
 				B9DDDF1B1B536AC7001E0B43 /* DoctorFeedbackCell.m in Sources */,
 				B9D33D7B1B65C3180020AB1E /* PBSaveBtn.m in Sources */,
 				B94567F21B661A8200458386 /* POIAnnotation.m in Sources */,
