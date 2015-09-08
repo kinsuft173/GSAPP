@@ -157,6 +157,8 @@
     cell.lblIntro.text = expert.intro; //@"赶紧快点搞完吧快点搞完吧快点搞完吧少年们赶紧快点搞完吧快点搞完吧快点搞完吧少年们赶紧快点搞完吧快点搞完吧快点搞完吧少年们";//item[@"intro"];
     cell.lblPro.text = expert.position;//item[@"position"];
     
+    cell.imgHeadPhoto.image = [UIImage imageNamed:HEADPHOTO_PLACEHOUDER];
+    
     for (int i = 0; i < expert.doctorFiles.count; i ++) {
         
         Doctorfiles* file = [expert.doctorFiles objectAtIndex:i];
@@ -164,7 +166,7 @@
         if (file.type == 1) {
             
             
-            [cell.imgHeadPhoto sd_setImageWithURL:[NSURL URLWithString:file.path] placeholderImage:[UIImage imageNamed:HEADPHOTO_PLACEHOUDER]];;
+            [cell.imgHeadPhoto sd_setImageWithURL:[NSURL URLWithString:file.path] placeholderImage:[UIImage imageNamed:HEADPHOTO_PLACEHOUDER]];
             
             
         }
@@ -218,7 +220,7 @@
 
 - (IBAction)goScoreSort:(id)sender
 {
-    self.dicParams = nil;
+    self.dicParams = [NSDictionary dictionaryWithObjectsAndKeys:@"-avg_score",@"sort",@"doctorFiles",@"expand", nil];
     
     [self getModel];
 
@@ -226,8 +228,8 @@
 
 - (IBAction)goAutoSort:(id)sender
 {
-    self.dicParams = [NSDictionary dictionaryWithObjectsAndKeys:@"-avg_score",@"sort",@"doctorFiles",@"expand", nil];
-    
+   // self.dicParams = [NSDictionary dictionaryWithObjectsAndKeys:@"-avg_score",@"sort",@"doctorFiles",@"expand", nil];
+    self.dicParams = nil;
     [self getModel];
 }
 

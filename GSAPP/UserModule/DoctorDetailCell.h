@@ -27,4 +27,7 @@
 @property (nonatomic, strong) IBOutlet UIImageView* imgHeadPhoto;
 @property (nonatomic, strong) IBOutlet UIButton*    btnRenzheng;
 
+@property (nonatomic, strong) IBOutlet UILabel* lbl_position;
+@property (nonatomic, strong) IBOutlet UILabel* lbl_dep;
+
 @end

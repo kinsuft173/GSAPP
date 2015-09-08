@@ -75,28 +75,20 @@
                     }
                     
                 }
-//                 [[[item objectForKey:@"doctorFiles"] objectAtIndex:0] objectForKey:@"path"]
-//                [imageView sd_setImageWithURL: [[[item objectForKey:@"doctorFiles"] objectAtIndex:0] objectForKey:@"path"]
-//                             placeholderImage:[UIImage imageNamed:@"loading-ios"] options:SDWebImageContinueInBackground];
             }
             
 
             
         }
         
-        
-//        UITapGestureRecognizer *gesture=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goToDoctorDetail)];
-//        gesture.numberOfTapsRequired=1;
-//        gesture.delegate=self;
      
         
         UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
-//        [button setTitle:@"点我" forState:UIControlStateNormal];
-        
+       
         CGRect rect = view.frame;
         rect.origin.x = 0;
         button.frame = rect;
-//        [button setFrame:view.frame];
+
         [button addTarget:self action:@selector(goToDoctorDetail:) forControlEvents:UIControlEventTouchUpInside];
         button.tag = i;
         
@@ -104,7 +96,7 @@
         [view addSubview:lbl_name];
         [view addSubview:lbl_position];
         [view addSubview:button];
-//        [view addGestureRecognizer:gesture];
+
         
         [self.DoctorRecommed_Scroll addSubview:view];
         

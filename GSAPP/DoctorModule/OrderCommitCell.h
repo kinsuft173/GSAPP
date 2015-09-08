@@ -33,6 +33,6 @@
 //@property (nonatomic, strong) IBOutlet UILabel *lblIntro;
 
 @property (nonatomic, strong) IBOutlet UIImageView* imgHeadPhoto;
-
+@property (nonatomic, strong) IBOutlet UIButton* btnRenzheng;
 
 @end

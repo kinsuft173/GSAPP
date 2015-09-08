@@ -21,33 +21,24 @@
                             <constraint firstAttribute="width" constant="224" id="TNo-lG-zVb"/>
                             <constraint firstAttribute="height" constant="18" id="noH-eu-eSS"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="症状" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ze-uX-W2b">
-                        <rect key="frame" x="83" y="40" width="250" height="14"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="疾病描述疾病描述疾病描述疾病描述疾病描述疾病描述疾病描述疾病描述疾病描述" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seh-Xg-n6e">
+                        <rect key="frame" x="83" y="71" width="266" height="14"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="120" id="N8x-Np-ZgL"/>
-                            <constraint firstAttribute="height" constant="14" id="krR-Hv-KnK"/>
+                            <constraint firstAttribute="height" constant="34" id="T28-ec-20v"/>
+                            <constraint firstAttribute="height" constant="14" id="xYb-6i-Q0W"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="N8x-Np-ZgL"/>
+                                <exclude reference="T28-ec-20v"/>
                             </mask>
                         </variation>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="疾病描述疾病描述疾病描述疾病描述疾病描述疾病描述疾病描述疾病描述疾病描述" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seh-Xg-n6e">
-                        <rect key="frame" x="83" y="62" width="266" height="34"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="34" id="T28-ec-20v"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会诊" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjW-D9-Ipe">
                         <rect key="frame" x="9" y="69" width="60" height="18"/>
@@ -73,6 +64,21 @@
                             <constraint firstAttribute="width" constant="45" id="ua1-d7-0YK"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="症状" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ze-uX-W2b">
+                        <rect key="frame" x="83" y="45" width="250" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="N8x-Np-ZgL"/>
+                            <constraint firstAttribute="height" constant="14" id="krR-Hv-KnK"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="N8x-Np-ZgL"/>
+                            </mask>
+                        </variation>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="gjW-D9-Ipe" firstAttribute="leading" secondItem="byn-va-yKp" secondAttribute="leadingMargin" constant="1" id="0Fl-vS-5H4"/>
@@ -84,13 +90,19 @@
                     <constraint firstAttribute="trailingMargin" secondItem="5Ze-uX-W2b" secondAttribute="trailing" constant="14" id="VPp-47-UIE"/>
                     <constraint firstAttribute="bottomMargin" secondItem="seh-Xg-n6e" secondAttribute="bottom" constant="-1" id="YIV-wi-aTZ"/>
                     <constraint firstItem="y7X-JP-cyn" firstAttribute="top" secondItem="byn-va-yKp" secondAttribute="topMargin" constant="-8" id="dx0-nu-wo4"/>
-                    <constraint firstItem="5Ze-uX-W2b" firstAttribute="top" secondItem="byn-va-yKp" secondAttribute="topMargin" constant="32" id="ncy-8J-Mj9"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="seh-Xg-n6e" secondAttribute="bottom" constant="10" id="jvp-QC-SLX"/>
+                    <constraint firstItem="5Ze-uX-W2b" firstAttribute="top" secondItem="byn-va-yKp" secondAttribute="topMargin" constant="37" id="ncy-8J-Mj9"/>
                     <constraint firstItem="seh-Xg-n6e" firstAttribute="leading" secondItem="byn-va-yKp" secondAttribute="leadingMargin" constant="75" id="p9p-C3-uFw"/>
                     <constraint firstAttribute="bottomMargin" secondItem="y7X-JP-cyn" secondAttribute="bottom" constant="-9" id="q6y-oh-Vqm"/>
                     <constraint firstItem="Plp-5j-ysu" firstAttribute="top" secondItem="byn-va-yKp" secondAttribute="topMargin" constant="7" id="qtL-I2-nZs"/>
                     <constraint firstAttribute="bottomMargin" secondItem="gjW-D9-Ipe" secondAttribute="bottom" constant="8" id="wQE-PY-UtX"/>
                     <constraint firstItem="5Ze-uX-W2b" firstAttribute="leading" secondItem="byn-va-yKp" secondAttribute="leadingMargin" constant="75" id="x3n-C6-Jgf"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="YIV-wi-aTZ"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="imgOfDisease" destination="y2P-rn-lwZ" id="BRP-nH-Dl3"/>

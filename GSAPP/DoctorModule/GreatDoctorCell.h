@@ -18,5 +18,5 @@
 @property (nonatomic, strong) IBOutlet UILabel *lblAdress;
 @property (nonatomic, strong) IBOutlet UILabel *lblPositon;
 
-
+@property (nonatomic, strong) IBOutlet UIImageView *imgHead;
 @end

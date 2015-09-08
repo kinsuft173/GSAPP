@@ -13,6 +13,7 @@
 #import "NetworkManager.h"
 #import "GSConsulation.h"
 #import "UserDataManager.h"
+#import "ConsulationManager.h"
 
 @interface ExpertSelectOrderCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -58,7 +59,7 @@
     hud.labelText = @"正在加载...";
     
     //私人的咨询
-    NSDictionary* dicPrivate = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userId,@"and[expert_id]", @"1",@"and[status]",nil];
+    NSDictionary* dicPrivate = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userId,@"and[expert_id]", @"1",@"and[status]",@1,@"and[timely]",nil];
     
     
     [[NetworkManager shareMgr] server_fetchConsultWithDic:dicPrivate completeHandle:^(NSDictionary *response) {
@@ -69,9 +70,47 @@
         
         if (resultArray.count != 0) {
             
-            [self.arrayPrivateConsulation addObjectsFromArray:resultArray];
+            NSLog(@"当前本地数据为%@",[ConsulationManager shareMgr].setModel);
+            
+            for (int i = 0 ; i < resultArray.count; i ++) {
+                
+                GSConsulation* consulation = [GSConsulation objectWithKeyValues:[resultArray objectAtIndex:i]];
+                
+                NSString* strId = [NSString stringWithFormat:@"%d",consulation.id];
+                
+//                if (![[ConsulationManager shareMgr].setModel ] ) {
+//                    
+//                    
+//                    [self.arrayPrivateConsulation addObjectsFromArray:resultArray];
+//                    
+//                }
+                
+                BOOL isNewConsult = YES;
+                
+                for (NSString* consultId in [ConsulationManager shareMgr].setModel) {
+                    
+                    if ([consultId isEqualToString:strId]) {
+                        
+                        
+                        isNewConsult = NO;
+                    }
+                    
+                }
+                
+                
+                if (isNewConsult == YES) {
+                    [self.arrayPrivateConsulation addObject:[resultArray objectAtIndex:i]];
+                }
+                
+                
+                
+                
+            }
+            
             
         }
+        
+        NSLog(@"私有dic = %@",self.arrayPrivateConsulation);
         
      
 //        NSDictionary* dicPublic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:[UserDataManager shareManager].user.doctor.expertise_id],@"ConsultationSearch[expertise_id]",@"1",@"ConsultationSearch[status]",@1,@"where[status][]" ,nil];
@@ -107,6 +146,25 @@
                     }
                     
                }
+                
+                GSConsulation* consulation = [GSConsulation objectWithKeyValues:[resultArray objectAtIndex:i]];
+                
+                NSString* strId = [NSString stringWithFormat:@"%d",consulation.id];
+                
+                
+                for (NSString* consultId in [ConsulationManager shareMgr].setModel) {
+                    
+                    if ([consultId isEqualToString:strId]) {
+                        
+                        
+                        isHas = NO;
+                    }
+                    
+                }
+                
+                
+
+                
                 
                 if(isHas == NO){
                 
@@ -168,10 +226,8 @@
     
     if (indexPath.section==0)
     {
-        if (indexPath.row==5) {
-            return 0;
-        }
-        else if (indexPath.row % 2 !=0) {
+
+        if (indexPath.row % 2 !=0) {
             return 11.0;
         }
         else
@@ -182,10 +238,8 @@
     }
     else 
     {
-        if (indexPath.row==9) {
-            return 0;
-        }
-        else if (indexPath.row % 2 !=0) {
+
+if (indexPath.row % 2 !=0) {
             return 11.0;
         }
         else
@@ -209,7 +263,7 @@
     
     //return self.arrayPublicConsulation.count*2;
     
-    if (indexPath.section==0) {
+   // if (indexPath.section==0) {
         
         if (indexPath.row % 2!=0) {
             EmptyCell* cell = [tableView dequeueReusableCellWithIdentifier:EmptyId];
@@ -238,59 +292,69 @@
             }
             
             GSConsulation* consulation = [GSConsulation objectWithKeyValues:[self.arrayPrivateConsulation objectAtIndex:indexPath.row/2]];
-            cell.lblBingshi.text = consulation.patient_illness;//[NSString stringWithFormat:@"%d",consulation.  ];
-            cell.lblDescription.text = consulation.remark;
-            cell.lblZhengzhuan.text = [NSString stringWithFormat:@"%ld", consulation.symptom_id];
+            cell.lblBingshi.text =  consulation.anamnesis; //consulation.patient_illness;//[NSString stringWithFormat:@"%d",consulation.  ];
+            cell.lblDescription.text = consulation.patient_illness;
+            cell.lblZhengzhuan.text = consulation.symptom;//[NSString stringWithFormat:@"%ld", consulation.symptom_id];
             
             
-            [cell.imgOfDisease setImage:[UIImage imageNamed:@"list_consultation"]];
-            cell.lbl_treat.text=@"会诊";
-            
-            return cell;
-        }
-        
-        
-    }
-    else
-    {
-        
-        if (indexPath.row % 2!=0) {
-            EmptyCell* cell = [tableView dequeueReusableCellWithIdentifier:EmptyId];
-            
-            if (!cell) {
+            if (consulation.type == 1) {
                 
-                NSArray* topObjects = [[NSBundle mainBundle] loadNibNamed:EmptyId owner:self options:nil];
+                [cell.imgOfDisease setImage:[UIImage imageNamed:@"list_surgery"]];
+                            cell.lbl_treat.text=@"会诊手术";
+            }else{
                 
-                cell = [topObjects objectAtIndex:0];
-                
+                [cell.imgOfDisease setImage:[UIImage imageNamed:@"list_consultation"]];
+                cell.lbl_treat.text=@"会诊";
+            
             }
             
+
+            
             return cell;
         }
         
-        else
-        {
-            ComplainCell* cell = [tableView dequeueReusableCellWithIdentifier:CellId];
-            
-            if (!cell) {
-                
-                NSArray* topObjects = [[NSBundle mainBundle] loadNibNamed:CellId owner:self options:nil];
-                
-                cell = [topObjects objectAtIndex:0];
-                
-            }
-            [cell.imgOfDisease setImage:[UIImage imageNamed:@"list_surgery"]];
-            cell.lbl_treat.text=@"会诊手术";
-            
-            GSConsulation* consulation = [GSConsulation objectWithKeyValues:[self.arrayPublicConsulation objectAtIndex:indexPath.row/2]];
-            cell.lblBingshi.text = consulation.patient_illness;//[NSString stringWithFormat:@"%d",consulation.  ];
-            cell.lblDescription.text = consulation.remark;
-            cell.lblZhengzhuan.text = [NSString stringWithFormat:@"%ld", consulation.symptom_id];
-            
-            return cell;
-        }
-    }
-    return nil;
+        
+//    }
+//    else
+//    {
+//        
+//        if (indexPath.row % 2!=0) {
+//            EmptyCell* cell = [tableView dequeueReusableCellWithIdentifier:EmptyId];
+//            
+//            if (!cell) {
+//                
+//                NSArray* topObjects = [[NSBundle mainBundle] loadNibNamed:EmptyId owner:self options:nil];
+//                
+//                cell = [topObjects objectAtIndex:0];
+//                
+//            }
+//            
+//            return cell;
+//        }
+//        
+//        else
+//        {
+//            ComplainCell* cell = [tableView dequeueReusableCellWithIdentifier:CellId];
+//            
+//            if (!cell) {
+//                
+//                NSArray* topObjects = [[NSBundle mainBundle] loadNibNamed:CellId owner:self options:nil];
+//                
+//                cell = [topObjects objectAtIndex:0];
+//                
+//            }
+//            [cell.imgOfDisease setImage:[UIImage imageNamed:@"list_surgery"]];
+//            cell.lbl_treat.text=@"会诊手术";
+//            
+//            GSConsulation* consulation = [GSConsulation objectWithKeyValues:[self.arrayPublicConsulation objectAtIndex:indexPath.row/2]];
+//            cell.lblBingshi.text = consulation.patient_illness;//[NSString stringWithFormat:@"%d",consulation.  ];
+//            cell.lblDescription.text = consulation.remark;
+//            cell.lblZhengzhuan.text = [NSString stringWithFormat:@"%ld", consulation.symptom_id];
+//            
+//            return cell;
+//        }
+//    }
+//    return nil;
 }
 
 - (CGFloat)tableView:(UITableView * )tableView

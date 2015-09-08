@@ -14,6 +14,7 @@
 #import "DataSigner.h"
 #import "Order.h"
 #import "NetWorkManager.h"
+#import "ExpertCertificationViewController.h"
 
 @interface OrderCommitCtrl ()
 @property (nonatomic,strong) starView *star;
@@ -105,6 +106,7 @@
             
         cell = [topObjects objectAtIndex:0];
         [cell.btnPay addTarget:self action:@selector(goPayNow:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.btnRenzheng addTarget:self action:@selector(goRenzheng) forControlEvents:UIControlEventTouchUpInside];
     }
     
  
@@ -136,6 +138,22 @@
     cell.lblPro.text    = self.orderGS.orderDoctor.position;
     cell.lblTel.text    = [NSString stringWithFormat:@"%lld",self.orderGS.orderDoctor.mobile];
     
+    
+    GSOrder* order =  self.orderGS;
+    
+    for (int i = 0; i < order.orderDoctor.doctorFiles.count; i ++) {
+        
+        Doctorfiles* file = [order.orderDoctor.doctorFiles objectAtIndex:i];
+        
+        if (file.type == 1) {
+            
+            
+            [cell.imgHeadPhoto sd_setImageWithURL:[NSURL URLWithString:file.path] placeholderImage:[UIImage imageNamed:HEADPHOTO_PLACEHOUDER]];;
+            
+            
+        }
+        
+    }
     
     return cell;
 }
@@ -326,6 +344,38 @@
  // Pass the selected object to the new view controller.
  }
  */
+
+
+- (void)goRenzheng
+{
+    NSString* strUrl;
+    
+    if (self.orderGS.doctor.doctorFiles.count != 0) {
+        
+        for (int i = 0; i < self.orderGS.orderDoctor.doctorFiles.count; i ++) {
+            
+            Doctorfiles* file = [self.orderGS.orderDoctor.doctorFiles objectAtIndex:i];
+            
+            if (file.type == 2) {
+                
+                
+                strUrl = file.path;
+            }
+            
+        }
+        
+    }
+    
+    //[HKCommen addAlertViewWithTitel:@"测试模式尚无认证信息"];
+    ExpertCertificationViewController* vc = [[ExpertCertificationViewController alloc] initWithNibName:@"ExpertCertificationViewController" bundle:nil];
+    
+    vc.strUrl = strUrl;
+    
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
 
 
 @end

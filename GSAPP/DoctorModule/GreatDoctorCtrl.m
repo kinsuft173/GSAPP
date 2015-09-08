@@ -46,7 +46,7 @@
 
 - (void)getModel
 {
-    NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",self.consulation.id],@"and[order.consultation_id]", @"consultation,orderDoctor",@"expand",nil];
+    NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",self.consulation.id],@"and[consultation_id]", @"consultation,orderDoctor.doctorFiles",@"expand",nil];
     
     [[NetworkManager shareMgr] server_fetchOrderWithDic:dic completeHandle:^(NSDictionary *response) {
         
@@ -218,7 +218,7 @@ heightForHeaderInSection:(NSInteger)section
         
         GSOrder* order = [GSOrder objectWithKeyValues:[self.arrayModel objectAtIndex:indexPath.row]];
         
-        [cell.btn_Selection addTarget:self action:@selector(goToPayment) forControlEvents:UIControlEventTouchUpInside];
+        [cell.btn_Selection addTarget:self action:@selector(                                                                                                                                                                                                 goToPayment) forControlEvents:UIControlEventTouchUpInside];
         
         [cell.btn_Choice addTarget:self action:@selector(goToPayment) forControlEvents:UIControlEventTouchUpInside];
         
@@ -228,6 +228,19 @@ heightForHeaderInSection:(NSInteger)section
         cell.lblName.text   = order.orderDoctor.name;
         cell.lblPositon.text = order.orderDoctor.current_address;
         
+        for (int i = 0; i < order.orderDoctor.doctorFiles.count; i ++) {
+            
+            Doctorfiles* file = [order.orderDoctor.doctorFiles objectAtIndex:i];
+            
+            if (file.type == 1) {
+                
+                
+                [cell.imgHead sd_setImageWithURL:[NSURL URLWithString:file.path] placeholderImage:[UIImage imageNamed:HEADPHOTO_PLACEHOUDER]];;
+                
+                
+            }
+            
+        }
         
         return cell;
     }

@@ -193,7 +193,7 @@
         [parameters setValue:@"doctorFiles" forKey:@"expand"];
     }
     
-   // [parameters setObject:@"1" forKey:@"and[type]"];
+    [parameters setObject:@"1" forKey:@"and[type]"];
     
     [manager GET:[NSString stringWithFormat:@"%@%@",SERVER,DOCTOR_FETCH_URL] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
         

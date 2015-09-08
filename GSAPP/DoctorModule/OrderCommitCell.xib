@@ -300,6 +300,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="btnPay" destination="6qZ-kj-4em" id="Oha-XP-xDd"/>
+                <outlet property="btnRenzheng" destination="ELt-dA-qyf" id="O3B-uM-rJQ"/>
                 <outlet property="btn_checkCommit" destination="fvB-MH-JIq" id="Zye-Pq-toK"/>
                 <outlet property="imgHeadPhoto" destination="A2f-GQ-Ldc" id="BiA-6o-Q3i"/>
                 <outlet property="lblAdress" destination="SwN-q2-hh3" id="uj9-Cu-HKc"/>
@@ -638,6 +639,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="btnPay" destination="Vwb-6y-vYf" id="w9V-V8-bNw"/>
+                <outlet property="btnRenzheng" destination="8NO-UH-7x2" id="kmy-dh-eTk"/>
                 <outlet property="imgHeadPhoto" destination="ZZK-9F-UNt" id="C0I-UY-8h6"/>
                 <outlet property="lblDept" destination="bDh-WR-Qml" id="ixs-an-v9G"/>
                 <outlet property="lblIntro" destination="TdT-YY-pG2" id="1gR-8D-g4D"/>

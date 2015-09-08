@@ -65,7 +65,7 @@
         NSString* strUrl = [[array objectAtIndex:i%(array.count)] objectForKey:@"path"];
         
         if (![[strUrl class] isSubclassOfClass:[NSNull class]]) {
-            [imageView sd_setImageWithURL:[NSURL URLWithString:strUrl]
+            [imageView sd_setImageWithURL:strUrl
                          placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
         }
         

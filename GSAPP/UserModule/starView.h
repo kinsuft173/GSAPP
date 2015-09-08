@@ -23,4 +23,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *img_star5;
 
 -(void)setStarForValue:(CGFloat)value;
+-(void)initUI;
 @end

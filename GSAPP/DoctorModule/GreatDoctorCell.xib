@@ -166,6 +166,7 @@
             <connections>
                 <outlet property="btn_Choice" destination="oSg-6y-JRz" id="TcY-3V-TVM"/>
                 <outlet property="btn_Selection" destination="5bH-Ei-eV9" id="3lR-n4-edG"/>
+                <outlet property="imgHead" destination="4YZ-4U-u89" id="oMS-Cx-4bb"/>
             </connections>
             <point key="canvasLocation" x="140.5" y="85.5"/>
         </tableViewCell>
@@ -352,6 +353,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="btn_Choice" destination="5bH-Ei-eV9" id="0HO-Fw-owL"/>
+                <outlet property="imgHead" destination="Oc6-S3-AU0" id="I2t-UG-uJh"/>
                 <outlet property="lblAdress" destination="E0R-A2-duB" id="svc-KD-AR4"/>
                 <outlet property="lblFee1" destination="psK-4O-fx9" id="XLm-LS-gSj"/>
                 <outlet property="lblFee2" destination="XAb-UN-8Eh" id="qaB-Uk-uzX"/>

@@ -209,6 +209,9 @@
         cell.lbl_consultation_fee.text = [NSString stringWithFormat:@"%@元",self.expert.consultation_fee];
         cell.lbl_consultation_operation_fee.text = [NSString stringWithFormat:@"%@元",self.expert.consultation_operation_fee];
         cell.lblDooctorName.text = self.expert.name;
+        
+        cell.lbl_position.text = self.expert.position;
+        cell.lbl_dep.text = self.expert.dept;
     
         
         [cell.btn_Diagnose addTarget:self action:@selector(goToDiagnoseInfo) forControlEvents:UIControlEventTouchUpInside];

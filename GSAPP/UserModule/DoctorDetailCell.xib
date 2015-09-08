@@ -209,6 +209,8 @@
                 <outlet property="lbl_consultation_fee" destination="iHL-RU-ane" id="V26-wE-Tec"/>
                 <outlet property="lbl_consultation_operation_fee" destination="jkp-GF-rmv" id="zR4-yg-7Bb"/>
                 <outlet property="lbl_content" destination="4DC-sW-mb6" id="N9U-jO-ggf"/>
+                <outlet property="lbl_dep" destination="5s6-fL-iqz" id="1cf-od-Jz2"/>
+                <outlet property="lbl_position" destination="YWb-cq-Pgk" id="q0i-hn-q7V"/>
             </connections>
             <point key="canvasLocation" x="233.5" y="131.5"/>
         </tableViewCell>

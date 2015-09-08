@@ -333,6 +333,7 @@
 		DE00B2F11B22D5E00060EDA9 /* HKCommen.m in Sources */ = {isa = PBXBuildFile; fileRef = DE00B2F01B22D5E00060EDA9 /* HKCommen.m */; };
 		DE00B2F51B2326CA0060EDA9 /* UtilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DE00B2F41B2326CA0060EDA9 /* UtilityManager.m */; };
 		DE00B2F81B2367300060EDA9 /* SignUpCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = DE00B2F71B2367300060EDA9 /* SignUpCtrl.m */; };
+		DE01EB8B1B9F653E00F25932 /* ConsulationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DE01EB8A1B9F653E00F25932 /* ConsulationManager.m */; };
 		DE0637A71B6925D100EFB576 /* SelectDateCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0637A51B6925D100EFB576 /* SelectDateCtrl.m */; };
 		DE0637A81B6925D100EFB576 /* SelectDateCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE0637A61B6925D100EFB576 /* SelectDateCtrl.xib */; };
 		DE0637AB1B693A2F00EFB576 /* restaurant.png in Resources */ = {isa = PBXBuildFile; fileRef = DE0637AA1B693A2F00EFB576 /* restaurant.png */; };
@@ -979,6 +980,8 @@
 		DE00B2F41B2326CA0060EDA9 /* UtilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UtilityManager.m; path = Commen/UtilityManager.m; sourceTree = "<group>"; };
 		DE00B2F61B2367300060EDA9 /* SignUpCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpCtrl.h; sourceTree = "<group>"; };
 		DE00B2F71B2367300060EDA9 /* SignUpCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpCtrl.m; sourceTree = "<group>"; };
+		DE01EB891B9F653E00F25932 /* ConsulationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsulationManager.h; sourceTree = "<group>"; };
+		DE01EB8A1B9F653E00F25932 /* ConsulationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsulationManager.m; sourceTree = "<group>"; };
 		DE0637A41B6925D100EFB576 /* SelectDateCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectDateCtrl.h; path = SelectCategory/SelectDateCtrl.h; sourceTree = "<group>"; };
 		DE0637A51B6925D100EFB576 /* SelectDateCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectDateCtrl.m; path = SelectCategory/SelectDateCtrl.m; sourceTree = "<group>"; };
 		DE0637A61B6925D100EFB576 /* SelectDateCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectDateCtrl.xib; path = SelectCategory/SelectDateCtrl.xib; sourceTree = "<group>"; };
@@ -2734,6 +2737,8 @@
 				DECA177D1B617B2500FD3418 /* GSRepine.m */,
 				DECA177F1B617BE100FD3418 /* GSSymptom.h */,
 				DECA17801B617BE100FD3418 /* GSSymptom.m */,
+				DE01EB891B9F653E00F25932 /* ConsulationManager.h */,
+				DE01EB8A1B9F653E00F25932 /* ConsulationManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3373,6 +3378,7 @@
 				DECA177E1B617B2500FD3418 /* GSRepine.m in Sources */,
 				DECA17691B6175D600FD3418 /* GSConsulation.m in Sources */,
 				B9CC87EA1B54B9430007FB83 /* MyCaseCell.m in Sources */,
+				DE01EB8B1B9F653E00F25932 /* ConsulationManager.m in Sources */,
 				B94567EB1B661A8200458386 /* GeocodeAnnotation.m in Sources */,
 				DE0638641B6BCEB000EFB576 /* SBJsonStreamWriterState.m in Sources */,
 				B94567F01B661A8200458386 /* MANaviPolyline.m in Sources */,

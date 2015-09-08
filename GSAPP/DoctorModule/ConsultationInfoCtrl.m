@@ -12,6 +12,7 @@
 #import "PhotoBroswerVC.h"
 #import "UserDataManager.h"
 #import <UIImageView+WebCache.h>
+#import "ConsulationManager.h"
 
 @interface ConsultationInfoCtrl ()
 
@@ -252,6 +253,8 @@
         
         if (dic) {
             
+            [[ConsulationManager shareMgr] addHandledConsulation:[NSString stringWithFormat:@"%d",self.consulation.id]];            
+            
             [HKCommen addAlertViewWithTitel:@"接单成功"];
             
             [self.navigationController popViewControllerAnimated:YES];
@@ -276,11 +279,13 @@
         
                 [[NetworkManager shareMgr] server_updateConsultWithDic:dic completeHandle:^(NSDictionary * dic) {
         
-                [self.navigationController popViewControllerAnimated:YES];
+             
         
                     if (dic) {
         
                         [HKCommen addAlertViewWithTitel:@"已拒绝处理该咨询"];
+                        
+                        [[ConsulationManager shareMgr] addHandledConsulation:[NSString stringWithFormat:@"%d",self.consulation.id]];
         
                         [self.navigationController popViewControllerAnimated:YES];
                         
@@ -290,6 +295,14 @@
         
         
         
+    }else{
+    
+        [HKCommen addAlertViewWithTitel:@"已拒绝处理该咨询"];
+    
+        [[ConsulationManager shareMgr] addHandledConsulation:[NSString stringWithFormat:@"%d",self.consulation.id]];
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    
     }
     
 
@@ -300,13 +313,8 @@
 {
     [super viewWillDisappear:animated];
     
-//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//    
-//    hud.mode = MBProgressHUDModeIndeterminate;
-//    hud.labelText = @"正在提交会诊处理结果...";
-    
-
 
 }
+
 
 @end
