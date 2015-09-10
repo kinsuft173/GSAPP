@@ -63,6 +63,16 @@
             self.imgUser.tag = 1;
         }
 
+    }else{
+    
+    
+        self.imgExpert.image = [UIImage imageNamed:@"btn_pre.png"];
+        self.imgUser.image = [UIImage imageNamed:@"btn_nom.png"];
+        
+        self.imgExpert.tag = 1;
+        self.imgUser.tag = 0;
+    
+    
     }
     
 

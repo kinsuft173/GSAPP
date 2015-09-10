@@ -11,6 +11,7 @@
 #import "NetWorkManager.h"
 #import "GSEvaluate.h"
 #import "GSRepine.h"
+#import "PhotoBroswerVC.h"
 
 @interface CaseDetailCtrl ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *lbl_OrderNum;
@@ -43,6 +44,9 @@
 
 @property  BOOL isComment;
 @property  BOOL isComplaint;
+@property  NSInteger index;
+
+@property (nonatomic,strong) NSArray *images;
 
 @end
 
@@ -87,12 +91,43 @@
     self.lbl_Addition.text = self.orderGS.consultation.remark;
     self.lbl_Purpose.text = self.orderGS.consultation.purpose;
     
+    
+    if ([self.orderGS.remark isEqualToString:@""] || [[self.orderGS.remark class] isSubclassOfClass:[NSNull class]]) {
+        
+    }else{
+        
+        self.lbl_ExpertAddtion.text = self.orderGS.remark;
+        
+        
+    }
+    
+    
     if ([self.type isEqualToString:@"1"]) {
         
         self.view_DoctorCaseNotFinished.hidden = YES;
         self.view_ExpertCaseFinished.hidden = YES;
-        self.view_ExpertCaseNotFinished.hidden = YES;
+        self.view_ExpertCaseNotFinished.hidden = NO;
         
+        for (UIView* view in [self.view_ExpertCaseNotFinished subviews]) {
+            
+            if (view == self.btn_newCancel) {
+                
+                view.hidden = NO;
+                
+            }else{
+            
+                view.hidden = YES;
+            
+            }
+            
+            
+        }
+        
+
+        
+    
+
+    
     }else    if ([self.type isEqualToString:@"2"]) {
         
 //        self.vview.hidden = NO;
@@ -105,6 +140,12 @@
         self.view_ExpertCaseFinished.hidden = YES;
         self.view_DoctorCaseNotFinished.hidden = YES;
         
+        if (self.orderGS.type == 0) {
+            
+            self.btn_cancel.hidden = YES;
+            
+        }
+        
     }else    if ([self.type isEqualToString:@"4"]) {
         
         
@@ -114,14 +155,68 @@
         
     }
     
+    
+    
     [self getComment];
     [self getComplaint];
+    
+    
+    if (self.orderGS.consultation.consultationFiles.count != 0) {
+        
+        for (int i = 0; i < self.orderGS.consultation.consultationFiles.count ; i ++) {
+            
+            
+            Consultationfiles* file =[self.orderGS.consultation.consultationFiles objectAtIndex:i];
+            
+            if (file.type == 1 ) {
+                
+                
+                if (![[file.path class] isSubclassOfClass:[NSNull class]]) {
+                    
+                    [self.img_left sd_setImageWithURL:[NSURL URLWithString:file.path]
+                                     placeholderImage:[UIImage imageNamed:@"photo"] options:SDWebImageContinueInBackground];
+                }
+                
+                
+            }
+            
+            if (file.type == 2 ) {
+                
+                
+                if (![[file.path class] isSubclassOfClass:[NSNull class]]) {
+                    
+                    [self.img_middle sd_setImageWithURL:[NSURL URLWithString:file.path]
+                                       placeholderImage:[UIImage imageNamed:@"photo"] options:SDWebImageContinueInBackground];
+                }
+                
+                
+            }
+            
+            if (file.type == 3 ) {
+                
+                
+                if (![[file.path class] isSubclassOfClass:[NSNull class]]) {
+                    
+                    [self.img_right sd_setImageWithURL:[NSURL URLWithString:file.path]
+                                      placeholderImage:[UIImage imageNamed:@"photo"] options:SDWebImageContinueInBackground];
+                }
+                
+                
+            }
+            
+            
+        }
+        
+        
+    }
+    
+    
 }
 
 - (void)getComplaint
 {
     NSDictionary* dic = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInteger:self.orderGS
-                                                                      .id],@"RepineSearch[order_id]",@"1",@"status",nil];
+                                                                      .id],@"and[order_id]",@"1",@"status",nil];
     
     [[NetworkManager shareMgr] server_fetchRepineWithDic:dic completeHandle:^(NSDictionary *dic) {
         
@@ -133,6 +228,9 @@
             
             if (arrayComment.count != 0) {
                 
+                self.btn_Complain.hidden = YES;
+//                self.btn_Complain.alpha = 0.5;
+                
                 GSRepine* repine  = [GSRepine objectWithKeyValues:[arrayComment objectAtIndex:0]];
                 
                 self.lbl_MyComplaint.text = repine.content;
@@ -140,6 +238,8 @@
                 self.isComplaint = YES;
                 
                 self.lbl_MyComplaint.userInteractionEnabled = NO;
+                
+                self.lbl_Complaint.text = repine.content;
                 
                 
                 
@@ -156,7 +256,7 @@
 {
     
     NSDictionary* dic = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInteger:self.orderGS
-                                                                      .id],@"EvaluateSearch[order_id]",@"1",@"status",nil];
+                                                                      .id],@"and[order_id]",@"1",@"status",nil];
     
     [[NetworkManager shareMgr] server_fetchEvaluateWithDic:dic completeHandle:^(NSDictionary *dic) {
         
@@ -168,13 +268,34 @@
             
             if (arrayComment.count != 0) {
                 
+                self.btn_Comment.hidden = YES;
+                self.btn_Comment.alpha = 0.5;
+                
                 GSEvaluate* evaluate = [GSEvaluate objectWithKeyValues:[arrayComment objectAtIndex:0]];
                 
                 self.lbl_MyComment.text = evaluate.content;
                 
+                if (evaluate.score >4.0) {
+                    
+                    [self selectManyi:self.btn_feichangmanyi];
+                    
+                }else if (evaluate.score > 3.0){
+                
+                    [self selectManyi:self.btn_manyi];
+                
+                }else{
+                
+                    [self selectManyi:self.btn_yibanban];
+                }
+                
+                self.btn_yibanban.enabled = NO;
+                self.btn_feichangmanyi.enabled = NO;
+                self.btn_manyi.enabled = NO;
                 self.isComment = YES;
                 
                 self.lbl_MyComment.userInteractionEnabled = NO;
+                
+                self.lbl_CommentOfDoctor.text = evaluate.content;
                 
                 
                 
@@ -283,6 +404,23 @@
         return;
     }
     
+    
+    NSString* strScore;
+    
+    if (self.index == 0 ) {
+        
+        strScore = @"5";
+        
+    }else if(self.index == 1){
+        
+        strScore = @"4";
+    
+    }else if(self.index == 2){
+        
+        strScore = @"3";
+        
+    }
+    
     NSDictionary *parameters = @{@"doctor_id":[NSNumber numberWithInteger:self.orderGS.doctor_id],@"evaluated_doctor_id":[NSNumber numberWithInteger:self.orderGS.order_doctor_id],@"order_id":[NSNumber numberWithInteger:self.orderGS.id],@"score":@"4",@"content":self.lbl_MyComment.text};
 
     [[NetworkManager shareMgr] server_createEvaluateWithDic:parameters completeHandle:^(NSDictionary *dic) {
@@ -349,7 +487,94 @@
 
 
 
+- (IBAction)selectManyi:(UIButton*)sender{
 
+    if (sender == self.btn_feichangmanyi) {
+        
+        self.index = 0;
+        
+        self.img_feichangmanyi.image = [UIImage imageNamed:@"btn_pre.png"];
+        self.img_manyi.image = [UIImage imageNamed:@"btn_nom.png"];
+        self.img_yibanban.image = [UIImage imageNamed:@"btn_nom.png"];
+        
+    }else if (sender == self.btn_manyi) {
+        
+        self.index = 1;
+        
+        self.img_feichangmanyi.image = [UIImage imageNamed:@"btn_nom.png"];
+        self.img_manyi.image = [UIImage imageNamed:@"btn_pre.png"];
+        self.img_yibanban.image = [UIImage imageNamed:@"btn_nom.png"];
+        
+        
+    }else if (sender == self.btn_yibanban) {
+        
+        self.index = 2;
+        
+        self.img_feichangmanyi.image = [UIImage imageNamed:@"btn_nom.png"];
+        self.img_manyi.image = [UIImage imageNamed:@"btn_nom.png"];
+        self.img_yibanban.image = [UIImage imageNamed:@"btn_pre.png"];
+        
+        
+    }
+
+}
+
+- (IBAction)SeeMyImage:(UIButton *)sender {
+    [self localImageShow:sender.tag];
+}
+
+/*
+ *  本地图片展示
+ */
+-(void)localImageShow:(NSUInteger)index{
+    
+    __weak typeof(self) weakSelf=self;
+    
+    [PhotoBroswerVC show:self type:PhotoBroswerVCTypeZoom index:index photoModelBlock:^NSArray *{
+        
+        NSArray *localImages = weakSelf.images;
+        
+        NSMutableArray *modelsM = [NSMutableArray arrayWithCapacity:localImages.count];
+        for (NSUInteger i = 0; i< localImages.count; i++) {
+            
+            PhotoModel *pbModel=[[PhotoModel alloc] init];
+            pbModel.mid = i + 1;
+            pbModel.image = localImages[i];
+            
+            if (index==0) {
+                pbModel.sourceImageView = self.img_left;
+            }
+            else if (index==1)
+            {
+                pbModel.sourceImageView = self.img_middle;
+            }
+            else
+            {
+                pbModel.sourceImageView = self.img_right;
+            }
+            
+            [modelsM addObject:pbModel];
+        }
+        
+        return modelsM;
+    }];
+}
+
+-(NSArray *)images{
+    
+    if(_images ==nil){
+        NSMutableArray *arrayM = [NSMutableArray array];
+        
+        
+        [arrayM addObject:self.img_left.image];
+        [arrayM addObject:self.img_middle.image];
+        [arrayM addObject:self.img_right.image];
+        
+        _images = arrayM;
+    }
+    
+    return _images;
+}
 
 
 @end

@@ -152,10 +152,29 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section != 2) {
+    if (section == 0) {
+        
+        
+        
         return 1;
+        
+        
+        
+    }else if (section == 1){
+        
+        
+        return 1;
+        
+    
+    }else if(section == 2 ){
+    
+    
+        return self.arrayComment.count;
+    
     }
-    return self.arrayComment.count;
+    
+    
+    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -221,7 +240,7 @@
             
             for (int i = 0; i < self.expert.doctorFiles.count; i ++) {
                 
-                Doctorfiles* file = [self.expert.doctorFiles objectAtIndex:i];
+                Doctorfiles* file = [Doctorfiles  objectWithKeyValues:[self.expert.doctorFiles objectAtIndex:i]] ;
                 
                 if (file.type == 1) {
                     

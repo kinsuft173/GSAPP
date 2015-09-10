@@ -571,6 +571,8 @@
     
     [dicTemp setObject:@1 forKey:@"all"];
     
+    [dicTemp setObject:@"-created_at" forKey:@"sort"];
+    
     [manager GET:[NSString stringWithFormat:@"%@%@",SERVER,ORDER_FETCH_URL] parameters:dicTemp success:^(AFHTTPRequestOperation *operation, id responseObject){
         
 //        NSLog(@"server_fetchOrderWithDic = >>JSON: %@", responseObject);

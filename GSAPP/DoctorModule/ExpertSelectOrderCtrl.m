@@ -78,12 +78,7 @@
                 
                 NSString* strId = [NSString stringWithFormat:@"%d",consulation.id];
                 
-//                if (![[ConsulationManager shareMgr].setModel ] ) {
-//                    
-//                    
-//                    [self.arrayPrivateConsulation addObjectsFromArray:resultArray];
-//                    
-//                }
+
                 
                 BOOL isNewConsult = YES;
                 
@@ -261,9 +256,9 @@ if (indexPath.row % 2 !=0) {
     
     //  self.arrayPrivateConsulation.count*2
     
-    //return self.arrayPublicConsulation.count*2;
+    // return self.arrayPublicConsulation.count*2;
     
-   // if (indexPath.section==0) {
+    // if (indexPath.section==0) {
         
         if (indexPath.row % 2!=0) {
             EmptyCell* cell = [tableView dequeueReusableCellWithIdentifier:EmptyId];
@@ -369,7 +364,7 @@ viewForHeaderInSection:(NSInteger)section
     if (section==0) {
         UIView *view=[[UIView alloc]init];
         [view setFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 52.0)];
-        view.backgroundColor=[UIColor clearColor];
+        view.backgroundColor=[HKCommen getColor:@"fafafa"];
         
         UILabel *lbl_Middle=[[UILabel alloc]initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width*0.5-60-10, 19.0, 120, 16)];
         lbl_Middle.textAlignment=UITextAlignmentCenter;
@@ -394,7 +389,7 @@ viewForHeaderInSection:(NSInteger)section
     {
         UIView *view=[[UIView alloc]init];
         [view setFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 52.0)];
-        view.backgroundColor=[UIColor clearColor];
+        view.backgroundColor=[HKCommen getColor:@"fafafa"];
         
         UILabel *lbl_Middle=[[UILabel alloc]initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width*0.5-60-10, 19.0, 120, 16)];
         lbl_Middle.textAlignment=UITextAlignmentCenter;
