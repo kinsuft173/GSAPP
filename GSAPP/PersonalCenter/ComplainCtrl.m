@@ -49,7 +49,7 @@
 
 - (void)getComplaint
 {
-    NSDictionary* dic = [[NSDictionary alloc] initWithObjectsAndKeys:[UserDataManager shareManager].userId,@"RepineSearch[doctor_id]",@"1",@"status",@"order,repinedDoctor",@"expand",nil];
+    NSDictionary* dic = [[NSDictionary alloc] initWithObjectsAndKeys:[UserDataManager shareManager].userId,@"and[doctor_id]",@"1",@"status",@"order,repinedDoctor",@"expand",nil];
     
     [[NetworkManager shareMgr] server_fetchRepineWithDic:dic completeHandle:^(NSDictionary *dic) {
         
@@ -177,7 +177,7 @@ viewForHeaderInSection:(NSInteger)section
     
     GSRepine* repine = [GSRepine objectWithKeyValues:[self.arrayRepines objectAtIndex:indexPath.section]];
     
-    NSDictionary* dic = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInteger:repine.order.id],@"where[id][]",@"consultation,orderDoctor",@"expand",nil];
+    NSDictionary* dic = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInteger:repine.order.id],@"and[id]",@"consultation,orderDoctor",@"expand",nil];
     
     [[NetworkManager shareMgr] server_fetchOrderWithDic:dic completeHandle:^(NSDictionary *dic) {
         

@@ -47,7 +47,7 @@
 
 @property (nonatomic, copy) NSString *created_at;
 
-@property (nonatomic, strong) Doctor *doctor;
+@property (nonatomic, strong) GSExpert *doctor;
 
 
 @end

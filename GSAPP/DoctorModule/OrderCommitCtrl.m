@@ -343,7 +343,7 @@
 {
     NSString* strUrl;
     
-    if (self.orderGS.doctor.doctorFiles.count != 0) {
+    if (self.orderGS.orderDoctor.doctorFiles.count != 0) {
         
         for (int i = 0; i < self.orderGS.orderDoctor.doctorFiles.count; i ++) {
             

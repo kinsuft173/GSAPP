@@ -311,7 +311,7 @@
         
         for (int i = 0; i < evaluate.doctor.doctorFiles.count; i ++) {
             
-            Doctorfiles* file = [self.expert.doctorFiles objectAtIndex:i];
+            Doctorfiles* file = [evaluate.doctor.doctorFiles objectAtIndex:i];
             
             if (file.type == 1) {
                 

@@ -45,12 +45,23 @@
         UILabel *lbl_name=[[UILabel alloc]initWithFrame:CGRectMake(16, 80, 37, 12)];
         lbl_name.font=[UIFont systemFontOfSize:12.0];
         [lbl_name setTextColor:[UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0]];
-        [lbl_name setText:item[@"name"]];
+    //    [lbl_name setText:item[@"name"]];
+        if([[item[@"name"] class] isSubclassOfClass:[NSString class]]){
+        
+            lbl_name.text = item[@"name"];
+        
+        }
         
         UILabel *lbl_position=[[UILabel alloc]initWithFrame:CGRectMake(10, 96, 50, 12)];
         lbl_position.font=[UIFont systemFontOfSize:12.0];
         [lbl_position setTextColor:[UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0]];
-        [lbl_position setText:item[@"address"]];
+      //  [lbl_position setText:item[@"address"]];
+        
+        if ([[item[@"address"] class] isSubclassOfClass:[NSString class]]) {
+            
+            lbl_position.text = item[@"address"];
+            
+        }
         
         if ([item objectForKey:@"doctorFiles"]) {
             
@@ -71,7 +82,7 @@
                         
                         
                         [imageView sd_setImageWithURL:file.path
-                                             placeholderImage:[UIImage imageNamed:@"loading-ios"] options:SDWebImageContinueInBackground];
+                                             placeholderImage:[UIImage imageNamed:HEADPHOTO_PLACEHOUDER] options:SDWebImageContinueInBackground];
                     }
                     
                 }

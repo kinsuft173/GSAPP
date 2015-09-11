@@ -41,4 +41,13 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *img_right;
 
+
+@property (nonatomic, strong) IBOutlet UIView* img_circle1;
+@property (nonatomic, strong) IBOutlet UIView* img_circle2;
+@property (nonatomic, strong) IBOutlet UIView* img_circle3;
+@property (nonatomic, strong) IBOutlet UIView* img_circle4;
+@property (nonatomic, strong) IBOutlet UIView* img_circle5;
+@property (nonatomic, strong) IBOutlet UIView* img_circle6;
+
+
 @end

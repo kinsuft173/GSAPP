@@ -122,7 +122,8 @@
         
         
     }];
-    
+
+
 }
 
 //- (void)server_updateUserWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
@@ -321,13 +322,17 @@
 {
 
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
+
+    //[manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     //test
     NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:dic];//@{@"email": @"xianfengshizhazha@caidigou.net"};
     
-    [parameters removeObjectForKey:@"id"];
+   //[parameters removeObjectForKey:@"id"];
     
-    [manager PUT:[NSString stringWithFormat:@"%@%@&%@=%@",SERVER,USER_UPDATE_URL,@"id",dic[@"id"]] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSLog(@"更新密码参数= %@",parameters);
+    
+    
+    [manager PUT:[NSString stringWithFormat:@"%@%@",SERVER,USER_UPDATE_URL] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         
         NSLog(@"JSON: %@", responseObject);
@@ -341,8 +346,117 @@
         completeHandle(nil);
         
     }];
+    
+    
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+//        
+//        NSString* strUrl = [NSString stringWithFormat:@"%@%@",SERVER,USER_UPDATE_URL];
+//        
+//        NSDictionary* dicResult = [self server_BasePut:dic url:strUrl];
+//
+//        dispatch_async(dispatch_get_main_queue(),^{
+//            
+//            if (dicResult) {
+//                
+//                completeHandle(dicResult);
+//                
+//            }else{
+//                
+//                completeHandle(nil);
+//            }
+//            
+//        });
+//        
+//    });
 
 
+//    NSURL *url=[[NSURL alloc]initWithString:[NSString stringWithFormat:@"%@%@",SERVER,USER_UPDATE_URL]];
+//    
+//    NSMutableData *postBody=[NSMutableData data];
+//    
+//    
+//    NSString* strBody = [NSString stringWithFormat:@"username=%@&newPassword=%@&oldPassword=%@",dic[@"username"],dic[@"newPassword"],dic[@"oldPassword"]];
+//    
+//    [postBody appendData:[strBody dataUsingEncoding:NSUTF8StringEncoding]];
+//    NSMutableURLRequest *request=[[NSMutableURLRequest alloc]initWithURL:url
+//                                                             cachePolicy:NSURLRequestReloadIgnoringCacheData
+//                                                         timeoutInterval:20.0f];
+//    [request setHTTPMethod: @"PUT"];
+//    [request setValue: @"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+//    [request setHTTPBody:postBody];
+//    NSError *error = nil;
+//    NSHTTPURLResponse* urlResponse = nil;
+//    NSData *responseData = [NSURLConnection sendSynchronousRequest:request
+//                                                 returningResponse:&urlResponse error:&error];
+//    
+//    NSString* myString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    
+    
+
+    
+//    SBJsonParser *parser = [[SBJsonParser alloc] init];
+//    
+//
+//    NSDictionary *object = [parser objectWithString:myString];
+//    
+//    NSLog(@"object = %@",object);
+//    
+//    // check result
+//    NSNumber* status = [object objectForKey:@"success"];
+//    
+//    
+//    if ([status boolValue]) {
+//        
+//        
+//        completeHandle(object);
+//        
+//        
+//    }else{
+//    
+//        completeHandle(nil);
+//    
+//    }
+
+//    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",SERVER,USER_UPDATE_URL]]];
+//    [urlRequest setTimeoutInterval:30.0f];
+//  [urlRequest setValue: @"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+//    [urlRequest setHTTPMethod:@"PUT"];
+// [urlRequest setValue: @"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+//    NSString *body = [NSString stringWithFormat:@"username=%@&newPassword=%@&oldPassword=%@",dic[@"username"],dic[@"newPassword"],dic[@"oldPassword"]];
+//    [urlRequest setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
+// [urlRequest setValue: @"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+//    
+//        NSError *error = nil;
+//        NSHTTPURLResponse* urlResponse = nil;
+//        NSData *responseData = [NSURLConnection sendSynchronousRequest:urlRequest
+//                                                     returningResponse:&urlResponse error:&error];
+//        NSString* myString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+//    
+//    
+//    
+//    
+//        SBJsonParser *parser = [[SBJsonParser alloc] init];
+//    
+//    
+//        NSDictionary *object = [parser objectWithString:myString];
+//    
+//        NSLog(@"object = %@",object);
+//    
+//        // check result
+//        NSNumber* status = [object objectForKey:@"success"];
+//    
+//    
+//        if ([status boolValue]) {
+//    
+//    
+//            completeHandle(object);
+//    
+//    
+//        }else{
+//        
+//            completeHandle(nil);
+//        
+//        }
 }
 
 
@@ -1263,6 +1377,143 @@
     
     [request setHTTPBody:body];
     [request setHTTPMethod:@"POST"];
+    
+    // set the content-length
+    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[body length]];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    
+    
+    NSURLResponse *response;
+    NSError *error;
+    
+    NSLog(@"Post Request = %@",request);
+    
+    NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    
+    
+    if (error == nil)
+    {
+        // Parse data here
+        NSString* myString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        
+        NSLog(@"myString = %@",myString);
+        
+        
+        
+        
+        //debug
+        //NSLog(@"server_addAppointmentOrder=> %@", myString);
+        
+        // parse
+        SBJsonParser *parser = [[SBJsonParser alloc] init];
+        
+        // parse the JSON string into an object - assuming json_string is a NSString of JSON data
+        NSDictionary *object = [parser objectWithString:myString];
+        
+        // check result
+        NSNumber* status = [object objectForKey:@"success"];
+        
+        
+        
+        if([status boolValue] == YES)
+        {
+            return object;
+        }
+        else{
+            
+            
+        }
+        
+    }
+    else
+    {
+        
+        
+        
+        
+        
+        
+    }
+    
+    return nil;
+}
+
+
+
+
+
+
+- (NSDictionary*)server_BasePut:(NSMutableDictionary*)dic url:(NSString*)ctUrl
+{
+    
+    //download from server
+    NSString* strUrl = ctUrl;//[NSString stringWithFormat:@"%@/base/addAppointmentOrder?", SERVER];
+    
+    if(dic == nil)
+        return nil;
+    
+    //download from server
+    //NSString* strUrl = [NSString stringWithFormat:@"%@/base/addArchiveRecord", SERVER];
+    
+    
+    NSString *BoundaryConstant = @"bP8bMGL3HEiJbMKsS289FSuSKw9Kq8iklhSPysQ";
+    
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:strUrl]
+                                                           cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                                       timeoutInterval:10];
+    
+//    NSString *contentType = [[NSString alloc]initWithFormat:@"application/x-www-form-urlencoded; boundary=%@",BoundaryConstant];
+    NSString *contentType = @"application/x-www-form-urlencoded";
+    [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
+    
+    // post body
+    NSMutableData *body = [NSMutableData data];
+    
+    
+    
+    for (NSString *key in [dic allKeys])
+    {
+        
+        
+        
+        id value = dic[key];
+        if (([value isKindOfClass:[NSString class]] && ((NSString*)value).length == 0) ||
+            value == [NSNull null]||
+            [key isEqualToString:@"file[]" ] )
+        {
+            continue;
+        }
+        
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", BoundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", key] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"%@\r\n", value] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+    
+    
+    NSArray* imgArray = dic[@"file[]"];
+    
+    if (imgArray) {
+        
+        for (int i = 0; i < imgArray.count; i++) {
+            
+            NSData* imgData = [imgArray objectAtIndex:i];
+            
+            [body appendData:[[NSString stringWithFormat:@"--%@\r\n", BoundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"image.jpg\"\r\n", @"file[]"] dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:imgData];
+            [body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        }
+    }
+    
+    [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", BoundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // setting the body of the post to the reqeust
+    
+    
+    [request setHTTPBody:body];
+    [request setHTTPMethod:@"PUT"];
     
     // set the content-length
     NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[body length]];

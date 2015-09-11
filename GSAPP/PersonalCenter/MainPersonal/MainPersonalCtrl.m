@@ -23,6 +23,7 @@
 #import "SIAlertView.h"
 #import "UserDataManager.h"
 #import "NetWorkManager.h"
+#import "ChangePsdNewViewController.h"
 
 @interface MainPersonalCtrl ()<logOut>
 @property (nonatomic,strong) NSArray *arrayOfList_first;
@@ -399,7 +400,7 @@ viewForHeaderInSection:(NSInteger)section
 //            [HKCommen addAlertViewWithTitel:@"尚在测试之中"];
 //            return;
 
-            ChangePassWordCtrl *vc=[[ChangePassWordCtrl alloc]initWithNibName:@"ChangePassWordCtrl" bundle:nil];
+            ChangePsdNewViewController *vc=[[ChangePsdNewViewController alloc]initWithNibName:@"ChangePsdNewViewController" bundle:nil];
   
             vc.hidesBottomBarWhenPushed=YES;
    

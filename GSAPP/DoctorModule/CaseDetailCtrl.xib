@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -14,6 +14,12 @@
                 <outlet property="btn_manyi" destination="Sfs-Yr-8bS" id="Dsv-pU-WRB"/>
                 <outlet property="btn_newCancel" destination="Gqk-fy-gzX" id="xTv-JT-fT4"/>
                 <outlet property="btn_yibanban" destination="Gyb-m7-eTd" id="1C6-go-iS3"/>
+                <outlet property="img_circle1" destination="ToC-Xu-5vh" id="vrx-UR-L7m"/>
+                <outlet property="img_circle2" destination="DfU-z3-hxS" id="4np-d1-U4O"/>
+                <outlet property="img_circle3" destination="Dee-A6-AWk" id="2FA-2Z-qrc"/>
+                <outlet property="img_circle4" destination="gRr-bS-qFa" id="dOf-bw-uvd"/>
+                <outlet property="img_circle5" destination="PiN-iP-6dy" id="neP-1C-Hdx"/>
+                <outlet property="img_circle6" destination="jbF-y4-11s" id="uPA-uI-ULa"/>
                 <outlet property="img_feichangmanyi" destination="hhO-94-uF9" id="fVy-4F-vVe"/>
                 <outlet property="img_left" destination="ndZ-0U-ELv" id="mXs-4F-zLw"/>
                 <outlet property="img_manyi" destination="lMU-Hh-lSD" id="xdY-mF-2Ac"/>
@@ -722,7 +728,7 @@
                             <color key="textColor" red="0.41568627450000001" green="0.41568627450000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015年10月9日" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fo-5f-N3r">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fo-5f-N3r">
                             <rect key="frame" x="144" y="463" width="162" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="162" id="Rkm-d7-opH"/>
@@ -772,7 +778,7 @@
                             <color key="textColor" red="0.41568627450000001" green="0.41568627450000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="价钱好商量价钱好商量价钱好商量价钱好商量价钱好商量价钱好商量价钱好商量价钱好商量价钱好商量" translatesAutoresizingMaskIntoConstraints="NO" id="I6X-hA-VDS">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="暂无备注信息" translatesAutoresizingMaskIntoConstraints="NO" id="I6X-hA-VDS">
                             <rect key="frame" x="40" y="525" width="299" height="102"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -783,7 +789,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="希望能医好希望能医好希望能医好希望能医好希望能医好" translatesAutoresizingMaskIntoConstraints="NO" id="sKX-4Z-d6C">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="暂无会诊目的信息" translatesAutoresizingMaskIntoConstraints="NO" id="sKX-4Z-d6C">
                             <rect key="frame" x="40" y="640" width="300" height="57"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>

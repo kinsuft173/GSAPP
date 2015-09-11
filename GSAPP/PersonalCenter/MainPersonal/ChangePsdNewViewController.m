@@ -1,31 +1,21 @@
 //
-//  ChangePassWordCtrl.m
+//  ChangePsdNewViewController.m
 //  GSAPP
 //
-//  Created by lijingyou on 15/7/12.
-//  Copyright (c) 2015年 cn.kinsuft. All rights reserved.
+//  Created by 胡昆1 on 9/11/15.
+//  Copyright (c) 2015 cn.kinsuft. All rights reserved.
 //
 
-#import "ChangePassWordCtrl.h"
+#import "ChangePsdNewViewController.h"
 #import "HKCommen.h"
 #import "NetWorkManager.h"
 #import "UserDataManager.h"
 
-@interface ChangePassWordCtrl ()
+@interface ChangePsdNewViewController ()
 
 @end
 
-@implementation ChangePassWordCtrl
-
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-    }
-    return self; 
-}
+@implementation ChangePsdNewViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -108,32 +98,38 @@
         [dicNew setObject:[NSString stringWithFormat:@"%@",[UserDataManager shareManager].user.username] forKey:@"username"];
         
         [dicNew setObject:self.txt_CommitPassword.text forKey:@"newPassword"];
-        [dicNew setObject:self.txt_OldPassword forKey:@"oldPassword"];
-//        [dicNew setObject:@"" forKey:@""];
-    
+        [dicNew setObject:self.txt_OldPassword.text forKey:@"oldPassword"];
+        //        [dicNew setObject:@"" forKey:@""];
+        
         [[NetworkManager shareMgr] server_updateUserWithDic:dicNew completeHandle:^(NSDictionary *response1) {
             
-            if ([[response1 objectForKey:@"success"] boolValue] == YES) {
-                
-                //[UserDataManager shareManager].user.doctor.doctorFiles = [GSExpert objectWithKeyValues:[responseDoctor objectForKey:@"data"]];
-                
-                [HKCommen addAlertViewWithTitel:@"修改密码成功"];
-                
-                [self.navigationController popToRootViewControllerAnimated:YES];
-                
-                
+            
+            if (response1) {
+                if ([[response1 objectForKey:@"success"] boolValue] == YES) {
+                    
+                    //[UserDataManager shareManager].user.doctor.doctorFiles = [GSExpert objectWithKeyValues:[responseDoctor objectForKey:@"data"]];
+                    
+                    [HKCommen addAlertViewWithTitel:@"修改密码成功"];
+                    
+                    [self.navigationController popToRootViewControllerAnimated:YES];
+                    
+                    
+                }
+            
+            }else{
+            
+                [HKCommen addAlertViewWithTitel:@"修改密码失败"];
+            
             }
-            
-            
-            
+        
         }];
-    
-    
+        
+        
     }
-
-
-
-
+    
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -142,13 +138,14 @@
 }
 
 /*
-#pragma mark - Navigation
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

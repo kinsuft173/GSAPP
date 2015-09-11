@@ -93,6 +93,8 @@
 		B9CAD99D1B565F7D000DB375 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = B9CAD9911B565F7D000DB375 /* UIScrollView+MJRefresh.m */; };
 		B9CAD99E1B565F7D000DB375 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B9CAD9931B565F7D000DB375 /* UIView+Extension.m */; };
 		B9CAD99F1B565F7D000DB375 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B9CAD9951B565F7D000DB375 /* UIView+MJExtension.m */; };
+		B9CADC7E1BA26EEF001ABC36 /* ChangePsdNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9CADC7C1BA26EEF001ABC36 /* ChangePsdNewViewController.m */; };
+		B9CADC7F1BA26EEF001ABC36 /* ChangePsdNewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9CADC7D1BA26EEF001ABC36 /* ChangePsdNewViewController.xib */; };
 		B9CBCFCB1B28224E0081AADA /* bg1.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CBCFC71B28224E0081AADA /* bg1.png */; };
 		B9CBCFCC1B28224E0081AADA /* bg2.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CBCFC81B28224E0081AADA /* bg2.png */; };
 		B9CBCFCD1B28224E0081AADA /* bg3.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CBCFC91B28224E0081AADA /* bg3.png */; };
@@ -664,6 +666,9 @@
 		B9CAD9931B565F7D000DB375 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		B9CAD9941B565F7D000DB375 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		B9CAD9951B565F7D000DB375 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		B9CADC7B1BA26EEF001ABC36 /* ChangePsdNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePsdNewViewController.h; sourceTree = "<group>"; };
+		B9CADC7C1BA26EEF001ABC36 /* ChangePsdNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePsdNewViewController.m; sourceTree = "<group>"; };
+		B9CADC7D1BA26EEF001ABC36 /* ChangePsdNewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePsdNewViewController.xib; sourceTree = "<group>"; };
 		B9CBCFC71B28224E0081AADA /* bg1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg1.png; sourceTree = "<group>"; };
 		B9CBCFC81B28224E0081AADA /* bg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg2.png; sourceTree = "<group>"; };
 		B9CBCFC91B28224E0081AADA /* bg3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg3.png; sourceTree = "<group>"; };
@@ -2435,6 +2440,9 @@
 				B9DDE0351B536BDA001E0B43 /* ServiceProjectCtrl.h */,
 				B9DDE0361B536BDA001E0B43 /* ServiceProjectCtrl.m */,
 				B9DDE0371B536BDA001E0B43 /* ServiceProjectCtrl.xib */,
+				B9CADC7B1BA26EEF001ABC36 /* ChangePsdNewViewController.h */,
+				B9CADC7C1BA26EEF001ABC36 /* ChangePsdNewViewController.m */,
+				B9CADC7D1BA26EEF001ABC36 /* ChangePsdNewViewController.xib */,
 			);
 			path = MainPersonal;
 			sourceTree = "<group>";
@@ -3109,6 +3117,7 @@
 				B9DDDFB11B536AF9001E0B43 /* list_btn_cancel@2x.png in Resources */,
 				DEFBA5861B75CB4A000C1AD6 /* LoginOutCell.xib in Resources */,
 				DEFB2A0E1B4AE87100CCA73D /* login_btn_pre@3x.png in Resources */,
+				B9CADC7F1BA26EEF001ABC36 /* ChangePsdNewViewController.xib in Resources */,
 				B94567AE1B661A1B00458386 /* AMap.bundle in Resources */,
 				B94567FB1B661A8200458386 /* location_yes@2x.png in Resources */,
 				DEFDF57B1B5964E300298366 /* SelectSpeticalCtrl.xib in Resources */,
@@ -3435,6 +3444,7 @@
 				DEFBA5851B75CB4A000C1AD6 /* LoginOutCell.m in Sources */,
 				DE0638261B6AF23300EFB576 /* openssl_wrapper.m in Sources */,
 				DEFDF5711B5964E300298366 /* SelectCategoryCtrl.m in Sources */,
+				B9CADC7E1BA26EEF001ABC36 /* ChangePsdNewViewController.m in Sources */,
 				B9DDDF201B536AC7001E0B43 /* starView.m in Sources */,
 				B9D33D931B65C3180020AB1E /* UITableViewCell+Extend.m in Sources */,
 				B9D33D8F1B65C3180020AB1E /* UIImage+Cut.m in Sources */,
@@ -3697,7 +3707,7 @@
 					"$(PROJECT_DIR)/GSAPP/ThirdLib/AliPay",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "55231b35-1ded-47b7-8440-9d10b7324aca";
 			};
 			name = Debug;
 		};
@@ -3735,7 +3745,7 @@
 					"$(PROJECT_DIR)/GSAPP/ThirdLib/AliPay",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "55231b35-1ded-47b7-8440-9d10b7324aca";
 			};
 			name = Release;
 		};

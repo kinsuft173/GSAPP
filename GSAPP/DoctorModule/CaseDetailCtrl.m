@@ -58,6 +58,19 @@
     
     self.myScroll.contentSize=CGSizeMake(0, 1500);
     
+    self.img_circle1.layer.cornerRadius = 6.5;
+    self.img_circle1.layer.masksToBounds = YES;
+    self.img_circle2.layer.cornerRadius = 6.5;
+    self.img_circle2.layer.masksToBounds = YES;
+    self.img_circle3.layer.cornerRadius = 6.5;
+    self.img_circle3.layer.masksToBounds = YES;
+    self.img_circle4.layer.cornerRadius = 6.5;
+    self.img_circle4.layer.masksToBounds = YES;
+    self.img_circle5.layer.cornerRadius = 6.5;
+    self.img_circle5.layer.masksToBounds = YES;
+    self.img_circle6.layer.cornerRadius = 6.5;
+    self.img_circle6.layer.masksToBounds = YES;
+    
     [HKCommen addHeadTitle:@"案例详情" whichNavigation:self.navigationItem];
     
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -97,7 +110,7 @@
     }else{
         
         self.lbl_ExpertAddtion.text = self.orderGS.remark;
-        
+        self.lbl_AdditionOfExpert.text = self.orderGS.remark;
         
     }
     

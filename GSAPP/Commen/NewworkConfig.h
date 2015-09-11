@@ -26,7 +26,7 @@ typedef void (^FailHandle)();
 //用户部分
 //#define USER_REGESTER_URL @"user/create"
 #define USER_FETCH_URL @"user/view"
-#define USER_UPDATE_URL @"user/update"  
+#define USER_UPDATE_URL @"user/update-password"
 
 //广告部分
 #define APP_AD_URL @"advertisement/index"

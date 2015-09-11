@@ -182,7 +182,7 @@
         
         
         
-//        [cell customUI:self.array_DoctorRecommend];
+        [cell customUI:self.array_DoctorRecommend];
         
         cell.delegate=self;
         

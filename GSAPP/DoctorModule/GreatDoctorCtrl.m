@@ -54,6 +54,8 @@
         
         NSArray* resultArray = [[response objectForKey:@"data"] objectForKey:@"items"];
         
+        NSLog(@"用户选单server_fetchOrderWithDic===>%@",resultArray);
+        
         if (resultArray.count != 0) {
             
             [self.arrayModel addObjectsFromArray:resultArray];
