@@ -274,6 +274,7 @@
     
     if (self.consulation.other_order == 0 && self.consulation.expert_id == [UserDataManager shareManager].userId.integerValue ) {
         
+
         
             NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:self.consulation.id],@"id",@4,@"status", nil];
         

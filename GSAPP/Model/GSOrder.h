@@ -27,6 +27,8 @@
 
 @property (nonatomic, assign) NSInteger type;
 
+@property (nonatomic, copy) NSString *remark;
+
 
 @property (nonatomic, strong) GSConsulation*  consultation;
 @property (nonatomic, strong) GSExpert*        orderDoctor;

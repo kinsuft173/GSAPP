@@ -148,7 +148,7 @@
             return 0;
         }else{
             
-            return 1;
+            return 0;
             
         
         }
@@ -266,16 +266,77 @@ heightForHeaderInSection:(NSInteger)section
     
     if (indexPath.section == 1) {
         
-        NSLog(@"测试");
-        OrderCommitCtrl *vc=[[OrderCommitCtrl alloc] initWithNibName:@"OrderCommitCtrl" bundle:nil];
         
-        GSOrder* order = [GSOrder objectWithKeyValues:[self.arrayModel objectAtIndex:indexPath.row]];
-        vc.orderGS = order;
         
-        [self.navigationController pushViewController:vc animated:YES];
+        SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:nil andMessage:@"确定要选择这位专家么?"];
+        [alertView addButtonWithTitle:@"确认"
+                                 type:SIAlertViewButtonTypeCancel
+                              handler:^(SIAlertView *alertView) {
+                                  
+                                  
+                                  
+                                  
+                                  NSLog(@"测试");
+                                  OrderCommitCtrl *vc=[[OrderCommitCtrl alloc] initWithNibName:@"OrderCommitCtrl" bundle:nil];
+                                  
+                                  GSOrder* order = [GSOrder objectWithKeyValues:[self.arrayModel objectAtIndex:indexPath.row]];
+                                  vc.orderGS = order;
+                                  
+                                  [self.navigationController pushViewController:vc animated:YES];
+                                  
+                                  NSDictionary* dic = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInteger:order
+                                                                                                    .id],@"id",@2,@"status",nil];
+                                  
+                                  [[NetworkManager shareMgr] server_updateOrderWithDic:dic completeHandle:^(NSDictionary *dic) {
+                                      
+                                      ;
+                                      
+                                  }];
+                                  
+                                  
+                                  NSDictionary* dicConsult = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInteger:order
+                                                                                                           .consultation_id],@"id",@9,@"status",nil];
+                                  
+                                  [[NetworkManager shareMgr] server_updateConsultWithDic:dicConsult completeHandle:^(NSDictionary *dic) {
+                                      
+                                      ;
+                                      
+                                  }];
+                                  
+                              }];
+        [alertView addButtonWithTitle:@"取消"
+                                 type:SIAlertViewButtonTypeDefault
+                              handler:^(SIAlertView *alertView) {
+                                  
+                              }];
+        alertView.transitionStyle = SIAlertViewTransitionStyleDropDown;
+        alertView.backgroundStyle = SIAlertViewBackgroundStyleSolid;
+        
+        alertView.willShowHandler = ^(SIAlertView *alertView) {
+            NSLog(@"%@, willShowHandler3", alertView);
+        };
+        alertView.didShowHandler = ^(SIAlertView *alertView) {
+            NSLog(@"%@, didShowHandler3", alertView);
+        };
+        alertView.willDismissHandler = ^(SIAlertView *alertView) {
+            NSLog(@"%@, willDismissHandler3", alertView);
+        };
+        alertView.didDismissHandler = ^(SIAlertView *alertView) {
+            NSLog(@"%@, didDismissHandler3", alertView);
+        };
+        
+        [alertView show];
+        
+
         
     }
     
+
+}
+
+- (void)goOther
+{
+
 
 }
 

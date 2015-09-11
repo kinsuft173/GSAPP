@@ -16,4 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl_zhuangzhuang;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_jibingmiaoshu;
 
+@property (weak, nonatomic) IBOutlet UIButton *btn_tousu;
+@property (weak, nonatomic) IBOutlet UIButton *btn_comment;
+
 @end

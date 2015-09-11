@@ -288,7 +288,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xRz-dO-s7X">
-                                <rect key="frame" x="10" y="72" width="355" height="537"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="553"/>
                                 <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="lSa-Nz-qAG" id="unk-01-IPe"/>
@@ -299,12 +299,25 @@
                         <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="xRz-dO-s7X" firstAttribute="leading" secondItem="Jdg-uU-URP" secondAttribute="leadingMargin" constant="-6" id="5hR-u7-Y2d"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xRz-dO-s7X" secondAttribute="trailing" constant="-16" id="BVd-ac-WRZ"/>
                             <constraint firstItem="Vjh-Vh-CVe" firstAttribute="top" secondItem="xRz-dO-s7X" secondAttribute="bottom" constant="9" id="Frw-ol-3AS"/>
                             <constraint firstItem="xRz-dO-s7X" firstAttribute="top" secondItem="fkj-Ky-WAJ" secondAttribute="bottom" constant="8" id="Hbv-e2-EH3"/>
+                            <constraint firstItem="Vjh-Vh-CVe" firstAttribute="top" secondItem="xRz-dO-s7X" secondAttribute="bottom" constant="1" id="S8h-NR-nyD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xRz-dO-s7X" secondAttribute="trailing" constant="-6" id="T8F-rG-RSq"/>
+                            <constraint firstItem="xRz-dO-s7X" firstAttribute="top" secondItem="fkj-Ky-WAJ" secondAttribute="bottom" id="s7T-tg-agh"/>
+                            <constraint firstItem="xRz-dO-s7X" firstAttribute="leading" secondItem="Jdg-uU-URP" secondAttribute="leadingMargin" constant="-16" id="sFp-3z-TIM"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5hR-u7-Y2d"/>
+                                <exclude reference="Hbv-e2-EH3"/>
+                                <exclude reference="T8F-rG-RSq"/>
+                                <exclude reference="Frw-ol-3AS"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="6eW-Ba-Xur"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="myTable" destination="xRz-dO-s7X" id="KiH-YG-vDA"/>
                     </connections>

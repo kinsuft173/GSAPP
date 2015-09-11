@@ -24,4 +24,21 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn_Comment;
 @property (weak, nonatomic) IBOutlet UIButton *btn_Complain;
 
+
+@property (nonatomic, strong) IBOutlet UIButton* btn_feichangmanyi;
+@property (nonatomic, strong) IBOutlet UIButton* btn_manyi;
+@property (nonatomic, strong) IBOutlet UIButton* btn_yibanban;
+
+@property (nonatomic, strong) IBOutlet UIImageView* img_feichangmanyi;
+@property (nonatomic, strong) IBOutlet UIImageView* img_manyi;
+@property (nonatomic, strong) IBOutlet UIImageView* img_yibanban;
+
+@property (nonatomic, strong) IBOutlet UIButton* btn_newCancel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *img_left;
+
+@property (weak, nonatomic) IBOutlet UIImageView *img_middle;
+
+@property (weak, nonatomic) IBOutlet UIImageView *img_right;
+
 @end
