@@ -27,6 +27,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self initUI];
+    
+    [self newModify];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -303,6 +305,37 @@
     }
     
     
+}
+
+- (void)newModify
+{
+    NSDictionary* dic = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInteger:self.orderGS
+                                                                      .id],@"id",@3,@"status",nil];
+    
+    [[NetworkManager shareMgr] server_updateOrderWithDic:dic completeHandle:^(NSDictionary *dic) {
+        
+        ;
+        
+    }];
+    
+    
+    NSDictionary* dicConsult = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInteger:self.orderGS
+                                                                             .consultation_id],@"id",@9,@"status",nil];
+    
+    [[NetworkManager shareMgr] server_updateConsultWithDic:dicConsult completeHandle:^(NSDictionary *dic) {
+        
+        ;
+        
+    }];
+    
+    
+    
+    //                [[NSNotificationCenter defaultCenter] postNotificationName:@"orderUpdate" object:nil];
+    
+    self.judgePayOrNot=YES;
+    [self.myTable reloadData];
+
+
 }
 
 #pragma mark   ==============产生随机订单号==============
