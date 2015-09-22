@@ -17,6 +17,7 @@
 #import "HKMapCtrl.h"
 #import "GSExpert.h"
 #import "ExpertDetailCtrl.h"
+#import "HKMapManager.h"
 
 @interface FindExpertCtrl ()<UITableViewDataSource,UITableViewDelegate,SlectCityDelegate,SlectSpecialDelegate,SlectCategoryDelegate,SlectMapDelegate>
 
@@ -117,6 +118,43 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
+
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if ([HKMapManager shareMgr].isShouldFresh == YES) {
+        
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        hud.mode = MBProgressHUDModeIndeterminate;
+        hud.labelText = @"正在加载...";
+        
+        NSMutableDictionary* dic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"50",@"distance",[NSNumber numberWithFloat:[HKMapManager shareMgr].floatUserCurrentLongitude],@"latitude", [NSNumber numberWithFloat:[HKMapManager shareMgr].floatUserCurrentLongitude], @"longitude",nil];
+        
+        [[NetworkManager shareMgr] server_fetchDoctorsWithDic:dic completeHandle:^(NSDictionary *response) {
+            
+            self.arrayModel = [[NSMutableArray alloc] init];
+            
+            NSArray* resultArray = [[response objectForKey:@"data"] objectForKey:@"items"];
+            
+            if (resultArray.count != 0) {
+                
+                [self.arrayModel addObjectsFromArray:resultArray];
+                
+            }
+            
+            [self.tableView reloadData];
+            
+            [hud hide:YES];
+            
+            [HKMapManager shareMgr].isShouldFresh == NO;
+            
+        }];
+        
+    }
 
 }
 

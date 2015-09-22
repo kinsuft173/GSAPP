@@ -103,7 +103,7 @@ enum {
     [self initUI];
     [self initMap];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paopaoHit:) name:@"hitPaopao" object:nil];
+ //   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paopaoHit:) name:@"hitPaopao" object:nil];
 //    [self addDefaultAnnotations];
     [self initSearch];
     [self initControls];
@@ -246,9 +246,10 @@ enum {
     
     self.mapView.delegate = self;
     
+    
     [self.view addSubview:self.mapView];
     
-    self.mapView.showsUserLocation = YES;
+
     
             CLLocationCoordinate2D co;
     
@@ -268,13 +269,19 @@ enum {
         
         NSLog(@"co = %f%f",co.latitude,co.longitude);
         
-//        self.mapView.centerCoordinate = co;
-        [self.mapView setCenterCoordinate:co animated:YES];
+       // [self.mapView setCenterCoordinate:co animated:YES];
+   
+        
+        self.mapView.zoomLevel = 16.1;
+        
+        self.mapView.showsUserLocation = YES;
+        self.mapView.userTrackingMode = MAUserTrackingModeFollow;
+           //  self.mapView.centerCoordinate = co;
         
     }else{
-    
+       self.mapView.showsUserLocation = YES;
         self.mapView.userTrackingMode = MAUserTrackingModeFollow;
-    
+     
     }
     
     
@@ -1026,6 +1033,8 @@ enum {
                     [HKMapManager shareMgr].floatUserCurrentLatitude  = poi.location.latitude;
                     
                     [HKMapManager shareMgr].floatUserCurrentLongitude = poi.location.longitude;
+                    
+                    break;
                 }
                 
 

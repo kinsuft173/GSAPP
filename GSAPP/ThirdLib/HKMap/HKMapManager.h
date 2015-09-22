@@ -17,6 +17,8 @@
 @property (nonatomic, strong) NSString* userCurrentLongitude;
 @property (nonatomic, strong) NSString* userCurrentLatitude;
 
+@property BOOL isShouldFresh;
+
 @property CGFloat floatUserCurrentLongitude;
 @property CGFloat floatUserCurrentLatitude;
 
