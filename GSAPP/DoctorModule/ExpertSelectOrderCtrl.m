@@ -112,7 +112,9 @@
     
         
         
-        NSDictionary* dicPublic = [NSDictionary dictionaryWithObjectsAndKeys:@[@"expert.expertise0",@"expert"], @"join",[NSNumber numberWithInteger: [UserDataManager shareManager].user.doctor.expertise_id],@"and[expertise.id]",@1,@"and[consultation.status]",nil];
+        NSDictionary* dicPublic = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].user.doctor.dept, @"andLike[doctor.dept][]",@1,@"and[consultation.other_order][]",@[@1,@4],@"and[consultation.status][]",@"expert",@"join[]",@"expert",@"expand",nil];
+        
+        NSLog(@"参数表 = %@",dicPublic);
 //
         [[NetworkManager shareMgr] server_fetchConsultWithDic:dicPublic completeHandle:^(NSDictionary *response) {
             
