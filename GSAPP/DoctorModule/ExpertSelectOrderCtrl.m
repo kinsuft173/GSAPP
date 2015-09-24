@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *myTable;
 @property (nonatomic, strong) NSMutableArray* arrayPrivateConsulation;
 @property (nonatomic, strong) NSMutableArray* arrayPublicConsulation;
+@property (nonatomic, strong) NSTimer* timer;
 
 @end
 
@@ -30,7 +31,11 @@
     // Do any additional setup after loading the view from its nib.
     [self initUI];
     
-    [self getModel];
+   // [self getModel];
+    
+    self.timer = [NSTimer timerWithTimeInterval:60 target:self selector:@selector(getModel) userInfo:nil repeats:YES];//[NSTimer timerWithTimeInterval:60 invocation:[NSInvocation instanceMethodForSelector:@selector(getModel)] repeats:YES];
+    
+    [self.timer fire];
 }
 
 -(void)initUI
@@ -49,6 +54,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getModel) name:@"updateConsulation" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getModel) name:@"notify" object:nil];
     
+}
+
+- (void)dealloc
+{
+    [self.timer invalidate];
+    
+    
+
 }
 
 - (void)getModel
@@ -112,7 +125,7 @@
     
         
         
-        NSDictionary* dicPublic = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].user.doctor.dept, @"andLike[expert.dept][]",@1,@"and[consultation.other_order][]",@[@1,@4],@"and[consultation.status]",@"expert",@"expand",@"expert",@"join[]",nil];
+        NSDictionary* dicPublic = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].user.doctor.dept, @"andLike[doctor.dept][]",@1,@"and[consultation.other_order][]",@[@1,@4],@"and[consultation.status]",@"expert",@"expand",@"expert",@"join[]",nil];
 //
         [[NetworkManager shareMgr] server_fetchConsultWithDic:dicPublic completeHandle:^(NSDictionary *response) {
             
@@ -258,7 +271,7 @@ if (indexPath.row % 2 !=0) {
     
     // return self.arrayPublicConsulation.count*2;
     
-    // if (indexPath.section==0) {
+     if (indexPath.section==0) {
         
         if (indexPath.row % 2!=0) {
             EmptyCell* cell = [tableView dequeueReusableCellWithIdentifier:EmptyId];
@@ -309,47 +322,58 @@ if (indexPath.row % 2 !=0) {
         }
         
         
-//    }
-//    else
-//    {
-//        
-//        if (indexPath.row % 2!=0) {
-//            EmptyCell* cell = [tableView dequeueReusableCellWithIdentifier:EmptyId];
-//            
-//            if (!cell) {
-//                
-//                NSArray* topObjects = [[NSBundle mainBundle] loadNibNamed:EmptyId owner:self options:nil];
-//                
-//                cell = [topObjects objectAtIndex:0];
-//                
-//            }
-//            
-//            return cell;
-//        }
-//        
-//        else
-//        {
-//            ComplainCell* cell = [tableView dequeueReusableCellWithIdentifier:CellId];
-//            
-//            if (!cell) {
-//                
-//                NSArray* topObjects = [[NSBundle mainBundle] loadNibNamed:CellId owner:self options:nil];
-//                
-//                cell = [topObjects objectAtIndex:0];
-//                
-//            }
-//            [cell.imgOfDisease setImage:[UIImage imageNamed:@"list_surgery"]];
-//            cell.lbl_treat.text=@"会诊手术";
-//            
-//            GSConsulation* consulation = [GSConsulation objectWithKeyValues:[self.arrayPublicConsulation objectAtIndex:indexPath.row/2]];
-//            cell.lblBingshi.text = consulation.patient_illness;//[NSString stringWithFormat:@"%d",consulation.  ];
-//            cell.lblDescription.text = consulation.remark;
-//            cell.lblZhengzhuan.text = [NSString stringWithFormat:@"%ld", consulation.symptom_id];
-//            
-//            return cell;
-//        }
-//    }
-//    return nil;
+    }
+    else
+    {
+        
+        if (indexPath.row % 2!=0) {
+            EmptyCell* cell = [tableView dequeueReusableCellWithIdentifier:EmptyId];
+            
+            if (!cell) {
+                
+                NSArray* topObjects = [[NSBundle mainBundle] loadNibNamed:EmptyId owner:self options:nil];
+                
+                cell = [topObjects objectAtIndex:0];
+                
+            }
+            
+            return cell;
+        }
+        
+        else
+        {
+            ComplainCell* cell = [tableView dequeueReusableCellWithIdentifier:CellId];
+            
+            if (!cell) {
+                
+                NSArray* topObjects = [[NSBundle mainBundle] loadNibNamed:CellId owner:self options:nil];
+                
+                cell = [topObjects objectAtIndex:0];
+                
+            }
+            [cell.imgOfDisease setImage:[UIImage imageNamed:@"list_surgery"]];
+            cell.lbl_treat.text=@"会诊手术";
+            
+            GSConsulation* consulation = [GSConsulation objectWithKeyValues:[self.arrayPublicConsulation objectAtIndex:indexPath.row/2]];
+            cell.lblBingshi.text =  consulation.anamnesis; //consulation.patient_illness;//[NSString stringWithFormat:@"%d",consulation.  ];
+            cell.lblDescription.text = consulation.patient_illness;
+            cell.lblZhengzhuan.text = consulation.symptom;//[NSString stringWithFormat:@"%ld", consulation.symptom_id];
+            
+            if (consulation.type == 1) {
+                
+                [cell.imgOfDisease setImage:[UIImage imageNamed:@"list_surgery"]];
+                cell.lbl_treat.text=@"会诊手术";
+            }else{
+                
+                [cell.imgOfDisease setImage:[UIImage imageNamed:@"list_consultation"]];
+                cell.lbl_treat.text=@"会诊";
+                
+            }
+            
+            return cell;
+        }
+    }
+    return nil;
 }
 
 - (CGFloat)tableView:(UITableView * )tableView
