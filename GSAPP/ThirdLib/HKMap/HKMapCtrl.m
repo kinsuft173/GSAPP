@@ -89,7 +89,7 @@ enum {
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     // Do any additional setup after loading the view from its nib.
-    self.navigationItem.title = @"长按地图即可选定相应位置";
+    self.navigationItem.title = @"地图搜索";
     
     
     UIButton *rightButton=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -258,34 +258,36 @@ enum {
     
     NSLog(@"co = %f%f",co.latitude,co.longitude);
     
-    if ([HKMapManager shareMgr].floatUserCurrentLatitude > 1) {
-        
-        NSLog(@"指定位置");
-        
-        CLLocationCoordinate2D co;
-        
-        co.latitude = [HKMapManager shareMgr].floatUserCurrentLatitude;
-        co.longitude = [HKMapManager shareMgr].floatUserCurrentLongitude;
-        
-        NSLog(@"co = %f%f",co.latitude,co.longitude);
-        
-       // [self.mapView setCenterCoordinate:co animated:YES];
-   
-        
-        self.mapView.zoomLevel = 16.1;
-        
-        self.mapView.showsUserLocation = YES;
-        self.mapView.userTrackingMode = MAUserTrackingModeFollow;
-           //  self.mapView.centerCoordinate = co;
-        
-    }else{
-       self.mapView.showsUserLocation = YES;
-        self.mapView.userTrackingMode = MAUserTrackingModeFollow;
-     
-    }
+//    if ([HKMapManager shareMgr].floatUserCurrentLatitude > 1) {
+//        
+//        NSLog(@"指定位置");
+//        
+//        CLLocationCoordinate2D co;
+//        
+//        co.latitude = [HKMapManager shareMgr].floatUserCurrentLatitude;
+//        co.longitude = [HKMapManager shareMgr].floatUserCurrentLongitude;
+//        
+//        NSLog(@"co = %f%f",co.latitude,co.longitude);
+//        
+//       // [self.mapView setCenterCoordinate:co animated:YES];
+//   
+//        
+//        self.mapView.zoomLevel = 16.1;
+//        
+//        self.mapView.showsUserLocation = YES;
+//        self.mapView.userTrackingMode = MAUserTrackingModeFollow;
+//           //  self.mapView.centerCoordinate = co;
+//        
+//    }else{
+//       self.mapView.showsUserLocation = YES;
+//        self.mapView.userTrackingMode = MAUserTrackingModeFollow;
+//     
+//    }
     
     
-    [self.mapView setZoomLevel:16.1 animated:YES];
+//    [self.mapView setZoomLevel:16.1 animated:YES];
+    
+     self.mapView.userTrackingMode = MAUserTrackingModeFollow;
     
     //在map上添加了
     CGRect rect = self.viewForSearch.frame;
@@ -700,33 +702,33 @@ enum {
 - (void)handleLongPress:(UILongPressGestureRecognizer *)gesture
 {
     
-    if (gesture.state == UIGestureRecognizerStateBegan)
-    {
-        CLLocationCoordinate2D coordinate = [_mapView convertPoint:[gesture locationInView:_mapView]
-                                              toCoordinateFromView:_mapView];
-        
-        NSLog(@"坐标＝%f,%f",coordinate.latitude,coordinate.longitude);
-        
-        // 添加标注
-        if (_destinationPoint != nil)
-        {
-            // 清理
-            [_mapView removeAnnotation:_destinationPoint];
-            _destinationPoint = nil;
-            
-            [_mapView removeOverlays:_pathPolylines];
-            _pathPolylines = nil;
-        }
-        
-        _destinationPoint = [[MAPointAnnotation alloc] init];
-        _destinationPoint.coordinate = coordinate;
-        _destinationPoint.title = @"Destination";
-        
-        
-        [self reGeoAction];
-        
-        [_mapView addAnnotation:_destinationPoint];
-    }
+//    if (gesture.state == UIGestureRecognizerStateBegan)
+//    {
+//        CLLocationCoordinate2D coordinate = [_mapView convertPoint:[gesture locationInView:_mapView]
+//                                              toCoordinateFromView:_mapView];
+//        
+//        NSLog(@"坐标＝%f,%f",coordinate.latitude,coordinate.longitude);
+//        
+//        // 添加标注
+//        if (_destinationPoint != nil)
+//        {
+//            // 清理
+//            [_mapView removeAnnotation:_destinationPoint];
+//            _destinationPoint = nil;
+//            
+//            [_mapView removeOverlays:_pathPolylines];
+//            _pathPolylines = nil;
+//        }
+//        
+//        _destinationPoint = [[MAPointAnnotation alloc] init];
+//        _destinationPoint.coordinate = coordinate;
+//        _destinationPoint.title = @"Destination";
+//        
+//        
+//        [self reGeoAction];
+//        
+//        [_mapView addAnnotation:_destinationPoint];
+//    }
     
 }
 
@@ -1041,7 +1043,7 @@ enum {
             }
         
 
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshDoctors" object:nil];
         
         [self.navigationController popViewControllerAnimated:YES];
         

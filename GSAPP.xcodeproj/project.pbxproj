@@ -1196,9 +1196,9 @@
 		DEEC3DE31B5C7028005CE84E /* ChangePasswordCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordCtrl.h; sourceTree = "<group>"; };
 		DEEC3DE41B5C7028005CE84E /* ChangePasswordCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordCtrl.m; sourceTree = "<group>"; };
 		DEEC3DE51B5C7028005CE84E /* ChangePasswordCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePasswordCtrl.xib; sourceTree = "<group>"; };
-		DEEC3DE61B5C7028005CE84E /* ForgetPasswordCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordCtrl.h; sourceTree = "<group>"; };
-		DEEC3DE71B5C7028005CE84E /* ForgetPasswordCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordCtrl.m; sourceTree = "<group>"; };
-		DEEC3DE81B5C7028005CE84E /* ForgetPasswordCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPasswordCtrl.xib; sourceTree = "<group>"; };
+		DEEC3DE61B5C7028005CE84E /* ForgetPasswordCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForgetPasswordCtrl.h; path = ../UserModule/ForgetPasswordCtrl.h; sourceTree = "<group>"; };
+		DEEC3DE71B5C7028005CE84E /* ForgetPasswordCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForgetPasswordCtrl.m; path = ../UserModule/ForgetPasswordCtrl.m; sourceTree = "<group>"; };
+		DEEC3DE81B5C7028005CE84E /* ForgetPasswordCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForgetPasswordCtrl.xib; path = ../UserModule/ForgetPasswordCtrl.xib; sourceTree = "<group>"; };
 		DEEC3DE91B5C7028005CE84E /* goRegisterCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = goRegisterCtrl.h; path = ../UserModule/goRegisterCtrl.h; sourceTree = "<group>"; };
 		DEEC3DEA1B5C7028005CE84E /* goRegisterCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = goRegisterCtrl.m; path = ../UserModule/goRegisterCtrl.m; sourceTree = "<group>"; };
 		DEEC3DEB1B5C7028005CE84E /* goRegisterCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = goRegisterCtrl.xib; path = ../UserModule/goRegisterCtrl.xib; sourceTree = "<group>"; };
@@ -2173,9 +2173,6 @@
 				DEEC3DE31B5C7028005CE84E /* ChangePasswordCtrl.h */,
 				DEEC3DE41B5C7028005CE84E /* ChangePasswordCtrl.m */,
 				DEEC3DE51B5C7028005CE84E /* ChangePasswordCtrl.xib */,
-				DEEC3DE61B5C7028005CE84E /* ForgetPasswordCtrl.h */,
-				DEEC3DE71B5C7028005CE84E /* ForgetPasswordCtrl.m */,
-				DEEC3DE81B5C7028005CE84E /* ForgetPasswordCtrl.xib */,
 				B9DDDF041B536AC7001E0B43 /* ChoiceOfDoctorCell.h */,
 				B9DDDF051B536AC7001E0B43 /* ChoiceOfDoctorCell.m */,
 				B9DDDF061B536AC7001E0B43 /* ChoiceOfDoctorCell.xib */,
@@ -2823,6 +2820,9 @@
 		DEFBA5871B76ED3F000C1AD6 /* 注册 */ = {
 			isa = PBXGroup;
 			children = (
+				DEEC3DE61B5C7028005CE84E /* ForgetPasswordCtrl.h */,
+				DEEC3DE71B5C7028005CE84E /* ForgetPasswordCtrl.m */,
+				DEEC3DE81B5C7028005CE84E /* ForgetPasswordCtrl.xib */,
 				DEEC3DE91B5C7028005CE84E /* goRegisterCtrl.h */,
 				DEEC3DEA1B5C7028005CE84E /* goRegisterCtrl.m */,
 				DEEC3DEB1B5C7028005CE84E /* goRegisterCtrl.xib */,

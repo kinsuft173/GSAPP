@@ -14,6 +14,7 @@
 #import "UserDataManager.h"
 #import "NetworkManager.h"
 #import "APService.h"
+#import "HKMapManager.h"
 
 @interface LaunchCtrl ()
 
@@ -166,11 +167,14 @@
             if (x.boolValue == YES && self.imgExpert.tag == 1 ) {
                 
             
-                     [self goDoctorInterface:nil];
+                [[HKMapManager shareMgr] locate];
+                
+                [self goDoctorInterface:nil];
                     
 
             }else if(x.boolValue == YES && self.imgUser.tag == 1){
-            
+                
+                    [[HKMapManager shareMgr] locate];
                     [self goUserInterface:nil];
                 
             }else{

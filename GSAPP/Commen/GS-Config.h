@@ -20,7 +20,10 @@
 #define DOCTOR_RECOMMEND_RATIO 169/320
 #define DOCTOR_RECOMMEND_CELL_RATIO 0.2
 
-#define PlaceHolderHeadPhoto @"lo"
+#define PlaceHolderHeadPhoto @"photo"
+
+#define kBandgeNotification @"kBandgeNotification"
+
 
 
 #endif

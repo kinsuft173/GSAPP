@@ -28,6 +28,7 @@
 @property (nonatomic, strong) IBOutlet UITextField* textFiledExpertise;
 @property (nonatomic, strong) IBOutlet UITextField* textFiledIdCard;
 @property (nonatomic, strong) IBOutlet UITextField* textFiledIntro;
+//@property (nonatomic, strong) IBOutlet UITextField* textFiledCity;
 
 @property (nonatomic, strong) IBOutlet UIImageView* imgTypeDoctor;
 @property (nonatomic, strong) IBOutlet UIImageView* imgTypeExpert;
@@ -250,10 +251,22 @@
             [dicDoctor setObject:self.txt_Intro.text forKey:@"intro"];
             
         }
+    
+    if (!self.textFiledCity.text || [self.textFiledCity.text isEqualToString:@""]) {
         
+        [HKCommen addAlertViewWithTitel:@"请填写城市"];
         
+        return;
         
+    }else{
         
+        [dicDoctor setObject:self.textFiledCity.text forKey:@"city"];
+        
+    }
+    
+    
+    
+    
         if (self.textFiledEmail.text && ![self.textFiledHospital.text isEqualToString:@""]) {
             
             [dicDoctor setObject:self.textFiledEmail.text forKey:@"email"];

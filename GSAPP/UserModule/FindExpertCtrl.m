@@ -65,6 +65,8 @@
     if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
         [self.tableView setLayoutMargins: UIEdgeInsetsZero];
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMapSelectedWithDic) name:@"refreshDoctors" object:nil];
 }
 
 - (void)getModel
@@ -125,36 +127,36 @@
 {
     [super viewDidAppear:animated];
     
-    if ([HKMapManager shareMgr].isShouldFresh == YES) {
-        
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        
-        hud.mode = MBProgressHUDModeIndeterminate;
-        hud.labelText = @"正在加载...";
-        
-        NSMutableDictionary* dic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"50",@"distance",[NSNumber numberWithFloat:[HKMapManager shareMgr].floatUserCurrentLongitude],@"latitude", [NSNumber numberWithFloat:[HKMapManager shareMgr].floatUserCurrentLongitude], @"longitude",nil];
-        
-        [[NetworkManager shareMgr] server_fetchDoctorsWithDic:dic completeHandle:^(NSDictionary *response) {
-            
-            self.arrayModel = [[NSMutableArray alloc] init];
-            
-            NSArray* resultArray = [[response objectForKey:@"data"] objectForKey:@"items"];
-            
-            if (resultArray.count != 0) {
-                
-                [self.arrayModel addObjectsFromArray:resultArray];
-                
-            }
-            
-            [self.tableView reloadData];
-            
-            [hud hide:YES];
-            
-            [HKMapManager shareMgr].isShouldFresh == NO;
-            
-        }];
-        
-    }
+//    if ([HKMapManager shareMgr].isShouldFresh == YES) {
+//        
+//        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//        
+//        hud.mode = MBProgressHUDModeIndeterminate;
+//        hud.labelText = @"正在加载...";
+//        
+//        NSMutableDictionary* dic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"50",@"distance",[NSNumber numberWithFloat:[HKMapManager shareMgr].floatUserCurrentLongitude],@"latitude", [NSNumber numberWithFloat:[HKMapManager shareMgr].floatUserCurrentLongitude], @"longitude",nil];
+//        
+//        [[NetworkManager shareMgr] server_fetchDoctorsWithDic:dic completeHandle:^(NSDictionary *response) {
+//            
+//            self.arrayModel = [[NSMutableArray alloc] init];
+//            
+//            NSArray* resultArray = [[response objectForKey:@"data"] objectForKey:@"items"];
+//            
+//            if (resultArray.count != 0) {
+//                
+//                [self.arrayModel addObjectsFromArray:resultArray];
+//                
+//            }
+//            
+//            [self.tableView reloadData];
+//            
+//            [hud hide:YES];
+//            
+//            [HKMapManager shareMgr].isShouldFresh == NO;
+//            
+//        }];
+//        
+//    }
 
 }
 
@@ -297,29 +299,35 @@
 
 - (void)handleCitySelectedWithDic:(NSDictionary *)dic
 {
-    self.dicParams = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",[dic[@"id"] integerValue]],@"and[city_id]",@"doctorFiles",@"expand",nil];
+    self.dicParams = [NSDictionary dictionaryWithObjectsAndKeys:dic[@"name"],@"andLike[city]",@"doctorFiles",@"expand",nil];
 
     [self getModel];
 }
 
 - (void)handleSpecialSelectedWithDic:(NSDictionary *)dic
 {
-    self.dicParams = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",[dic[@"id"] integerValue]],@"and[expertise_id]",@"doctorFiles",@"expand",nil];
+    self.dicParams = [NSDictionary dictionaryWithObjectsAndKeys:dic[@"name"],@"andLike[expertise]",@"doctorFiles",@"expand",nil];
     
     [self getModel];
 }
 
 - (void)handleCategorySelectedWithDic:(NSDictionary *)dic
 {
-    self.dicParams = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",[dic[@"id"] integerValue]],@"and[category_id]",@"doctorFiles",@"expand",nil];
+    self.dicParams = [NSDictionary dictionaryWithObjectsAndKeys:dic[@"name"],@"andLike[dept]",@"doctorFiles",@"expand",nil];
     
     [self getModel];
 }
 
 - (void)handleMapSelectedWithDic
 {
-    self.dicParams = nil;
+//    self.dicParams = nil;
     
+    
+    
+// http://115.28.85.76/gszx/api/web/?r=expert/index-by-coordinate&expand=doctorFiles   
+    
+    self.dicParams = [NSDictionary dictionaryWithObjectsAndKeys:@"50",@"distance",[NSNumber numberWithFloat:[HKMapManager shareMgr].floatUserCurrentLatitude],@"latitude",[NSNumber numberWithFloat:[HKMapManager shareMgr].floatUserCurrentLongitude],@"longitude",@"1",@"map",nil];
+
     [self getModel];
 
 }

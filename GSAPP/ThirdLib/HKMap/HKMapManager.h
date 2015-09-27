@@ -17,6 +17,8 @@
 @property (nonatomic, strong) NSString* userCurrentLongitude;
 @property (nonatomic, strong) NSString* userCurrentLatitude;
 
+@property NSNumber* messageNumber;
+
 @property BOOL isShouldFresh;
 
 @property CGFloat floatUserCurrentLongitude;
@@ -28,6 +30,6 @@
 - (void)openAPPLEMAPWihStartCoordinate:(CLLocationCoordinate2D)startCoordinate
                       AndEndCoordinate:(CLLocationCoordinate2D)endCoordinate;
 
-
+- (void)locate;
 
 @end

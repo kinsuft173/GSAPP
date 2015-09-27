@@ -12,6 +12,9 @@
 @interface ForgetPasswordCtrl ()
 @property (weak, nonatomic) IBOutlet UITextField *txt_mobile;
 @property (weak, nonatomic) IBOutlet UITextField *txt_code;
+
+@property NSInteger verifyCode;
+
 @end
 
 @implementation ForgetPasswordCtrl
@@ -95,6 +98,32 @@
 -(void)back
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)goToGenerateCode:(UIButton *)sender {
+    
+    if (![HKCommen validateMobileWithPhoneNumber:self.txt_mobile.text]) {
+        
+        [HKCommen addAlertViewWithTitel:@"请输入正确的手机号"];
+        
+        return;
+        
+    }
+    
+    [[NetworkManager shareMgr] server_fetchVerifyCodeWithDic:[NSDictionary dictionaryWithObject:self.txt_mobile.text forKey:@"mobile"] completeHandle:^(NSDictionary *dic) {
+        
+        if ([[dic objectForKey:@"success"] boolValue] == YES) {
+            
+            
+            self.verifyCode = [[[dic objectForKey:@"data"] objectForKey:@"verifyCode"] integerValue];
+            
+        }
+        
+        
+    }];
+    
+    
+    
 }
 
 

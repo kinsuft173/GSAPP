@@ -188,6 +188,16 @@
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:dic];
     
+    NSString* urlMap = DOCTOR_FETCH_URL;
+    
+    if ([parameters objectForKey:@"map"]) {
+        
+        [parameters removeObjectForKey:@"map"];
+        
+        urlMap = @"expert/index-by-coordinate";
+        
+    }
+    
     if (![parameters objectForKey:@"expand"]) {
         
         
@@ -196,7 +206,7 @@
     
     [parameters setObject:@"1" forKey:@"and[type]"];
     
-    [manager GET:[NSString stringWithFormat:@"%@%@",SERVER,DOCTOR_FETCH_URL] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
+    [manager GET:[NSString stringWithFormat:@"%@%@",SERVER,urlMap] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         
         NSLog(@"JSON: %@", responseObject);
@@ -1395,7 +1405,11 @@
         
         for (int i = 0; i < imgArray.count; i++) {
             
-            NSData* imgData = [imgArray objectAtIndex:i];
+            NSData* imgData1 = [imgArray objectAtIndex:i];
+            
+            UIImage* image = [UIImage imageWithData:imgData1];
+        
+            NSData *imgData = UIImageJPEGRepresentation(image, 0.2);
             
             [body appendData:[[NSString stringWithFormat:@"--%@\r\n", BoundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
             [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"image.jpg\"\r\n", @"file[]"] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -1421,7 +1435,7 @@
     NSURLResponse *response;
     NSError *error;
     
-    NSLog(@"Post Request = %@",request);
+//    NSLog(@"Post Request = %@",request);
     
     NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     

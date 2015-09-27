@@ -18,6 +18,7 @@
 #import "ConsultationInfoCtrl.h"
 #import "GreatDoctorCtrl.h"
 #import "ConsulationManager.h"
+#import "HKMapManager.h"
 
 @interface MessageAlertCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -68,6 +69,8 @@
 //    if (self.arrayCancelOrder.count == 0 && self.arrayConsulation.count ==0 && self.arrayConsulationNoTimely.count == 0 && self.arrayOrder.count == 0) {
     
         [self getModel];
+    
+    [HKMapManager shareMgr].messageNumber = @0;
         
 //    }
 
@@ -88,6 +91,8 @@
         
         hud.mode = MBProgressHUDModeIndeterminate;
         hud.labelText = @"正在加载...";
+        
+        //consultation.consultationFiles,orderDoctor
         
         //私人的咨询
         NSDictionary* dicPrivate = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userId,@"and[expert_id]",@"1",@"and[status]",@"doctor.doctorFiles,consultationFiles",@"expand",nil];
@@ -135,8 +140,8 @@
                 
             }
 
-            
-           NSDictionary *parameters = @{@"expand": @"consultation,doctor.doctorFiles,orderDoctor.doctorFiles",@"and[order_doctor_id]":[UserDataManager shareManager].userId, @"and[status]": @[@2,@3, @6]};
+         //consultation.consultationFiles,orderDoctor
+           NSDictionary *parameters = @{@"expand":@"consultation,consultation.consultationFiles,doctor.doctorFiles,orderDoctor.doctorFiles",@"and[order_doctor_id]":[UserDataManager shareManager].userId, @"and[status]": @[@2,@3, @6]};
             
  
             [[NetworkManager shareMgr] server_fetchOrderWithDic:parameters completeHandle:^(NSDictionary *response1) {
@@ -192,9 +197,25 @@
                                     NSArray* resultArray1 = [[response1 objectForKey:@"data"] objectForKey:@"items"];
                                     
                                     if (resultArray1.count != 0) {
+                                    
+                                        self.arrayDoctorOrdersNew = [[NSMutableArray alloc] init];
                                         
+                                        for (int i = 0; i < resultArray1.count; i++) {
+                                            
+                                            GSOrder* order=  [GSOrder objectWithKeyValues:[resultArray1 objectAtIndex:i]];
+                                            
+                                            if (order.consultation.status == 9 && order.status == 1) {
+                                                
+                                                
+                                            }else{
+                                            
+                                                [self.arrayDoctorOrdersNew addObject:[resultArray1 objectAtIndex:i]];
+                                            
+                                            }
+                                            
+                                        }
                                         
-                                        self.arrayDoctorOrdersNew = [NSMutableArray arrayWithArray:resultArray1];
+//                                        self.arrayDoctorOrdersNew = [NSMutableArray arrayWithArray:resultArray1];
                                     }
                                     
 

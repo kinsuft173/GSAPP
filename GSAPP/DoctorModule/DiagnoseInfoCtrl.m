@@ -107,7 +107,7 @@
     self.textFiledPatientMedicalHistory.enabled = NO;
     self.timelySelected = YES;
     self.sexSelected = NO;
-    [self.star setStarForValue:self.expert.avg_score.floatValue];
+    
     
     if ([UserDataManager shareManager].user.doctor.dept) {
         
@@ -270,6 +270,8 @@
     [HKCommen addHeadTitle:@"会诊资料" whichNavigation:self.navigationItem];
     
     self.star=[[[NSBundle mainBundle]loadNibNamed:@"starView" owner:self options:nil] objectAtIndex:0];
+    self.star.whichValue = self.expert.avg_score.floatValue;
+//      [self.star setStarForValue:self.expert.avg_score.floatValue];  
     [self.star initUI];
     /*
     if ([UIScreen mainScreen].bounds.size.width>=375) {
@@ -283,7 +285,6 @@
     
     [self.star setFrame:CGRectMake(0, 0, 82, 15)];
     
-//    self.star.whichValue=2.0;
     [self.viewForStar addSubview:self.star];
     
     

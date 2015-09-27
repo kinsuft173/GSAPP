@@ -408,6 +408,8 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
 {
 
             [[NSNotificationCenter defaultCenter] postNotificationName:@"notify" object:nil];
+    
+      [HKMapManager shareMgr].messageNumber = [NSNumber numberWithInteger:[HKMapManager shareMgr].messageNumber.integerValue + 1];
 
 }
 

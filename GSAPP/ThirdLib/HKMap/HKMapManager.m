@@ -10,6 +10,8 @@
 #import <MAMapKit/MAMapKit.h>
 #import <AMapSearchKit/AMapSearchAPI.h>
 #import "HKCommen.h"
+#import "NetWorkManager.h"
+#import "UserDataManager.h"
 
 //#import <CoreLocation/CoreLocation.h>
 
@@ -22,6 +24,7 @@
 @end
 
 @implementation HKMapManager
+@synthesize messageNumber = _messageNumber;
 
 + (HKMapManager*)shareMgr
 {
@@ -31,12 +34,47 @@
     dispatch_once(&onceToken, ^{
         instance = [[HKMapManager alloc] init];
         
-        [instance locate];
 
     });
     
     return instance;
 }
+
+- (NSNumber*)messageNumber
+{
+    if (!_messageNumber) {
+        
+        if ([[[[NSUserDefaults standardUserDefaults] objectForKey:@"messageNumber"] class] isSubclassOfClass:[NSNumber class]]) {
+            
+            _messageNumber = [NSNumber numberWithInteger:[[[NSUserDefaults standardUserDefaults] objectForKey:@"messageNumber"] integerValue]] ;
+            
+            NSLog(@"初始消息数量 = %@",_messageNumber);
+            
+        }else{
+            
+            _messageNumber = [NSNumber numberWithInt:0];
+            
+        }
+    }
+    
+    return _messageNumber;
+}
+
+- (void)setMessageNumber:(NSNumber *)messageNumber
+{
+    _messageNumber = messageNumber;
+    
+    if ([[_messageNumber class] isSubclassOfClass:[NSNumber class]]) {
+        
+        [[NSUserDefaults standardUserDefaults] setObject:_messageNumber forKey:@"messageNumber"];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:kBandgeNotification object:nil];
+        
+    }
+    
+}
+
+
 
 
 - (BOOL)openAMAPWihStartCoordinate:(CLLocationCoordinate2D)startCoordinate
@@ -185,6 +223,11 @@
     self.userCurrentLatitude = [NSString stringWithFormat:@"%f",currentLocation.coordinate.latitude];
     self.userCurrentLongitude = [NSString stringWithFormat:@"%f",currentLocation.coordinate.longitude];
     
+    
+    
+    
+    
+    
     // 获取当前所在的城市名
     
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
@@ -220,6 +263,25 @@
              
              self.strCity = city;
              
+             NSString* strAddress = [NSString stringWithFormat:@"%@%@%@",self.strCity,placemark.subLocality,placemark.thoroughfare];
+             
+             NSLog(@"strAddress = %@",strAddress);
+             
+             NSMutableDictionary* dicDoctor = [[NSMutableDictionary alloc] init];
+             
+             [dicDoctor setObject:[NSString stringWithFormat:@"%d",[UserDataManager shareManager].user.doctor.id] forKey:@"id"];
+             [dicDoctor setObject:strAddress forKey:@"current_address"];
+             [dicDoctor setObject:self.userCurrentLatitude forKey:@"latitude"];
+             [dicDoctor setObject:self.userCurrentLongitude forKey:@"longitude"];
+             
+             
+             [[NetworkManager shareMgr] server_updateExpertWithDic:dicDoctor completeHandle:^(NSDictionary *responseDoctor) {
+             
+                 
+                 NSLog(@"记录位置成功");
+                 
+             
+             }];
          }
          
          else if (error == nil && [array count] == 0)

@@ -177,7 +177,7 @@ viewForHeaderInSection:(NSInteger)section
     
     GSRepine* repine = [GSRepine objectWithKeyValues:[self.arrayRepines objectAtIndex:indexPath.section]];
     
-    NSDictionary* dic = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInteger:repine.order.id],@"and[id]",@"consultation,orderDoctor",@"expand",nil];
+    NSDictionary* dic = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInteger:repine.order.id],@"and[id]",@"consultation,orderDoctor,consultation.consultationFiles",@"expand",nil];
     
     [[NetworkManager shareMgr] server_fetchOrderWithDic:dic completeHandle:^(NSDictionary *dic) {
         

@@ -19,15 +19,6 @@
     
     self.star=[[[NSBundle mainBundle]loadNibNamed:@"starView" owner:self options:nil] objectAtIndex:0];
     
-    /*
-    if ([UIScreen mainScreen].bounds.size.width>=375) {
-        [self.star setFrame:CGRectMake([UIScreen mainScreen].bounds.size.width/5, 45, 82, 15)];
-    }
-    else
-    {
-    [self.star setFrame:CGRectMake([UIScreen mainScreen].bounds.size.width/3.2, 45, 82, 15)];
-    }
-    */
     [self.star setFrame:CGRectMake(0, 0, 82, 15)];
     
     self.star.whichValue=2.0;

@@ -42,6 +42,9 @@
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(DOCTOR_RECOMMEND_Cell_WIDTH*i,0, DOCTOR_RECOMMEND_Cell_WIDTH,SCREEN_WIDTH*0.4)];
         
         UIImageView* imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, 70,70)];
+        imageView.layer.cornerRadius = 4.0;
+        imageView.layer.masksToBounds = YES;
+        
         UILabel *lbl_name=[[UILabel alloc]initWithFrame:CGRectMake(16, 80, 37, 12)];
         lbl_name.font=[UIFont systemFontOfSize:12.0];
         [lbl_name setTextColor:[UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0]];

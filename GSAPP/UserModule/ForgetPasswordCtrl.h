@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "HKCommen.h"
-
+#import "NetWorkManager.h"
+#import "HKCommen.h"
 @interface ForgetPasswordCtrl : UIViewController
 
 @end

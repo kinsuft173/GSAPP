@@ -33,9 +33,11 @@
     
    // [self getModel];
     
-    self.timer = [NSTimer timerWithTimeInterval:60 target:self selector:@selector(getModel) userInfo:nil repeats:YES];//[NSTimer timerWithTimeInterval:60 invocation:[NSInvocation instanceMethodForSelector:@selector(getModel)] repeats:YES];
+//    self.timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(getModel:) userInfo:nil repeats:YES];//[NSTimer timerWithTimeInterval:60 invocation:[NSInvocation instanceMethodForSelector:@selector(getModel)] repeats:YES];
     
-    [self.timer fire];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(getModel:) userInfo:nil repeats:YES];
+    
+    //[self.timer fire];
 }
 
 -(void)initUI
@@ -51,8 +53,8 @@
     UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton ];
     self.navigationItem.leftBarButtonItem=leftItem;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getModel) name:@"updateConsulation" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getModel) name:@"notify" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getModel:) name:@"updateConsulation" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getModel:) name:@"notify" object:nil];
     
 }
 
@@ -64,7 +66,24 @@
 
 }
 
-- (void)getModel
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //开启定时器
+    [self.timer setFireDate:[NSDate distantPast]];
+}
+
+//页面消失，进入后台不显示该页面，关闭定时器
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    //关闭定时器
+    [self.timer setFireDate:[NSDate distantFuture]];
+}
+
+
+
+- (void)getModel:(id)sender
 {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
@@ -125,7 +144,7 @@
     
         
         
-        NSDictionary* dicPublic = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].user.doctor.dept, @"andLike[doctor.dept][]",@1,@"and[consultation.other_order][]",@[@1,@4],@"and[consultation.status]",@"expert",@"expand",@"expert",@"join[]",nil];
+        NSDictionary* dicPublic = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].user.doctor.dept, @"andLike[doctor.dept][]",@1,@"and[consultation.other_order][]",@[@1,@4],@"and[consultation.status]",@"expert,consultation.consultationFiles",@"expand",@"expert",@"join[]",nil];
 //
         [[NetworkManager shareMgr] server_fetchConsultWithDic:dicPublic completeHandle:^(NSDictionary *response) {
             
@@ -165,7 +184,7 @@
                     if ([consultId isEqualToString:strId]) {
                         
                         
-                        isHas = NO;
+                        isHas = YES;
                     }
                     
                 }

@@ -78,6 +78,8 @@
 
 @property (nonatomic, copy) NSString *latitude;
 
+@property (nonatomic, assign) NSInteger counsel_type;
+
 @end
 
 @interface Doctorfiles : NSObject
