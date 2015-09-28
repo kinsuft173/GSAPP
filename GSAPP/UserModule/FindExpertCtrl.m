@@ -198,6 +198,8 @@
     cell.lblPro.text = expert.position;//item[@"position"];
     
     cell.imgHeadPhoto.image = [UIImage imageNamed:HEADPHOTO_PLACEHOUDER];
+    cell.imgHeadPhoto.layer.cornerRadius = 4.0;
+    cell.imgHeadPhoto.layer.masksToBounds = YES;
     
     for (int i = 0; i < expert.doctorFiles.count; i ++) {
         

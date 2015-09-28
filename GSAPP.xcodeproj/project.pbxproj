@@ -3679,6 +3679,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GSAPP/ThirdLib/MApKit",
@@ -3707,7 +3708,7 @@
 					"$(PROJECT_DIR)/GSAPP/ThirdLib/AliPay",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "55231b35-1ded-47b7-8440-9d10b7324aca";
 			};
 			name = Debug;
 		};
@@ -3717,6 +3718,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GSAPP/ThirdLib/MApKit",
@@ -3745,7 +3747,7 @@
 					"$(PROJECT_DIR)/GSAPP/ThirdLib/AliPay",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "55231b35-1ded-47b7-8440-9d10b7324aca";
 			};
 			name = Release;
 		};
