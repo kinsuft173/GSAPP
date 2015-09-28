@@ -224,11 +224,11 @@ heightForHeaderInSection:(NSInteger)section
         
         [cell.btn_Choice addTarget:self action:@selector(goToPayment) forControlEvents:UIControlEventTouchUpInside];
         
-        cell.lblAdress.text = order.consultation.patient_address;
+        cell.lblAdress.text = order.orderDoctor.current_address;
         cell.lblFee1.text   = [NSString stringWithFormat:@"%@元",order.orderDoctor.consultation_fee]  ;
         cell.lblFee2.text   = [NSString stringWithFormat:@"%@元",order.orderDoctor.consultation_operation_fee];
         cell.lblName.text   = order.orderDoctor.name;
-        cell.lblPositon.text = order.orderDoctor.current_address;
+        cell.lblPositon.text = order.orderDoctor.position;
         
         for (int i = 0; i < order.orderDoctor.doctorFiles.count; i ++) {
             

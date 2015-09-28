@@ -12,6 +12,7 @@
 #import "GSEvaluate.h"
 #import "GSRepine.h"
 #import "PhotoBroswerVC.h"
+#import "UserDataManager.h"
 
 @interface CaseDetailCtrl ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *lbl_OrderNum;
@@ -97,8 +98,8 @@
     self.lbl_Age.text =  [NSString stringWithFormat:@"%d",self.orderGS.consultation.patient_age];
     
     self.lbl_Disease.text = self.orderGS.consultation.patient_illness;
-    self.lbl_DiseaseHistory.text =[NSString stringWithFormat:@"%d",self.orderGS.consultation.anamnesis_id] ;
-    self.lbl_Sympton.text =[NSString stringWithFormat:@"%d",self.orderGS.consultation.symptom_id] ;
+    self.lbl_DiseaseHistory.text =  self.orderGS.consultation.anamnesis;//[NSString stringWithFormat:@"%d",self.orderGS.consultation.anamnesis_id] ;
+    self.lbl_Sympton.text = self.orderGS.consultation.symptom;//[NSString stringWithFormat:@"%d",self.orderGS.consultation.symptom_id] ;
     self.lbl_FinishedTime.text = self.orderGS.consultation.created_at;
     
     self.lbl_Addition.text = self.orderGS.consultation.remark;
@@ -165,6 +166,17 @@
         self.view_ExpertCaseFinished.hidden = NO;
         self.view_ExpertCaseNotFinished.hidden = YES;
               self.view_DoctorCaseNotFinished.hidden = YES;
+        
+    }
+    
+
+    
+    if (self.orderGS.consultation.type == 0 && [[UserDataManager shareManager].userType isEqualToString:ExpertType]) {
+        
+        [self.btn_newCancel setBackgroundColor:[UIColor grayColor]];
+        [self.btn_newCancel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        
+        self.btn_newCancel.enabled = NO;
         
     }
     
@@ -346,9 +358,19 @@
 
 - (IBAction)goCancel:(id)sender
 {
+    NSNumber* nuber = @4;
+    
+    if ([[UserDataManager shareManager].userType isEqualToString:UserType]) {
+        
+        
+        nuber = @6;
+        
+        
+    }
+    
     
     NSDictionary* dic = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInteger:self.orderGS
-                                                                      .id],@"id",@4,@"status",nil];
+                                                                      .id],@"id",nuber,@"status",nil];
     
     [[NetworkManager shareMgr] server_updateOrderWithDic:dic completeHandle:^(NSDictionary *dic) {
         

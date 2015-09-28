@@ -15,6 +15,9 @@
 #import "UserDataManager.h"
 #import "ExpertSelectOrderCtrl.h"
 #import "GSExpert.h"
+#import "HKMapManager.h"
+
+#define TabbarItemNums 4.0
 
 @interface MainDoctorPageCtrl ()
 @property (strong,nonatomic)NSMutableArray *array_advertisement;
@@ -31,6 +34,8 @@
     
     [HKCommen addHeadTitle:@"高手" whichNavigation:self.navigationItem];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(redCircleShowing) name:kBandgeNotification object:nil];
+    
     [self getModel];
 }
 
@@ -38,6 +43,60 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+- (void)redCircleShowing
+{
+    [self.myTable reloadData];
+    
+    if ([HKMapManager  shareMgr].messageNumber.integerValue == 0) {
+        
+//        CTTabbarCtrl* vc = self.tabBarController;
+        
+        [self removeBadgeOnItemIndex:2];
+        
+        
+    }else{
+        
+//        CTTabbarCtrl* vc = self.tabBarController;
+        
+        [self showBadgeOnItemIndex:2];
+        
+    }
+}
+
+- (void)showBadgeOnItemIndex:(int)index{
+    //移除之前的小红点
+    [self removeBadgeOnItemIndex:index];
+    
+    //新建小红点
+    UIView *badgeView = [[UIView alloc]init];
+    badgeView.tag = 888 + index;
+    badgeView.layer.cornerRadius = 3;//圆形
+    badgeView.backgroundColor = [UIColor redColor];//颜色：红色
+    CGRect tabFrame = self.tabBarController.tabBar.frame;
+    
+    //确定小红点的位置
+    float percentX = (index +0.6) / TabbarItemNums;
+    CGFloat x = ceilf(percentX * tabFrame.size.width) + 5;
+    CGFloat y = ceilf(0.1 * tabFrame.size.height);
+    badgeView.frame = CGRectMake(x, y, 6, 6);//圆形大小为10
+    [self.tabBarController.tabBar addSubview:badgeView];
+}
+
+
+//移除小红点
+- (void)removeBadgeOnItemIndex:(int)index{
+    //按照tag值进行移除
+    for (UIView *subView in self.tabBarController.tabBar.subviews) {
+        if (subView.tag == 888+index) {
+            [subView removeFromSuperview];
+        }
+    }
+}
+
+
+
 
 - (void)getModel
 {

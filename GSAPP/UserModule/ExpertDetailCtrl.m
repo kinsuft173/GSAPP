@@ -236,6 +236,14 @@
         [cell.btn_Diagnose addTarget:self action:@selector(goToDiagnoseInfo) forControlEvents:UIControlEventTouchUpInside];
         [cell.btn_Diagnose_opertation addTarget:self action:@selector(goToDiagnoseInfo2) forControlEvents:UIControlEventTouchUpInside];
         
+        cell.btn_Diagnose.layer.cornerRadius = 4.0;
+        cell.btn_Diagnose.layer.masksToBounds = YES;
+        cell.btn_Diagnose_opertation.layer.cornerRadius = 4.0;
+        cell.btn_Diagnose_opertation.layer.masksToBounds = YES;
+        
+        cell.imgHeadPhoto.layer.cornerRadius = 4.0;
+        cell.imgHeadPhoto.layer.masksToBounds = YES;
+        
         if (self.expert.doctorFiles.count != 0) {
             
             for (int i = 0; i < self.expert.doctorFiles.count; i ++) {
@@ -261,6 +269,13 @@
         
         [cell.btnRenzheng addTarget:self action:@selector(goRenzheng) forControlEvents:UIControlEventTouchUpInside];
         
+        if (self.expert.counsel_type == 0) {
+            
+            
+//            cell.btn_Diagnose_opertation.enabled = NO;
+            [cell.btn_Diagnose_opertation setBackgroundColor:[UIColor grayColor]];
+            
+        }
         
         return cell;
     }
@@ -334,6 +349,7 @@
 {
     
     
+    
     if ([UIScreen mainScreen].bounds.size.width>=375) {
         DiagnoseInfoCtrl *vc=[[DiagnoseInfoCtrl alloc]initWithNibName:@"SecondDiagnoseCtrl" bundle:nil];
         vc.expert = self.expert;
@@ -352,6 +368,14 @@
 
 -(void)goToDiagnoseInfo2
 {
+    
+    if (self.expert.counsel_type == 0) {
+        
+        [HKCommen addAlertViewWithTitel:@"该专家尚无手术资格"];
+        
+        return;
+        
+    }
     
     
     if ([UIScreen mainScreen].bounds.size.width>=375) {
@@ -460,6 +484,14 @@ heightForHeaderInSection:(NSInteger)section
             }
             
         }
+        
+    }
+    
+    if (strUrl == nil) {
+        
+        [HKCommen addAlertViewWithTitel:@"未能获取到该专家的认证信息"];
+        
+        return;
         
     }
     
