@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LawProtectionCtrl">
@@ -15,18 +15,397 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nbI-z8-PdY">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nbI-z8-PdY">
                     <rect key="frame" x="47" y="64" width="281" height="450"/>
                     <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="450" id="T3T-1S-Nnm"/>
                     </constraints>
-                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                    <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <attributedString key="attributedText">
+                        <fragment content="法律事务">
+                            <attributes>
+                                <font key="NSFont" size="22" name="STHeitiSC-Medium"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                            <attributes>
+                                <font key="NSFont" size="22" name="TimesNewRomanPS-BoldMT"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="TimesNewRomanPSMT"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="一、《高手在线">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="APP">
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="》使用条例：">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+Cgo
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="TimesNewRomanPSMT"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="二、法律顾问：">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="TimesNewRomanPSMT"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="1">
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="、《高手在线">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="APP">
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="》一切业务活动，必须遵守国家相关的法律、法规、政策和条例。">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="TimesNewRomanPSMT"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="   2">
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="、《高手在线">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="APP">
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="》运营公司，特聘广东木棉律师事务所的向华友律师担任法律顾问。">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="TimesNewRomanPSMT"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="三、风险控制：">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="TimesNewRomanPSMT"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="1">
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="、凡注册成为《高手在线">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="APP">
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="》系统的医生和专家，必须遵守国家有关医疗行业的法律、法规、政策和条例。">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="TimesNewRomanPSMT"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="2">
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="、广东省医疗行业协会与基层医院签订医疗资源共享服务的">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="协议，确立双方的权力与义务。">
+                            <attributes>
+                                <font key="NSFont" size="14" name="SimSun"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="TimesNewRomanPSMT"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="3、">
+                            <attributes>
+                                <font key="NSFont" size="14" name="SimSun"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="在《高手在线">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="APP">
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="》系统注册的专家库中所有专家资质，由广东省医疗行业协会认证，并且颁发专家证书。">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="TimesNewRomanPSMT"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="4">
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="、广东省医疗行业协会给所有专家购买医疗责任保险和意外伤害保险。">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="TimesNewRomanPSMT"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="5">
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="、基层医生与患者或患者家属之间，应对《高手在线">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="APP">
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="》服务项目进行充分沟通，取得患者或患者家属的理解，并且签署《医患沟通知情同意书》。">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="TimesNewRomanPSMT"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="21" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="法律保障标题" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QF5-Q2-rkw">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QF5-Q2-rkw">
                     <rect key="frame" x="108" y="20" width="158" height="18"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="158" id="2Pq-3s-pch"/>

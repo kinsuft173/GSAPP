@@ -322,7 +322,7 @@ if (indexPath.row % 2 !=0) {
             cell.lblBingshi.text =  consulation.anamnesis; //consulation.patient_illness;//[NSString stringWithFormat:@"%d",consulation.  ];
             cell.lblDescription.text = consulation.patient_illness;
             cell.lblZhengzhuan.text = consulation.symptom;//[NSString stringWithFormat:@"%ld", consulation.symptom_id];
-            
+            cell.lblTime.text = consulation.created_at;
             
             if (consulation.type == 1) {
                 
@@ -377,6 +377,7 @@ if (indexPath.row % 2 !=0) {
             cell.lblBingshi.text =  consulation.anamnesis; //consulation.patient_illness;//[NSString stringWithFormat:@"%d",consulation.  ];
             cell.lblDescription.text = consulation.patient_illness;
             cell.lblZhengzhuan.text = consulation.symptom;//[NSString stringWithFormat:@"%ld", consulation.symptom_id];
+            cell.lblTime.text = consulation.created_at;
             
             if (consulation.type == 1) {
                 

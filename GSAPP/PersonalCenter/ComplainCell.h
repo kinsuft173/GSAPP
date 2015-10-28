@@ -15,5 +15,5 @@
 @property (nonatomic, strong) IBOutlet UILabel *lblBingshi;
 @property (nonatomic, strong) IBOutlet UILabel *lblZhengzhuan;
 @property (nonatomic, strong) IBOutlet UILabel *lblDescription;
-
+@property (nonatomic, strong) IBOutlet UILabel *lblTime;
 @end

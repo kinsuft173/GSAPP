@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="355" height="104"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oDA-lT-yBc" id="byn-va-yKp">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="355" height="103"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="病史" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Plp-5j-ysu">
@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="疾病描述疾病描述疾病描述疾病描述疾病描述疾病描述疾病描述疾病描述疾病描述" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seh-Xg-n6e">
-                        <rect key="frame" x="83" y="71" width="266" height="14"/>
+                        <rect key="frame" x="83" y="81" width="266" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="34" id="T28-ec-20v"/>
                             <constraint firstAttribute="height" constant="14" id="xYb-6i-Q0W"/>
@@ -65,7 +65,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="症状" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ze-uX-W2b">
-                        <rect key="frame" x="83" y="45" width="250" height="14"/>
+                        <rect key="frame" x="83" y="60" width="250" height="14"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="120" id="N8x-Np-ZgL"/>
                             <constraint firstAttribute="height" constant="14" id="krR-Hv-KnK"/>
@@ -79,27 +79,55 @@
                             </mask>
                         </variation>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezq-36-vZi">
+                        <rect key="frame" x="83" y="40" width="250" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="5RJ-ip-eTS"/>
+                            <constraint firstAttribute="width" constant="124" id="A0a-4B-VFl"/>
+                            <constraint firstAttribute="height" constant="21" id="y56-9J-eaT"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="A0a-4B-VFl"/>
+                                <exclude reference="y56-9J-eaT"/>
+                            </mask>
+                        </variation>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="gjW-D9-Ipe" firstAttribute="leading" secondItem="byn-va-yKp" secondAttribute="leadingMargin" constant="1" id="0Fl-vS-5H4"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="ezq-36-vZi" secondAttribute="trailing" constant="14" id="2vf-cD-o5v"/>
+                    <constraint firstItem="ezq-36-vZi" firstAttribute="top" secondItem="byn-va-yKp" secondAttribute="topMargin" constant="5" id="DmL-7r-NaQ"/>
                     <constraint firstAttribute="trailingMargin" secondItem="seh-Xg-n6e" secondAttribute="trailing" constant="-2" id="F2t-L4-AUg"/>
                     <constraint firstItem="y7X-JP-cyn" firstAttribute="leading" secondItem="byn-va-yKp" secondAttribute="leadingMargin" constant="-8" id="FJ3-Cc-cA1"/>
                     <constraint firstItem="y2P-rn-lwZ" firstAttribute="leading" secondItem="byn-va-yKp" secondAttribute="leadingMargin" constant="9" id="Iex-CN-wWi"/>
+                    <constraint firstItem="ezq-36-vZi" firstAttribute="top" secondItem="byn-va-yKp" secondAttribute="topMargin" constant="32" id="MCE-n8-yui"/>
                     <constraint firstItem="Plp-5j-ysu" firstAttribute="leading" secondItem="byn-va-yKp" secondAttribute="leadingMargin" constant="75" id="NnT-I4-TjK"/>
                     <constraint firstItem="y2P-rn-lwZ" firstAttribute="top" secondItem="byn-va-yKp" secondAttribute="topMargin" constant="14" id="VCx-Dd-Ted"/>
                     <constraint firstAttribute="trailingMargin" secondItem="5Ze-uX-W2b" secondAttribute="trailing" constant="14" id="VPp-47-UIE"/>
                     <constraint firstAttribute="bottomMargin" secondItem="seh-Xg-n6e" secondAttribute="bottom" constant="-1" id="YIV-wi-aTZ"/>
                     <constraint firstItem="y7X-JP-cyn" firstAttribute="top" secondItem="byn-va-yKp" secondAttribute="topMargin" constant="-8" id="dx0-nu-wo4"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="seh-Xg-n6e" secondAttribute="bottom" constant="10" id="jvp-QC-SLX"/>
-                    <constraint firstItem="5Ze-uX-W2b" firstAttribute="top" secondItem="byn-va-yKp" secondAttribute="topMargin" constant="37" id="ncy-8J-Mj9"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="ezq-36-vZi" secondAttribute="trailing" constant="14" id="hja-Dl-YOl"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="seh-Xg-n6e" secondAttribute="bottom" id="jvp-QC-SLX"/>
+                    <constraint firstItem="ezq-36-vZi" firstAttribute="leading" secondItem="byn-va-yKp" secondAttribute="leadingMargin" constant="75" id="m1a-Wh-voZ"/>
+                    <constraint firstItem="5Ze-uX-W2b" firstAttribute="top" secondItem="byn-va-yKp" secondAttribute="topMargin" constant="52" id="ncy-8J-Mj9"/>
                     <constraint firstItem="seh-Xg-n6e" firstAttribute="leading" secondItem="byn-va-yKp" secondAttribute="leadingMargin" constant="75" id="p9p-C3-uFw"/>
                     <constraint firstAttribute="bottomMargin" secondItem="y7X-JP-cyn" secondAttribute="bottom" constant="-9" id="q6y-oh-Vqm"/>
                     <constraint firstItem="Plp-5j-ysu" firstAttribute="top" secondItem="byn-va-yKp" secondAttribute="topMargin" constant="7" id="qtL-I2-nZs"/>
+                    <constraint firstItem="ezq-36-vZi" firstAttribute="leading" secondItem="byn-va-yKp" secondAttribute="leadingMargin" constant="75" id="sAI-gB-7Bi"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="ezq-36-vZi" secondAttribute="trailing" constant="14" id="tJl-CC-tj1"/>
                     <constraint firstAttribute="bottomMargin" secondItem="gjW-D9-Ipe" secondAttribute="bottom" constant="8" id="wQE-PY-UtX"/>
                     <constraint firstItem="5Ze-uX-W2b" firstAttribute="leading" secondItem="byn-va-yKp" secondAttribute="leadingMargin" constant="75" id="x3n-C6-Jgf"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
+                        <exclude reference="2vf-cD-o5v"/>
+                        <exclude reference="DmL-7r-NaQ"/>
+                        <exclude reference="m1a-Wh-voZ"/>
+                        <exclude reference="tJl-CC-tj1"/>
                         <exclude reference="YIV-wi-aTZ"/>
                     </mask>
                 </variation>
@@ -108,6 +136,7 @@
                 <outlet property="imgOfDisease" destination="y2P-rn-lwZ" id="BRP-nH-Dl3"/>
                 <outlet property="lblBingshi" destination="Plp-5j-ysu" id="fFf-RI-d4L"/>
                 <outlet property="lblDescription" destination="seh-Xg-n6e" id="z7Y-az-mCh"/>
+                <outlet property="lblTime" destination="ezq-36-vZi" id="cIQ-W0-pVW"/>
                 <outlet property="lblZhengzhuan" destination="5Ze-uX-W2b" id="pd0-CT-5QX"/>
                 <outlet property="lbl_treat" destination="gjW-D9-Ipe" id="bhp-IZ-jvN"/>
             </connections>

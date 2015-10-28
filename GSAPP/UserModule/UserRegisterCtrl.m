@@ -10,6 +10,7 @@
 #import "NetWorkManager.h"
 #import "MBProgressHUD.h"
 #import "CameraCtrl.h"
+#import "MianZeViewController.h"
 
 @interface UserRegisterCtrl ()<UIActionSheetDelegate>
 
@@ -40,6 +41,8 @@
 @property (nonatomic, strong) IBOutlet UIButton* btnImageZigezheng;
 @property (nonatomic, strong) IBOutlet UIButton* btnImageId;
 @property (nonatomic, strong) IBOutlet UIButton* btnImageHead;
+@property (nonatomic, strong) IBOutlet UIButton* btnProtocol;
+@property BOOL isProtocol;
 
 @property NSInteger numOfSelect;
 @property BOOL isHanZigezheng;
@@ -305,9 +308,9 @@
             
             return;
         }
-        
-        
-        
+    
+    
+
 //    }else{
 //        
 //    
@@ -423,6 +426,14 @@
     [dicDoctor setObject:[NSNumber numberWithInteger:self.strType] forKey:@"type"];
     [dicDoctor setObject:[NSNumber numberWithInteger:self.strSex] forKey:@"sex"];
     [dicDoctor setObject:@1 forKey:@"city_id"];
+    
+    if (!self.isProtocol) {
+        
+        [HKCommen addAlertViewWithTitel:@"请阅读高手APP免责申明"];
+        
+        return;
+        
+    }
     
 
     
@@ -737,6 +748,32 @@
 
     
     
+}
+
+- (IBAction)goCheckProcol:(UIButton*)sender
+{
+    self.isProtocol = !self.isProtocol;
+    
+    if (self.isProtocol == NO) {
+        
+        [self.btnProtocol setImage:[UIImage imageNamed:@"btn_nom"] forState:UIControlStateNormal];
+        
+    }else{
+    
+        [self.btnProtocol setImage:[UIImage imageNamed:@"btn_pre"] forState:UIControlStateNormal];
+    
+    }
+
+}
+
+- (IBAction)goMianze:(UIButton*)sender
+{
+    MianZeViewController *vc=[[MianZeViewController alloc] initWithNibName:@"MianZeViewController" bundle:nil];
+
+    
+    [self.navigationController pushViewController:vc animated:YES];
+
+
 }
 
 

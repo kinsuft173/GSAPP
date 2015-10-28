@@ -59,6 +59,11 @@
 		B94568061B6620ED00458386 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B94568051B6620ED00458386 /* QuartzCore.framework */; };
 		B94568081B6620FD00458386 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B94568071B6620FD00458386 /* CoreLocation.framework */; };
 		B945680A1B66212400458386 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B94568091B66212400458386 /* libstdc++.6.0.9.dylib */; };
+		B9C29DC01BD9FBD500B61D31 /* BtnCheck.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C29DBE1BD9FBD500B61D31 /* BtnCheck.png */; settings = {ASSET_TAGS = (); }; };
+		B9C29DC11BD9FBD500B61D31 /* BtnUncheck.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C29DBF1BD9FBD500B61D31 /* BtnUncheck.png */; settings = {ASSET_TAGS = (); }; };
+		B9C29DC51BDA0AFB00B61D31 /* MianZeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C29DC31BDA0AFB00B61D31 /* MianZeViewController.m */; settings = {ASSET_TAGS = (); }; };
+		B9C29DC61BDA0AFB00B61D31 /* MianZeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C29DC41BDA0AFB00B61D31 /* MianZeViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		B9C29DC81BDA35F100B61D31 /* 1001.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B9C29DC71BDA35F100B61D31 /* 1001.jpg */; settings = {ASSET_TAGS = (); }; };
 		B9C631EC1B295F5F0063DEA2 /* libPushSDK-1.8.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9C631EB1B295F5F0063DEA2 /* libPushSDK-1.8.3.a */; };
 		B9C631EE1B295FC10063DEA2 /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9C631ED1B295FC10063DEA2 /* PushConfig.plist */; };
 		B9C631F01B29608A0063DEA2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9C631EF1B29608A0063DEA2 /* CFNetwork.framework */; };
@@ -614,6 +619,12 @@
 		B94568051B6620ED00458386 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B94568071B6620FD00458386 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B94568091B66212400458386 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
+		B9C29DBE1BD9FBD500B61D31 /* BtnCheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BtnCheck.png; sourceTree = "<group>"; };
+		B9C29DBF1BD9FBD500B61D31 /* BtnUncheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BtnUncheck.png; sourceTree = "<group>"; };
+		B9C29DC21BDA0AFB00B61D31 /* MianZeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MianZeViewController.h; sourceTree = "<group>"; };
+		B9C29DC31BDA0AFB00B61D31 /* MianZeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MianZeViewController.m; sourceTree = "<group>"; };
+		B9C29DC41BDA0AFB00B61D31 /* MianZeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MianZeViewController.xib; sourceTree = "<group>"; };
+		B9C29DC71BDA35F100B61D31 /* 1001.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1001.jpg; sourceTree = "<group>"; };
 		B9C631EA1B295F5F0063DEA2 /* APService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APService.h; sourceTree = "<group>"; };
 		B9C631EB1B295F5F0063DEA2 /* libPushSDK-1.8.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libPushSDK-1.8.3.a"; sourceTree = "<group>"; };
 		B9C631ED1B295FC10063DEA2 /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
@@ -2417,6 +2428,7 @@
 				B9DDE01E1B536BDA001E0B43 /* AboutUsCtrl.h */,
 				B9DDE01F1B536BDA001E0B43 /* AboutUsCtrl.m */,
 				B9DDE0201B536BDA001E0B43 /* AboutUsCtrl.xib */,
+				B9C29DC71BDA35F100B61D31 /* 1001.jpg */,
 				B9DDE0211B536BDA001E0B43 /* BasicInfoCell.h */,
 				B9DDE0221B536BDA001E0B43 /* BasicInfoCell.m */,
 				B9DDE0231B536BDA001E0B43 /* BasicInfoCell.xib */,
@@ -2820,6 +2832,8 @@
 		DEFBA5871B76ED3F000C1AD6 /* 注册 */ = {
 			isa = PBXGroup;
 			children = (
+				B9C29DBE1BD9FBD500B61D31 /* BtnCheck.png */,
+				B9C29DBF1BD9FBD500B61D31 /* BtnUncheck.png */,
 				DEEC3DE61B5C7028005CE84E /* ForgetPasswordCtrl.h */,
 				DEEC3DE71B5C7028005CE84E /* ForgetPasswordCtrl.m */,
 				DEEC3DE81B5C7028005CE84E /* ForgetPasswordCtrl.xib */,
@@ -2829,6 +2843,9 @@
 				DEEC3DEC1B5C7028005CE84E /* UserRegisterCtrl.h */,
 				DEEC3DED1B5C7028005CE84E /* UserRegisterCtrl.m */,
 				DEEC3DEE1B5C7028005CE84E /* UserRegisterCtrl.xib */,
+				B9C29DC21BDA0AFB00B61D31 /* MianZeViewController.h */,
+				B9C29DC31BDA0AFB00B61D31 /* MianZeViewController.m */,
+				B9C29DC41BDA0AFB00B61D31 /* MianZeViewController.xib */,
 			);
 			name = "注册";
 			sourceTree = "<group>";
@@ -3072,6 +3089,7 @@
 				B9D33D7F1B65C3180020AB1E /* PhotoItemView.xib in Resources */,
 				DEFB29D41B4AE86800CCA73D /* btn_pre.png in Resources */,
 				DEFB29DD1B4AE86800CCA73D /* icon_password.png in Resources */,
+				B9C29DC81BDA35F100B61D31 /* 1001.jpg in Resources */,
 				DE06383C1B6BB14E00EFB576 /* list_more@3x.png in Resources */,
 				B9DDDFA91B536AF9001E0B43 /* btn_pre.png in Resources */,
 				DEFB29D21B4AE86800CCA73D /* btn_normal@2x.png in Resources */,
@@ -3125,6 +3143,7 @@
 				B9D5FD7F1B5F3F9E00D48A07 /* list_icon_about@2x.png in Resources */,
 				DEFDF5891B5964FB00298366 /* Expert.storyboard in Resources */,
 				B9DDDFF01B536AF9001E0B43 /* login_btn@3x.png in Resources */,
+				B9C29DC11BD9FBD500B61D31 /* BtnUncheck.png in Resources */,
 				DEFB29DC1B4AE86800CCA73D /* home_btn_speciality@2x.png in Resources */,
 				DEE3377C1B4C479100357253 /* tab_home@3x.png in Resources */,
 				B9DDDFD21B536AF9001E0B43 /* home_btn_-score-@2x.png in Resources */,
@@ -3194,6 +3213,7 @@
 				DEEC3DF41B5C7028005CE84E /* goRegisterCtrl.xib in Resources */,
 				DE0637A81B6925D100EFB576 /* SelectDateCtrl.xib in Resources */,
 				B9D5FD8B1B5F3F9E00D48A07 /* list_icon_service@2x.png in Resources */,
+				B9C29DC01BD9FBD500B61D31 /* BtnCheck.png in Resources */,
 				B9DDDFAB1B536AF9001E0B43 /* btn_refuse@2x.png in Resources */,
 				B9C8359D1B675F8000DC9978 /* CaseDetail_Second.xib in Resources */,
 				B9DDDFF61B536AF9001E0B43 /* home_btn_surgery@2x.png in Resources */,
@@ -3209,6 +3229,7 @@
 				DEFB2A0B1B4AE87100CCA73D /* icon_password@3x.png in Resources */,
 				B9DDDFF91B536AF9001E0B43 /* tab_center@3x.png in Resources */,
 				B9DDDFC71B536AF9001E0B43 /* btn_collection@2x.png in Resources */,
+				B9C29DC61BDA0AFB00B61D31 /* MianZeViewController.xib in Resources */,
 				DEFB29E11B4AE86800CCA73D /* login_btn@2x.png in Resources */,
 				B9DDDFCD1B536AF9001E0B43 /* btn_pre.png in Resources */,
 				B9DDDFED1B536AF9001E0B43 /* icon_password@3x.png in Resources */,
@@ -3478,6 +3499,7 @@
 				B94568001B661A8200458386 /* CommonUtility.m in Sources */,
 				B9D33D7A1B65C3180020AB1E /* PBPGView.m in Sources */,
 				B94567F31B661A8200458386 /* ReGeocodeAnnotation.m in Sources */,
+				B9C29DC51BDA0AFB00B61D31 /* MianZeViewController.m in Sources */,
 				B9DDE0441B536BDA001E0B43 /* ListCell.m in Sources */,
 				DE0638651B6BCEB000EFB576 /* SBJsonWriter.m in Sources */,
 				B9DDDF1E1B536AC7001E0B43 /* RecommendDoctorCell.m in Sources */,
@@ -3614,7 +3636,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 昆 胡 (Z8KCYS6C25)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 昆 胡 (Z8KCYS6C25)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3634,6 +3657,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "cbba29a8-22cb-4a93-9f4a-3013e9f345ab";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -3655,7 +3679,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 昆 胡 (Z8KCYS6C25)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 昆 胡 (Z8KCYS6C25)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -3668,6 +3693,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "cbba29a8-22cb-4a93-9f4a-3013e9f345ab";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

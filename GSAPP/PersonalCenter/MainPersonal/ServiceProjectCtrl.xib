@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ServiceProjectCtrl">
@@ -15,19 +15,387 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hB9-Hp-fIP">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </webView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1001.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="e9Z-s5-XyE">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="142"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="142" id="LCV-pI-9pW"/>
+                    </constraints>
+                </imageView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4HQ-Bq-uHO">
+                    <rect key="frame" x="0.0" y="142" width="375" height="461"/>
+                    <attributedString key="attributedText">
+                        <fragment content="服务项目">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Medium"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="TimesNewRomanPS-BoldMT"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="1">
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="、">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+CQ
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="定期举办神经系统疾病诊断和治疗技术规范化培训，统一技术标准。">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="TimesNewRomanPSMT"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="2">
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="、">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+CQ
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="协助解决患者或患者家属、基层医生对医疗过程中投诉、纠纷等问题。">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="TimesNewRomanPSMT"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="3">
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="、">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+CQ
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="提供开展神经系统疾病诊断与治疗的相关设备、药品、耗材、器械等咨询服务。">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="TimesNewRomanPSMT"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="4">
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="、">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+CQ
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="提供交通、通信、网络和差旅等服务。">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="TimesNewRomanPSMT"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="5">
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="、">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+CQ
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="其它紧急情况的处理。">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="TimesNewRomanPSMT"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="6">
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="、">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content" base64-UTF8="YES">
+CQ
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment content="服务电话：">
+                            <attributes>
+                                <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                        <fragment>
+                            <string key="content">400-0913580
+</string>
+                            <attributes>
+                                <font key="NSFont" size="14" name="Courier"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" tailIndent="415.29999999999995" defaultTabInterval="21">
+                                    <tabStops>
+                                        <textTab alignment="left" location="36"/>
+                                    </tabStops>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="hB9-Hp-fIP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8BQ-M9-5oj"/>
-                <constraint firstAttribute="trailing" secondItem="hB9-Hp-fIP" secondAttribute="trailing" id="GUB-7K-H97"/>
-                <constraint firstItem="hB9-Hp-fIP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZOF-We-0Cf"/>
-                <constraint firstAttribute="bottom" secondItem="hB9-Hp-fIP" secondAttribute="bottom" id="nm7-pI-3U5"/>
+                <constraint firstAttribute="bottom" secondItem="4HQ-Bq-uHO" secondAttribute="bottom" constant="64" id="5Rg-zc-hFC"/>
+                <constraint firstItem="e9Z-s5-XyE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8uX-Ow-f1E"/>
+                <constraint firstAttribute="trailing" secondItem="e9Z-s5-XyE" secondAttribute="trailing" id="Ad0-vd-Zzd"/>
+                <constraint firstItem="4HQ-Bq-uHO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Bc4-vL-Mls"/>
+                <constraint firstItem="e9Z-s5-XyE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LxT-bg-ZcA"/>
+                <constraint firstItem="4HQ-Bq-uHO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="142" id="YP2-fW-YJu"/>
+                <constraint firstAttribute="trailing" secondItem="4HQ-Bq-uHO" secondAttribute="trailing" id="ZK8-hK-PKB"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
         </view>
     </objects>
+    <resources>
+        <image name="1001.jpg" width="640" height="220"/>
+    </resources>
 </document>
