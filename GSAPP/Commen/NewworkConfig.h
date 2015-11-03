@@ -12,7 +12,7 @@
 
 #define SERVER    @"http://120.24.80.159/gszx/api/web/?r="
 #define SERVER_JPUSH    @"http://115.28.85.76/JPush/examples/"
-#define SERVER_VERIFY @"http://120.24.80.159/gaoshou/api/web/?r=site/verify-code"
+#define SERVER_VERIFY @"http://120.24.80.159/gszx/api/web/?r=user/verify-code"
 
 #pragma mark - 网络接口回调类型
 typedef void (^CompleteHandle)(NSDictionary*);

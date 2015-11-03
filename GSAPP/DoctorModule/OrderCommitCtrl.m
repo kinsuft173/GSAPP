@@ -138,6 +138,7 @@
     cell.lblIntro.text  = self.orderGS.orderDoctor.intro;
     cell.lblName.text   = self.orderGS.orderDoctor.name;
     cell.lblPro.text    = self.orderGS.orderDoctor.position;
+    cell.lblHospital.text = self.orderGS.orderDoctor.hospital;
     cell.lblTel.text    = [NSString stringWithFormat:@"%lld",self.orderGS.orderDoctor.mobile];
     
     

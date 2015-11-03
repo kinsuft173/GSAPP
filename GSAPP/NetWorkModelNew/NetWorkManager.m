@@ -66,7 +66,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     
-    [manager POST:@"http://115.28.85.76/gaoshou/api/web/?r=site/login" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"http://120.24.80.159/gszx/api/web/?r=user/login" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSLog(@"signInWithUsername: %@", responseObject);
         

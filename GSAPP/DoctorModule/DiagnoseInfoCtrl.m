@@ -107,6 +107,7 @@
     self.textFiledPatientMedicalHistory.enabled = NO;
     self.timelySelected = YES;
     self.sexSelected = NO;
+  
     
     
     if ([UserDataManager shareManager].user.doctor.dept) {
@@ -271,7 +272,8 @@
     
     self.star=[[[NSBundle mainBundle]loadNibNamed:@"starView" owner:self options:nil] objectAtIndex:0];
     self.star.whichValue = self.expert.avg_score.floatValue;
-//      [self.star setStarForValue:self.expert.avg_score.floatValue];  
+    self.lbl_NewHospital.text = self.expert.hospital;
+//      [self.star setStarForValue:self.expert.avg_score.floatValue];
     [self.star initUI];
     /*
     if ([UIScreen mainScreen].bounds.size.width>=375) {

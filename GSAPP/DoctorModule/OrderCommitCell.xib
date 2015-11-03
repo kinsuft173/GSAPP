@@ -23,24 +23,14 @@
                             <constraint firstAttribute="height" constant="68" id="yDB-df-2sO"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="王若光" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G24-KI-HTl">
-                        <rect key="frame" x="82" y="23" width="66" height="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="王若光" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G24-KI-HTl">
+                        <rect key="frame" x="82" y="10" width="66" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="NaE-mg-qsP"/>
                             <constraint firstAttribute="width" constant="66" id="qAB-aZ-7B2"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="耳鼻喉科" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsr-iK-692">
-                        <rect key="frame" x="83" y="52" width="133" height="12"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="133" id="0V2-xo-Ncw"/>
-                            <constraint firstAttribute="height" constant="12" id="4aF-Ha-22c"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="简介" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkV-Ej-WT7">
@@ -182,8 +172,8 @@
                             <constraint firstItem="aJz-gh-haQ" firstAttribute="top" secondItem="UUT-k8-lxG" secondAttribute="top" constant="39" id="nGk-Ne-Las"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主任医师" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSZ-qg-cd4">
-                        <rect key="frame" x="144" y="28" width="73" height="12"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="主任医师" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSZ-qg-cd4">
+                        <rect key="frame" x="143" y="16" width="73" height="12"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="73" id="5Wl-cZ-OGl"/>
                             <constraint firstAttribute="height" constant="12" id="Xse-u3-kxA"/>
@@ -254,6 +244,22 @@
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGl-Lr-Ngm">
+                        <rect key="frame" x="82" y="32" width="170" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="耳鼻喉科" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsr-iK-692">
+                        <rect key="frame" x="83" y="61" width="133" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="133" id="0V2-xo-Ncw"/>
+                            <constraint firstAttribute="height" constant="12" id="4aF-Ha-22c"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="UUT-k8-lxG" secondAttribute="trailing" constant="21" id="1fu-Yv-HjQ"/>
@@ -305,6 +311,7 @@
                 <outlet property="imgHeadPhoto" destination="A2f-GQ-Ldc" id="BiA-6o-Q3i"/>
                 <outlet property="lblAdress" destination="SwN-q2-hh3" id="uj9-Cu-HKc"/>
                 <outlet property="lblDept" destination="dsr-iK-692" id="3BO-ry-Za9"/>
+                <outlet property="lblHospital" destination="fGl-Lr-Ngm" id="qMF-S5-M53"/>
                 <outlet property="lblIntro" destination="l7T-6P-WxB" id="VFE-Wz-7DE"/>
                 <outlet property="lblName" destination="G24-KI-HTl" id="7dq-Vy-cva"/>
                 <outlet property="lblPro" destination="JSZ-qg-cd4" id="yxM-6S-r63"/>

@@ -21,7 +21,7 @@
     
     [HKCommen addHeadTitle:@"关于" whichNavigation:self.navigationItem];
     
-    self.myScroll.contentSize=CGSizeMake(0, 700);
+    self.myScroll.contentSize=CGSizeMake(0, 900);
     
     self.img_app.layer.cornerRadius=5.0;
     self.img_app.layer.masksToBounds=YES;

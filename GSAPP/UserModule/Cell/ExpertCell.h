@@ -19,6 +19,7 @@
 @property (nonatomic, strong) IBOutlet UILabel* lblIntro;
 @property (nonatomic, strong) IBOutlet UILabel* lblDept;
 @property (nonatomic, strong) IBOutlet UILabel* lblDeptAndSurgery;
+@property (nonatomic, strong) IBOutlet UILabel* lblHospital;
 
 @property (nonatomic, strong) IBOutlet UIImageView* imgHeadPhoto;
 

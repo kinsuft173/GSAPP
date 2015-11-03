@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="txt_code" destination="aXX-Nj-vbs" id="oxU-vM-YSO"/>
                 <outlet property="txt_mobile" destination="ueO-95-NTU" id="qiQ-Db-cQw"/>
+                <outlet property="txt_nextPassword" destination="l31-bO-nQc" id="2jR-A7-DAW"/>
                 <outlet property="txt_password" destination="Djn-VE-JGa" id="8x3-1g-umm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -64,8 +65,18 @@
                         <action selector="goToGenerateCode:" destination="-1" eventType="touchUpInside" id="taq-qd-zef"/>
                     </connections>
                 </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="确认密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l31-bO-nQc">
+                    <rect key="frame" x="44" y="326" width="287" height="47"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="287" id="STS-Rw-So1"/>
+                        <constraint firstAttribute="height" constant="47" id="rnq-N8-1kP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKh-6V-Te3">
-                    <rect key="frame" x="44" y="362" width="287" height="48"/>
+                    <rect key="frame" x="44" y="408" width="287" height="48"/>
                     <color key="backgroundColor" red="0.31372549020000001" green="0.75686274509999996" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="04Z-If-qhV"/>
@@ -82,8 +93,10 @@
             </subviews>
             <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="bKh-6V-Te3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="362" id="M0T-g2-6UT"/>
+                <constraint firstItem="l31-bO-nQc" firstAttribute="leading" secondItem="Djn-VE-JGa" secondAttribute="trailing" constant="-287" id="DGq-OR-2hC"/>
+                <constraint firstItem="bKh-6V-Te3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="408" id="M0T-g2-6UT"/>
                 <constraint firstItem="aXX-Nj-vbs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="181" id="OWx-hn-F3c"/>
+                <constraint firstItem="l31-bO-nQc" firstAttribute="top" secondItem="Djn-VE-JGa" secondAttribute="bottom" constant="25" id="Ptm-1u-AFX"/>
                 <constraint firstItem="G87-D4-uhL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="181" id="T9r-k7-49d"/>
                 <constraint firstAttribute="centerX" secondItem="ueO-95-NTU" secondAttribute="centerX" id="fis-tM-Shd"/>
                 <constraint firstAttribute="centerX" secondItem="aXX-Nj-vbs" secondAttribute="centerX" constant="72" id="inI-jY-t3N"/>

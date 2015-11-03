@@ -244,6 +244,8 @@
         cell.imgHeadPhoto.layer.cornerRadius = 4.0;
         cell.imgHeadPhoto.layer.masksToBounds = YES;
         
+        cell.lbl_hospital.text = self.expert.hospital;
+        
         if (self.expert.doctorFiles.count != 0) {
             
             for (int i = 0; i < self.expert.doctorFiles.count; i ++) {

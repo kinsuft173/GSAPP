@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txt_ReserveDate;
 
 @property (weak, nonatomic) IBOutlet UILabel *lbl_ReserveDate;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_NewHospital;
 
 @property NSInteger type;
 

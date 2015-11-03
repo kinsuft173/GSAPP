@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txt_mobile;
 @property (weak, nonatomic) IBOutlet UITextField *txt_code;
 @property (weak, nonatomic) IBOutlet UITextField *txt_password;
+@property (weak, nonatomic) IBOutlet UITextField *txt_nextPassword;
 
 @property NSInteger verifyCode;
 
@@ -63,6 +64,14 @@
             textField.layer.borderColor=[UIColor colorWithRed:214.0/255.0 green:214.0/255.0 blue:214.0/255.0 alpha:0.8].CGColor;
         }
     }
+    
+    UIImageView *image_password1=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_password"]];
+    [image_password1 setFrame:CGRectMake(10, 0, 15, 19)];
+    //[image_password setContentMode:UIViewContentModeCenter];
+    UIView *view_password1=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 33, 20)];
+    [view_password1 addSubview:image_password1];
+    self.txt_nextPassword.leftView=view_password1;
+    self.txt_nextPassword.leftViewMode=UITextFieldViewModeAlways;
 }
 
 - (void)configNav
@@ -144,6 +153,14 @@
     if (![HKCommen validatePassword:self.txt_password.text]) {
         
         [HKCommen addAlertViewWithTitel:@"请输入正确的6位以上的密码"];
+        
+        return;
+        
+    }
+    
+    if (![self.txt_nextPassword.text isEqualToString:self.txt_password.text]) {
+        
+        [HKCommen addAlertViewWithTitel:@"请确认两次密码输入一致"];
         
         return;
         

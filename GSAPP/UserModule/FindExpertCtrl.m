@@ -169,7 +169,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 143;
+    return 173;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -196,6 +196,7 @@
     cell.lblDeptAndSurgery.text = expert.dept;//item[@"dept"];
     cell.lblIntro.text = expert.intro; //@"赶紧快点搞完吧快点搞完吧快点搞完吧少年们赶紧快点搞完吧快点搞完吧快点搞完吧少年们赶紧快点搞完吧快点搞完吧快点搞完吧少年们";//item[@"intro"];
     cell.lblPro.text = expert.position;//item[@"position"];
+    cell.lblHospital.text =  expert.hospital;
     
     cell.imgHeadPhoto.image = [UIImage imageNamed:HEADPHOTO_PLACEHOUDER];
     cell.imgHeadPhoto.layer.cornerRadius = 4.0;

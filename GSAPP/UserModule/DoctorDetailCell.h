@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn_Expand;
 @property (nonatomic,weak) id<touchExpand> delegate;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_content;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_hospital;
 @property (weak, nonatomic) IBOutlet UIButton *btn_Diagnose;
 @property (weak, nonatomic) IBOutlet UIButton *btn_Diagnose_opertation;
 @property (weak, nonatomic) IBOutlet UILabel * lblDooctorName;

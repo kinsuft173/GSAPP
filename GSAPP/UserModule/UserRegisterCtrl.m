@@ -139,6 +139,7 @@
 }
 - (IBAction)goRegister:(UIButton *)sender {
     
+    
     NSMutableDictionary* dicUser = [[NSMutableDictionary alloc] init];
     [dicUser setObject:self.strPhone forKey:@"username"];
     [dicUser setObject:self.strPassword forKey:@"password"];
@@ -422,6 +423,14 @@
 //    
 //    }
     
+    if (self.strType == 1 && self.isHanZigezheng == 0 && self.isHanId == 0) {
+        
+        [HKCommen addAlertViewWithTitel:@"专家注册需要上传身份证及资格证"];
+        
+        return;
+        
+    }
+    
 
     [dicDoctor setObject:[NSNumber numberWithInteger:self.strType] forKey:@"type"];
     [dicDoctor setObject:[NSNumber numberWithInteger:self.strSex] forKey:@"sex"];
@@ -442,9 +451,6 @@
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = @"正在加载...";
     
-   
-    
-    
     [[NetworkManager shareMgr] server_registerWithDic:dicUser completeHandle:^(NSDictionary *response) {
         
 //        hud.hidden = YES;
@@ -452,7 +458,6 @@
         if ([[response objectForKey:@"success"] boolValue] == YES) {
             
             [dicDoctor setObject:[NSNumber numberWithInteger:[[[response objectForKey:@"data"] objectForKey:@"id"] integerValue]] forKey:@"user_id"];
-            
             
             [[NetworkManager shareMgr] server_createDoctorsWithDic:dicDoctor completeHandle:^(NSDictionary *responseDoctor) {
                 
