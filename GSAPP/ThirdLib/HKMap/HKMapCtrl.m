@@ -19,7 +19,7 @@
 #import "MBProgressHUD.h"
 #import "CustomAnnotationView.h"
 
-#define MapKey @"43f7282f10fcb91468f352bf4dda056c"
+#define MapKey @"70e5a7c85bfcc3b11c62bc00f0dc666c"
 const NSString *NavigationViewControllerStartTitle       = @"起点";
 const NSString *NavigationViewControllerDestinationTitle = @"终点";
 
